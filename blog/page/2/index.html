@@ -1,0 +1,861 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Felipe Lima</title>
+  <meta name="author" content="Felipe Lima">
+
+  
+  <meta name="description" content="Pois é. Você não é o único. Apesar de funcionar às mil maravilhas em outros navegadores, o IE parece considerar o IFrame uma ameaça de segurança e se &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://felipecsl.github.com/blog/page/2/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Felipe Lima</a></h1>
+  
+    <h2>weblog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:felipecsl.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/01/11/problemas-com-iframe-no-ie/">Problemas Com IFrame No IE?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-11T07:03:33-08:00" pubdate data-updated="true">Jan 11<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pois é. Você não é o único. Apesar de funcionar às mil maravilhas em outros navegadores, o IE parece considerar o IFrame uma ameaça de segurança e se recusa a aceitar cookies de sites de terceiros dentro de um IFrame. Legal né? Isto dificulta qualquer tentativa de colocar um formulário de login dentro de um IFrame, por exemplo ou, ainda mais comum, colocar a janela de pagamento de um gateway (no meu caso, <a href="https://pagseguro.uol.com.br/">PagSeguro</a>) dentro de um IFrame funcionando como uma sobretela. Isto funciona perfeitamente, mas não no IE.</p>
+
+<p>A questão toda é que o IE não irá aceitar nenhum cookie do PagSeguro, pois ele está fora do domínio principal do site que está sendo acessado no momento (o site onde você está tentando comprar algum produto, por exemplo). A maneira para contornarmos esse problema, seria implementando um mecanismo chamado <a href="http://www.w3.org/P3P/">P3P</a>.O que este negócio aí faz, é criar um mecanismo de expor para o browser qual é a política de privacidade do site de maneira programática (através de um cabeçalho no response).</p>
+
+<p>Exemplo:</p>
+
+<pre><code>response["P3P"] = 'CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"'
+</code></pre>
+
+<p>Cada uma destas siglas de 3 ou 4 letras acima tem um significado, como por exemplo, expor como o site utiliza os dados do usuário. Esta propriedade deve ser incluida no cabeçalho de todas as páginas que setam um cookie no browser. Mais informações <a href="http://stackoverflow.com/questions/389456/cookie-blocked-not-saved-in-iframe-in-internet-explorer">aqui</a> e <a href="http://adamyoung.net/IE-Blocking-iFrame-Cookies">aqui</a>.</p>
+
+<p>Isto é o que acontece quando os seus cookies forem bloqueados :)</p>
+
+<p><a href="http://blog.felipel.com/wp-content/uploads/2011/01/p3p.png"><img src="http://blog.felipel.com/wp-content/uploads/2011/01/p3p-300x211.png" alt="" /></a></p>
+
+<p>No caso do PagSeguro, o que acabava acontecendo é um erro dizendo &#8220;Sua sessão expirou.&#8221;.</p>
+
+<p>Na minha opinião, é responsabilidade do PagSeguro implementar P3P em suas páginas para possibilitar que os desenvolvedores possam utilizar este recurso, já que, como não temos controle sobre o PagSeguro, não temos como implementar o cabeçalho customizado do P3P nas responses.</p>
+
+<p>Com isso, acabamos tendo que mudar a interface para não utilizarmos mais o IFrame, pois não encontramos solução para o problema!</p>
+
+<p>Bom, fica aí mais um motivo pra você que já odiava o IE, agora tem um motivo a mais :D</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/12/12/problemas-de-timezone-com-ruby/">Problemas De Timezone Com Ruby?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-12T14:45:15-08:00" pubdate data-updated="true">Dec 12<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Timezones podem ser uma dor de cabeça quando trabalhamos muito com datas. Em ruby, existem pelo menos três classes diferentes para manipulação de data/hora: Date, Time e DateTime.</p>
+
+<p>O nosso grande problema foi que, ao salvar uma data/hora no banco mySQL via ActiveRecord, o timezone estava sendo normalizado para UTC +00:00, enquanto o timezone do sistema é GMT -02:00, pois estamos em horário brasileiro de verão. Normalmente seria GMT -03:00).</p>
+
+<p>Isto se torna um problema quando precisamos comparar datas, que vêm do banco de dados, com a data atual. Utilizando Time.now, estávamos observando um offset de 2h dado pela diferença entre o timezone do banco e o do sistema.</p>
+
+<p>Para solucionar o problema, precisamos normalizar os dois objetos para o mesmo timezone. Resolvemos isto utilizando o método Time.utc, que monta um novo objeto Time baseado no UTC:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">ApplicationHelper</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">get_utc_time</span>
+</span><span class='line'>    <span class="n">now</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+</span><span class='line'>    <span class="no">Time</span><span class="o">.</span><span class="n">utc</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">now</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">now</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">now</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">now</span><span class="o">.</span><span class="n">min</span><span class="p">,</span> <span class="n">now</span><span class="o">.</span><span class="n">sec</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Caso alguém tenha uma solução mais elegante para o problema, aceito sugestões :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/23/traduzindo-html-utilizando-a-api-do-google-translate/">Traduzindo HTML Utilizando a API Do Google Translate</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-23T05:44:42-08:00" pubdate data-updated="true">Nov 23<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pessoal,</p>
+
+<p>Para quem quiser utilizar a API do Google Translate para traduzir partes de um documento HTML, segue uma implementação que tive que fazer recentemente utilizando jQuery e ASP.NET MVC:</p>
+
+<ul>
+<li>Controller Action para fazer o request para a API REST:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='c#'><span class='line'><span class="na">[ValidateInput(false)]</span>
+</span><span class='line'><span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Translate</span><span class="p">(</span><span class="n">FormCollection</span> <span class="n">vars</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'><span class="kt">string</span> <span class="n">reqUri</span> <span class="p">=</span> <span class="s">&quot;https://www.googleapis.com/language/translate/v2?key=YOUR_GOOGLE_API_KEY&amp;source=pt&amp;target=en&amp;format=html&quot;</span><span class="p">;</span><span class="err">`</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kt">var</span> <span class="n">webRequest</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpWebRequest</span><span class="p">)</span><span class="n">WebRequest</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">reqUri</span><span class="p">);</span><span class="err">`</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="n">webRequest</span><span class="p">.</span><span class="n">ContentType</span> <span class="p">=</span> <span class="s">&quot;application/x-www-form-urlencoded&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="n">webRequest</span><span class="p">.</span><span class="n">Method</span> <span class="p">=</span> <span class="s">&quot;POST&quot;</span><span class="p">;</span><span class="err">`</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">byte</span><span class="p">[]</span> <span class="n">bytes</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="s">&quot;q=&quot;</span> <span class="p">+</span> <span class="n">vars</span><span class="p">[</span><span class="s">&quot;q&quot;</span><span class="p">]);</span>
+</span><span class='line'><span class="n">webRequest</span><span class="p">.</span><span class="n">ContentLength</span> <span class="p">=</span> <span class="n">bytes</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+</span><span class='line'><span class="n">webRequest</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;X-HTTP-Method-Override&quot;</span><span class="p">,</span> <span class="s">&quot;GET&quot;</span><span class="p">);</span><span class="err">`</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">using</span> <span class="p">(</span><span class="n">Stream</span> <span class="n">outputStream</span> <span class="p">=</span> <span class="n">webRequest</span><span class="p">.</span><span class="n">GetRequestStream</span><span class="p">())</span> <span class="p">{</span>
+</span><span class='line'><span class="n">outputStream</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">bytes</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">bytes</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">using</span> <span class="p">(</span><span class="n">WebResponse</span> <span class="n">webResponse</span> <span class="p">=</span> <span class="n">webRequest</span><span class="p">.</span><span class="n">GetResponse</span><span class="p">())</span> <span class="p">{</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">webResponse</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'><span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">using</span> <span class="p">(</span><span class="n">StreamReader</span> <span class="n">sr</span> <span class="p">=</span> <span class="k">new</span> <span class="n">StreamReader</span><span class="p">(</span><span class="n">webResponse</span><span class="p">.</span><span class="n">GetResponseStream</span><span class="p">()))</span> <span class="p">{</span>
+</span><span class='line'><span class="k">return</span> <span class="nf">Content</span><span class="p">(</span><span class="n">sr</span><span class="p">.</span><span class="n">ReadToEnd</span><span class="p">().</span><span class="n">Trim</span><span class="p">(),</span> <span class="s">&quot;text/json&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Algumas considerações sobre esta action:</p>
+
+<ul>
+<li><p>Não estamos validando o parâmetro <strong>q</strong> de entrada. Seria interessante validar a presença deste parâmetro no form e lançar uma exceção caso ele não esteja presente;</p></li>
+<li><p>Não esqueça de passar para o parâmetro <strong>key</strong> a sua chave da API do google;</p></li>
+<li><p>Uma melhoria seria receber via form também o código do idioma fonte e destino (parâmetros <strong>source</strong> e <strong>target</strong> da URL).</p></li>
+</ul>
+
+
+<p>Vamos agora para o código de cliente (JavaScript) para atualizar a view:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">translateUrl</span> <span class="o">=</span> <span class="s1">&#39;&lt;%= Url.Action(&quot;Translate&quot;) %&gt;&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'><span class="nx">translateElement</span><span class="p">(</span><span class="s2">&quot;caseText&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">translateElement</span><span class="p">(</span><span class="s2">&quot;caseTitle&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kd">function</span> <span class="nx">translateElement</span><span class="p">(</span><span class="nx">elemId</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'><span class="nx">url</span><span class="o">:</span> <span class="nx">translateUrl</span><span class="p">,</span>
+</span><span class='line'><span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span>
+</span><span class='line'><span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+</span><span class='line'><span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'><span class="nx">q</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#&quot;</span> <span class="o">+</span> <span class="nx">elemId</span><span class="p">).</span><span class="nx">html</span><span class="p">()</span>
+</span><span class='line'><span class="p">},</span>
+</span><span class='line'><span class="nx">success</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'><span class="c1">// TODO: I&#39;ve found that the returned translated text from Google may be incomplete</span>
+</span><span class='line'><span class="c1">// if we send any   elements within the text. We should remove any occurrences</span>
+</span><span class='line'><span class="c1">// of this in the input string.</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#&quot;</span> <span class="o">+</span> <span class="nx">elemId</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">unescape</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">translations</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">translatedText</span><span class="p">));</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>O que este código faz é apenas chamar a Action <strong>Translate</strong> que, por sua vez, chama a API do Google e retorna o JSON com o texto traduzido. Feito isso, a função <strong>translateElement</strong> apenas atualiza o conteúdo do elemento com a tradução.</p>
+
+<p>Acredito que o código seja auto explicativo. Qualquer dúvida, por favor perguntem nos comentários :)</p>
+
+<p>Documentação da api <a href="http://code.google.com/apis/language/translate/v2/using_rest.html">aqui</a> e <a href="http://code.google.com/apis/language/translate/v2/getting_started.html#JSONP">aqui</a>.</p>
+
+<p>Abraços!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/08/configurando-uma-ferramenta-de-diff-visual-para-svn-no-linux/">Configurando Uma Ferramenta De Diff Visual Para SVN No Linux</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-08T15:37:56-08:00" pubdate data-updated="true">Nov 8<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Cá estou eu aqui postando após vários dias parado. Tenho trabalhado diariamente com Ubuntu durante os últimos dias devido a um projeto em Rails 3 que estamos tocando aqui na <a href="http://www.quavio.com.br">Quavio</a>. Por isso, tenho penado bastante com configuração de ambiente, familiarização com o framework (ainda estou aprendendo muito) e, consequentemente, tenho tido ainda menos tempo do que o usual.</p>
+
+<p>Vou aproveitar só para deixar um rápido passo-a-passo que utilizei para configurar uma ferramenta de diff visual para SVN no Ubuntu. No Windows eu vinha usando o ótimo <a href="http://winmerge.org/">WinMerge</a>. No Linux, fui recomendado ao <a href="http://meld.sourceforge.net/">meld</a> nesta <a href="http://stackoverflow.com/questions/1141686/visual-svn-diff-and-compare-tools-for-linux">pergunta</a> no stackoverflow. Bom, vamos aos passos:</p>
+
+<ul>
+<li><p><code>sudo apt-get install meld</code></p></li>
+<li><p><code>gedit ~/diffwrap.sh</code></p></li>
+<li><p>Cole o seguinte conteúdo dentro do arquivo recém criado e salve (adaptado <a href="http://svnbook.red-bean.com/en/1.2/svn.advanced.externaldifftools.html">daqui</a>):</p>
+
+<p>!/bin/sh</p>
+
+<h1>Configure your favorite diff program here.</h1>
+
+<p>DIFF=&#8221;/usr/local/bin/my-diff-tool&#8221;</p>
+
+<h1>Subversion provides the paths we need as the sixth and seventh</h1>
+
+<h1>parameters.</h1>
+
+<p>LEFT=${6}
+RIGHT=${7}</p>
+
+<h1>Call the diff command (change the following line to make sense for</h1>
+
+<h1>your merge program).</h1>
+
+<p>$DIFF $LEFT $RIGHT</p>
+
+<h1>Return an errorcode of 0 if no differences were detected, 1 if some were.</h1>
+
+<h1>Any other errorcode will be treated as fatal.</h1></li>
+<li><p><code>chmod a+x diffwrap.sh</code></p></li>
+<li><p><code>gedit ~/.subversion/config</code></p></li>
+<li><p>Procure a linha onde diz &#8220;diff-cmd&#8221; (linha 57, no meu arquivo)</p></li>
+<li><p>Remove o &#8220;#&#8221; do início da linha para descomentá-la</p></li>
+<li><p>Digite /home/<nome do seu usuário>/diffwrap.sh no final da linha. O resultado deve ser algo assim: <code>diff-cmd = /home/&lt;nome do usuario&gt;/diffwrap.sh
+</code>. Não esqueça de trocar <strong><nome do usuário></strong> pelo nome real do seu usuário no sistema</p></li>
+<li><p>Pronto. Ao digitar <code>svn diff arquivo.rb</code>, o meld será executado com dois arquivos abertos: o seu, com suas modificações locais, e a cópia origina que está no repositório.</p></li>
+</ul>
+
+
+<p>Por hoje é isso. Nos próximos dias pretendo escrever um guia sobre como publicar uma aplicação Rails 3 do zero num cloud server do Rackspace.</p>
+
+<p>Até mais!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/10/14/opcoes-de-hospedagem-para-ruby/">Opções De Hospedagem Para Ruby</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-14T16:34:37-07:00" pubdate data-updated="true">Oct 14<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Na Quavio, empresa onde trabalho e sou um dos sócios, uma boa parcela dos projetos executados são basicamente sites e hotsites de clientes. Isto implica em necessidades específicas de hospedagem, como por exemplo, uma boa infraestrutura para envio/recebimento de emails (com webmail), painel de controle, suporte técnico para eventuais problemas de instabilidade, baixo custo mensal, pouca utilização de espaço em disco, backup automático, etc. Basicamente, não queremos nos responsabilizar pelo gerenciamento da infra-estrutura que abriga cada um destes projetos, que acabam se tornando muitos com o passar do tempo.</p>
+
+<p>Resumindo, precisamos de um fornecedor de hospedagem que atenda a estas necessidades e que, ao mesmo tempo, ofereça um bom suporte às tecnologias que utilizamos.</p>
+
+<p>Recentemente, decidimos por utilizar exclusivamente Ruby e, preferencialmente, Sinatra (ou Rails) para este tipo de projeto devido a uma série de fatores. Eu diria que os principais seriam a extrema simplicidade de uso e alta produtividade que obtemos com estas ferramentas.</p>
+
+<p>Esta decisão, por sua vez, implica em uma maior dificuldade na escolha do nosso fornecedor de hospedagem, visto que a maioria deles simplesmente não possui suporte a estas tecnologias ou, se possui, é bastante precária ou ineficiente.</p>
+
+<p>Vínhamos utilizando até então, preferencialmente, a <a href="http://www.kinghost.com.br">Kinghost</a> para este fim. Entretanto, chegamos à conclusão de que o suporte a Ruby on Rails é bastante precário e limitado. Isso pra não falar de Sinatra. Ao ligar para o Call Center, o atendente, que se dizia técnico, me pediu que soletrasse a palavra &#8220;Sinatra&#8221; para ele. Desisti na hora.</p>
+
+<p>Outra opção era a <a href="http://www.kinghost.com.br">Locaweb</a>, que também vinhamos utilizamos em alguns casos específicos e que se mostrou relativamente satisfatória em se tratando de suporte a Ruby. Entretanto, considero o custo/benefício da Locaweb baixo (o preço da hospedagem compartilhada parte de R$ 29/mês) quando comparada a outras hospedagens gringas. Além disso, tivemos uns problemas sérios lá com SSH recentemente, o que nos deixou bastante insatisfeitos com o serviço da Locaweb também.</p>
+
+<p>Não nos restaram muitas opções no Brasil, por isso estamos pensando seriamente em procurar alternativas fora daqui para hospedar nossos projetos. Eu realmente não queria ter que fazer isso, pois queriamos muito fomentar o desenvolvimento das hospedagens para essas tecnologias no Brasil, mas infelizmente não nos resta outra alternativa, já que não encontramos um fornecedor que nos atenda de forma satisfatória por aqui.</p>
+
+<p>Não é à toa que vemos manifestações <a href="http://blog.kinghost.com.br/2010/09/empresas-de-hospedagem-de-sites-divulgam-esclarecimento/">deste tipo</a> no mercado brasileiro, pois concordo que a reclamação dos consumidores tem fundamento.</p>
+
+<p>Aceito sugestões de boas hospedagens para Ruby/Sinatra/Rails no Brasil ou fora.</p>
+
+<p>Me surpreendi positivamente esses dias com o excelente serviço que <a href="http://heroku.com">heroku</a> oferece. Achei fantástico. O deploy é simplesmente um git push. Mais fácil, impossível!</p>
+
+<p>Seria muito bom termos algo nesse nível aqui no Brasil!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/20/how-to-map-subdomains-in-windows-7/">How to Map Subdomains in Windows 7</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-20T06:10:00-07:00" pubdate data-updated="true">Aug 20<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Over the last days, I&#8217;ve been working on implementing multiple subdomains with authentication in asp.net for the webapp I&#8217;m currently working on.</p>
+
+<p>There are a few steps needed in order to configure IIS, DNS and authentication.</p>
+
+<ol>
+<li>Select the website you&#8217;re working on, in the IIS Manager screen, in the left side tree. Then, click the &#8220;Bindings&#8221; option in the right pane</li>
+</ol>
+
+
+<p><img src="/wp-content/uploads/2010/8/bindings.png" alt="" /></p>
+
+<ol>
+<li><p>In the Site Bindings window, add each subdomain that you want to map to your site. Unfortunately, wildcard mapping is not supported, so you&#8217;ll have to manually type all the subdomains before using it.</p></li>
+<li><p>In the windows hosts file (C:\Windows\system32\drivers\etc\hosts), add up each subdomain again, pointing to 127.0.0.1 (see below):</p></li>
+</ol>
+
+
+<p><img src="/wp-content/uploads/2010/8/hosts.png" alt="" /></p>
+
+<ol>
+<li>Lastly, you&#8217;ll need to update your web.config cookies configuration, so that it is set to work with any subdomain. By default, your login cookies will only be valid for the default subdomain (example.com and www.example.com)</li>
+</ol>
+
+
+<p><authentication mode="Forms"></p>
+
+<p><forms loginUrl="~/Account/Login" timeout="500000" **domain=".example.com"** /></p>
+
+<p></authentication></p>
+
+<p>Pay attention for the starting dot in the domain attribute. It is needed in order to work with any subdomain ;)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/27/singleton-entity-framework-connection-maybe-not-a-good-idea/">Singleton Entity Framework Connection: Maybe Not a Good Idea</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-27T12:57:00-07:00" pubdate data-updated="true">Jul 27<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve been working on an ASP.NET MVC web service that uses EF for persistence. Been using a good old repository class for handling the connection and returning the entities. At some point I decided to change my repository connection to a singleton.</p>
+
+<p>At first, I thought it would make sense to always reuse the same connection all over the place. However, as days passed, the system started raising creepy EF exceptions at times and eventually entered on an inconsistent state where I had to restart IIS in order to return the system back up. This was really weird and scared the hell out of me.</p>
+
+<p>So, as a note to self, please remember that using a singleton pattern for managing large application&#8217;s DAL may not be a good idea. Please do not ask me why, because I don&#8217;t have a clue for the reason why these problems happened. Instead, I decided just to revert changes back and just instantiate a new repository instance whenever I needed to access the data entities.</p>
+
+<p>If anyone out there had a different experience or can explain why this can happen, please do not hesitate to leave me a comment as I would appreciate a lot!</p>
+
+<p>Thanks!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/06/08/jquery-progress-bar-slider-plugin/">JQuery Progress Bar Slider Plugin</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-08T08:36:00-07:00" pubdate data-updated="true">Jun 8<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hello,</p>
+
+<p>I&#8217;ve written a simple JQuery plugin for a progress bar slider. It was inspired on <a href="http://blog.benogle.com/2009/06/16/simple-css-shiny-progress-bar-technique/">Ben&#8217;s CSS progress bar</a>, but I needed a more complete one that should be interactive, so I built this one that also leverages <a href="http://jqueryui.com/demos/slider/#slider-vertical">JQuery UI&#8217;s vertical slider</a>.</p>
+
+<p>You can see the plugin demo <a href="http://felipel.com/files/jquery.progressbarslider/demo.htm">here</a>. TIP: Inspect the source code to see how it works.</p>
+
+<p>You can download the plugin code <a href="http://felipel.com/files/jquery.progressbarslider.zip">here</a>.</p>
+
+<p>Usage:</p>
+
+<p>[code:js]</p>
+
+<script type="text/javascript">  
+
+$(function () {  
+
+$("your element selector").progressbarslider();  
+
+});  
+
+</script>
+
+
+<p>[/code]</p>
+
+<p>Please feel free to leave me a feedback, suggestions and/or use it at your own will on your projects :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/05/22/thoughts-on-web-platforms-and-tendencies/">Thoughts on Web Platforms and Tendencies</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-22T04:36:00-07:00" pubdate data-updated="true">May 22<span>nd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>During the last few weeks, I found myself more and more inside a stream that takes me to Ruby on Rails, when it comes to the best platform option for agile web development. My current language and platform or proficiency are C# and ASP.NET MVC, however, while getting introduced to the Rails world, I started seeing things from a different perspective, as well as finding out such great tools and practices that I really would like to have when working with ASP.NET MVC. I&#8217;m gonna list some the topics and differences I have been analyzing:</p>
+
+<ol>
+<li><p><strong>Community support:</strong> I found the RoR and the Open Source community to be far more unite and open to teaching and sharing knowledge than the .NET community. Starting with the assumption that there are probably more people working with ASP.NET right now than with RoR, it is surprising to see that it is easier to find RoR help online and learning communities than ASP.NET ones. Also, as far as I know, the ASP.NET MVC code is not open to community contributions right now, so people created the <a href="http://mvccontrib.codeplex.com/">MvcContrib</a> project to acoomodate this code, which is a shame. This is said, despite the fact that it&#8217;s under the <a href="http://www.opensource.org/licenses/ms-pl.html">MS-PL license</a>, I found it hard to provide suggestions and feedback to the project, since there is not an official place for it.</p></li>
+<li><p><strong>Productivity:</strong> Frequently I have hard times fighting the framework just to be able to get the job done. Rails has proven to me to be more productive and succint in terms of framework design. For example: named routes and database migrations are VERY helpful and I miss this kind of tool in ASP.NET MVC.</p></li>
+<li><p><strong>Tight Model integration: </strong>I see many people argue that ASP.NET MVC is just VC, since the Model is not tightly coupled to the project. It&#8217;s the developer&#8217;s task to choose the right tool for the job, be it LINQ to SQL, Entity Framework or even MongoDB, for example. This flexibility is useful, however, a more integrated scenario could improve productivity a lot, perhaps we could use Entity Framework and SQL Server by default and change the provider later, if needed.</p></li>
+<li><p><strong>Dynamic typing: </strong>This is a more subjective item, since it is wrong to say that static typing is worse that dynamic typing, or vice versa. It is just a matter of choosing the right tool. However, It seems to me that, in general, static typing and compilation doesn&#8217;t free you from actual real world errors. It is a cost/benefit tradeoff, so, IMHO, the productivity benefit you get with dynamic typing is worth the trade for the static typing checks that you lost.</p></li>
+</ol>
+
+
+<p>Wrapping up, I think that RoR is still an emerging technology that has a great future ahead and an incredible supporting community. I&#8217;m seeing daily more and more events, talks and conferences around this technology. This, summed up to all the points argumented above, makes me believe that at least it is worth learning. And this is what I&#8217;m working on right now.</p>
+
+<p>(I think I&#8217;ll have to buy a MacBook soon :)</p>
+
+<p>Till next time!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/04/24/wcf-data-services-and-the-odata-protocol/">WCF Data Services and the OData Protocol</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-24T04:11:00-07:00" pubdate data-updated="true">Apr 24<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>During the last days, I&#8217;ve been watching some cool MIX&#8217;10 videos with Scott Hanselman. One of them took my attention specially, which is this one: <a href="http://bit.ly/9KjsYr">Beyond File | New Company: From Cheesy Sample to
+Social Platform.</a></p>
+
+<p>Scott takes a simple website like <a href="/admin/Pages/nerddinner.com">nerddinner.com</a> and shows how they tuned it up to enable several different social collaboration, integration and emergent features in it. It is really worth the time watching.</p>
+
+<p>One of the points that really made me curious, was the new <a href="http://www.odata.org/">OData</a> protocol. It was introduced in.NET 4 with <a href="http://msdn.microsoft.com/en-us/data/bb931106.aspx">WCF Data Services</a> (formerly ADO.NET Data Services) and aims to unlock data from its silos that exist in major applications today. What&#8217;s really impressive about it, is that you are able to query it as a web service and perform complex Linq queries against it (even inserting, updating and deleting are supported!). All this, over a common RESTful Http interface. OData is built upon the <a href="http://en.wikipedia.org/wiki/Atom_%28standard%29">AtomPub</a> format, so there is nothing being invented here. <a href="http://microsoftpdc.com/Sessions/FT12">This presentation</a> at PDC&#8217;09 with Pablo Castro provides further techincal details and I definitely recommend watching if you plan to make use of this technology.</p>
+
+<p>I&#8217;m planning on implementing this on a Website CMS I&#8217;m working on and will write about my findings, barriers found and solutions here in the near future. Stay tuned.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/3/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/31/starting-with-android-managing-images/">Starting with Android - managing images</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/31/when-two-identical-strings-are-different/">When two identical strings are different?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/14/getting-started-with-chef/">Getting started with Chef</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx/">Protip: Delete words on iTerm2 (Mac OSX)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/24/wombat-0-4-0-released/">Wombat 0.4.0 released!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/felipecsl">@felipecsl</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'felipecsl',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Felipe Lima -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

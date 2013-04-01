@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Getting started with Chef - Felipe Lima</title>
+  <meta name="author" content="Felipe Lima">
+
+  
+  <meta name="description" content="If you never heard of it, Chef is a server automation tool for server management tasks. It is often related to the terms DevOps and Infrastructure as &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://felipecsl.github.com/blog/2012/06/14/getting-started-with-chef/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Felipe Lima</a></h1>
+  
+    <h2>weblog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:felipecsl.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Getting Started With Chef</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-14T20:46:00-07:00" pubdate data-updated="true">Jun 14<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>If you never heard of it, <a href="http://www.opscode.com/chef/">Chef</a> is a server automation tool for server management tasks. It is often related to the terms <a href="http://en.wikipedia.org/wiki/DevOps">DevOps</a> and <a href="http://blog.carlossanchez.eu/2012/03/13/infrastructure-as-code/">Infrastructure as Code</a> which have started to gain quite a bit of attention lately. If you&#8217;ve ever seen yourself doing the exact same steps, like installing MySql on a server several times in a row, always doing the exact same steps, and wondered if there was a more intelligent way of doing that, then Chef is for you.</p>
+
+<p><img src="http://www.rit.edu/news/lib/filelib/200708/new_chef.jpg" alt="" /></p>
+
+<p><em>No, not this kind of chef :)</em></p>
+
+<p>This is not the only option available. Other well known tools include <a href="http://puppetlabs.com/">Puppet</a> and <a href="http://vagrantup.com/">Vagrant</a>. The latter, though, being targeted at virtualized development environments, while the former, are targeted at real (production) machines.</p>
+
+<p>So, &#8216;nuff said, here are some notes I took from my first time playing with Chef. It was far from being a straightforward process, that is why a good old blog post comes handy. Turns out it was pretty painful just to get it started, and I didn&#8217;t even get to the part where you prepare the recipes and cookbooks (hmmm :)).</p>
+
+<p>So to get started, I fired up a brand new clean Ubuntu 12 instance in <a href="https://console.aws.amazon.com/ec2/home">Amazon EC2</a>. If you need help doing that, there are plenty of documentation online for how to get started on AWS. Go there and search, I will wait here.</p>
+
+<p>Ok, so now that you have an instance up and running, connect to it via ssh (tip: you will need the private key file .pem):</p>
+
+<pre><code>ssh -i &lt;path_to_your_pem_file&gt; ubuntu@ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com
+</code></pre>
+
+<p>Install chef-server. There is a wiki for that <a href="http://wiki.opscode.com/display/chef/Installing+Chef+Server+on+Debian+or+Ubuntu+using+Packages">here</a>. After you run <strong>apt-get install chef chef-server</strong>, most likely, at t he end, chef-server will fail to start (at least that is what happened to me)</p>
+
+<p>Ok, if you try to start the server manually via the command <strong>chef-server</strong>, then it might end up exploding with this error:</p>
+
+<pre><code>NOTE: Gem.activate is deprecated, use Specification#activate. 
+It will be removed on or after 2011-10-01.
+</code></pre>
+
+<p>This is basically saying that you are using the wrong version of ruby and/or rubygems. The plain ubuntu install only comes with ruby 1.8 installed which is probably not what we want. So we&#8217;ll install <a href="https://rvm.io//">rvm</a> and ruby 1.9.</p>
+
+<p>But, before that, let&#8217;s install some dependencies:</p>
+
+<p>Run this to install some required packages that you gonna need&#8230; some of them are probably not needed for this, but it wont hurt to install them anyways.</p>
+
+<pre><code>sudo apt-get install build-essential bison openssl libreadline6 libreadline6-dev curl 
+git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev     
+sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev -y
+</code></pre>
+
+<p>Done that, install rvm, ruby and some required gems:</p>
+
+<pre><code>curl -L https://get.rvm.io | bash -s stable --ruby
+gem install yajl-ruby -v 0.7.7
+gem install chef
+gem install chef-server
+</code></pre>
+
+<p>At this point, you should be able to just run <strong>chef-server</strong> see it running. If all goes well, you might want to do <strong>chef-server -e production -d</strong> to run it in production environment and daemonize, so it runs in background. You will also need to start the webui via <strong>chef-server-webui</strong> <strong>-e production -d.</strong> If all goes smoothly, you should be able to access the webui at <strong>http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4040/</strong>. As you probably noticed, the webui runs in the port 4040, while the chef-server runs in 4000. Don&#8217;t forget to open these ports in the AWS Security Group and allow your machine IP to access them!  But wait, this was only the start hahah! Now comes the server configuration&#8230;</p>
+
+<p><a href="http://blog.felipel.com/wp-content/uploads/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png"><img src="http://blog.felipel.com/wp-content/uploads/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png" alt="" /></a></p>
+
+<p>If you are still following the wiki steps (you should), by now you should be running <strong>knife configure -i</strong>. Knife is chef&#8217;s command line configuration tool, it can do a lot of stuff. This is gonna try to create an API user. If you are unlucky, like me, you will see this error:</p>
+
+<pre><code>Creating initial API user...    
+ERROR: Server returned error for &lt;a href="http://ec2-50-18-239-212.us-west-1.compute.amazonaws.com:4000/clients/ubuntu"&gt;http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4000/clients/client_name&lt;/a&gt;, retrying 1/5 in 3s
+...
+</code></pre>
+
+<p>This probably means chef cannot connect to RabbitMQ (the guy that does the messaging between chef components). To double check, run this:</p>
+
+<pre><code>sudo rabbitmqctl list_permissions -p /chef
+</code></pre>
+
+<p>&#8230; and you should see this error:</p>
+
+<pre><code>Listing permissions in vhost "/chef" ...
+Error: {no_such_vhost,&lt;&lt;"/chef"&gt;&gt;}
+</code></pre>
+
+<p>So this is how you fix it:</p>
+
+<pre><code>sudo rabbitmqctl add_vhost /chef
+sudo rabbitmqctl add_user chef &lt;password&gt;
+sudo rabbitmqctl set_permissions -p /chef chef ".*" ".*" ".*"
+</code></pre>
+
+<p>Gotcha: The rabbitmq password has to be the same one found in /etc/chef/server.rb config file (mine was &#8216;root&#8217;)</p>
+
+<p>Ok, this should get you all set. Last step, verify the knife configuration running <strong>knife client list</strong>. And guess what?! More errors!</p>
+
+<pre><code>ERROR: Your private key could not be loaded from /home/ubuntu/.chef/ubuntu.pem
+Check your configuration file and ensure that your private key is readable
+</code></pre>
+
+<p>This happened to me because when I ran knife configure -i, I set as the new username, a username that was somehow already in use (ubuntu). So the solution was to run it again and set a different new username when asked. This should create your API client and get you all set.</p>
+
+<pre><code>ubuntu@ip-xx-xxx-xxx-xxx:~/.chef$ knife client list
+ Lixaredo.local
+ admin
+ chef-validator
+ chef-webui
+ felipecsl
+ local
+</code></pre>
+
+<p>Ok here is another gotcha. If you ever turn off your instance and bring it back later, it will most likely change its public dns (<strong><strong>*.compute.amazonaws.com&#8230;). Make sure you update it in your </strong>knife.rb</strong> file or it wont work. Mine was located at ~/.chef/knife.rb</p>
+
+<pre><code>log_level :info
+log_location STDOUT
+node_name 'local'
+client_key '/home/ubuntu/.chef/local.pem'
+validation_client_name 'chef-validator'
+validation_key '/etc/chef/validation.pem'
+&lt;strong&gt;chef_server_url 'http://ec2-xx-xx-xx-xx.us-west-1.compute.amazonaws.com:4000/'&lt;/strong&gt;
+cache_type 'BasicFile'
+cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
+</code></pre>
+
+<p>Ok that&#8217;s it for today. Next time I will talk about recipes and cookbooks!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Felipe Lima</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-14T20:46:00-07:00" pubdate data-updated="true">Jun 14<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://felipecsl.github.com/blog/2012/06/14/getting-started-with-chef/" data-via="felipecsl" data-counturl="http://felipecsl.github.com/blog/2012/06/14/getting-started-with-chef/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx/" title="Previous Post: Protip: Delete words on iTerm2 (Mac OSX)">&laquo; Protip: Delete words on iTerm2 (Mac OSX)</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/07/31/when-two-identical-strings-are-different/" title="Next Post: When two identical strings are different?">When two identical strings are different? &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/31/starting-with-android-managing-images/">Starting with Android - managing images</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/31/when-two-identical-strings-are-different/">When two identical strings are different?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/14/getting-started-with-chef/">Getting started with Chef</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx/">Protip: Delete words on iTerm2 (Mac OSX)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/24/wombat-0-4-0-released/">Wombat 0.4.0 released!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/felipecsl">@felipecsl</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'felipecsl',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Felipe Lima -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

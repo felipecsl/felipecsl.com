@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>An alternative for viewing grid row details in ASP.NET Dynamic Data - Felipe Lima</title>
+  <meta name="author" content="Felipe Lima">
+
+  
+  <meta name="description" content="With ASP.NET Dynamic Data you get an entire dynamic data-driven website for free with almost no effort. Of course this has drawbacks, which is that &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://felipecsl.github.com/blog/2009/12/02/an-alternative-for-viewing-grid-row-details-in-asp-net-dynamic-data/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Felipe Lima</a></h1>
+  
+    <h2>weblog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:felipecsl.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">An Alternative for Viewing Grid Row Details in ASP.NET Dynamic Data</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-02T10:25:00-08:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>With ASP.NET Dynamic Data you get an entire dynamic data-driven website for free with almost no effort. Of course this has drawbacks, which is that in fact you lose some flexibility and need to do things in the way they <strong>can</strong> be done.</p>
+
+<p>Recently I needed to improve the default List.aspx template GridView with some different colors and per-line selection for entry details, instead of clicking through an DynamicHyperlink. The first step was to attach an OnRowDataBound event in the grid, in order to set up on onmouseover event in the data rows:</p>
+
+<p>DynamicData\PageTemplates\List.aspx:</p>
+
+<p>[code:c#]</p>
+
+<p>&lt;asp:GridView ID=&#8221;GridView1&#8221; runat=&#8221;server&#8221; DataSourceID=&#8221;GridDataSource&#8221; EnablePersistedSelection=&#8221;true&#8221; <strong>OnRowDataBound=&#8221;GridView_RowDataBound&#8221;</strong>></p>
+
+<p>[/code]</p>
+
+<p>Next, attach the event and set up the event (DynamicData\PageTemplates\List.aspx.cs):</p>
+
+<p>[code:c#]</p>
+
+<p>protected void GridView_RowDataBound(object sender, GridViewRowEventArgs e)</p>
+
+<p>{</p>
+
+<p>if (e.Row.RowType == DataControlRowType.DataRow)</p>
+
+<p>{</p>
+
+<p>e.Row.Attributes[&#8220;onclick&#8221;] = &#8220;location.href = &#8216;&#8221; + table.GetActionPath(&#8220;Details&#8221;, e.Row.DataItem) + &#8220;&#8217;&#8221;;</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>[/code]</p>
+
+<p>And I&#8217;ts all done. You get an entire row click selection for the entry details :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Felipe Lima</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-02T10:25:00-08:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2009</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://felipecsl.github.com/blog/2009/12/02/an-alternative-for-viewing-grid-row-details-in-asp-net-dynamic-data/" data-via="felipecsl" data-counturl="http://felipecsl.github.com/blog/2009/12/02/an-alternative-for-viewing-grid-row-details-in-asp-net-dynamic-data/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/11/15/customizing-asp-net-membership-information-with-profiles/" title="Previous Post: Customizing ASP.NET membership information with Profiles">&laquo; Customizing ASP.NET membership information with Profiles</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/01/26/model-binding-in-asp-net-mvc/" title="Next Post: Model binding in ASP.NET MVC">Model binding in ASP.NET MVC &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/31/starting-with-android-managing-images/">Starting with Android - managing images</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/31/when-two-identical-strings-are-different/">When two identical strings are different?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/14/getting-started-with-chef/">Getting started with Chef</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx/">Protip: Delete words on iTerm2 (Mac OSX)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/24/wombat-0-4-0-released/">Wombat 0.4.0 released!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/felipecsl">@felipecsl</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'felipecsl',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Felipe Lima -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

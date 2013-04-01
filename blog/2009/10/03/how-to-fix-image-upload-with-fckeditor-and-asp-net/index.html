@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to fix image upload with FCKEditor and ASP.NET - Felipe Lima</title>
+  <meta name="author" content="Felipe Lima">
+
+  
+  <meta name="description" content="CKEditor is a great open source wysiwyg editor for the web. It was formerly called FCKEditor and, one of its previous versions contained a nice &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://felipecsl.github.com/blog/2009/10/03/how-to-fix-image-upload-with-fckeditor-and-asp-net/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Felipe Lima</a></h1>
+  
+    <h2>weblog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:felipecsl.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How to Fix Image Upload With FCKEditor and ASP.NET</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-03T04:52:00-07:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="/admin/Pages/ckeditor.com">CKEditor</a> is a great open source wysiwyg editor for the web. It was formerly called FCKEditor and, one of its previous versions contained a nice implementation for ASP.NET integration. The current version (3.0) has been completely rebuilt from scratch and does not support quick upload yet (I read in the forums it will be available in version 3.1).</p>
+
+<p>I&#8217;ve been using the FCKEditor  2.6.3 for .NET, which includes an ASP.NET control for seamless integration. However, I could never make one of its great features to work: the ability to upload images on the fly and embed them in the text. There are some things that need to be set up before.</p>
+
+<pre><code>1. FCKEditor config file (fckconfig.js), when you download it, comes with its connectors default language to php. You need to change it to aspx:
+
+
+
+var _FileBrowserLanguage    = 'aspx' ;  // asp | aspx | cfm | lasso | perl | php | py 
+
+
+var _QuickUploadLanguage    = 'aspx' ;  // asp | aspx | cfm | lasso | perl | php | py  
+
+
+
+
+2. Configure the folder that contains the fckeditor scripts in FCKEditor.cs (You will need to create a virtual directory in IIS with this path):
+
+
+
+
+
+
+[ DefaultValue( "/fckeditor/" ) ]
+
+
+
+
+
+
+public string BasePath 
+
+
+
+
+
+
+3. Enable the upload connector in fckeditor\editor\filemanager\connectors\aspx\config.ascx (SECURITY WARNING: do not forget to implement    authentication verification here!):
+
+
+
+
+
+
+private bool CheckAuthentication()
+
+
+
+
+
+
+{ return true; }
+
+
+
+
+
+
+4. Configure the directory that will receive the uploaded images (same file as above) - This can be overriden in your website web.config appSettings    section, creating a setting called FCKeditor:UserFilesPath
+
+
+
+
+
+
+UserFilesPath = "/userfiles/";
+</code></pre>
+
+<p>This should be  everything that is needed in order to make file upload to work. See ya!</p>
+
+<p>For those of you that saw this working fine in your development machine but  unexplainably not working on the production server, please refer to <a href="http://cksource.com/forums/viewtopic.php?f=6&amp;t=12112">this forum post</a> for the fix.</p>
+
+<p>Another issue that I found regarding the update above is that in a server, it did not fix the problem an I was getting a &#8216;permission denied&#8217; JS error on the window.parent.OnUploadCompleted event. If that happens, try <a href="http://dev.fckeditor.net/ticket/2115">this fix</a> (scroll to the bottom of the page for the code)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Felipe Lima</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-03T04:52:00-07:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2009</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://felipecsl.github.com/blog/2009/10/03/how-to-fix-image-upload-with-fckeditor-and-asp-net/" data-via="felipecsl" data-counturl="http://felipecsl.github.com/blog/2009/10/03/how-to-fix-image-upload-with-fckeditor-and-asp-net/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/09/15/comments-are-temporarily-turned-off/" title="Previous Post: Comments are temporarily turned off">&laquo; Comments are temporarily turned off</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/10/21/asp-net-mvc-and-iis-6/" title="Next Post: ASP.NET MVC and IIS 6">ASP.NET MVC and IIS 6 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/31/starting-with-android-managing-images/">Starting with Android - managing images</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/31/when-two-identical-strings-are-different/">When two identical strings are different?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/14/getting-started-with-chef/">Getting started with Chef</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx/">Protip: Delete words on iTerm2 (Mac OSX)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/24/wombat-0-4-0-released/">Wombat 0.4.0 released!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/felipecsl">@felipecsl</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'felipecsl',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Felipe Lima -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

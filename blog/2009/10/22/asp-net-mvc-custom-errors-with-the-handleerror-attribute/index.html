@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ASP.NET MVC custom errors with the HandleError attribute - Felipe Lima</title>
+  <meta name="author" content="Felipe Lima">
+
+  
+  <meta name="description" content="Handling exceptions in ASP.NET MVC is quite easy once you get to know the details surrounding the HandleError attribute. You can specify that a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://felipecsl.github.com/blog/2009/10/22/asp-net-mvc-custom-errors-with-the-handleerror-attribute/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Felipe Lima</a></h1>
+  
+    <h2>weblog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:felipecsl.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">ASP.NET MVC Custom Errors With the HandleError Attribute</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-22T01:57:00-07:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Handling exceptions in ASP.NET MVC is quite easy once you get to know the details surrounding the HandleError attribute. You can specify that a controller or a specific Action will handle errors and you can even choose which View to show based on the exception being thrown. Scott Guthrie <a href="http://weblogs.asp.net/scottgu/archive/2008/07/14/asp-net-mvc-preview-4-release-part-1.aspx">wrote</a> about this.</p>
+
+<p>What he didn&#8217;t tell us, is that there are some prerequisites for it to work as expected. First of all, you need to enable custom errors in the application web.config file:</p>
+
+<p><customErrors mode="On" /></p>
+
+<p>Second, the order that you put the HandleError attributes will affect which View will actualy gonna be rendered at the end. I was trying to render a custom view based on an InvalidOperationException being throw on my action. The code looked like this:</p>
+
+<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;[HandleError]
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   2:  &lt;/span&gt;&lt;span class="kwrd"&gt;public&lt;/span&gt; &lt;span class="kwrd"&gt;class&lt;/span&gt; HomeController : QuavioController
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   3:  &lt;/span&gt;{
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   4:  &lt;/span&gt;        [HandleError(ExceptionType = &lt;span class="kwrd"&gt;typeof&lt;/span&gt;(InvalidOperationException), View = &lt;span class="str"&gt;"InvalidOpJoinRoom"&lt;/span&gt;)]
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   5:  &lt;/span&gt;        &lt;span class="kwrd"&gt;public&lt;/span&gt; ActionResult JoinRoom()
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   6:  &lt;/span&gt;        {
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   7:  &lt;/span&gt;             &lt;span class="kwrd"&gt;throw&lt;/span&gt; &lt;span class="kwrd"&gt;new&lt;/span&gt; InvalidOperationException();
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   8:  &lt;/span&gt;        }
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   9:  &lt;/span&gt;}
+</code></pre>
+
+<p>What happened is that the JoinRoom was returning the shared Error View, instead of the InvalidOpJoinRoom View. This happens because the HomeController contains a HandleError attribute (line 1), which overrides the JoinRoom&#8217;s HandleError behavior (line 4), which should return the InvalidOpJoinRoom View.</p>
+
+<p>The fix is very simple: Remove the HandleError atribute from the controller and let the actual actions define the proper error handling behavior.</p>
+
+<p>Conclusion: Be aware that multiple HandleError attributes in a controller may alter the order which View evaluation is executed and then causing the final View not to be the view you were actually expecting.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Felipe Lima</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-22T01:57:00-07:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2009</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://felipecsl.github.com/blog/2009/10/22/asp-net-mvc-custom-errors-with-the-handleerror-attribute/" data-via="felipecsl" data-counturl="http://felipecsl.github.com/blog/2009/10/22/asp-net-mvc-custom-errors-with-the-handleerror-attribute/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/10/21/asp-net-mvc-and-iis-6/" title="Previous Post: ASP.NET MVC and IIS 6">&laquo; ASP.NET MVC and IIS 6</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/11/15/customizing-asp-net-membership-information-with-profiles/" title="Next Post: Customizing ASP.NET membership information with Profiles">Customizing ASP.NET membership information with Profiles &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/31/starting-with-android-managing-images/">Starting with Android - managing images</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/31/when-two-identical-strings-are-different/">When two identical strings are different?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/14/getting-started-with-chef/">Getting started with Chef</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx/">Protip: Delete words on iTerm2 (Mac OSX)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/24/wombat-0-4-0-released/">Wombat 0.4.0 released!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/felipecsl">@felipecsl</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'felipecsl',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Felipe Lima -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

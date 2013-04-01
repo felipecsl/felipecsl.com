@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Hiding sensitive data in the query string - Felipe Lima</title>
+  <meta name="author" content="Felipe Lima">
+
+  
+  <meta name="description" content="Sometimes you need to pass data to a web page and at the same time you need to be able to provide a permalink to that URL to the user. In this case, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://felipecsl.github.com/blog/2009/06/17/hiding-sensitive-data-in-the-query-string/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Felipe Lima</a></h1>
+  
+    <h2>weblog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:felipecsl.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Hiding Sensitive Data in the Query String</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-17T09:23:00-07:00" pubdate data-updated="true">Jun 17<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Sometimes you need to pass data to a web page and at the same time you need to be able to provide a permalink to that URL to the user. In this case, you don&#8217;t have any option other than passing those parameters through the Query String. Otherwise, you could use the Form, Session state, database or any other persistence or data transport mechanism.</p>
+
+<p>I recently had to create a page that needed to receive some sensitive parameters and, at the same time, I needed to be able to provide the URL to the user, so that he/she could view that same page. However, I needed to somehow make the parameters private to the system, so that no one could decypher what data the actual parameters held. The only solution I found was to <a href="http://en.wikipedia.org/wiki/Cryptography">encrypt</a> the Query String values!</p>
+
+<p>For those who are not very familiar with the subject (like me), cryptography can be a really scary thing! Thankfully, Jeff Atwood, founder of the famous <a href="/admin/Pages/www.codinghorror.com">codinghorror.com</a> blog (which of I am a fan also!) wrote a great <a href="http://www.codeproject.com/KB/security/SimpleEncryption.aspx">article</a> at Code Project with some simple background, definitions and a .NET code for those who do not have a strong background on the subject.</p>
+
+<p>I not only found that very useful but also ported the code to C# to fulfill my needs. <a href="http://www.developerfusion.com/tools/convert/vb-to-csharp/">This tool</a> helped me with the rough conversion but I still had to do some conversion by hand, since the code did not compile at first try.</p>
+
+<p>I separated the code logically in different files for better reading. It can be downloaded <a href="http://www.felipel.com/files/Encryption.zip">here</a>.</p>
+
+<p>Below is a simple usage of the Simmetric-key class with the Rijndael (<a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES</a>) provider to encrypt the query string variable in one page, send it, and then decrypt in the other side:</p>
+
+<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;Symmetric symEncryption = &lt;span class="kwrd"&gt;new&lt;/span&gt; Symmetric(Symmetric.Provider.Rijndael);
+
+&lt;span class="lnum"&gt;   2:  &lt;/span&gt;symEncryption.Key.Text = &lt;span class="str"&gt;"SomeKey"&lt;/span&gt;;
+
+&lt;span class="lnum"&gt;   3:  &lt;/span&gt; 
+
+&lt;span class="lnum"&gt;   4:  &lt;/span&gt;&lt;span class="kwrd"&gt;string&lt;/span&gt; sSensitiveText = &lt;span class="str"&gt;"Some sensitive data"&lt;/span&gt;;
+
+&lt;span class="lnum"&gt;   5:  &lt;/span&gt;&lt;span class="kwrd"&gt;string&lt;/span&gt; sEncryptedData = symEncryption.Encrypt(&lt;span class="kwrd"&gt;new&lt;/span&gt; Data(sSensitiveText)).Base64;
+
+&lt;span class="lnum"&gt;   6:  &lt;/span&gt; 
+
+&lt;span class="lnum"&gt;   7:  &lt;/span&gt;&lt;span class="rem"&gt;// fearlessly send sEncryptedData in your query string&lt;/span&gt;
+
+&lt;span class="lnum"&gt;   8:  &lt;/span&gt;Response.Redirect(
+
+&lt;span class="str"&gt;&lt;span style="white-space: pre" class="Apple-tab-span"&gt;    &lt;/span&gt;"http://www.someurl.com/somepage.aspx?data="&lt;/span&gt; + Server.UrlEncode(sEncryptedData));
+
+&lt;span class="lnum"&gt;   9:  &lt;/span&gt; 
+
+&lt;span class="lnum"&gt;  10:  &lt;/span&gt;...
+
+&lt;span class="lnum"&gt;  11:  &lt;/span&gt; 
+
+&lt;span class="lnum"&gt;  12:  &lt;/span&gt;&lt;span class="rem"&gt;// in the other side, decrypt the text you just received&lt;/span&gt;
+
+&lt;span class="lnum"&gt;  13:  &lt;/span&gt;&lt;span class="kwrd"&gt;string&lt;/span&gt; sDecryptedText = symEncryption.Decrypt(
+
+&lt;span class="kwrd"&gt;&lt;span style="white-space: pre" class="Apple-tab-span"&gt;   &lt;/span&gt;new&lt;/span&gt; Data(Request.QueryString[&lt;span class="str"&gt;"data"&lt;/span&gt;].FromBase64())).Text;
+
+&lt;span class="lnum"&gt;  14:  &lt;/span&gt; 
+
+&lt;span class="lnum"&gt;  15:  &lt;/span&gt;&lt;span class="rem"&gt;// outputs "Some sensitive data"&lt;/span&gt;
+
+&lt;span class="lnum"&gt;  16:  &lt;/span&gt;Console.WriteLine(sDecryptedText); 
+</code></pre>
+
+<p>Hope this helps someone :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Felipe Lima</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-17T09:23:00-07:00" pubdate data-updated="true">Jun 17<span>th</span>, 2009</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://felipecsl.github.com/blog/2009/06/17/hiding-sensitive-data-in-the-query-string/" data-via="felipecsl" data-counturl="http://felipecsl.github.com/blog/2009/06/17/hiding-sensitive-data-in-the-query-string/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/06/16/passing-variables-to-sql-server-script/" title="Previous Post: Passing variables to sql server script">&laquo; Passing variables to sql server script</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/06/24/notimplementedexception-in-graphics-drawimage/" title="Next Post: NotImplementedException in Graphics.DrawImage">NotImplementedException in Graphics.DrawImage &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/31/starting-with-android-managing-images/">Starting with Android - managing images</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/31/when-two-identical-strings-are-different/">When two identical strings are different?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/14/getting-started-with-chef/">Getting started with Chef</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx/">Protip: Delete words on iTerm2 (Mac OSX)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/24/wombat-0-4-0-released/">Wombat 0.4.0 released!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/felipecsl">@felipecsl</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'felipecsl',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Felipe Lima -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,1 +1,767 @@
-My Octopress Page is coming soon &hellip;
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Felipe Lima</title>
+  <meta name="author" content="Felipe Lima">
+
+  
+  <meta name="description" content="I&#8217;ve started with Android development a few months ago with the upcoming We Heart It app. Here are some random thought and impressions I had &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://felipecsl.github.com/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Felipe Lima</a></h1>
+  
+    <h2>weblog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:felipecsl.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/31/starting-with-android-managing-images/">Starting With Android - Managing Images</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-31T13:03:00-07:00" pubdate data-updated="true">Mar 31<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve started with Android development a few months ago with the upcoming <a href="http://weheartit.com">We Heart It</a> app. Here are some random thought and impressions I had during this period, and the motivation behind building the Android-ImageManager library:</p>
+
+<ul>
+<li><p><strong>API Complexity</strong>: Compared to the iOS SDK, at first, the Android SDK seemed to me overly complicated and over-engineered. There are specific patterns you need to follow for most common scenarios and avoiding them just end up making it harder, so you basically have no choice. For example, the <a href="http://developer.android.com/training/id-auth/identify.html">AccountManager API</a>, which you need to use if you want to create an Android built in user account. There are several interfaces you have to implement, services to create, methods to override, etc. It is very painful overall.</p></li>
+<li><p><strong>Version Compatibility</strong>: If you want to support a decent range of devices and <a href="http://developer.android.com/about/dashboards/index.html">Android versions</a>, you&#8217;ll spend countless hours of testing and have to buy 10 different phones and tablets, since the Emulator is simply unusable (terribly slow). Stick with already proven open source libraries for a less painful development experience, like <a href="http://actionbarsherlock.com/">ActionbarSherlock</a>, <a href="https://github.com/JakeWharton/Android-ViewPagerIndicator">ViewPagerIndicator</a>, <a href="https://github.com/prototik/HoloEverywhere">HoloEverywhere</a>, <a href="https://github.com/JakeWharton/DiskLruCache">DiskLruCache</a>, etc. You can thank <a href="http://twitter.com/jakewharton">Jake Wharton</a> for most of that awesome work.</p></li>
+<li><p><strong>Automated Testing</strong>: Painful as well. We decided to go with <a href="http://robolectric.blogspot.com/">Robolectric</a> which basically stubs all the Android APIs for you. That has pros and cons, but definitely good that your tests run super fast (like seconds) and you dont have to keep stubbing everything in order to make your tests work. All you need is a simple jUnit project. Haven&#8217;t looked much into Integrated UI tests yet, but we definitely want to check that out soon. Android provides <a href="http://developer.android.com/reference/android/test/InstrumentationTestCase.html">some classes</a> for this job.</p></li>
+<li><p><strong>Memory Management</strong>: This would deserve an entire article just for it. If you start working with images, galleries etc. or just do something that is not plain trivial, you&#8217;ll sooner or later start seeing <code>OutOfMemoryError</code>. It is hard to get it right, and there are many things you need to be aware of when building an application, specially for We Heart It, which is totally image-heavy. Some of the techniques definitely include</p>
+
+<ol>
+<li><a href="http://developer.android.com/training/displaying-bitmaps/cache-bitmap.html">Cache your images</a> so you don&#8217;t keep requesting the same images over and over again and wasting all the user&#8217;s data bandwidth;</li>
+<li><a href="http://developer.android.com/training/displaying-bitmaps/load-bitmap.html">Request a sampled version of the images</a> that is adequate for the screen size/display dimensions where it is gonna be used;</li>
+<li><a href="http://developer.android.com/training/displaying-bitmaps/manage-memory.html">Recycle</a> your bitmap when it is not being used anymore, so you can reclaim unused memory faster.</li>
+<li>Avoid creating too many instances: When working with a REST API, it is easy to instantiate new objects all the time and keep them around, send to the Activities, etc. Try to keep your footprint to a minimum. Think about all object instantiation and whether it is needed or not. Sometimes all you need is a simpler version of your domain object to be shown in the UI, so keep a simpler version of your model that contains only the needed information to be displayed.</li>
+</ol>
+</li>
+</ul>
+
+
+<p>Some of these reasons above motivated me to create the library <a href="https://github.com/felipecsl/Android-ImageManager">Android-ImageManager</a>, which takes care of caching and storing the displaying efficiently. It uses a two level cache, first in-memory using an `LruCache&#8220;, then in disk, using DiskLruCache to save the files to the device&#8217;s SD Card. If an image is found in the memory cache, it is fetched from there, otherwise, it tries to retrieve it from disk cache. If it can&#8217;t be found either, then it finally downloads the image and stores it in both caches. Everything is done assynchonously, obviously. The library is still in early stage, as I plan to add more samples and polish it a bit more. So check out the Github <a href="https://github.com/felipecsl/Android-ImageManager">repository</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/07/31/when-two-identical-strings-are-different/">When Two Identical Strings Are Different?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-31T20:46:00-07:00" pubdate data-updated="true">Jul 31<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Think these two strings are the same?</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;R. Padre Chagas 342&quot;</span>
+</span><span class='line'><span class="s2">&quot;R. Padre Chagas 342&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pretty much, right? So we open IRB:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span><span class="n">p0</span> <span class="p">:</span><span class="mi">085</span> <span class="o">&gt;</span> <span class="s2">&quot;R. Padre Chagas 342&quot;</span> <span class="o">==</span> <span class="s2">&quot;R. Padre Chagas 342&quot;</span>
+</span><span class='line'>  <span class="c1"># =&gt; false</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://i0.kym-cdn.com/photos/images/original/000/199/693/disgusted-mother-of-god.png?1321272571" alt="" /></p>
+
+<p>WTF!!? Took me a couple minutes of head scratching to figure out.. let’s look closer:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span><span class="n">p0</span> <span class="p">:</span><span class="mi">086</span> <span class="o">&gt;</span> <span class="s2">&quot;R. Padre Chagas 342&quot;</span><span class="o">.</span><span class="n">bytes</span><span class="o">.</span><span class="n">to_a</span>
+</span><span class='line'>  <span class="c1"># =&gt; [82, 46, 32, 80, ... , 67, 104, 97, 103, 97, 115, 32, 51, 52, 50] </span>
+</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span><span class="n">p0</span> <span class="p">:</span><span class="mi">087</span> <span class="o">&gt;</span> <span class="s2">&quot;R. Padre Chagas 342&quot;</span><span class="o">.</span><span class="n">bytes</span><span class="o">.</span><span class="n">to_a</span>
+</span><span class='line'>  <span class="c1"># =&gt; [82, 46, 32, 80, ... , 67, 104, 97, 103, 97, 115, 194, 160, 51, 52, 50]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>`</p>
+
+<p>Haa. There it is.. an extra hidden byte!. Crazy huh? Even closer:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span><span class="n">p0</span> <span class="p">:</span><span class="mi">088</span> <span class="o">&gt;</span> <span class="s2">&quot;R. Padre Chagas 342&quot;</span><span class="o">.</span><span class="n">byteslice</span><span class="p">(</span><span class="mi">9</span><span class="o">.</span><span class="n">.</span><span class="mi">15</span><span class="p">)</span>
+</span><span class='line'> <span class="c1"># =&gt; &quot;Chagas &quot; </span>
+</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span><span class="n">p0</span> <span class="p">:</span><span class="mi">089</span> <span class="o">&gt;</span> <span class="s2">&quot;R. Padre Chagas 342&quot;</span><span class="o">.</span><span class="n">byteslice</span><span class="p">(</span><span class="mi">9</span><span class="o">.</span><span class="n">.</span><span class="mi">15</span><span class="p">)</span>
+</span><span class='line'> <span class="c1"># =&gt; &quot;Chagas\xC2&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is what happens when you scrape data from the web… Do not believe everything you see :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/14/getting-started-with-chef/">Getting Started With Chef</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-14T20:46:00-07:00" pubdate data-updated="true">Jun 14<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you never heard of it, <a href="http://www.opscode.com/chef/">Chef</a> is a server automation tool for server management tasks. It is often related to the terms <a href="http://en.wikipedia.org/wiki/DevOps">DevOps</a> and <a href="http://blog.carlossanchez.eu/2012/03/13/infrastructure-as-code/">Infrastructure as Code</a> which have started to gain quite a bit of attention lately. If you&#8217;ve ever seen yourself doing the exact same steps, like installing MySql on a server several times in a row, always doing the exact same steps, and wondered if there was a more intelligent way of doing that, then Chef is for you.</p>
+
+<p><img src="http://www.rit.edu/news/lib/filelib/200708/new_chef.jpg" alt="" /></p>
+
+<p><em>No, not this kind of chef :)</em></p>
+
+<p>This is not the only option available. Other well known tools include <a href="http://puppetlabs.com/">Puppet</a> and <a href="http://vagrantup.com/">Vagrant</a>. The latter, though, being targeted at virtualized development environments, while the former, are targeted at real (production) machines.</p>
+
+<p>So, &#8216;nuff said, here are some notes I took from my first time playing with Chef. It was far from being a straightforward process, that is why a good old blog post comes handy. Turns out it was pretty painful just to get it started, and I didn&#8217;t even get to the part where you prepare the recipes and cookbooks (hmmm :)).</p>
+
+<p>So to get started, I fired up a brand new clean Ubuntu 12 instance in <a href="https://console.aws.amazon.com/ec2/home">Amazon EC2</a>. If you need help doing that, there are plenty of documentation online for how to get started on AWS. Go there and search, I will wait here.</p>
+
+<p>Ok, so now that you have an instance up and running, connect to it via ssh (tip: you will need the private key file .pem):</p>
+
+<pre><code>ssh -i &lt;path_to_your_pem_file&gt; ubuntu@ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com
+</code></pre>
+
+<p>Install chef-server. There is a wiki for that <a href="http://wiki.opscode.com/display/chef/Installing+Chef+Server+on+Debian+or+Ubuntu+using+Packages">here</a>. After you run <strong>apt-get install chef chef-server</strong>, most likely, at t he end, chef-server will fail to start (at least that is what happened to me)</p>
+
+<p>Ok, if you try to start the server manually via the command <strong>chef-server</strong>, then it might end up exploding with this error:</p>
+
+<pre><code>NOTE: Gem.activate is deprecated, use Specification#activate. 
+It will be removed on or after 2011-10-01.
+</code></pre>
+
+<p>This is basically saying that you are using the wrong version of ruby and/or rubygems. The plain ubuntu install only comes with ruby 1.8 installed which is probably not what we want. So we&#8217;ll install <a href="https://rvm.io//">rvm</a> and ruby 1.9.</p>
+
+<p>But, before that, let&#8217;s install some dependencies:</p>
+
+<p>Run this to install some required packages that you gonna need&#8230; some of them are probably not needed for this, but it wont hurt to install them anyways.</p>
+
+<pre><code>sudo apt-get install build-essential bison openssl libreadline6 libreadline6-dev curl 
+git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev     
+sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev -y
+</code></pre>
+
+<p>Done that, install rvm, ruby and some required gems:</p>
+
+<pre><code>curl -L https://get.rvm.io | bash -s stable --ruby
+gem install yajl-ruby -v 0.7.7
+gem install chef
+gem install chef-server
+</code></pre>
+
+<p>At this point, you should be able to just run <strong>chef-server</strong> see it running. If all goes well, you might want to do <strong>chef-server -e production -d</strong> to run it in production environment and daemonize, so it runs in background. You will also need to start the webui via <strong>chef-server-webui</strong> <strong>-e production -d.</strong> If all goes smoothly, you should be able to access the webui at <strong>http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4040/</strong>. As you probably noticed, the webui runs in the port 4040, while the chef-server runs in 4000. Don&#8217;t forget to open these ports in the AWS Security Group and allow your machine IP to access them!  But wait, this was only the start hahah! Now comes the server configuration&#8230;</p>
+
+<p><a href="http://blog.felipel.com/wp-content/uploads/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png"><img src="http://blog.felipel.com/wp-content/uploads/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png" alt="" /></a></p>
+
+<p>If you are still following the wiki steps (you should), by now you should be running <strong>knife configure -i</strong>. Knife is chef&#8217;s command line configuration tool, it can do a lot of stuff. This is gonna try to create an API user. If you are unlucky, like me, you will see this error:</p>
+
+<pre><code>Creating initial API user...    
+ERROR: Server returned error for &lt;a href="http://ec2-50-18-239-212.us-west-1.compute.amazonaws.com:4000/clients/ubuntu"&gt;http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4000/clients/client_name&lt;/a&gt;, retrying 1/5 in 3s
+...
+</code></pre>
+
+<p>This probably means chef cannot connect to RabbitMQ (the guy that does the messaging between chef components). To double check, run this:</p>
+
+<pre><code>sudo rabbitmqctl list_permissions -p /chef
+</code></pre>
+
+<p>&#8230; and you should see this error:</p>
+
+<pre><code>Listing permissions in vhost "/chef" ...
+Error: {no_such_vhost,&lt;&lt;"/chef"&gt;&gt;}
+</code></pre>
+
+<p>So this is how you fix it:</p>
+
+<pre><code>sudo rabbitmqctl add_vhost /chef
+sudo rabbitmqctl add_user chef &lt;password&gt;
+sudo rabbitmqctl set_permissions -p /chef chef ".*" ".*" ".*"
+</code></pre>
+
+<p>Gotcha: The rabbitmq password has to be the same one found in /etc/chef/server.rb config file (mine was &#8216;root&#8217;)</p>
+
+<p>Ok, this should get you all set. Last step, verify the knife configuration running <strong>knife client list</strong>. And guess what?! More errors!</p>
+
+<pre><code>ERROR: Your private key could not be loaded from /home/ubuntu/.chef/ubuntu.pem
+Check your configuration file and ensure that your private key is readable
+</code></pre>
+
+<p>This happened to me because when I ran knife configure -i, I set as the new username, a username that was somehow already in use (ubuntu). So the solution was to run it again and set a different new username when asked. This should create your API client and get you all set.</p>
+
+<pre><code>ubuntu@ip-xx-xxx-xxx-xxx:~/.chef$ knife client list
+ Lixaredo.local
+ admin
+ chef-validator
+ chef-webui
+ felipecsl
+ local
+</code></pre>
+
+<p>Ok here is another gotcha. If you ever turn off your instance and bring it back later, it will most likely change its public dns (<strong><strong>*.compute.amazonaws.com&#8230;). Make sure you update it in your </strong>knife.rb</strong> file or it wont work. Mine was located at ~/.chef/knife.rb</p>
+
+<pre><code>log_level :info
+log_location STDOUT
+node_name 'local'
+client_key '/home/ubuntu/.chef/local.pem'
+validation_client_name 'chef-validator'
+validation_key '/etc/chef/validation.pem'
+&lt;strong&gt;chef_server_url 'http://ec2-xx-xx-xx-xx.us-west-1.compute.amazonaws.com:4000/'&lt;/strong&gt;
+cache_type 'BasicFile'
+cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
+</code></pre>
+
+<p>Ok that&#8217;s it for today. Next time I will talk about recipes and cookbooks!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx/">Protip: Delete Words on iTerm2 (Mac OSX)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-05T09:18:19-07:00" pubdate data-updated="true">Jun 5<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I don&#8217;t usually post short tips, but this one is really killer. To delete one word at a time when pressing ⌘+Delete in the iTerm2, use this configuration as shown in the first line of the screenshot below (click to expand).</p>
+
+<p><a href="http://blog.felipel.com/wp-content/uploads/2012/06/Screen-Shot-2012-06-05-at-12.00.02-PM.png"><img src="http://blog.felipel.com/wp-content/uploads/2012/06/Screen-Shot-2012-06-05-at-12.00.02-PM.png" alt="" /></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/24/wombat-0-4-0-released/">Wombat 0.4.0 Released!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-24T21:46:22-07:00" pubdate data-updated="true">May 24<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It has been a while since I&#8217;ve been working on this Ruby <a href="https://rubygems.org/gems/wombat">gem</a> called <a href="https://github.com/felipecsl/wombat">wombat</a> and thought it would be worth talking about it here. I just released today the version 0.4.0 with some bug fixes and the addition of another helper method, as you can see in the GitHub <a href="https://github.com/felipecsl/wombat">readme</a>.</p>
+
+<p>Wombat is a gem for making extracting information from web pages, or just crawling, a little less painful. If you were to do that today, you&#8217;d probably have to fall back to Nokogiri or another lower level gem and process the data yourself. With Wombat, you can define a structure of how your data should look like in a DSL like format, and Wombat does the work for you. It is pretty handy actually.</p>
+
+<p>It all started with the project <a href="http://noitehoje.com.br">Noite Hoje</a> where we used to grab shows and parties informations from 3rd party sites and display there, like an indexer. When working on that, I noticed how painful and repetitive it can be to crawl web pages sometimes.</p>
+
+<p>Anyway, if Wombat is/was useful for you, please don&#8217;t hesitate to drop me a line in the comments, I would be very happy to know.</p>
+
+<p>After meeting great people like <a href="https://twitter.com/#!/paul_irish">Paul Irish</a> and <a href="https://twitter.com/#!/wycats">Yehuda Katz</a>, you kinda feel almost obligated to share some knowledge with your peers and give back to the open source community.</p>
+
+<p>By the way, if you work with Resque, you should probably also check the great <a href="https://github.com/kensodev/perform_later">perform_later</a> gem by my friend and coworker <a href="http://kensodev.com/">Avi Tzurel</a>, to which I also have been contributing.</p>
+
+<p>Cheers!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/02/12/my-story-about-moving-to-the-silicon-valley/">My Story About Moving to the Silicon Valley</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-12T20:27:49-08:00" pubdate data-updated="true">Feb 12<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A lot of people I meet seem very curious and I am usually asked some details about how the hell I left my job at <a href="http://thoughtworks.com">ThoughtWorks</a> Brazil and moved to San Francisco to work for <a href="http://gogobot.com/">Gogobot</a>. Overall, the transition was pretty simple. Getting the H1B visa was a lot simpler and faster than I expected. It took me around 2 months from the date Gogobot entered the petition to the US Gov. to the day I got my passport back with the visa stamped on it. However I was a bit lucky, since there is an early quota of 60 thousand H1B visas that US will distribute, starting every year in April. I applied around October, so the quota was almost over, but I was lucky enough to make it. Another friend that applied a few weeks later wasn&#8217;t so lucky and will have to wait till April till the window opens again.</p>
+
+<p>Another thing that people usually ask me is how I got to know the company and how did I get the job. From my personal experience and from what I heard from other fellow developers, companies are not very receptive to the idea of sponsoring an H1B visa to a foreign developer, probably due to the high cost and risk involved with it. The usual flow is: you get in touch with the company you are interested in, probably send an email with a nice cover letter and your resume attached, and get no response at all. The only advice I will say is: If you really want that, be persistant and keep trying. Write a nice cover letter, with a brief introduction of who you are and why you want to work for that company. Try to be creative, original, otherwise you will be treated just like yet another average foreign candidate. Also extremely important is showing your achievements, having one or more pet projects is a big plus, actively contributing to open source, etc.</p>
+
+<p>It is definitely not an easy task, nor an easy decision to leave everything behind and move to another country. Anyways, I still believe it is something extremely valuable in terms of career growth and life experience. If you can, I would advice you to do it! The sooner the better. As you get older, buy a house, have kids, marry, etc., it will be harder and harder to do something like this. For the same reasons, I support <a href="http://blog.felipel.com/2011/03/o-que-eu-aprendi-empreendendo-e-porque-voce-tambem-deveria-tentar/">entrepreneurism</a>.</p>
+
+<p>I&#8217;ve been here for almost one month so far, and right now, I can say I am very happy to have taken this decision, despite having to leave friends, family and my beloved fiancee behind. We will try to soften the hurt by visiting each other periodically.</p>
+
+<p><a href="http://www.gogobot.com/?utm_source=web&amp;utm_medium=link&amp;utm_campaign=goodies&amp;utm_content=medium_alt_btn_grey"><img src="http://cdn1.gbot.me/img/buttons/gbLargeAltGrey_01.png" alt="Gogobot" /></a></p>
+
+<p>All in all, <a href="http://gogobot.com">Gogobot</a> is a great place to be, where I have the opportunity to work very talented and nice people and also experience the uniqueness of working for a Silicon Valley tech startup with milions of users and great media exposure!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/07/06/thoughtworks-6-meses-depois/">ThoughtWorks 6 Meses Depois</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-06T18:14:08-07:00" pubdate data-updated="true">Jul 6<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Desde Janeiro estou trabalhando como consultor na ThoughtWorks, no &#8220;prédio novo&#8221; do TecnoPUC. Posso afirmar com plena convicção que estou muito feliz de ter tomado essa decisão e, por isso, resolvi que seria legal compartilhar um pouco de como é o nosso dia-a-dia lá dentro.</p>
+
+<p>A primeira impressão ao entrar no escritório é de que algo ali é diferente das empresas de TI tradicionais. Não há baias, apenas grandes mesas sem divisórias. Pessoas trabalhando em pares, ou seja, dois para cada computador, <em><a href="http://en.wikipedia.org/wiki/Nerf_Blasters">NERF darts</a></em> pelo chão, video-games no <em>lounge</em> e pessoas falando alto.</p>
+
+<p><img src="http://a.yfrog.com/img736/1552/xebt.jpg" alt="" /></p>
+
+<p>A ThoughtWorks é conhecida mundialmente por ser uma das pioneiras na prática de metodologias ágeis. Isto faz com que ela tenha uma cultura à parte, que incentiva a colaboração e entrega de alto valor agregado. A empresa tem uma missão um tanto quanto ousada: &#8220;Revolucionar a TI&#8221;. Para tal, possui um modelo de <a href="http://martinfowler.com/bliki/ThreePillars.html">três pilares</a> que descrevem os seus principais propósitos: <strong><em>Sustainable Business</em></strong> (negócio sustentável), <strong><em>Software Excellence </em></strong>(excelência em software)  e <strong><em>Social Justice </em></strong>(justiça social). Os dois primeiros são totalmente esperados para uma empresa de TI, entretanto, justiça social é um valor que poucas empresas valorizam tanto quanto a ThoughtWorks. Isto faz com que procuremos antender apenas clientes que se alinhem com o nosso perfil, evitando fazer negócios com aquelas que vão de encontro com estes valores.</p>
+
+<p>Entretanto, o que mais me chamou a atenção lá foi a autonomia que é dada a cada funcionário. Em primeiro lugar, não há uma hierarquia definida e nem um conceito de &#8220;chefe&#8221;. Cada um exerce seu papel e é exigido de acordo com o que é esperado dele. Caso você não esteja satisfeito com alguma coisa, você tem toda a liberdade para propor uma sugestão ou conversar com seus colegas para tentar identificar problemas e propor soluções. Essa é uma característica bastante única na minha opinião e foi a que levei mais tempo para assimilar completamente. Por estes motivos, não é raro ouvir pessoas falando que é necessário &#8220;desconstruir&#8221; para então &#8220;reconstruir&#8221; vários conceitos quando se entra na empresa, quase como uma lavagem cerebral. :)</p>
+
+<p>O processo seletivo da ThoughtWorks é bastante completo, exigente e extensivo. A empresa se propõe a ser um lugar para as mentes mais brilhantes naquilo que fazem. Por isso, costuma-se <a href="http://www.thoughtworks.com/our-process">dizer</a> que ser um <em>Thoughtworker</em> não é para qualquer um. São testadas várias características do candidato, desde valores e perfil até capacidade de raciocínio lógico e habilidades como programador. São várias etapas classificatórias e eliminatórias. O processo todo não costuma levar menos de um mês por candidato, conversando com cerca de 10 pessoas no total. Apesar de difícil, não é impossível, afinal, eu consegui. :)</p>
+
+<p>A TW também é uma empresa global por natureza. Com diversos escritórios pelo mundo todo, a rotação entre países é incentivada. Com isso, é muito comum termos muitos Thoughtworkers viajando entre escritórios e trabalhando nos clientes. Durante qualquer período do ano, temos pelo menos 10% de <em>expats</em> (TWers que vieram de outros países) no escritório da TW Brazil. Lá dentro, a língua oficial é o Inglês. O <a href="http://www.leonardoborges.com/writings/2011/04/25/one-year-of-thoughtworks-a-retrospective/">Leonardo Borges</a>, que trabalha na TW Austrália e escreveu sobre as experiências dele, não me deixa mentir! Nenhum escritório tem mais de aproximadamente 150 funcionários. Quando ele atinge este limite, geralmente ele pára de crescer e procura-se outro lugar para abrir um novo. O motivo disto é muito simples: Depois de uma certa quantidade de pessoas dentro de um escritório, acaba se tornando muito difícil de conhecer todo mundo e de se manter um relacionamento estreito entre as pessoas. Por isso, existe este limite que procura garantir a identidade da empresa e a interação entre as pessoas.</p>
+
+<p><img src="http://farm5.static.flickr.com/4068/4644495269_aae6fa26d9_z.jpg" alt="" /></p>
+
+<p>Com esse post, espero ter passado uma noção de como funciona nosso dia-a-dia na TW e ter mostrado como ela é uma empresa realmente diferente. Para quem já trabalhou em uma startup ou uma empresa bem pequena (menos de uns 20 funcionários, por exemplo), vai se sentir em casa lá dentro, pois, apesar de ter mais de 1600 funcionários no mundo todo, a TW parece continuar mantendo as boas características de startups de tecnologia onde tudo é flexível e se trabalha com prazer. :)</p>
+
+<p>Se você curtiu a TW, é apaixonado pelo que faz e gostaria trabalhar conosco, não deixe de entrar em contato. Afinal, <a href="http://www.thoughtworks.com/current-opportunities">estamos contratando</a>. :D</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/17/dica-de-ferramenta-para-mac-totalfinder/">Dica De Ferramenta Para Mac: TotalFinder</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-17T12:05:11-07:00" pubdate data-updated="true">Apr 17<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Assistindo <a href="http://net.tutsplus.com/tutorials/html-css-techniques/automated-optimization-with-html5-boilerplate-build/">esse</a> screencast muito interessante do Paul Irish sobre o build script do ótimo projeto HTML5 boilerplate, também criado por ele mesmo, prestei atenção nas ferramentas que ele utiliza no Mac. Entre elas, pude notar o <a href="http://www.iterm2.com/#/section/home">iTerm 2</a>, que é um ótimo substituto para o Terminal padrão do Mac, e o excelente <a href="http://totalfinder.binaryage.com/">TotalFinder</a>, que adiciona várias funcionalidades muito úteis ao Finder padrão, como Tabs e Cut &amp; Paste por exemplo, ambas extremamente úteis, na minha opinião. Fica aqui então a recomendação destas duas ótimas ferramentas pra Mac, especialmente o TotalFinder :)</p>
+
+<p>Até mais!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/29/o-que-eu-aprendi-empreendendo-e-porque-voce-tambem-deveria-tentar/">O Que Eu Aprendi Empreendendo E Porque Você Também Deveria Tentar</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-29T17:54:44-07:00" pubdate data-updated="true">Mar 29<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Me motivei a escrever um pouco sobre empreendedorismo pois tenho visto muitas pessoas que no fundo têm vontade de inovar, empreender, mudar, mas geralmente sentem medo de dar uma virada brusca em suas vidas, sair da zona de conforto e arriscar. Pois eu vou relatar um pouco sobre o que eu aprendi com isso tudo durante o último ano, em que eu me envolvi bastante com este tópico.</p>
+
+<p>Em primeiro lugar, vejo o perfil de empreendedor como sendo, antes de tudo, um <em>mindset.</em> Você não precisa desistir do seu emprego, abrir uma empresa, arriscar tudo o que tem tentando um negócio feito louco só pra ver como é empreender. Vejo este perfil em algumas pessoas que não necessariamente arriscaram tudo, assim como eu fiz, mas mesmo assim possuem este <em>mindset.</em> Eu me refiro a pensar &#8220;fora da caixa&#8221;, inovar, arriscar, tentar coisas diferentes. Essa semana um aluno de Ciência da Computação da UFRGS criou um site chamado <a href="http://poabus.com.br">poabus.com.br</a> para mapear as linhas de ônibus de Porto Alegre, já que o sistema que a EPTC oferece é praticamente inusável. Eu certamente diria que este cidadão chamado Bruno Jurkovski tem um perfil empreendedor, pois teve atitude para pensar diferente e experimentar uma nova solução para um problema existente. Eu diria que este tipo de perfil já caracteriza um empreendedor. Ou seja, você não precisa largar seu emprego de full-time para ser um empreendedor. Você pode começar hoje mesmo pensando em como você pode fazer alguma coisa para mudar o mundo à sua volta, utilizar as suas <em>skills</em> para contribuir para um mundo melhor. Um bom começo é contribuir para um projeto open source, por exemplo. Caso você não seja da área de TI, procure outras formas de inovar, solucionar problemas e deixe sua contribuição para a humanidade fazendo algo diferente, que tenha impacto sobre o mundo ao seu redor.</p>
+
+<p>Alguns podem se perguntar &#8220;por que&#8221;? Por que isso é legal? O que eu ganho com isso? Eu posso afirmar que você ganha muito, tanto como pessoa, quanto como profissional. No meu caso, como um dos fundadores da <a href="http://quavio.com.br">Quavio</a>, aprendi tanto em um ano como se tivesse se passado 5 anos. Você aprende aquilo que nenhum colégio te ensina: como se virar sozinho, como contratar um funcionário, como cuidar das finanças da empresa, como atender bem o cliente, como vender o seu produto, como se posicionar no mercado, entre muitas outras coisas que você acaba nem notando! No final das contas, o resultado disso tudo é que você acaba se tornando uma pessoa melhor. E isto é extraordinário! Fundar uma empresa pra mim foi uma tempestade de novas experiências a cada dia. Não vou dizer que tudo são mil maravilhas, pois não são. Você acaba tendo que engolir muito sapo, aceitar críticas, aceitar perder, errar, cair e tentar novamente. Errar faz parte do processo diário. É apenas errando que realmente aprendemos como não fazer :)</p>
+
+<p>Certa vez eu li em algum lugar que, geralmente, aquilo que te faz sentir um nervoso, um frio na barriga e apreensão é aquilo que te trará um aprendizado que não irá esquecer. E isto acontece todo dia na vida de um empreendedor :)</p>
+
+<p>Hoje não faço mais parte da Quavio por motivos principalmente financeiros meus, entretanto, mantenho meu <strong>mindset</strong> empreendedor, sempre tentando encontrar maneiras de resolver problemas de um jeito diferente. É por isso que este tipo de pessoa costuma sempre ter uma idéia brilhante para compartilhar e receber feedback de um amigo. Até porque, se você acha que a sua idéia é brilhante e valiosa demais para ser aberta para os outros, provavelmente você está errado :) Se você tem medo que alguém roube sua idéia revolucionária, não se preocupe com isso. Uma idéia não vale nada. Muito mais vale uma idéia bem executada. Se alguém roubar a sua idéia e colocá-la em prática, isto significa que provavelmente aquela era a pessoa certa para executá-la, e não você :)</p>
+
+<p>Atualmente tenho me dedicado a um projeto pessoal com alguns amigos, chamado <a href="http://noitehoje.com.br">Noite Hoje</a>. Nossa idéia é mudar a maneira como as pessoas procuram uma festa ou um show para ir, acessando de uma maneira simples e rápida de qualquer lugar, tanto o seu computador, quando seu smartphone.</p>
+
+<p>Para quem quiser ler mais, o site <a href="http://www.softwarebyrob.com/">Software by Rob</a> é focado no assunto e tem ótimas boas leituras. Enfim, espero ter plantado a semente em alguém que esteja se sentindo desconfortável com a sua atual situação de vida e quer dar um real sentido para ela. Este é o seu momento hehehe.</p>
+
+<p>Até a próxima :D</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/01/31/heroku-mongohq-mongoid/">Heroku + MongoHQ + Mongoid</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-31T15:00:08-08:00" pubdate data-updated="true">Jan 31<span>st</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>O <a href="http://heroku.com">Heroku</a> possui um Add-on muito interessante para trabalhar com <a href="http://www.mongodb.org/">MongoDB</a> chamado <a href="https://mongohq.com/home">MongoHQ</a>. Como de costume, existe tanto um plano grátis, quanto planos pagos.</p>
+
+<p>Isso significa que é possível levantar um site com Ruby on Rails ou Sinatra e MongoDB rapidinho e sem desembolsar um centavo com o Heroku.. Damn good.</p>
+
+<p>Como nem tudo é perfeito, a <a href="http://docs.heroku.com/mongohq#gem-options-and-setup">documentação</a> do add-on MongoHQ ainda é um tanto quanto &#8220;magra&#8221; e praticamente nem fala no Mongoid. Perdi uns vários minutos googleando e nada. Até que então encontrei o método from_uri na classe Connection do driver de mongo para Ruby.</p>
+
+<p>Ao habilitarmos este add-on, o Heroku seta uma variável de ambiente chamada MONGOHQ_URL, que utilizamos para estabelecer a conexão com o Mongo server. Não encontrei em lugar nenhum como fazer esta conexão, então deixo aqui caso alguém precise:</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/31/starting-with-android-managing-images/">Starting with Android - managing images</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/31/when-two-identical-strings-are-different/">When two identical strings are different?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/14/getting-started-with-chef/">Getting started with Chef</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx/">Protip: Delete words on iTerm2 (Mac OSX)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/24/wombat-0-4-0-released/">Wombat 0.4.0 released!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/felipecsl">@felipecsl</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'felipecsl',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Felipe Lima -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
