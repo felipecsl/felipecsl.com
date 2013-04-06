@@ -122,7 +122,7 @@ It will be removed on or after 2011-10-01.
 <p>Run this to install some required packages that you gonna need&#8230; some of them are probably not needed for this, but it wont hurt to install them anyways.</p>
 
 <pre><code>sudo apt-get install build-essential bison openssl libreadline6 libreadline6-dev curl 
-git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev     
+git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev 
 sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev -y
 </code></pre>
 
@@ -136,11 +136,11 @@ gem install chef-server
 
 <p>At this point, you should be able to just run <strong>chef-server</strong> see it running. If all goes well, you might want to do <strong>chef-server -e production -d</strong> to run it in production environment and daemonize, so it runs in background. You will also need to start the webui via <strong>chef-server-webui</strong> <strong>-e production -d.</strong> If all goes smoothly, you should be able to access the webui at <strong>http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4040/</strong>. As you probably noticed, the webui runs in the port 4040, while the chef-server runs in 4000. Don&#8217;t forget to open these ports in the AWS Security Group and allow your machine IP to access them!  But wait, this was only the start hahah! Now comes the server configuration&#8230;</p>
 
-<p><a href="http://blog.felipel.com/wp-content/uploads/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png"><img src="http://blog.felipel.com/wp-content/uploads/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png" alt="" /></a></p>
+<p><a href="/images/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png"><img src="/images/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png" alt="" /></a></p>
 
 <p>If you are still following the wiki steps (you should), by now you should be running <strong>knife configure -i</strong>. Knife is chef&#8217;s command line configuration tool, it can do a lot of stuff. This is gonna try to create an API user. If you are unlucky, like me, you will see this error:</p>
 
-<pre><code>Creating initial API user...    
+<pre><code>Creating initial API user...
 ERROR: Server returned error for &lt;a href="http://ec2-50-18-239-212.us-west-1.compute.amazonaws.com:4000/clients/ubuntu"&gt;http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4000/clients/client_name&lt;/a&gt;, retrying 1/5 in 3s
 ...
 </code></pre>

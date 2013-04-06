@@ -4,7 +4,7 @@
   <title><![CDATA[Felipe Lima]]></title>
   <link href="http://felipecsl.github.com/atom.xml" rel="self"/>
   <link href="http://felipecsl.github.com/"/>
-  <updated>2013-04-03T14:57:48-07:00</updated>
+  <updated>2013-04-06T14:49:10-07:00</updated>
   <id>http://felipecsl.github.com/</id>
   <author>
     <name><![CDATA[Felipe Lima]]></name>
@@ -134,7 +134,7 @@ It will be removed on or after 2011-10-01.
 <p>Run this to install some required packages that you gonna need&#8230; some of them are probably not needed for this, but it wont hurt to install them anyways.</p>
 
 <pre><code>sudo apt-get install build-essential bison openssl libreadline6 libreadline6-dev curl 
-git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev     
+git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev 
 sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev -y
 </code></pre>
 
@@ -148,11 +148,11 @@ gem install chef-server
 
 <p>At this point, you should be able to just run <strong>chef-server</strong> see it running. If all goes well, you might want to do <strong>chef-server -e production -d</strong> to run it in production environment and daemonize, so it runs in background. You will also need to start the webui via <strong>chef-server-webui</strong> <strong>-e production -d.</strong> If all goes smoothly, you should be able to access the webui at <strong>http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4040/</strong>. As you probably noticed, the webui runs in the port 4040, while the chef-server runs in 4000. Don&#8217;t forget to open these ports in the AWS Security Group and allow your machine IP to access them!  But wait, this was only the start hahah! Now comes the server configuration&#8230;</p>
 
-<p><a href="http://blog.felipel.com/wp-content/uploads/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png"><img src="http://blog.felipel.com/wp-content/uploads/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png" alt="" /></a></p>
+<p><a href="http://felipecsl.github.com/images/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png"><img src="http://felipecsl.github.com/images/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png" alt="" /></a></p>
 
 <p>If you are still following the wiki steps (you should), by now you should be running <strong>knife configure -i</strong>. Knife is chef&#8217;s command line configuration tool, it can do a lot of stuff. This is gonna try to create an API user. If you are unlucky, like me, you will see this error:</p>
 
-<pre><code>Creating initial API user...    
+<pre><code>Creating initial API user...
 ERROR: Server returned error for &lt;a href="http://ec2-50-18-239-212.us-west-1.compute.amazonaws.com:4000/clients/ubuntu"&gt;http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4000/clients/client_name&lt;/a&gt;, retrying 1/5 in 3s
 ...
 </code></pre>
@@ -218,7 +218,7 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
     <id>http://felipecsl.github.com/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx</id>
     <content type="html"><![CDATA[<p>I don&#8217;t usually post short tips, but this one is really killer. To delete one word at a time when pressing ⌘+Delete in the iTerm2, use this configuration as shown in the first line of the screenshot below (click to expand).</p>
 
-<p><a href="http://blog.felipel.com/wp-content/uploads/2012/06/Screen-Shot-2012-06-05-at-12.00.02-PM.png"><img src="http://blog.felipel.com/wp-content/uploads/2012/06/Screen-Shot-2012-06-05-at-12.00.02-PM.png" alt="" /></a></p>
+<p><a href="http://felipecsl.github.com/images/2012/06/Screen-Shot-2012-06-05-at-12.00.02-PM.png"><img src="http://felipecsl.github.com/images/2012/06/Screen-Shot-2012-06-05-at-12.00.02-PM.png" alt="" /></a></p>
 ]]></content>
   </entry>
   
@@ -252,7 +252,7 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
 
 <p>Another thing that people usually ask me is how I got to know the company and how did I get the job. From my personal experience and from what I heard from other fellow developers, companies are not very receptive to the idea of sponsoring an H1B visa to a foreign developer, probably due to the high cost and risk involved with it. The usual flow is: you get in touch with the company you are interested in, probably send an email with a nice cover letter and your resume attached, and get no response at all. The only advice I will say is: If you really want that, be persistant and keep trying. Write a nice cover letter, with a brief introduction of who you are and why you want to work for that company. Try to be creative, original, otherwise you will be treated just like yet another average foreign candidate. Also extremely important is showing your achievements, having one or more pet projects is a big plus, actively contributing to open source, etc.</p>
 
-<p>It is definitely not an easy task, nor an easy decision to leave everything behind and move to another country. Anyways, I still believe it is something extremely valuable in terms of career growth and life experience. If you can, I would advice you to do it! The sooner the better. As you get older, buy a house, have kids, marry, etc., it will be harder and harder to do something like this. For the same reasons, I support <a href="http://blog.felipel.com/2011/03/o-que-eu-aprendi-empreendendo-e-porque-voce-tambem-deveria-tentar/">entrepreneurism</a>.</p>
+<p>It is definitely not an easy task, nor an easy decision to leave everything behind and move to another country. Anyways, I still believe it is something extremely valuable in terms of career growth and life experience. If you can, I would advice you to do it! The sooner the better. As you get older, buy a house, have kids, marry, etc., it will be harder and harder to do something like this. For the same reasons, I support <a href="http://felipecsl.github.com/2011/03/o-que-eu-aprendi-empreendendo-e-porque-voce-tambem-deveria-tentar/">entrepreneurism</a>.</p>
 
 <p>I&#8217;ve been here for almost one month so far, and right now, I can say I am very happy to have taken this decision, despite having to leave friends, family and my beloved fiancee behind. We will try to soften the hurt by visiting each other periodically.</p>
 
@@ -356,7 +356,7 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
 
 <p>Isto é o que acontece quando os seus cookies forem bloqueados :)</p>
 
-<p><a href="http://blog.felipel.com/wp-content/uploads/2011/01/p3p.png"><img src="http://blog.felipel.com/wp-content/uploads/2011/01/p3p-300x211.png" alt="" /></a></p>
+<p><a href="http://felipecsl.github.com/images/2011/01/p3p.png"><img src="http://felipecsl.github.com/images/2011/01/p3p-300x211.png" alt="" /></a></p>
 
 <p>No caso do PagSeguro, o que acabava acontecendo é um erro dizendo &#8220;Sua sessão expirou.&#8221;.</p>
 
@@ -640,7 +640,7 @@ RIGHT=${7}</p>
 </ol>
 
 
-<p><img src="http://felipecsl.github.com/wp-content/uploads/2010/8/bindings.png" alt="" /></p>
+<p><img src="http://felipecsl.github.com/images/2010/8/bindings.png" alt="" /></p>
 
 <ol>
 <li><p>In the Site Bindings window, add each subdomain that you want to map to your site. Unfortunately, wildcard mapping is not supported, so you&#8217;ll have to manually type all the subdomains before using it.</p></li>
@@ -648,7 +648,7 @@ RIGHT=${7}</p>
 </ol>
 
 
-<p><img src="http://felipecsl.github.com/wp-content/uploads/2010/8/hosts.png" alt="" /></p>
+<p><img src="http://felipecsl.github.com/images/2010/8/hosts.png" alt="" /></p>
 
 <ol>
 <li>Lastly, you&#8217;ll need to update your web.config cookies configuration, so that it is set to work with any subdomain. By default, your login cookies will only be valid for the default subdomain (example.com and www.example.com)</li>
@@ -691,26 +691,20 @@ RIGHT=${7}</p>
 
 <p>I&#8217;ve written a simple JQuery plugin for a progress bar slider. It was inspired on <a href="http://blog.benogle.com/2009/06/16/simple-css-shiny-progress-bar-technique/">Ben&#8217;s CSS progress bar</a>, but I needed a more complete one that should be interactive, so I built this one that also leverages <a href="http://jqueryui.com/demos/slider/#slider-vertical">JQuery UI&#8217;s vertical slider</a>.</p>
 
-<p>You can see the plugin demo <a href="http://felipel.com/files/jquery.progressbarslider/demo.htm">here</a>. TIP: Inspect the source code to see how it works.</p>
+<p>You can see the plugin demo <a href="https://github.com/felipecsl/jquery-progressbar-slider/demo.htm">here</a>. TIP: Inspect the source code to see how it works.</p>
 
-<p>You can download the plugin code <a href="http://felipel.com/files/jquery.progressbarslider.zip">here</a>.</p>
+<p>You can download the plugin code <a href="https://github.com/felipecsl/jquery-progressbar-slider">here</a>.</p>
 
 <p>Usage:</p>
 
-<p>[code:js]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;your element selector&quot;</span><span class="p">).</span><span class="nx">progressbarslider</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<script type="text/javascript">  
-
-$(function () {  
-
-$("your element selector").progressbarslider();  
-
-});  
-
-</script>
-
-
-<p>[/code]</p>
 
 <p>Please feel free to leave me a feedback, suggestions and/or use it at your own will on your projects :)</p>
 ]]></content>

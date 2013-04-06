@@ -100,7 +100,7 @@
 
 <p>If you use Visual Studio and/or SQL Server Management Studio regularly, you have probably run into this error when working with SQL Server Express:</p>
 
-<p><img src="/wp-content/uploads/2009/6/image.axd.png" alt="" /></p>
+<p><img src="/images/2009/6/image.axd.png" alt="" /></p>
 
 <p>There are several reason reasons that could cause this. Here are two that I found most recurring:</p>
 
@@ -118,11 +118,11 @@
 
 <p><strong>Solution 2.</strong> If your Visual Studio is open, go to the Server Explorer window and make sure the database connection closed.</p>
 
-<p><img src="/wp-content/uploads/2009/6/Sem+t%c3%adtulo.png" alt="" /></p>
+<p><img src="/images/2009/6/Sem+t%c3%adtulo.png" alt="" /></p>
 
 <p>If you are using SQL Server Management Studio Express, you have to Detach the database (do not forget to check the checkbox &#8220;Drop Connections&#8221; in the subsequent screen):</p>
 
-<p><img src="/wp-content/uploads/2009/6/Sem+t%c3%adtulo2.png" alt="" /></p>
+<p><img src="/images/2009/6/Sem+t%c3%adtulo2.png" alt="" /></p>
 
 <p>Go to your webpage and try reloading it.  It should work now. In case it doesn&#8217;t work, try closing your Solution inside VS or close the whole VS window. I&#8217;ve seen cases where VS keeps the database locked even after you closed the connection in the Server Explorer. Unfortunately, the error above isn&#8217;t related to an open connection and this is why it sometimes it gets really hard to diagnose the issue.</p>
 

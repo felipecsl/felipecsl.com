@@ -820,7 +820,7 @@
 
 <p>If you use Visual Studio and/or SQL Server Management Studio regularly, you have probably run into this error when working with SQL Server Express:</p>
 
-<p><img src="/wp-content/uploads/2009/6/image.axd.png" alt="" /></p>
+<p><img src="/images/2009/6/image.axd.png" alt="" /></p>
 
 <p>There are several reason reasons that could cause this. Here are two that I found most recurring:</p>
 
@@ -838,11 +838,11 @@
 
 <p><strong>Solution 2.</strong> If your Visual Studio is open, go to the Server Explorer window and make sure the database connection closed.</p>
 
-<p><img src="/wp-content/uploads/2009/6/Sem+t%c3%adtulo.png" alt="" /></p>
+<p><img src="/images/2009/6/Sem+t%c3%adtulo.png" alt="" /></p>
 
 <p>If you are using SQL Server Management Studio Express, you have to Detach the database (do not forget to check the checkbox &#8220;Drop Connections&#8221; in the subsequent screen):</p>
 
-<p><img src="/wp-content/uploads/2009/6/Sem+t%c3%adtulo2.png" alt="" /></p>
+<p><img src="/images/2009/6/Sem+t%c3%adtulo2.png" alt="" /></p>
 
 <p>Go to your webpage and try reloading it.  It should work now. In case it doesn&#8217;t work, try closing your Solution inside VS or close the whole VS window. I&#8217;ve seen cases where VS keeps the database locked even after you closed the connection in the Server Explorer. Unfortunately, the error above isn&#8217;t related to an open connection and this is why it sometimes it gets really hard to diagnose the issue.</p>
 
@@ -886,65 +886,45 @@
 
 <p>With Linq, you are able to build a query predicate dinamically with the extension method IQueryable<TSource> Where<TSource>:</p>
 
-<p>[code:c#]</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var queryResults = from p in db.Products;
+</span><span class='line'>                   select p;
+</span><span class='line'>queryResults = queryResults.Where(p =&gt; p.Price &lt; 1000);</span></code></pre></td></tr></table></div></figure>
 
-<p>var queryResults = from p in db.Products;</p>
-
-<p>select p;</p>
-
-<p>queryResults = queryResults.Where(p => p.Price &lt; 1000);</p>
-
-<p>[/code]</p>
 
 <p>But what happens if later your business logic finds out that you need to include in your results products which also cost more than $3000?</p>
 
 <p>No problem! Just call &#8220;Where&#8221; again:</p>
 
-<p>[code:c#]</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(...)
+</span><span class='line'>queryResults = queryResults.Where(p =&gt; p.Price &gt; 3000);</span></code></pre></td></tr></table></div></figure>
 
-<p>(&#8230;)</p>
-
-<p>queryResults = queryResults.Where(p => p.Price > 3000);</p>
-
-<p>[/code]</p>
 
 <p>Right? <strong>NO! </strong>This would result in a query that filters the products for Price &lt; 1000 <strong>AND</strong> Price > 3000. That means, you won&#8217;t get any results at all! :) What you need, is an <strong>OR</strong> operator between your two Where predicates.</p>
 
 <p>The solution for this is the <a href="http://www.albahari.com/nutshell/linqkit.aspx">LinqKit</a>! It comes with a neat pack of tools for Linq, including a <a href="http://www.albahari.com/nutshell/predicatebuilder.aspx">PredicateBuilder</a> with some extension method that allow you to do something like:</p>
 
-<p>[code:c#]</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(...)
+</span><span class='line'>var queryResults = from p in db.Products;
+</span><span class='line'>                   select p;
+</span><span class='line'>
+</span><span class='line'>var predicate = PredicateBuilder.False&lt;Product&gt;();
+</span><span class='line'>predicate = predicate.Or(p =&gt; p.Price &lt; 1000);
+</span><span class='line'>predicate = predicate.Or(p =&gt; p.Price &gt; 3000);
+</span><span class='line'>queryResults = queryResults.AsExpandable().Where(predicate);  // p.Price &lt; 1000 OR p.Price &gt; 3000</span></code></pre></td></tr></table></div></figure>
 
-<p>(&#8230;)</p>
-
-<p>var queryResults = from p in db.Products;</p>
-
-<p>select p;</p>
-
-<pre><code>var predicate = PredicateBuilder.False&lt;Product&gt;();
-
-
-
-
-
-
-predicate = predicate.Or(p =&gt; p.Price &lt; 1000);
-
-
-
-
-
-
-predicate = predicate.Or(p =&gt; p.Price &gt; 3000);
-
-
-
-
-
-
-queryResults = queryResults.AsExpandable().Where(predicate);  // p.Price &lt; 1000 OR p.Price &gt; 3000
-</code></pre>
-
-<p>[/code]</p>
 
 <p>You must have noticed the AsExpandable() call above. As per LinqKit documentation:</p>
 

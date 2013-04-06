@@ -106,7 +106,7 @@
 
 <p>Isto é o que acontece quando os seus cookies forem bloqueados :)</p>
 
-<p><a href="http://blog.felipel.com/wp-content/uploads/2011/01/p3p.png"><img src="http://blog.felipel.com/wp-content/uploads/2011/01/p3p-300x211.png" alt="" /></a></p>
+<p><a href="/images/2011/01/p3p.png"><img src="/images/2011/01/p3p-300x211.png" alt="" /></a></p>
 
 <p>No caso do PagSeguro, o que acabava acontecendo é um erro dizendo &#8220;Sua sessão expirou.&#8221;.</p>
 
@@ -525,7 +525,7 @@ RIGHT=${7}</p>
 </ol>
 
 
-<p><img src="/wp-content/uploads/2010/8/bindings.png" alt="" /></p>
+<p><img src="/images/2010/8/bindings.png" alt="" /></p>
 
 <ol>
 <li><p>In the Site Bindings window, add each subdomain that you want to map to your site. Unfortunately, wildcard mapping is not supported, so you&#8217;ll have to manually type all the subdomains before using it.</p></li>
@@ -533,7 +533,7 @@ RIGHT=${7}</p>
 </ol>
 
 
-<p><img src="/wp-content/uploads/2010/8/hosts.png" alt="" /></p>
+<p><img src="/images/2010/8/hosts.png" alt="" /></p>
 
 <ol>
 <li>Lastly, you&#8217;ll need to update your web.config cookies configuration, so that it is set to work with any subdomain. By default, your login cookies will only be valid for the default subdomain (example.com and www.example.com)</li>
@@ -630,26 +630,20 @@ RIGHT=${7}</p>
 
 <p>I&#8217;ve written a simple JQuery plugin for a progress bar slider. It was inspired on <a href="http://blog.benogle.com/2009/06/16/simple-css-shiny-progress-bar-technique/">Ben&#8217;s CSS progress bar</a>, but I needed a more complete one that should be interactive, so I built this one that also leverages <a href="http://jqueryui.com/demos/slider/#slider-vertical">JQuery UI&#8217;s vertical slider</a>.</p>
 
-<p>You can see the plugin demo <a href="http://felipel.com/files/jquery.progressbarslider/demo.htm">here</a>. TIP: Inspect the source code to see how it works.</p>
+<p>You can see the plugin demo <a href="https://github.com/felipecsl/jquery-progressbar-slider/demo.htm">here</a>. TIP: Inspect the source code to see how it works.</p>
 
-<p>You can download the plugin code <a href="http://felipel.com/files/jquery.progressbarslider.zip">here</a>.</p>
+<p>You can download the plugin code <a href="https://github.com/felipecsl/jquery-progressbar-slider">here</a>.</p>
 
 <p>Usage:</p>
 
-<p>[code:js]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;your element selector&quot;</span><span class="p">).</span><span class="nx">progressbarslider</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<script type="text/javascript">  
-
-$(function () {  
-
-$("your element selector").progressbarslider();  
-
-});  
-
-</script>
-
-
-<p>[/code]</p>
 
 <p>Please feel free to leave me a feedback, suggestions and/or use it at your own will on your projects :)</p>
 </div>

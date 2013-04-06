@@ -93,31 +93,32 @@
   </header>
 
 
-  <div class="entry-content"><p>There are a plenty of <a href="http://leandrovieira.com/projects/jquery/lightbox/">lightbox</a> <a href="http://www.huddletogether.com/projects/lightbox2/">implementations</a> around the web. Whenever you need one, you won&#8217;t need to make up your own for sure. Just pick one of the available options. However, if you&#8217;re restricted to flash only, the options get reduced drastically. This is why I came up with <a href="http://www.felipel.com/files/as3_lightbox.zip">my own lightbox</a> implementation with ActionScript. You can see it in action in my company&#8217;s <a href="http://www.quavio.com.br">website</a>.</p>
+  <div class="entry-content"><p>There are a plenty of <a href="http://leandrovieira.com/projects/jquery/lightbox/">lightbox</a> <a href="http://www.huddletogether.com/projects/lightbox2/">implementations</a> around the web. Whenever you need one, you won&#8217;t need to make up your own for sure. Just pick one of the available options. However, if you&#8217;re restricted to flash only, the options get reduced drastically. This is why I came up with <a href="https://github.com/felipecsl/actionscript3-lightbox">my own lightbox</a> implementation with ActionScript. You can see it in action in my company&#8217;s <a href="http://www.quavio.com.br">website</a>.</p>
 
-<p><img src="/wp-content/uploads/2010/3/lightbox.png" alt="Flash Lightbox screenshot" /></p>
+<p><img src="/images/2010/3/lightbox.png" alt="Flash Lightbox screenshot" /></p>
 
 <p>It works just like the regular lightbox versions:</p>
 
-<p>[code:js]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span><span class="o">:</span><span class="nx">Lightbox</span> <span class="nx">myLb</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Lightbox</span><span class="p">(</span>
+</span><span class='line'>  <span class="nx">_sTitle</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">// lightbox title</span>
+</span><span class='line'>  <span class="nx">_sLinkToVisit</span><span class="o">:</span> <span class="nb">String</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>  <span class="c1">// link to the page that will be visited upon click</span>
+</span><span class='line'>  <span class="nx">_sImageText</span><span class="o">:</span> <span class="nb">String</span> <span class="o">=</span> <span class="s2">&quot;Imagem&quot;</span><span class="p">,</span> <span class="c1">// &#39;Image&#39; text</span>
+</span><span class='line'>  <span class="nx">_sOfText</span><span class="o">:</span> <span class="nb">String</span> <span class="o">=</span> <span class="s2">&quot;de&quot;</span><span class="p">);</span> <span class="c1">// &#39;Of&#39; text</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// shows the lighbox with the provided array of images</span>
+</span><span class='line'><span class="nx">myLb</span><span class="p">.</span><span class="nx">show</span><span class="p">([</span><span class="s1">&#39;image1.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;image2.jpg&#39;</span><span class="p">,</span> <span class="p">...]);</span>
+</span><span class='line'><span class="nx">myLb</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span> <span class="c1">// closes the lightbox</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>var:Lightbox myLb = new Lightbox(</p>
-
-<p>_sTitle: String, // lightbox title</p>
-
-<p>_sLinkToVisit: String = null,  // link to the page that will be visited upon click</p>
-
-<p>_sImageText: String = &#8220;Imagem&#8221;, // &#8216;Image&#8217; text</p>
-
-<p>_sOfText: String = &#8220;de&#8221;); // &#8216;Of&#8217; text</p>
-
-<p>// shows the lighbox with the provided array of images</p>
-
-<p>myLb.show([&#8216;image1.jpg&#8217;, &#8216;image2.jpg&#8217;, &#8230;]);</p>
-
-<p>myLb.hide(); // closes the lightbox</p>
-
-<p>[/code]</p>
 
 <p>Please be aware that, in order to use it, you&#8217;ll have to create a Lightbox movieclip in the Flash IDE with the following elements inside it:</p>
 
@@ -221,93 +222,100 @@
 <p><a href="http://odetocode.com/Blogs/scott/archive/2009/10/13/experimenting-with-mongodb-from-c.aspx">K. Scott Allen</a> already wrote a quick intro on using the C# driver, so I used it as a tutorial for my first steps. Here are some thoughts I&#8217;d like to share on this topic:</p>
 
 <ul>
-<li><p>I don&#8217;t like being held by the verbosity of instantiating Document objects every time I want to manipulate the database, so I&#8217;ve written method overloads for the main operations, like Insert, Update, Find and Delete that receive a plain object and only then convert them to Document. This allows us to leverage anonymous objects in C# and makes the code cleaner:</p>
-
-<p><span class="lnum">   1:  </span>Mongo mongo = <span class="kwrd">new</span> Mongo();</p>
-
-<p><span class="lnum">   2:  </span>mongo.Connect();</p>
-
-<p><span class="lnum">   3:  </span>Database db = mongo[<span class="str">&#8220;testdb&#8221;</span>];</p>
-
-<p><span class="lnum">   4:  </span>var col = db[<span class="str">&#8220;users&#8221;</span>];</p>
-
-<p><span class="lnum">   5:  </span></p>
-
-<p><span class="lnum">   6:  </span><span class="kwrd">foreach</span>(Document d <span class="kwrd">in</span> col.Find(<span class="kwrd">new</span> { name = <span class="str">&#8220;John Doe&#8221;</span>}).Documents)</p>
-
-<p><span class="lnum">   7:  </span>{</p>
-
-<p><span class="lnum">   8:  </span>    <span class="kwrd">int</span> johnId = d[<span class="str">&#8221;_id&#8221;</span>];</p>
-
-<p><span class="lnum">   9:  </span>    <span class="kwrd">int</span> johnName = d[<span class="str">&#8220;name&#8221;</span>];</p>
-
-<p><span class="lnum">  10:  </span>}</p></li>
+<li>I don&#8217;t like being held by the verbosity of instantiating Document objects every time I want to manipulate the database, so I&#8217;ve written method overloads for the main operations, like Insert, Update, Find and Delete that receive a plain object and only then convert them to Document. This allows us to leverage anonymous objects in C# and makes the code cleaner:</li>
 </ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='c#'><span class='line'><span class="n">Mongo</span> <span class="n">mongo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mongo</span><span class="p">();</span>
+</span><span class='line'><span class="n">mongo</span><span class="p">.</span><span class="n">Connect</span><span class="p">();</span>
+</span><span class='line'><span class="n">Database</span> <span class="n">db</span> <span class="p">=</span> <span class="n">mongo</span><span class="p">[</span><span class="err">“</span><span class="n">testdb</span><span class="err">”</span><span class="p">];</span>
+</span><span class='line'><span class="kt">var</span> <span class="n">col</span> <span class="p">=</span> <span class="n">db</span><span class="p">[</span><span class="err">“</span><span class="n">users</span><span class="err">”</span><span class="p">];</span>
+</span><span class='line'><span class="k">foreach</span><span class="p">(</span><span class="n">Document</span> <span class="n">d</span> <span class="k">in</span> <span class="n">col</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="k">new</span> <span class="p">{</span> <span class="n">name</span> <span class="p">=</span> <span class="err">“</span><span class="n">John</span> <span class="n">Doe</span><span class="err">”</span><span class="p">}).</span><span class="n">Documents</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">johnId</span> <span class="p">=</span> <span class="n">d</span><span class="p">[</span><span class="err">”</span><span class="n">_id</span><span class="err">”</span><span class="p">];</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">johnName</span> <span class="p">=</span> <span class="n">d</span><span class="p">[</span><span class="err">“</span><span class="n">name</span><span class="err">”</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The code with this implementation is available on my fork of the driver at <a href="http://github.com/felipecsl/mongodb-csharp">github</a> an will hopefully be merged with the master soon.</p>
 
-<ul>
-<li><p>MongoDB allows storage of files in the database, as well, through the <a href="http://www.mongodb.org/display/DOCS/GridFS">GridFS specification</a>. The C# api is already implemented and functional. Follow an example for writing a file to the database:</p>
+<p>MongoDB allows storage of files in the database, as well, through the <a href="http://www.mongodb.org/display/DOCS/GridFS">GridFS specification</a>. The C# api is already implemented and functional. Follow an example for writing a file to the database:</p>
 
-<p><span class="lnum">   1:  </span><span class="kwrd">void</span> Main()</p>
-
-<p><span class="lnum">   2:  </span>{</p>
-
-<p><span class="lnum">   3:  </span>    Mongo mongo = <span class="kwrd">new</span> Mongo();</p>
-
-<p><span class="lnum">   4:  </span>    mongo.Connect();</p>
-
-<p><span class="lnum">   5:  </span>    Database db = mongo[<span class="str">&#8220;test&#8221;</span>];</p>
-
-<p><span class="lnum">   6:  </span>    var collection = db[<span class="str">&#8220;testcollection&#8221;</span>];</p>
-
-<p><span class="lnum">   7:  </span>    GridFile file = <span class="kwrd">new</span> GridFile(db);</p>
-
-<p><span class="lnum">   8:  </span></p>
-
-<p><span class="lnum">   9:  </span>    <span class="kwrd">using</span>(GridFileStream fs = file.Create(<span class="str">&#8220;mycv&#8221;</span>)) <span class="rem">// define the file name</span></p>
-
-<p><span class="lnum">  10:  </span>    {</p>
-
-<p><span class="lnum">  11:  </span>        ReadWriteStream(File.OpenRead(<span class="str">@&#8221;C:\Data\felipelima_en.doc&#8221;</span>), fs);</p>
-
-<p><span class="lnum">  12:  </span>    }</p>
-
-<p><span class="lnum">  13:  </span>}</p>
-
-<p><span class="lnum">  14:  </span></p>
-
-<p><span class="lnum">  15:  </span><span class="kwrd">public</span> <span class="kwrd">static</span> <span class="kwrd">void</span> ReadWriteStream(</p>
-
-<p><span class="lnum">  16:  </span>    Stream readStream,</p>
-
-<p><span class="lnum">  17:  </span>    Stream writeStream)</p>
-
-<p><span class="lnum">  18:  </span>{</p>
-
-<p><span class="lnum">  19:  </span>    Byte[] buffer = <span class="kwrd">new</span> Byte[Int16.MaxValue];</p>
-
-<p><span class="lnum">  20:  </span>    <span class="kwrd">int</span> bytesRead = readStream.Read(buffer, 0, Int16.MaxValue);</p>
-
-<p><span class="lnum">  21:  </span>    <span class="rem">// write the required bytes</span></p>
-
-<p><span class="lnum">  22:  </span>    <span class="kwrd">while</span> (bytesRead > 0)</p>
-
-<p><span class="lnum">  23:  </span>    {</p>
-
-<p><span class="lnum">  24:  </span>        writeStream.Write(buffer, 0, bytesRead);</p>
-
-<p><span class="lnum">  25:  </span>        bytesRead = readStream.Read(buffer, 0, Int16.MaxValue);</p>
-
-<p><span class="lnum">  26:  </span>    }</p>
-
-<p><span class="lnum">  27:  </span>    readStream.Close();</p>
-
-<p><span class="lnum">  28:  </span>    writeStream.Close();</p>
-
-<p><span class="lnum">  29:  </span>}</p></li>
-</ul>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='c#'><span class='line'><span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">Mongo</span> <span class="n">mongo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mongo</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">mongo</span><span class="p">.</span><span class="n">Connect</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">Database</span> <span class="n">db</span> <span class="p">=</span> <span class="n">mongo</span><span class="p">[</span><span class="err">“</span><span class="n">test</span><span class="err">”</span><span class="p">];</span>
+</span><span class='line'>    <span class="kt">var</span> <span class="n">collection</span> <span class="p">=</span> <span class="n">db</span><span class="p">[</span><span class="err">“</span><span class="n">testcollection</span><span class="err">”</span><span class="p">];</span>
+</span><span class='line'>    <span class="n">GridFile</span> <span class="n">file</span> <span class="p">=</span> <span class="k">new</span> <span class="n">GridFile</span><span class="p">(</span><span class="n">db</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">using</span><span class="p">(</span><span class="n">GridFileStream</span> <span class="n">fs</span> <span class="p">=</span> <span class="n">file</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="err">“</span><span class="n">mycv</span><span class="err">”</span><span class="p">))</span> <span class="c1">// define the file name</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">ReadWriteStream</span><span class="p">(</span><span class="n">File</span><span class="p">.</span><span class="n">OpenRead</span><span class="p">(</span><span class="err">@”</span><span class="n">C</span><span class="p">:</span><span class="err">\</span><span class="n">Data</span><span class="err">\</span><span class="n">felipelima_en</span><span class="p">.</span><span class="n">doc</span><span class="err">”</span><span class="p">),</span> <span class="n">fs</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">ReadWriteStream</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Stream</span> <span class="n">readStream</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">Stream</span> <span class="n">writeStream</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">Byte</span><span class="p">[]</span> <span class="n">buffer</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Byte</span><span class="p">[</span><span class="n">Int16</span><span class="p">.</span><span class="n">MaxValue</span><span class="p">];</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">bytesRead</span> <span class="p">=</span> <span class="n">readStream</span><span class="p">.</span><span class="n">Read</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">Int16</span><span class="p">.</span><span class="n">MaxValue</span><span class="p">);</span>
+</span><span class='line'>    <span class="c1">// write the required bytes</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">while</span> <span class="p">(</span><span class="n">bytesRead</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">writeStream</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">bytesRead</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">bytesRead</span> <span class="p">=</span> <span class="n">readStream</span><span class="p">.</span><span class="n">Read</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">Int16</span><span class="p">.</span><span class="n">MaxValue</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="n">readStream</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">writeStream</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Database files work just like plain Documents and will be assigned an Id upon creation. Therefore, they can be later queried just like a regular document.</p>
@@ -354,22 +362,14 @@
 
 <p>Usually, the DefaultModelBinder implementation will be just fine for you and no additional work will be needed. However, there are situations where we need to tweak settings a bit. Model binding works in a associative manner, where you can assign a binder to a specific type, like this:</p>
 
-<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;ModelBinders.Binders.Add(
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='c#'><span class='line'><span class="n">ModelBinders</span><span class="p">.</span><span class="n">Binders</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span>
+</span><span class='line'>  <span class="k">typeof</span><span class="p">(</span><span class="n">DateTime</span><span class="p">),</span>
+</span><span class='line'>  <span class="n">newDateTimeModelBinder</span><span class="p">());</span>
+</span></code></pre></td></tr></table></div></figure>
 
-
-
-
-
-
-&lt;span class="lnum"&gt;   2:  &lt;/span&gt;    &lt;span class="kwrd"&gt;typeof&lt;/span&gt;(DateTime),
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   3:  &lt;/span&gt;    &lt;span class="kwrd"&gt;new&lt;/span&gt; DateTimeModelBinder());
-</code></pre>
 
 <p>Here, we&#8217;re saying that all DateTime values should be bound using the DateTimeModelBinder class. DefaultModelBinder will figure that out and call this class when it sees a property of DateTime type. We could say that it works recursivly by looking for the appropriate binder for each property. If no custom binder is found, DefaultModelBinder will take care of it anyway.</p>
 
@@ -377,8 +377,10 @@
 
 <p>The IModelBinder interface defines a single method:</p>
 
-<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;&lt;span class="kwrd"&gt;object&lt;/span&gt; BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext);
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c#'><span class='line'><span class="kt">object</span> <span class="nf">BindModel</span><span class="p">(</span><span class="n">ControllerContext</span> <span class="n">controllerContext</span><span class="p">,</span> <span class="n">ModelBindingContext</span> <span class="n">bindingContext</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>The <strong>bindingContext</strong> argument contains information about the mode (type, metadata, name, etc). All you have to do is to use the <strong>bindingContext.ValueProvider</strong> collection to retrieve the correct data for the given model and return it.</p>
 
@@ -427,89 +429,104 @@
 <p>There is a search pattern that the DefaultModelBinder uses to look for the data in the request. Basically you need to name your form elements with the same name of your model properties. For example:</p>
 
 <ol>
-<li><p>The view model:</p>
-
-<p> <span class="lnum">   1:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> NewsModuleViewModel</p>
-
-<p> <span class="lnum">   2:  </span>{</p>
-
-<p> <span class="lnum">   3:  </span>    [ScaffoldColumn(<span class="kwrd">false</span>)]</p>
-
-<p> <span class="lnum">   4:  </span>    <span class="kwrd">public</span> <span class="kwrd">int</span> ID { get; set; }</p>
-
-<p> <span class="lnum">   5:  </span></p>
-
-<p> <span class="lnum">   6:  </span>    [DisplayName(<span class="str">&#8220;News Date&#8221;</span>)]</p>
-
-<p> <span class="lnum">   7:  </span>    [DisplayFormat(DataFormatString = <span class="str">&#8220;d&#8221;</span>, ApplyFormatInEditMode = <span class="kwrd">true</span>)]</p>
-
-<p> <span class="lnum">   8:  </span>    [Required(ErrorMessage = <span class="str">&#8220;Por favor selecione uma data&#8221;</span>)]</p>
-
-<p> <span class="lnum">   9:  </span>    <span class="kwrd">public</span> DateTime? Date { get; set; }</p>
-
-<p> <span class="lnum">  10:  </span></p>
-
-<p> <span class="lnum">  11:  </span>    [DisplayName(<span class="str">&#8220;Title&#8221;</span>)]</p>
-
-<p> <span class="lnum">  12:  </span>    [Required(ErrorMessage = <span class="str">&#8220;Por favor digite um titulo&#8221;</span>)]</p>
-
-<p> <span class="lnum">  13:  </span>    <span class="kwrd">public</span> <span class="kwrd">string</span> Title { get; set; }</p>
-
-<p> <span class="lnum">  14:  </span></p>
-
-<p> <span class="lnum">  15:  </span>    [DisplayName(<span class="str">&#8220;Resume&#8221;</span>)]</p>
-
-<p> <span class="lnum">  16:  </span>    <span class="kwrd">public</span> <span class="kwrd">string</span> Resume { get; set; }</p>
-
-<p> <span class="lnum">  17:  </span></p>
-
-<p> <span class="lnum">  18:  </span>    [DisplayName(<span class="str">&#8220;My Text&#8221;</span>)]</p>
-
-<p> <span class="lnum">  19:  </span>    [UIHint(<span class="str">&#8220;HtmlText&#8221;</span>)]</p>
-
-<p> <span class="lnum">  20:  </span>    [Required(ErrorMessage = <span class="str">&#8220;Por favor digite um texto para a noticia&#8221;</span>)]</p>
-
-<p> <span class="lnum">  21:  </span>    <span class="kwrd">public</span> <span class="kwrd">string</span> Text { get; set; }</p>
-
-<p> <span class="lnum">  22:  </span></p>
-
-<p> <span class="lnum">  23:  </span>    [DisplayName(<span class="str">&#8220;Image&#8221;</span>)]</p>
-
-<p> <span class="lnum">  24:  </span>    [UIHint(<span class="str">&#8220;DbImage&#8221;</span>, <span class="kwrd">null</span>, <span class="str">&#8220;AspectRatio&#8221;</span>, 1.0)]</p>
-
-<p> <span class="lnum">  25:  </span>    <span class="kwrd">public</span> <span class="kwrd">string</span> ImagePath { get; set; }</p>
-
-<p> <span class="lnum">  26:  </span>}</p></li>
-<li><p>The form:</p>
-
-<p> <span class="lnum">   1:  </span><span class="kwrd">&lt;</span><span class="html">form</span> <span class="attr">action</span><span class="kwrd">=&#8221;/uac/NewsModule/Edit/12&#8221;</span> <span class="attr">enctype</span><span class="kwrd">=&#8221;multipart/form-data&#8221;</span> <span class="attr">method</span><span class="kwrd">=&#8221;post&#8221;</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">   2:  </span></p>
-
-<p> <span class="lnum">   3:  </span><span class="kwrd">&lt;</span><span class="html">p</span> <span class="attr">class</span><span class="kwrd">=&#8221;datalist-form&#8221;</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">   4:  </span>    <span class="kwrd">&lt;</span><span class="html">label</span> <span class="attr">for</span><span class="kwrd">=&#8221;Date&#8221;</span><span class="kwrd">>Date</span><span class="kwrd">&lt;/</span><span class="html">label</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">   5:  </span>    <span class="kwrd">&lt;</span><span class="html">input</span> <span class="attr">type</span><span class="kwrd">=&#8221;text&#8221;</span> <span class="attr">id</span><span class="kwrd">=&#8221;Date&#8221;</span> <span class="attr">name</span><span class="kwrd">=&#8221;<strong>Date</strong>&#8221;</span> <span class="attr">value</span><span class="kwrd">=&#8221;22/1/2010&#8221;</span> <span class="kwrd">/></span></p>
-
-<p> <span class="lnum">   6:  </span><span class="kwrd">&lt;/</span><span class="html">p</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">   7:  </span><span class="kwrd">&lt;</span><span class="html">p</span> <span class="attr">class</span><span class="kwrd">=&#8221;datalist-form&#8221;</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">   8:  </span>    <span class="kwrd">&lt;</span><span class="html">label</span> <span class="attr">for</span><span class="kwrd">=&#8221;Title&#8221;</span><span class="kwrd">>Title</span><span class="kwrd">&lt;/</span><span class="html">label</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">   9:  </span>    <span class="kwrd">&lt;</span><span class="html">input</span> <span class="attr">class</span><span class="kwrd">=&#8221;text-box single-line&#8221;</span> <span class="attr">id</span><span class="kwrd">=&#8221;Title&#8221;</span> <span class="attr">name</span><span class="kwrd">=&#8221;<strong>Title</strong>&#8221;</span> <span class="attr">type</span><span class="kwrd">=&#8221;text&#8221;</span> <span class="kwrd">/></span></p>
-
-<p> <span class="lnum">  10:  </span><span class="kwrd">&lt;/</span><span class="html">p</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">  11:  </span><span class="kwrd">&lt;</span><span class="html">p</span> <span class="attr">class</span><span class="kwrd">=&#8221;datalist-form&#8221;</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">  12:  </span>    <span class="kwrd">&lt;</span><span class="html">label</span> <span class="attr">for</span><span class="kwrd">=&#8221;Resume&#8221;</span><span class="kwrd">>Resume</span><span class="kwrd">&lt;/</span><span class="html">label</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">  13:  </span>    <span class="kwrd">&lt;</span><span class="html">input</span> <span class="attr">class</span><span class="kwrd">=&#8221;text-box single-line&#8221;</span> <span class="attr">id</span><span class="kwrd">=&#8221;Resume&#8221;</span> <span class="attr">name</span><span class="kwrd">=&#8221;</span><strong><span class="kwrd">Resume</span></strong><span class="kwrd">&#8221;</span> <span class="attr">type</span><span class="kwrd">=&#8221;text&#8221;</span> <span class="kwrd">/></span></p>
-
-<p> <span class="lnum">  14:  </span><span class="kwrd">&lt;/</span><span class="html">p</span><span class="kwrd">></span></p></li>
+<li>The view model:</li>
 </ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='c#'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">NewsModuleViewModel</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="na">    [ScaffoldColumn(false)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">int</span> <span class="n">ID</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [DisplayName(“News Date”)]</span>
+</span><span class='line'><span class="na">    [DisplayFormat(DataFormatString = “d”, ApplyFormatInEditMode = true)]</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = “Por favor selecione uma data”)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="n">DateTime</span><span class="p">?</span> <span class="n">Date</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [DisplayName(“Title”)]</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = “Por favor digite um titulo”)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Title</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [DisplayName(“Resume”)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Resume</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [DisplayName(“My Text”)]</span>
+</span><span class='line'><span class="na">    [UIHint(“HtmlText”)]</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = “Por favor digite um texto para a noticia”)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Text</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [DisplayName(“Image”)]</span>
+</span><span class='line'><span class="na">    [UIHint(“DbImage”, null, “AspectRatio”, 1.0)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">ImagePath</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The form:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">”/uac/NewsModule/Edit/12”</span> <span class="na">enctype=</span><span class="s">”multipart/form-data”</span> <span class="na">method=</span><span class="s">”post”</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">”datalist-form”</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">”Date”</span><span class="nt">&gt;</span>Date<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">”text”</span> <span class="na">id=</span><span class="s">”Date”</span> <span class="na">name=</span><span class="s">”Date”</span> <span class="na">value=</span><span class="s">”22/1/2010”</span> <span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">”datalist-form”</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">”Title”</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">”text-box</span> <span class="na">single-line</span><span class="err">”</span> <span class="na">id=</span><span class="s">”Title”</span> <span class="na">name=</span><span class="s">”Title”</span> <span class="na">type=</span><span class="s">”text”</span> <span class="nt">/&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">”datalist-form”</span><span class="nt">&gt;</span>
+</span><span class='line'>         <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">”Resume”</span><span class="nt">&gt;</span>Resume<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>         <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">”text-box</span> <span class="na">single-line</span><span class="err">”</span> <span class="na">id=</span><span class="s">”Resume”</span> <span class="na">name=</span><span class="s">”Resume”</span> <span class="na">type=</span><span class="s">”text”</span> <span class="nt">/&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;/form&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>(I&#8217;ve reduced the HTML markup snippet for the sake of simplicity).</p>

@@ -99,89 +99,104 @@
 <p>There is a search pattern that the DefaultModelBinder uses to look for the data in the request. Basically you need to name your form elements with the same name of your model properties. For example:</p>
 
 <ol>
-<li><p>The view model:</p>
-
-<p> <span class="lnum">   1:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> NewsModuleViewModel</p>
-
-<p> <span class="lnum">   2:  </span>{</p>
-
-<p> <span class="lnum">   3:  </span>    [ScaffoldColumn(<span class="kwrd">false</span>)]</p>
-
-<p> <span class="lnum">   4:  </span>    <span class="kwrd">public</span> <span class="kwrd">int</span> ID { get; set; }</p>
-
-<p> <span class="lnum">   5:  </span></p>
-
-<p> <span class="lnum">   6:  </span>    [DisplayName(<span class="str">&#8220;News Date&#8221;</span>)]</p>
-
-<p> <span class="lnum">   7:  </span>    [DisplayFormat(DataFormatString = <span class="str">&#8220;d&#8221;</span>, ApplyFormatInEditMode = <span class="kwrd">true</span>)]</p>
-
-<p> <span class="lnum">   8:  </span>    [Required(ErrorMessage = <span class="str">&#8220;Por favor selecione uma data&#8221;</span>)]</p>
-
-<p> <span class="lnum">   9:  </span>    <span class="kwrd">public</span> DateTime? Date { get; set; }</p>
-
-<p> <span class="lnum">  10:  </span></p>
-
-<p> <span class="lnum">  11:  </span>    [DisplayName(<span class="str">&#8220;Title&#8221;</span>)]</p>
-
-<p> <span class="lnum">  12:  </span>    [Required(ErrorMessage = <span class="str">&#8220;Por favor digite um titulo&#8221;</span>)]</p>
-
-<p> <span class="lnum">  13:  </span>    <span class="kwrd">public</span> <span class="kwrd">string</span> Title { get; set; }</p>
-
-<p> <span class="lnum">  14:  </span></p>
-
-<p> <span class="lnum">  15:  </span>    [DisplayName(<span class="str">&#8220;Resume&#8221;</span>)]</p>
-
-<p> <span class="lnum">  16:  </span>    <span class="kwrd">public</span> <span class="kwrd">string</span> Resume { get; set; }</p>
-
-<p> <span class="lnum">  17:  </span></p>
-
-<p> <span class="lnum">  18:  </span>    [DisplayName(<span class="str">&#8220;My Text&#8221;</span>)]</p>
-
-<p> <span class="lnum">  19:  </span>    [UIHint(<span class="str">&#8220;HtmlText&#8221;</span>)]</p>
-
-<p> <span class="lnum">  20:  </span>    [Required(ErrorMessage = <span class="str">&#8220;Por favor digite um texto para a noticia&#8221;</span>)]</p>
-
-<p> <span class="lnum">  21:  </span>    <span class="kwrd">public</span> <span class="kwrd">string</span> Text { get; set; }</p>
-
-<p> <span class="lnum">  22:  </span></p>
-
-<p> <span class="lnum">  23:  </span>    [DisplayName(<span class="str">&#8220;Image&#8221;</span>)]</p>
-
-<p> <span class="lnum">  24:  </span>    [UIHint(<span class="str">&#8220;DbImage&#8221;</span>, <span class="kwrd">null</span>, <span class="str">&#8220;AspectRatio&#8221;</span>, 1.0)]</p>
-
-<p> <span class="lnum">  25:  </span>    <span class="kwrd">public</span> <span class="kwrd">string</span> ImagePath { get; set; }</p>
-
-<p> <span class="lnum">  26:  </span>}</p></li>
-<li><p>The form:</p>
-
-<p> <span class="lnum">   1:  </span><span class="kwrd">&lt;</span><span class="html">form</span> <span class="attr">action</span><span class="kwrd">=&#8221;/uac/NewsModule/Edit/12&#8221;</span> <span class="attr">enctype</span><span class="kwrd">=&#8221;multipart/form-data&#8221;</span> <span class="attr">method</span><span class="kwrd">=&#8221;post&#8221;</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">   2:  </span></p>
-
-<p> <span class="lnum">   3:  </span><span class="kwrd">&lt;</span><span class="html">p</span> <span class="attr">class</span><span class="kwrd">=&#8221;datalist-form&#8221;</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">   4:  </span>    <span class="kwrd">&lt;</span><span class="html">label</span> <span class="attr">for</span><span class="kwrd">=&#8221;Date&#8221;</span><span class="kwrd">>Date</span><span class="kwrd">&lt;/</span><span class="html">label</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">   5:  </span>    <span class="kwrd">&lt;</span><span class="html">input</span> <span class="attr">type</span><span class="kwrd">=&#8221;text&#8221;</span> <span class="attr">id</span><span class="kwrd">=&#8221;Date&#8221;</span> <span class="attr">name</span><span class="kwrd">=&#8221;<strong>Date</strong>&#8221;</span> <span class="attr">value</span><span class="kwrd">=&#8221;22/1/2010&#8221;</span> <span class="kwrd">/></span></p>
-
-<p> <span class="lnum">   6:  </span><span class="kwrd">&lt;/</span><span class="html">p</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">   7:  </span><span class="kwrd">&lt;</span><span class="html">p</span> <span class="attr">class</span><span class="kwrd">=&#8221;datalist-form&#8221;</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">   8:  </span>    <span class="kwrd">&lt;</span><span class="html">label</span> <span class="attr">for</span><span class="kwrd">=&#8221;Title&#8221;</span><span class="kwrd">>Title</span><span class="kwrd">&lt;/</span><span class="html">label</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">   9:  </span>    <span class="kwrd">&lt;</span><span class="html">input</span> <span class="attr">class</span><span class="kwrd">=&#8221;text-box single-line&#8221;</span> <span class="attr">id</span><span class="kwrd">=&#8221;Title&#8221;</span> <span class="attr">name</span><span class="kwrd">=&#8221;<strong>Title</strong>&#8221;</span> <span class="attr">type</span><span class="kwrd">=&#8221;text&#8221;</span> <span class="kwrd">/></span></p>
-
-<p> <span class="lnum">  10:  </span><span class="kwrd">&lt;/</span><span class="html">p</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">  11:  </span><span class="kwrd">&lt;</span><span class="html">p</span> <span class="attr">class</span><span class="kwrd">=&#8221;datalist-form&#8221;</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">  12:  </span>    <span class="kwrd">&lt;</span><span class="html">label</span> <span class="attr">for</span><span class="kwrd">=&#8221;Resume&#8221;</span><span class="kwrd">>Resume</span><span class="kwrd">&lt;/</span><span class="html">label</span><span class="kwrd">></span></p>
-
-<p> <span class="lnum">  13:  </span>    <span class="kwrd">&lt;</span><span class="html">input</span> <span class="attr">class</span><span class="kwrd">=&#8221;text-box single-line&#8221;</span> <span class="attr">id</span><span class="kwrd">=&#8221;Resume&#8221;</span> <span class="attr">name</span><span class="kwrd">=&#8221;</span><strong><span class="kwrd">Resume</span></strong><span class="kwrd">&#8221;</span> <span class="attr">type</span><span class="kwrd">=&#8221;text&#8221;</span> <span class="kwrd">/></span></p>
-
-<p> <span class="lnum">  14:  </span><span class="kwrd">&lt;/</span><span class="html">p</span><span class="kwrd">></span></p></li>
+<li>The view model:</li>
 </ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='c#'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">NewsModuleViewModel</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="na">    [ScaffoldColumn(false)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">int</span> <span class="n">ID</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [DisplayName(“News Date”)]</span>
+</span><span class='line'><span class="na">    [DisplayFormat(DataFormatString = “d”, ApplyFormatInEditMode = true)]</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = “Por favor selecione uma data”)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="n">DateTime</span><span class="p">?</span> <span class="n">Date</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [DisplayName(“Title”)]</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = “Por favor digite um titulo”)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Title</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [DisplayName(“Resume”)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Resume</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [DisplayName(“My Text”)]</span>
+</span><span class='line'><span class="na">    [UIHint(“HtmlText”)]</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = “Por favor digite um texto para a noticia”)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Text</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [DisplayName(“Image”)]</span>
+</span><span class='line'><span class="na">    [UIHint(“DbImage”, null, “AspectRatio”, 1.0)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">ImagePath</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The form:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">”/uac/NewsModule/Edit/12”</span> <span class="na">enctype=</span><span class="s">”multipart/form-data”</span> <span class="na">method=</span><span class="s">”post”</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">”datalist-form”</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">”Date”</span><span class="nt">&gt;</span>Date<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">”text”</span> <span class="na">id=</span><span class="s">”Date”</span> <span class="na">name=</span><span class="s">”Date”</span> <span class="na">value=</span><span class="s">”22/1/2010”</span> <span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">”datalist-form”</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">”Title”</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">”text-box</span> <span class="na">single-line</span><span class="err">”</span> <span class="na">id=</span><span class="s">”Title”</span> <span class="na">name=</span><span class="s">”Title”</span> <span class="na">type=</span><span class="s">”text”</span> <span class="nt">/&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">”datalist-form”</span><span class="nt">&gt;</span>
+</span><span class='line'>         <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">”Resume”</span><span class="nt">&gt;</span>Resume<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>         <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">”text-box</span> <span class="na">single-line</span><span class="err">”</span> <span class="na">id=</span><span class="s">”Resume”</span> <span class="na">name=</span><span class="s">”Resume”</span> <span class="na">type=</span><span class="s">”text”</span> <span class="nt">/&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;/form&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>(I&#8217;ve reduced the HTML markup snippet for the sake of simplicity).</p>

@@ -96,22 +96,14 @@
 
 <p>Usually, the DefaultModelBinder implementation will be just fine for you and no additional work will be needed. However, there are situations where we need to tweak settings a bit. Model binding works in a associative manner, where you can assign a binder to a specific type, like this:</p>
 
-<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;ModelBinders.Binders.Add(
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='c#'><span class='line'><span class="n">ModelBinders</span><span class="p">.</span><span class="n">Binders</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span>
+</span><span class='line'>  <span class="k">typeof</span><span class="p">(</span><span class="n">DateTime</span><span class="p">),</span>
+</span><span class='line'>  <span class="n">newDateTimeModelBinder</span><span class="p">());</span>
+</span></code></pre></td></tr></table></div></figure>
 
-
-
-
-
-
-&lt;span class="lnum"&gt;   2:  &lt;/span&gt;    &lt;span class="kwrd"&gt;typeof&lt;/span&gt;(DateTime),
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   3:  &lt;/span&gt;    &lt;span class="kwrd"&gt;new&lt;/span&gt; DateTimeModelBinder());
-</code></pre>
 
 <p>Here, we&#8217;re saying that all DateTime values should be bound using the DateTimeModelBinder class. DefaultModelBinder will figure that out and call this class when it sees a property of DateTime type. We could say that it works recursivly by looking for the appropriate binder for each property. If no custom binder is found, DefaultModelBinder will take care of it anyway.</p>
 
@@ -119,8 +111,10 @@
 
 <p>The IModelBinder interface defines a single method:</p>
 
-<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;&lt;span class="kwrd"&gt;object&lt;/span&gt; BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext);
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c#'><span class='line'><span class="kt">object</span> <span class="nf">BindModel</span><span class="p">(</span><span class="n">ControllerContext</span> <span class="n">controllerContext</span><span class="p">,</span> <span class="n">ModelBindingContext</span> <span class="n">bindingContext</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>The <strong>bindingContext</strong> argument contains information about the mode (type, metadata, name, etc). All you have to do is to use the <strong>bindingContext.ValueProvider</strong> collection to retrieve the correct data for the given model and return it.</p>
 

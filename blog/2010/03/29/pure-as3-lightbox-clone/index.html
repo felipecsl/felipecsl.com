@@ -90,31 +90,32 @@
   </header>
 
 
-<div class="entry-content"><p>There are a plenty of <a href="http://leandrovieira.com/projects/jquery/lightbox/">lightbox</a> <a href="http://www.huddletogether.com/projects/lightbox2/">implementations</a> around the web. Whenever you need one, you won&#8217;t need to make up your own for sure. Just pick one of the available options. However, if you&#8217;re restricted to flash only, the options get reduced drastically. This is why I came up with <a href="http://www.felipel.com/files/as3_lightbox.zip">my own lightbox</a> implementation with ActionScript. You can see it in action in my company&#8217;s <a href="http://www.quavio.com.br">website</a>.</p>
+<div class="entry-content"><p>There are a plenty of <a href="http://leandrovieira.com/projects/jquery/lightbox/">lightbox</a> <a href="http://www.huddletogether.com/projects/lightbox2/">implementations</a> around the web. Whenever you need one, you won&#8217;t need to make up your own for sure. Just pick one of the available options. However, if you&#8217;re restricted to flash only, the options get reduced drastically. This is why I came up with <a href="https://github.com/felipecsl/actionscript3-lightbox">my own lightbox</a> implementation with ActionScript. You can see it in action in my company&#8217;s <a href="http://www.quavio.com.br">website</a>.</p>
 
-<p><img src="/wp-content/uploads/2010/3/lightbox.png" alt="Flash Lightbox screenshot" /></p>
+<p><img src="/images/2010/3/lightbox.png" alt="Flash Lightbox screenshot" /></p>
 
 <p>It works just like the regular lightbox versions:</p>
 
-<p>[code:js]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span><span class="o">:</span><span class="nx">Lightbox</span> <span class="nx">myLb</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Lightbox</span><span class="p">(</span>
+</span><span class='line'>  <span class="nx">_sTitle</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">// lightbox title</span>
+</span><span class='line'>  <span class="nx">_sLinkToVisit</span><span class="o">:</span> <span class="nb">String</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>  <span class="c1">// link to the page that will be visited upon click</span>
+</span><span class='line'>  <span class="nx">_sImageText</span><span class="o">:</span> <span class="nb">String</span> <span class="o">=</span> <span class="s2">&quot;Imagem&quot;</span><span class="p">,</span> <span class="c1">// &#39;Image&#39; text</span>
+</span><span class='line'>  <span class="nx">_sOfText</span><span class="o">:</span> <span class="nb">String</span> <span class="o">=</span> <span class="s2">&quot;de&quot;</span><span class="p">);</span> <span class="c1">// &#39;Of&#39; text</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// shows the lighbox with the provided array of images</span>
+</span><span class='line'><span class="nx">myLb</span><span class="p">.</span><span class="nx">show</span><span class="p">([</span><span class="s1">&#39;image1.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;image2.jpg&#39;</span><span class="p">,</span> <span class="p">...]);</span>
+</span><span class='line'><span class="nx">myLb</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span> <span class="c1">// closes the lightbox</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>var:Lightbox myLb = new Lightbox(</p>
-
-<p>_sTitle: String, // lightbox title</p>
-
-<p>_sLinkToVisit: String = null,  // link to the page that will be visited upon click</p>
-
-<p>_sImageText: String = &#8220;Imagem&#8221;, // &#8216;Image&#8217; text</p>
-
-<p>_sOfText: String = &#8220;de&#8221;); // &#8216;Of&#8217; text</p>
-
-<p>// shows the lighbox with the provided array of images</p>
-
-<p>myLb.show([&#8216;image1.jpg&#8217;, &#8216;image2.jpg&#8217;, &#8230;]);</p>
-
-<p>myLb.hide(); // closes the lightbox</p>
-
-<p>[/code]</p>
 
 <p>Please be aware that, in order to use it, you&#8217;ll have to create a Lightbox movieclip in the Flash IDE with the following elements inside it:</p>
 
