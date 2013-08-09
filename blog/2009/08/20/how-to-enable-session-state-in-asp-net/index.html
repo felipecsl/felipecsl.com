@@ -100,7 +100,7 @@
 <li><p>Enable the ASP.NET Session State Manager Service (under Control Panel > Administrative Tools > Services)</p></li>
 <li><p>Enable it in the web.config file: <strong><pages enableSessionState="true"></strong></p></li>
 <li><p>Add the proper http module to the web.config: <strong><add name="Session" type="System.Web.SessionState.SessionStateModule" /></strong></p></li>
-<li><p>At last but not least: Make sure you&#8217;re accessing the Session object after it has been initialized. This is very important, since if you try to manipulate it in the page constructor, for example (which was my case), you&#8217;ll still get the above exception, even after executing steps 1, 2 and 3. You should be able to access it after the page <strong>OnLoad</strong> event has been fired.</p></li>
+<li><p>At last but not least: Make sure you&rsquo;re accessing the Session object after it has been initialized. This is very important, since if you try to manipulate it in the page constructor, for example (which was my case), you&rsquo;ll still get the above exception, even after executing steps 1, 2 and 3. You should be able to access it after the page <strong>OnLoad</strong> event has been fired.</p></li>
 </ol>
 
 </div>
@@ -214,7 +214,10 @@
 
 
 
-
+<a href="mailto:felipe.lima@gmail.com" title="Pair program with me!">
+  <img  src="http://pairprogramwith.me/badge.png"
+        alt="Pair program with me!" style="width: 150px" />
+</a>
   
 </aside>
 

@@ -95,15 +95,15 @@
 <p>It turns out that the only way to disable it once and for all is a combination of a setting in the web.config and the ValidateRequestAttribute.</p>
 
 <ol>
-<li><p>Add the following line to your web.config file right after &lt;system.web>: <strong><httpRuntime requestValidationMode="2.0" /></strong></p></li>
-<li><p>Add the <strong>[ValidateInput(false)]</strong> attribute to the controller <strong>and</strong> the action method you want to expose</p></li>
-<li><p>Rebuild the project and go drink a beer.</p></li>
+<li><p> Add the following line to your web.config file right after &lt;system.web>: <strong><httpRuntime requestValidationMode="2.0" /></strong></p></li>
+<li><p> Add the <strong>[ValidateInput(false)]</strong> attribute to the controller <strong>and</strong> the action method you want to expose</p></li>
+<li><p> Rebuild the project and go drink a beer.</p></li>
 </ol>
 
 
 <p>Remember it may be unsafe to disable request validation due to potential vulnerability <a href="http://en.wikipedia.org/wiki/Cross-site_scripting">XSS</a> and <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">XSRF</a> attacks.</p>
 
-<p>Note: This is targeted to ASP.NET 4, when the <a href="http://www.asp.net/(S(ywiyuluxr3qb2dfva1z5lgeg">requestValidationMode</a>)/learn/whitepapers/aspnet4/breaking-changes/#_TOC7) attribute was introduced. In .NET 3.5, you can skip the first step and only do 2 and 3, but I&#8217;m not 100% positive about that.</p>
+<p>Note: This is targeted to ASP.NET 4, when the <a href="http://www.asp.net/(S(ywiyuluxr3qb2dfva1z5lgeg">requestValidationMode</a>)/learn/whitepapers/aspnet4/breaking-changes/#_TOC7) attribute was introduced. In .NET 3.5, you can skip the first step and only do 2 and 3, but I&rsquo;m not 100% positive about that.</p>
 
 <p>Happy coding :)</p>
 </div>
@@ -217,7 +217,10 @@
 
 
 
-
+<a href="mailto:felipe.lima@gmail.com" title="Pair program with me!">
+  <img  src="http://pairprogramwith.me/badge.png"
+        alt="Pair program with me!" style="width: 150px" />
+</a>
   
 </aside>
 

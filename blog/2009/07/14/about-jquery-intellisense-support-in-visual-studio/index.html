@@ -92,13 +92,13 @@
 
 <div class="entry-content"><p>I just found out that there is an effort at Microsoft together with the jQuery team in order to add intellisense support for this framework in Visual Studio 2008. We all know that the javascript intellisense support in VS has always been almost none, but now it seems that the guys at Microsoft are changing the way and starting to support it progressively, starting by including it in its ASP.NET MVC package and adding intellisense support for interaction with the AJAX framework.</p>
 
-<p>I&#8217;ve been trying to enable this functionality today and found out that it just isn&#8217;t worth the effort, at least for the latest jQuery version (1.3.2). Basically, you need to first off <a href="http://weblogs.asp.net/scottgu/archive/2008/11/21/jquery-intellisense-in-vs-2008.aspx">install a patch</a> to enable the functionality. Then, you&#8217;ll need a -vsdocs.js file, which is just an API descriptor containing all the documentation for the framework. It is not actually a js file. You can find more detailed information <a href="http://blogs.ipona.com/james/archive/2009/01/14/jquery-1.3-and-visual-studio-2008-intellisense.aspx">here</a>. Then, JScript IntelliSense will parse all the included js files and check for errors. If it thinks that one of your included script files isn&#8217;t good, intellisense just won&#8217;t work. The problem is that it complains about the actual jQuery file not being well formed:</p>
+<p>I&rsquo;ve been trying to enable this functionality today and found out that it just isn&rsquo;t worth the effort, at least for the latest jQuery version (1.3.2). Basically, you need to first off <a href="http://weblogs.asp.net/scottgu/archive/2008/11/21/jquery-intellisense-in-vs-2008.aspx">install a patch</a> to enable the functionality. Then, you&rsquo;ll need a -vsdocs.js file, which is just an API descriptor containing all the documentation for the framework. It is not actually a js file. You can find more detailed information <a href="http://blogs.ipona.com/james/archive/2009/01/14/jquery-1.3-and-visual-studio-2008-intellisense.aspx">here</a>. Then, JScript IntelliSense will parse all the included js files and check for errors. If it thinks that one of your included script files isn&rsquo;t good, intellisense just won&rsquo;t work. The problem is that it complains about the actual jQuery file not being well formed:</p>
 
-<p><strong>&#8220;Warning</strong><strong>  </strong><strong>15</strong><strong>  </strong><strong>Error updating JScript IntelliSense: C:&#8230;.\javascript\jquery-1.3.js: Object doesn&#8217;t support this property or method @ 2069:1&#8221;</strong></p>
+<p><strong>&ldquo;Warning</strong><strong>  </strong><strong>15</strong><strong>  </strong><strong>Error updating JScript IntelliSense: C:.&hellip;\javascript\jquery-1.3.js: Object doesn&rsquo;t support this property or method @ 2069:1&rdquo;</strong></p>
 
-<p>Just to shorten the story, you&#8217;ll get to spend some time trying to make it to work, probably without success and then will give up miserably (my case). The fact is that it just isn&#8217;t worth all the work, while you still have a <a href="http://docs.jquery.com/Main_Page">decent online documentation</a> to help.</p>
+<p>Just to shorten the story, you&rsquo;ll get to spend some time trying to make it to work, probably without success and then will give up miserably (my case). The fact is that it just isn&rsquo;t worth all the work, while you still have a <a href="http://docs.jquery.com/Main_Page">decent online documentation</a> to help.</p>
 
-<p>In the end, you&#8217;ll have to calm down and wait a little bit while Visual Studio 2010 is still beta since jQuery will be shipped with VS2010 and it will include built-in robust intellisense and documentation (not from a downloaded patch). This is good news for us all! In the meantime, let&#8217;s wait for the final release :)</p>
+<p>In the end, you&rsquo;ll have to calm down and wait a little bit while Visual Studio 2010 is still beta since jQuery will be shipped with VS2010 and it will include built-in robust intellisense and documentation (not from a downloaded patch). This is good news for us all! In the meantime, let&rsquo;s wait for the final release :)</p>
 
 <p>[Update 07/17/2009]</p>
 
@@ -214,7 +214,10 @@
 
 
 
-
+<a href="mailto:felipe.lima@gmail.com" title="Pair program with me!">
+  <img  src="http://pairprogramwith.me/badge.png"
+        alt="Pair program with me!" style="width: 150px" />
+</a>
   
 </aside>
 

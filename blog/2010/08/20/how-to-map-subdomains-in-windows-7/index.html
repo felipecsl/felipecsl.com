@@ -9,7 +9,7 @@
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="Over the last days, I&#8217;ve been working on implementing multiple subdomains with authentication in asp.net for the webapp I&#8217;m currently &hellip;">
+  <meta name="description" content="Over the last days, I&rsquo;ve been working on implementing multiple subdomains with authentication in asp.net for the webapp I&rsquo;m currently &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,19 +90,19 @@
   </header>
 
 
-<div class="entry-content"><p>Over the last days, I&#8217;ve been working on implementing multiple subdomains with authentication in asp.net for the webapp I&#8217;m currently working on.</p>
+<div class="entry-content"><p>Over the last days, I&rsquo;ve been working on implementing multiple subdomains with authentication in asp.net for the webapp I&rsquo;m currently working on.</p>
 
 <p>There are a few steps needed in order to configure IIS, DNS and authentication.</p>
 
 <ol>
-<li>Select the website you&#8217;re working on, in the IIS Manager screen, in the left side tree. Then, click the &#8220;Bindings&#8221; option in the right pane</li>
+<li>Select the website you&rsquo;re working on, in the IIS Manager screen, in the left side tree. Then, click the &ldquo;Bindings&rdquo; option in the right pane</li>
 </ol>
 
 
 <p><img src="/images/2010/8/bindings.png" alt="" /></p>
 
 <ol>
-<li><p>In the Site Bindings window, add each subdomain that you want to map to your site. Unfortunately, wildcard mapping is not supported, so you&#8217;ll have to manually type all the subdomains before using it.</p></li>
+<li><p>In the Site Bindings window, add each subdomain that you want to map to your site. Unfortunately, wildcard mapping is not supported, so you&rsquo;ll have to manually type all the subdomains before using it.</p></li>
 <li><p>In the windows hosts file (C:\Windows\system32\drivers\etc\hosts), add up each subdomain again, pointing to 127.0.0.1 (see below):</p></li>
 </ol>
 
@@ -110,7 +110,7 @@
 <p><img src="/images/2010/8/hosts.png" alt="" /></p>
 
 <ol>
-<li>Lastly, you&#8217;ll need to update your web.config cookies configuration, so that it is set to work with any subdomain. By default, your login cookies will only be valid for the default subdomain (example.com and www.example.com)</li>
+<li>Lastly, you&rsquo;ll need to update your web.config cookies configuration, so that it is set to work with any subdomain. By default, your login cookies will only be valid for the default subdomain (example.com and www.example.com)</li>
 </ol>
 
 
@@ -232,7 +232,10 @@
 
 
 
-
+<a href="mailto:felipe.lima@gmail.com" title="Pair program with me!">
+  <img  src="http://pairprogramwith.me/badge.png"
+        alt="Pair program with me!" style="width: 150px" />
+</a>
   
 </aside>
 

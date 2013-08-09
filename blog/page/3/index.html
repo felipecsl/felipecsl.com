@@ -9,7 +9,7 @@
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="There are a plenty of lightbox implementations around the web. Whenever you need one, you won&#8217;t need to make up your own for sure. Just pick &hellip;">
+  <meta name="description" content="There are a plenty of lightbox implementations around the web. Whenever you need one, you won&rsquo;t need to make up your own for sure. Just pick &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,7 +93,7 @@
   </header>
 
 
-  <div class="entry-content"><p>There are a plenty of <a href="http://leandrovieira.com/projects/jquery/lightbox/">lightbox</a> <a href="http://www.huddletogether.com/projects/lightbox2/">implementations</a> around the web. Whenever you need one, you won&#8217;t need to make up your own for sure. Just pick one of the available options. However, if you&#8217;re restricted to flash only, the options get reduced drastically. This is why I came up with <a href="https://github.com/felipecsl/actionscript3-lightbox">my own lightbox</a> implementation with ActionScript. You can see it in action in my company&#8217;s <a href="http://www.quavio.com.br">website</a>.</p>
+  <div class="entry-content"><p>There are a plenty of <a href="http://leandrovieira.com/projects/jquery/lightbox/">lightbox</a> <a href="http://www.huddletogether.com/projects/lightbox2/">implementations</a> around the web. Whenever you need one, you won&rsquo;t need to make up your own for sure. Just pick one of the available options. However, if you&rsquo;re restricted to flash only, the options get reduced drastically. This is why I came up with <a href="https://github.com/felipecsl/actionscript3-lightbox">my own lightbox</a> implementation with ActionScript. You can see it in action in my company&rsquo;s <a href="http://www.quavio.com.br">website</a>.</p>
 
 <p><img src="/images/2010/3/lightbox.png" alt="Flash Lightbox screenshot" /></p>
 
@@ -120,15 +120,15 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Please be aware that, in order to use it, you&#8217;ll have to create a Lightbox movieclip in the Flash IDE with the following elements inside it:</p>
+<p>Please be aware that, in order to use it, you&rsquo;ll have to create a Lightbox movieclip in the Flash IDE with the following elements inside it:</p>
 
 <p><strong>_txtClientName</strong>,<strong> _txtCurrPos</strong>, <strong>_btnNext</strong>, <strong><em>btnPrev </em>btnClose</strong>, <strong>_bg</strong> and <strong>_btnAcesse</strong>.</p>
 
-<p>These elements are referenced inside the Lightbox class, so you&#8217;ll need to create elements that match these names in the IDE so that the class will find them.</p>
+<p>These elements are referenced inside the Lightbox class, so you&rsquo;ll need to create elements that match these names in the IDE so that the class will find them.</p>
 
-<p>Additionally, you&#8217;ll need two static variables containing the stage original width and height. This is needed in order to automatically reposition the lightbox in the middle of the screen on stage resize.</p>
+<p>Additionally, you&rsquo;ll need two static variables containing the stage original width and height. This is needed in order to automatically reposition the lightbox in the middle of the screen on stage resize.</p>
 
-<p>Also, you&#8217;ll need to download <a href="http://www.greensock.com/tweenlite/">TweenLite</a> for the all the effects to work!</p>
+<p>Also, you&rsquo;ll need to download <a href="http://www.greensock.com/tweenlite/">TweenLite</a> for the all the effects to work!</p>
 
 <p>Please let me know if you have any suggestions of bug fixes and/or improvements and I will be happy to answer your requests.</p>
 </div>
@@ -171,15 +171,15 @@
 <p>It turns out that the only way to disable it once and for all is a combination of a setting in the web.config and the ValidateRequestAttribute.</p>
 
 <ol>
-<li><p>Add the following line to your web.config file right after &lt;system.web>: <strong><httpRuntime requestValidationMode="2.0" /></strong></p></li>
-<li><p>Add the <strong>[ValidateInput(false)]</strong> attribute to the controller <strong>and</strong> the action method you want to expose</p></li>
-<li><p>Rebuild the project and go drink a beer.</p></li>
+<li><p> Add the following line to your web.config file right after &lt;system.web>: <strong><httpRuntime requestValidationMode="2.0" /></strong></p></li>
+<li><p> Add the <strong>[ValidateInput(false)]</strong> attribute to the controller <strong>and</strong> the action method you want to expose</p></li>
+<li><p> Rebuild the project and go drink a beer.</p></li>
 </ol>
 
 
 <p>Remember it may be unsafe to disable request validation due to potential vulnerability <a href="http://en.wikipedia.org/wiki/Cross-site_scripting">XSS</a> and <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">XSRF</a> attacks.</p>
 
-<p>Note: This is targeted to ASP.NET 4, when the <a href="http://www.asp.net/(S(ywiyuluxr3qb2dfva1z5lgeg">requestValidationMode</a>)/learn/whitepapers/aspnet4/breaking-changes/#_TOC7) attribute was introduced. In .NET 3.5, you can skip the first step and only do 2 and 3, but I&#8217;m not 100% positive about that.</p>
+<p>Note: This is targeted to ASP.NET 4, when the <a href="http://www.asp.net/(S(ywiyuluxr3qb2dfva1z5lgeg">requestValidationMode</a>)/learn/whitepapers/aspnet4/breaking-changes/#_TOC7) attribute was introduced. In .NET 3.5, you can skip the first step and only do 2 and 3, but I&rsquo;m not 100% positive about that.</p>
 
 <p>Happy coding :)</p>
 </div>
@@ -217,12 +217,12 @@
   </header>
 
 
-  <div class="entry-content"><p>During the last couple days I&#8217;ve been experimenting with <a href="/admin/Pages/www.mongodb.com">MongoDB</a> and its <a href="http://github.com/samus/mongodb-csharp">C# driver</a>, cleverly written by Sam Corder. I&#8217;m investigating it as a replacement for a SQL Server database I am using in a web application that is higly community driven. This specific characteristic is the one that makes the <a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a> movement rise atop regular RDBMS systems like SQL Server or MySQL, since it is hard to mantain relational integrity in these scenarios. Other key features of MongoDB are focus on performance and scalability.</p>
+  <div class="entry-content"><p>During the last couple days I&rsquo;ve been experimenting with <a href="/admin/Pages/www.mongodb.com">MongoDB</a> and its <a href="http://github.com/samus/mongodb-csharp">C# driver</a>, cleverly written by Sam Corder. I&rsquo;m investigating it as a replacement for a SQL Server database I am using in a web application that is higly community driven. This specific characteristic is the one that makes the <a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a> movement rise atop regular RDBMS systems like SQL Server or MySQL, since it is hard to mantain relational integrity in these scenarios. Other key features of MongoDB are focus on performance and scalability.</p>
 
-<p><a href="http://odetocode.com/Blogs/scott/archive/2009/10/13/experimenting-with-mongodb-from-c.aspx">K. Scott Allen</a> already wrote a quick intro on using the C# driver, so I used it as a tutorial for my first steps. Here are some thoughts I&#8217;d like to share on this topic:</p>
+<p><a href="http://odetocode.com/Blogs/scott/archive/2009/10/13/experimenting-with-mongodb-from-c.aspx">K. Scott Allen</a> already wrote a quick intro on using the C# driver, so I used it as a tutorial for my first steps. Here are some thoughts I&rsquo;d like to share on this topic:</p>
 
 <ul>
-<li>I don&#8217;t like being held by the verbosity of instantiating Document objects every time I want to manipulate the database, so I&#8217;ve written method overloads for the main operations, like Insert, Update, Find and Delete that receive a plain object and only then convert them to Document. This allows us to leverage anonymous objects in C# and makes the code cleaner:</li>
+<li>I don&rsquo;t like being held by the verbosity of instantiating Document objects every time I want to manipulate the database, so I&rsquo;ve written method overloads for the main operations, like Insert, Update, Find and Delete that receive a plain object and only then convert them to Document. This allows us to leverage anonymous objects in C# and makes the code cleaner:</li>
 </ul>
 
 
@@ -320,7 +320,7 @@
 
 <p>Database files work just like plain Documents and will be assigned an Id upon creation. Therefore, they can be later queried just like a regular document.</p>
 
-<p>This was just a quick glance over MongoDB and C# integration. I&#8217;m planning on using it on a large project and will post here my findings. More to come.</p>
+<p>This was just a quick glance over MongoDB and C# integration. I&rsquo;m planning on using it on a large project and will post here my findings. More to come.</p>
 </div>
   
   
@@ -356,7 +356,7 @@
   </header>
 
 
-  <div class="entry-content"><p>During the last days I had to implement a custom model binding for a dynamic view model in a project I&#8217;m working on. This had me diving deep in the DefaultModelBinder implementation and how binding works in ASP.NET MVC.</p>
+  <div class="entry-content"><p>During the last days I had to implement a custom model binding for a dynamic view model in a project I&rsquo;m working on. This had me diving deep in the DefaultModelBinder implementation and how binding works in ASP.NET MVC.</p>
 
 <p>Basically the request carries the data you controller action needs to perform its work. It may come from several different locations, like form variables, the query string and route data, in the form of key/value pairs, string-encoded.</p>
 
@@ -371,7 +371,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Here, we&#8217;re saying that all DateTime values should be bound using the DateTimeModelBinder class. DefaultModelBinder will figure that out and call this class when it sees a property of DateTime type. We could say that it works recursivly by looking for the appropriate binder for each property. If no custom binder is found, DefaultModelBinder will take care of it anyway.</p>
+<p>Here, we&rsquo;re saying that all DateTime values should be bound using the DateTimeModelBinder class. DefaultModelBinder will figure that out and call this class when it sees a property of DateTime type. We could say that it works recursivly by looking for the appropriate binder for each property. If no custom binder is found, DefaultModelBinder will take care of it anyway.</p>
 
 <p><img src="http://i.pbase.com/o4/60/687660/1/64594355.dte2s9SV.ropeknot.JPG" alt="" /></p>
 
@@ -384,7 +384,7 @@
 
 <p>The <strong>bindingContext</strong> argument contains information about the mode (type, metadata, name, etc). All you have to do is to use the <strong>bindingContext.ValueProvider</strong> collection to retrieve the correct data for the given model and return it.</p>
 
-<p>Apart from everything, I strongly recommend building the asp.net mvc source code instead of using the installer, so you can debug/step into the mvc classes. You can download the latest MVC 2 RC 2 source code from <a href="http://aspnet.codeplex.com/releases/view/39978#DownloadId=104717">codeplex</a>. Just do not forget to uninstall MVC from the GAC before building or you&#8217;ll get ambiguous references.</p>
+<p>Apart from everything, I strongly recommend building the asp.net mvc source code instead of using the installer, so you can debug/step into the mvc classes. You can download the latest MVC 2 RC 2 source code from <a href="http://aspnet.codeplex.com/releases/view/39978#DownloadId=104717">codeplex</a>. Just do not forget to uninstall MVC from the GAC before building or you&rsquo;ll get ambiguous references.</p>
 </div>
   
   
@@ -422,7 +422,7 @@
 
   <div class="entry-content"><p><img src="http://i.zdnet.com/blogs/agile-is-cool.jpg" alt="" /></p>
 
-<p>Ever since I started discovering the MVC world I decided to completely forget Web Forms and actually adopt asp.net MVC as my web programming framework of choice. What&#8217;s great about it is that you have complete control over the generated html output and absolute separation of business logic, presentation layer and model. It&#8217;s all about <a href="http://en.wikipedia.org/wiki/Convention_over_configuration">convention over configuration</a>! This is one of the reasons why I decided to learn Ruby on Rails some time ago. It is clear that the <strike>ASP.NET MVC</strike> .NET Framework 3.5 SP1 release was somewhat influenced by Rails.</p>
+<p>Ever since I started discovering the MVC world I decided to completely forget Web Forms and actually adopt asp.net MVC as my web programming framework of choice. What&rsquo;s great about it is that you have complete control over the generated html output and absolute separation of business logic, presentation layer and model. It&rsquo;s all about <a href="http://en.wikipedia.org/wiki/Convention_over_configuration">convention over configuration</a>! This is one of the reasons why I decided to learn Ruby on Rails some time ago. It is clear that the <strike>ASP.NET MVC</strike> .NET Framework 3.5 SP1 release was somewhat influenced by Rails.</p>
 
 <p>One of the great things about ASP.NET MVC is model binding. K. Scott Allen wrote a <a href="http://odetocode.com/Blogs/scott/archive/2009/04/27/6-tips-for-asp-net-mvc-model-binding.aspx">great blog post</a> with tips on binding. Basically, it collects your request data and fills up your view model with the incoming data.</p>
 
@@ -529,19 +529,19 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>(I&#8217;ve reduced the HTML markup snippet for the sake of simplicity).</p>
+<p>(I&rsquo;ve reduced the HTML markup snippet for the sake of simplicity).</p>
 
 <p>Please note that the input field name properties match the view model property names. The DefaultModelBinder will look for these names when doing the data binding!</p>
 
 <p><a href="http://haacked.com/archive/2008/10/23/model-binding-to-a-list.aspx">
-You can even bind complex objects like lists</a>, for example, but, in this case, you&#8217;ll have to name your input fields according to the element index on the list! Eg.:</p>
+You can even bind complex objects like lists</a>, for example, but, in this case, you&rsquo;ll have to name your input fields according to the element index on the list! Eg.:</p>
 
 <pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;&lt;span class="kwrd"&gt;&lt;&lt;/span&gt;&lt;span class="html"&gt;input&lt;/span&gt; &lt;span class="attr"&gt;type&lt;/span&gt;&lt;span class="kwrd"&gt;="text"&lt;/span&gt; &lt;span class="attr"&gt;name&lt;/span&gt;&lt;span class="kwrd"&gt;="&lt;strong&gt;ImageList[0].FileName&lt;/strong&gt;" size="&lt;/span&gt;&lt;span class="attr"&gt;44&lt;/span&gt;" &lt;span class="kwrd"&gt;/&gt;&lt;/span&gt;
 </code></pre>
 
 <p>It is really straightforward once you get used to it. Just always make sure to create a ViewModel class for you, instead of using the data classes directly (eg.: with LINQ to SQL).</p>
 
-<p>If you need to bind uploaded files as well, it gets a bit more complicated. The best solution I&#8217;ve found so far was <strong>not </strong>to bind file input control and later retrieve the uploaded file in the controller action from the Request.Files collection.</p>
+<p>If you need to bind uploaded files as well, it gets a bit more complicated. The best solution I&rsquo;ve found so far was <strong>not </strong>to bind file input control and later retrieve the uploaded file in the controller action from the Request.Files collection.</p>
 </div>
   
   
@@ -585,7 +585,7 @@ You can even bind complex objects like lists</a>, for example, but, in this case
 
 <p>[code:c#]</p>
 
-<p>&lt;asp:GridView ID=&#8221;GridView1&#8221; runat=&#8221;server&#8221; DataSourceID=&#8221;GridDataSource&#8221; EnablePersistedSelection=&#8221;true&#8221; <strong>OnRowDataBound=&#8221;GridView_RowDataBound&#8221;</strong>></p>
+<p>&lt;asp:GridView ID=&ldquo;GridView1&rdquo; runat=&ldquo;server&rdquo; DataSourceID=&ldquo;GridDataSource&rdquo; EnablePersistedSelection=&ldquo;true&rdquo; <strong>OnRowDataBound=&ldquo;GridView_RowDataBound&rdquo;</strong>></p>
 
 <p>[/code]</p>
 
@@ -601,7 +601,7 @@ You can even bind complex objects like lists</a>, for example, but, in this case
 
 <p>{</p>
 
-<p>e.Row.Attributes[&#8220;onclick&#8221;] = &#8220;location.href = &#8216;&#8221; + table.GetActionPath(&#8220;Details&#8221;, e.Row.DataItem) + &#8220;&#8217;&#8221;;</p>
+<p>e.Row.Attributes[&ldquo;onclick&rdquo;] = &ldquo;location.href = &lsquo;&rdquo; + table.GetActionPath(&ldquo;Details&rdquo;, e.Row.DataItem) + &ldquo;&rsquo;&rdquo;;</p>
 
 <p>}</p>
 
@@ -647,13 +647,13 @@ You can even bind complex objects like lists</a>, for example, but, in this case
 
   <div class="entry-content"><p>ASP.NET offers a powerful built-in provider-based support for membership, roles and profile management. That means you get a fully functional set of features for free on your project just out of the box.</p>
 
-<p>I&#8217;ve been working in order to integrate membership and profile management into a MVC application I am developing, so I had to refresh my mind on these topics. There are some gotchas around these topics that are worth sharing.</p>
+<p>I&rsquo;ve been working in order to integrate membership and profile management into a MVC application I am developing, so I had to refresh my mind on these topics. There are some gotchas around these topics that are worth sharing.</p>
 
-<p>First of all, the default ASP.NET providers implementation for membership, roles and profiles are based on SQL Server database storage, so you&#8217;ll have to configure one to start playing. A gotcha here is to run the aspnet_regsql tool to generate the required tables, schemas, stored procedures, etc. in order for the providers to work. Do not forget also to configure them correctly in the web.config file, including the connectionStringName and applicationName properties (very important!).</p>
+<p>First of all, the default ASP.NET providers implementation for membership, roles and profiles are based on SQL Server database storage, so you&rsquo;ll have to configure one to start playing. A gotcha here is to run the aspnet_regsql tool to generate the required tables, schemas, stored procedures, etc. in order for the providers to work. Do not forget also to configure them correctly in the web.config file, including the connectionStringName and applicationName properties (very important!).</p>
 
 <p>There are several resources and tutorials around the net explaining how to set up these providers to start working. For profile management, I recommend <a href="http://odetocode.com/Articles/440.aspx">this one</a>. Profiles are the way to go if you need to include additional information pertaining your application users, so, instead of creating a custom membership provider, get along with the default one and set up profile properties in the web.config file. These settings are then stored in the database and associated with the user that is currently logged on. It is possible to add profile data to anonymous users, also, which is great!</p>
 
-<p>So, in order to integrate it with your MVC application, you can easily store and retrieve your profile properties inside your Controller with <strong>this.HttpContext.Profile[&#8220;ProfilePropertyName&#8221;].</strong></p>
+<p>So, in order to integrate it with your MVC application, you can easily store and retrieve your profile properties inside your Controller with <strong>this.HttpContext.Profile[&ldquo;ProfilePropertyName&rdquo;].</strong></p>
 
 <p>Also, do not forget to declare your property in the web.config file this way:</p>
 
@@ -665,13 +665,13 @@ You can even bind complex objects like lists</a>, for example, but, in this case
 
 <p><clear/></p>
 
-<p>&lt;add name=&#8221;AspNetSqlProfileProvider&#8221;</p>
+<p>&lt;add name=&ldquo;AspNetSqlProfileProvider&rdquo;</p>
 
-<p>type=&#8221;System.Web.Profile.SqlProfileProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&#8221;</p>
+<p>type=&ldquo;System.Web.Profile.SqlProfileProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&rdquo;</p>
 
-<p>connectionStringName=&#8221;tagsdConnectionString&#8221;</p>
+<p>connectionStringName=&ldquo;tagsdConnectionString&rdquo;</p>
 
-<p>applicationName=&#8221;/&#8221;</p>
+<p>applicationName=&ldquo;/&rdquo;</p>
 
 <p>/></p>
 
@@ -723,7 +723,7 @@ You can even bind complex objects like lists</a>, for example, but, in this case
 
   <div class="entry-content"><p>Handling exceptions in ASP.NET MVC is quite easy once you get to know the details surrounding the HandleError attribute. You can specify that a controller or a specific Action will handle errors and you can even choose which View to show based on the exception being thrown. Scott Guthrie <a href="http://weblogs.asp.net/scottgu/archive/2008/07/14/asp-net-mvc-preview-4-release-part-1.aspx">wrote</a> about this.</p>
 
-<p>What he didn&#8217;t tell us, is that there are some prerequisites for it to work as expected. First of all, you need to enable custom errors in the application web.config file:</p>
+<p>What he didn&rsquo;t tell us, is that there are some prerequisites for it to work as expected. First of all, you need to enable custom errors in the application web.config file:</p>
 
 <p><customErrors mode="On" /></p>
 
@@ -788,7 +788,7 @@ You can even bind complex objects like lists</a>, for example, but, in this case
 &lt;span class="lnum"&gt;   9:  &lt;/span&gt;}
 </code></pre>
 
-<p>What happened is that the JoinRoom was returning the shared Error View, instead of the InvalidOpJoinRoom View. This happens because the HomeController contains a HandleError attribute (line 1), which overrides the JoinRoom&#8217;s HandleError behavior (line 4), which should return the InvalidOpJoinRoom View.</p>
+<p>What happened is that the JoinRoom was returning the shared Error View, instead of the InvalidOpJoinRoom View. This happens because the HomeController contains a HandleError attribute (line 1), which overrides the JoinRoom&rsquo;s HandleError behavior (line 4), which should return the InvalidOpJoinRoom View.</p>
 
 <p>The fix is very simple: Remove the HandleError atribute from the controller and let the actual actions define the proper error handling behavior.</p>
 
@@ -828,19 +828,19 @@ You can even bind complex objects like lists</a>, for example, but, in this case
   </header>
 
 
-  <div class="entry-content"><p>I&#8217;ve been playing lately with ASP.NET MVC 2 Preview 2. I had no previous experience with this and it has been kind of a change in paradigms changing from web forms to mvc. At the same time, I feel very excited about this and believe that It is a big step forward when compared to web forms, mainly due to the separation of concerns and responsibilities.</p>
+  <div class="entry-content"><p>I&rsquo;ve been playing lately with ASP.NET MVC 2 Preview 2. I had no previous experience with this and it has been kind of a change in paradigms changing from web forms to mvc. At the same time, I feel very excited about this and believe that It is a big step forward when compared to web forms, mainly due to the separation of concerns and responsibilities.</p>
 
-<p>As a drawback, It is very weird not to be able to drop ASP.NET server controls in the page. Initially, you&#8217;ll feel a bit &#8216;lost&#8217;. MVC uses a different method to render the page. You don&#8217;t have the runat=&#8217;server&#8217; stuff anymore so, instead, you&#8217;ll have to render the page mostly based on what you have in your ViewData. It&#8217;s not my objective to explain its functionality here, but you can find further information at the <a href="http://www.asp.net/mvc/">official MVC website</a>. The latest release can be downloaded from <a href="http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=33836">CodePlex</a>.</p>
+<p>As a drawback, It is very weird not to be able to drop ASP.NET server controls in the page. Initially, you&rsquo;ll feel a bit &lsquo;lost&rsquo;. MVC uses a different method to render the page. You don&rsquo;t have the runat=&lsquo;server&rsquo; stuff anymore so, instead, you&rsquo;ll have to render the page mostly based on what you have in your ViewData. It&rsquo;s not my objective to explain its functionality here, but you can find further information at the <a href="http://www.asp.net/mvc/">official MVC website</a>. The latest release can be downloaded from <a href="http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=33836">CodePlex</a>.</p>
 
 <p>While testing my application in my hosting provider, I had a big headache since they have Windows 2003 Server installed, which comes with IIS 6. ASP.NET MVC requires a bit of work in order to work with IIS6, especially if your hosting provider does not have MVC installed in the GAC.</p>
 
-<p>I would definitely suggest <a href="http://haacked.com/">Phil Haack&#8217;s blog</a> as the first point for reference on this subject. There are two key posts regarding this issue that I followed in order to make it work.</p>
+<p>I would definitely suggest <a href="http://haacked.com/">Phil Haack&rsquo;s blog</a> as the first point for reference on this subject. There are two key posts regarding this issue that I followed in order to make it work.</p>
 
 <p>First of all, MVC assembly needs to be deployed in the application Bin directory if it is not installed in the server. Detailed info <a href="http://haacked.com/archive/2008/11/03/bin-deploy-aspnetmvc.aspx">here</a>.</p>
 
-<p>Second, you&#8217;ll need to change the application routes for IIS 6 to correctly receive the requests and forward them to the controllers. Haacked.com walkthrough <a href="http://haacked.com/archive/2008/11/26/asp.net-mvc-on-iis-6-walkthrough.aspx">here</a>.</p>
+<p>Second, you&rsquo;ll need to change the application routes for IIS 6 to correctly receive the requests and forward them to the controllers. Haacked.com walkthrough <a href="http://haacked.com/archive/2008/11/26/asp.net-mvc-on-iis-6-walkthrough.aspx">here</a>.</p>
 
-<p>As a last tip, I also found out that my MVC application wouldn&#8217;t work if I used VS Publish tool to send it to the production server after following the two steps above. No clue why, but just copying the whole website files to the server worked fine. Weird!</p>
+<p>As a last tip, I also found out that my MVC application wouldn&rsquo;t work if I used VS Publish tool to send it to the production server after following the two steps above. No clue why, but just copying the whole website files to the server worked fine. Weird!</p>
 </div>
   
   
@@ -878,7 +878,7 @@ You can even bind complex objects like lists</a>, for example, but, in this case
 
   <div class="entry-content"><p><a href="/admin/Pages/ckeditor.com">CKEditor</a> is a great open source wysiwyg editor for the web. It was formerly called FCKEditor and, one of its previous versions contained a nice implementation for ASP.NET integration. The current version (3.0) has been completely rebuilt from scratch and does not support quick upload yet (I read in the forums it will be available in version 3.1).</p>
 
-<p>I&#8217;ve been using the FCKEditor  2.6.3 for .NET, which includes an ASP.NET control for seamless integration. However, I could never make one of its great features to work: the ability to upload images on the fly and embed them in the text. There are some things that need to be set up before.</p>
+<p>I&rsquo;ve been using the FCKEditor  2.6.3 for .NET, which includes an ASP.NET control for seamless integration. However, I could never make one of its great features to work: the ability to upload images on the fly and embed them in the text. There are some things that need to be set up before.</p>
 
 <pre><code>1. FCKEditor config file (fckconfig.js), when you download it, comes with its connectors default language to php. You need to change it to aspx:
 
@@ -948,7 +948,7 @@ UserFilesPath = "/userfiles/";
 
 <p>For those of you that saw this working fine in your development machine but  unexplainably not working on the production server, please refer to <a href="http://cksource.com/forums/viewtopic.php?f=6&amp;t=12112">this forum post</a> for the fix.</p>
 
-<p>Another issue that I found regarding the update above is that in a server, it did not fix the problem an I was getting a &#8216;permission denied&#8217; JS error on the window.parent.OnUploadCompleted event. If that happens, try <a href="http://dev.fckeditor.net/ticket/2115">this fix</a> (scroll to the bottom of the page for the code)</p>
+<p>Another issue that I found regarding the update above is that in a server, it did not fix the problem an I was getting a &lsquo;permission denied&rsquo; JS error on the window.parent.OnUploadCompleted event. If that happens, try <a href="http://dev.fckeditor.net/ticket/2115">this fix</a> (scroll to the bottom of the page for the code)</p>
 </div>
   
   
@@ -1027,7 +1027,10 @@ UserFilesPath = "/userfiles/";
 
 
 
-
+<a href="mailto:felipe.lima@gmail.com" title="Pair program with me!">
+  <img  src="http://pairprogramwith.me/badge.png"
+        alt="Pair program with me!" style="width: 150px" />
+</a>
   
 </aside>
 

@@ -9,7 +9,7 @@
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="In my last blog post I wrote a quick introduction on the Entity Framework. I&#8217;ve been playing with it for the last couple days. I must say I had &hellip;">
+  <meta name="description" content="In my last blog post I wrote a quick introduction on the Entity Framework. I&rsquo;ve been playing with it for the last couple days. I must say I had &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,7 +90,7 @@
   </header>
 
 
-<div class="entry-content"><p>In my last blog post I wrote a quick introduction on the Entity Framework. I&#8217;ve been playing with it for the last couple days. I must say I had a bit of a hard time trying to make it work. The good part is that I discovered some nice stuff when searching for solutions.</p>
+<div class="entry-content"><p>In my last blog post I wrote a quick introduction on the Entity Framework. I&rsquo;ve been playing with it for the last couple days. I must say I had a bit of a hard time trying to make it work. The good part is that I discovered some nice stuff when searching for solutions.</p>
 
 <p>With Linq, you are able to build a query predicate dinamically with the extension method IQueryable<TSource> Where<TSource>:</p>
 
@@ -104,7 +104,7 @@
 
 <p>But what happens if later your business logic finds out that you need to include in your results products which also cost more than $3000?</p>
 
-<p>No problem! Just call &#8220;Where&#8221; again:</p>
+<p>No problem! Just call &ldquo;Where&rdquo; again:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -112,7 +112,7 @@
 </span><span class='line'>queryResults = queryResults.Where(p =&gt; p.Price &gt; 3000);</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Right? <strong>NO! </strong>This would result in a query that filters the products for Price &lt; 1000 <strong>AND</strong> Price > 3000. That means, you won&#8217;t get any results at all! :) What you need, is an <strong>OR</strong> operator between your two Where predicates.</p>
+<p>Right? <strong>NO! </strong>This would result in a query that filters the products for Price &lt; 1000 <strong>AND</strong> Price > 3000. That means, you won&rsquo;t get any results at all! :) What you need, is an <strong>OR</strong> operator between your two Where predicates.</p>
 
 <p>The solution for this is the <a href="http://www.albahari.com/nutshell/linqkit.aspx">LinqKit</a>! It comes with a neat pack of tools for Linq, including a <a href="http://www.albahari.com/nutshell/predicatebuilder.aspx">PredicateBuilder</a> with some extension method that allow you to do something like:</p>
 
@@ -136,11 +136,11 @@
 
 <p>You must have noticed the AsExpandable() call above. As per LinqKit documentation:</p>
 
-<p>&#8220;Entity Framework&#8217;s query processing pipeline cannot
+<p>&ldquo;Entity Framework&rsquo;s query processing pipeline cannot
 handle <em>invocation</em> <em>expressions</em>, which is why you need to call <strong>
 AsExpandable</strong> on the first object in the query. By calling AsExpandable, you
-activate LINQKit&#8217;s expression visitor class which substitutes invocation
-expressions with simpler constructs that Entity Framework can understand.&#8221;</p>
+activate LINQKit&rsquo;s expression visitor class which substitutes invocation
+expressions with simpler constructs that Entity Framework can understand.&rdquo;</p>
 
 <p>The Entity Framework has some limitations when compared with Linq to SQL so that some method are not supported. You can check out that is supported and what is not <a href="http://msdn.microsoft.com/en-us/library/bb738550.aspx">here</a>.</p>
 
@@ -258,7 +258,10 @@ expressions with simpler constructs that Entity Framework can understand.&#8221;
 
 
 
-
+<a href="mailto:felipe.lima@gmail.com" title="Pair program with me!">
+  <img  src="http://pairprogramwith.me/badge.png"
+        alt="Pair program with me!" style="width: 150px" />
+</a>
   
 </aside>
 

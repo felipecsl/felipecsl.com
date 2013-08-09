@@ -9,7 +9,7 @@
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="During the last couple days I&#8217;ve been experimenting with MongoDB and its C# driver, cleverly written by Sam Corder. I&#8217;m investigating it &hellip;">
+  <meta name="description" content="During the last couple days I&rsquo;ve been experimenting with MongoDB and its C# driver, cleverly written by Sam Corder. I&rsquo;m investigating it &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,12 +90,12 @@
   </header>
 
 
-<div class="entry-content"><p>During the last couple days I&#8217;ve been experimenting with <a href="/admin/Pages/www.mongodb.com">MongoDB</a> and its <a href="http://github.com/samus/mongodb-csharp">C# driver</a>, cleverly written by Sam Corder. I&#8217;m investigating it as a replacement for a SQL Server database I am using in a web application that is higly community driven. This specific characteristic is the one that makes the <a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a> movement rise atop regular RDBMS systems like SQL Server or MySQL, since it is hard to mantain relational integrity in these scenarios. Other key features of MongoDB are focus on performance and scalability.</p>
+<div class="entry-content"><p>During the last couple days I&rsquo;ve been experimenting with <a href="/admin/Pages/www.mongodb.com">MongoDB</a> and its <a href="http://github.com/samus/mongodb-csharp">C# driver</a>, cleverly written by Sam Corder. I&rsquo;m investigating it as a replacement for a SQL Server database I am using in a web application that is higly community driven. This specific characteristic is the one that makes the <a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a> movement rise atop regular RDBMS systems like SQL Server or MySQL, since it is hard to mantain relational integrity in these scenarios. Other key features of MongoDB are focus on performance and scalability.</p>
 
-<p><a href="http://odetocode.com/Blogs/scott/archive/2009/10/13/experimenting-with-mongodb-from-c.aspx">K. Scott Allen</a> already wrote a quick intro on using the C# driver, so I used it as a tutorial for my first steps. Here are some thoughts I&#8217;d like to share on this topic:</p>
+<p><a href="http://odetocode.com/Blogs/scott/archive/2009/10/13/experimenting-with-mongodb-from-c.aspx">K. Scott Allen</a> already wrote a quick intro on using the C# driver, so I used it as a tutorial for my first steps. Here are some thoughts I&rsquo;d like to share on this topic:</p>
 
 <ul>
-<li>I don&#8217;t like being held by the verbosity of instantiating Document objects every time I want to manipulate the database, so I&#8217;ve written method overloads for the main operations, like Insert, Update, Find and Delete that receive a plain object and only then convert them to Document. This allows us to leverage anonymous objects in C# and makes the code cleaner:</li>
+<li>I don&rsquo;t like being held by the verbosity of instantiating Document objects every time I want to manipulate the database, so I&rsquo;ve written method overloads for the main operations, like Insert, Update, Find and Delete that receive a plain object and only then convert them to Document. This allows us to leverage anonymous objects in C# and makes the code cleaner:</li>
 </ul>
 
 
@@ -193,7 +193,7 @@
 
 <p>Database files work just like plain Documents and will be assigned an Id upon creation. Therefore, they can be later queried just like a regular document.</p>
 
-<p>This was just a quick glance over MongoDB and C# integration. I&#8217;m planning on using it on a large project and will post here my findings. More to come.</p>
+<p>This was just a quick glance over MongoDB and C# integration. I&rsquo;m planning on using it on a large project and will post here my findings. More to come.</p>
 </div>
 
 
@@ -305,7 +305,10 @@
 
 
 
-
+<a href="mailto:felipe.lima@gmail.com" title="Pair program with me!">
+  <img  src="http://pairprogramwith.me/badge.png"
+        alt="Pair program with me!" style="width: 150px" />
+</a>
   
 </aside>
 

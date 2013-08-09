@@ -9,7 +9,7 @@
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="When working with the Entity Framework, you&#8217;ve got to be extremely careful when exchanging Entities between different ObjectContexts. You &hellip;">
+  <meta name="description" content="When working with the Entity Framework, you&rsquo;ve got to be extremely careful when exchanging Entities between different ObjectContexts. You &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,19 +90,19 @@
   </header>
 
 
-<div class="entry-content"><p>When working with the Entity Framework, you&#8217;ve got to be extremely careful when exchanging Entities between different ObjectContexts. You probably know that if you want to modify an Entity which is already added to the database, you have to first attach it to the context before modifying it, so that EF can keep track of the changes you made to that instance and save them to the database later. There is a good reference page at msdn about <a href="http://msdn.microsoft.com/en-us/library/bb896271.aspx">attaching related objects</a>.</p>
+<div class="entry-content"><p>When working with the Entity Framework, you&rsquo;ve got to be extremely careful when exchanging Entities between different ObjectContexts. You probably know that if you want to modify an Entity which is already added to the database, you have to first attach it to the context before modifying it, so that EF can keep track of the changes you made to that instance and save them to the database later. There is a good reference page at msdn about <a href="http://msdn.microsoft.com/en-us/library/bb896271.aspx">attaching related objects</a>.</p>
 
 <p>Attach assumes your Entity has not been changed while it was not being tracked by the ObjectContext. Otherwise, call <strong>ApplyPropertyChanges</strong> to attach and apply the changes.</p>
 
 <p>Yesterday, I lost almost my entire day trying to translate this exception I was getting in ObjectContext.Attach():</p>
 
-<p>&#8220;<strong>System.InvalidOperationException : An object with the same key already exists in the ObjectStateManager. The ObjectStateManager cannot track multiple objects with the same key.</strong>&#8221;</p>
+<p>&ldquo;<strong>System.InvalidOperationException : An object with the same key already exists in the ObjectStateManager. The ObjectStateManager cannot track multiple objects with the same key.</strong>&rdquo;</p>
 
-<p>EF complains that the Entity you&#8217;re trying to add actually has an EntityKey identical to one that is already in the database. Okay, this seems obvious to me, since this is the actual purpose of Attach - start tracking changes objects that already exist in the database.</p>
+<p>EF complains that the Entity you&rsquo;re trying to add actually has an EntityKey identical to one that is already in the database. Okay, this seems obvious to me, since this is the actual purpose of Attach &ndash; start tracking changes objects that already exist in the database.</p>
 
 <p>After an entire afternoon searching for an answer, I came accross some pages with other issues related to Attach that some people had, as well some solutions for <a href="http://www.codeproject.com/KB/architecture/attachobjectgraph.aspx">them</a>.</p>
 
-<p>Today I re-read the exception message and the answer just popped on my face: &#8221;<strong>I&#8217;m already tracking the object you&#8217;re trying to Attach, dumbass!</strong>&#8221;. In fact, you cannot Attach an object to an ObjectContext if that object somehow has been already cached by the ObjectStateManager.</p>
+<p>Today I re-read the exception message and the answer just popped on my face: &ldquo;<strong>I&rsquo;m already tracking the object you&rsquo;re trying to Attach, dumbass!</strong>&rdquo;. In fact, you cannot Attach an object to an ObjectContext if that object somehow has been already cached by the ObjectStateManager.</p>
 
 <p>Let me exemplify:</p>
 
@@ -188,7 +188,7 @@
 
 <p>What is happening? Your userBook query returns all the Books from the database <strong>AND</strong> their related Users (the Include was there for a reason). When you try to attach your User after_user after the query has been run, the ObjectContext already has _user under its hood, so trying to Attach it will throw an InvalidOperationException.</p>
 
-<p>The solution is very simple: Always attach all your Entities before doing any operation/query in your ObjectContext. This way, you avoid any double-tracking request. If the ObjectContext needs your Entity later, it will retrieve the instance you attached before and you&#8217;re good to go! Follow the fixed code:</p>
+<p>The solution is very simple: Always attach all your Entities before doing any operation/query in your ObjectContext. This way, you avoid any double-tracking request. If the ObjectContext needs your Entity later, it will retrieve the instance you attached before and you&rsquo;re good to go! Follow the fixed code:</p>
 
 <pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;&lt;span class="kwrd"&gt;public&lt;/span&gt; &lt;span class="kwrd"&gt;void&lt;/span&gt; UpdateUserBooks(User _user)
 
@@ -387,7 +387,10 @@
 
 
 
-
+<a href="mailto:felipe.lima@gmail.com" title="Pair program with me!">
+  <img  src="http://pairprogramwith.me/badge.png"
+        alt="Pair program with me!" style="width: 150px" />
+</a>
   
 </aside>
 

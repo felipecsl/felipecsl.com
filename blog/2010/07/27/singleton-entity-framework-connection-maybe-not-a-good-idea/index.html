@@ -9,7 +9,7 @@
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="I&#8217;ve been working on an ASP.NET MVC web service that uses EF for persistence. Been using a good old repository class for handling the &hellip;">
+  <meta name="description" content="I&rsquo;ve been working on an ASP.NET MVC web service that uses EF for persistence. Been using a good old repository class for handling the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,11 +90,11 @@
   </header>
 
 
-<div class="entry-content"><p>I&#8217;ve been working on an ASP.NET MVC web service that uses EF for persistence. Been using a good old repository class for handling the connection and returning the entities. At some point I decided to change my repository connection to a singleton.</p>
+<div class="entry-content"><p>I&rsquo;ve been working on an ASP.NET MVC web service that uses EF for persistence. Been using a good old repository class for handling the connection and returning the entities. At some point I decided to change my repository connection to a singleton.</p>
 
 <p>At first, I thought it would make sense to always reuse the same connection all over the place. However, as days passed, the system started raising creepy EF exceptions at times and eventually entered on an inconsistent state where I had to restart IIS in order to return the system back up. This was really weird and scared the hell out of me.</p>
 
-<p>So, as a note to self, please remember that using a singleton pattern for managing large application&#8217;s DAL may not be a good idea. Please do not ask me why, because I don&#8217;t have a clue for the reason why these problems happened. Instead, I decided just to revert changes back and just instantiate a new repository instance whenever I needed to access the data entities.</p>
+<p>So, as a note to self, please remember that using a singleton pattern for managing large application&rsquo;s DAL may not be a good idea. Please do not ask me why, because I don&rsquo;t have a clue for the reason why these problems happened. Instead, I decided just to revert changes back and just instantiate a new repository instance whenever I needed to access the data entities.</p>
 
 <p>If anyone out there had a different experience or can explain why this can happen, please do not hesitate to leave me a comment as I would appreciate a lot!</p>
 
@@ -210,7 +210,10 @@
 
 
 
-
+<a href="mailto:felipe.lima@gmail.com" title="Pair program with me!">
+  <img  src="http://pairprogramwith.me/badge.png"
+        alt="Pair program with me!" style="width: 150px" />
+</a>
   
 </aside>
 

@@ -9,7 +9,7 @@
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="I&#8217;ve started with Android development a few months ago with the upcoming We Heart It app. Here are some random thought and impressions I had &hellip;">
+  <meta name="description" content="I&rsquo;ve started with Android development a few months ago with the upcoming We Heart It app. Here are some random thought and impressions I had &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,16 +93,16 @@
   </header>
 
 
-  <div class="entry-content"><p>I&#8217;ve started with Android development a few months ago with the upcoming <a href="http://weheartit.com">We Heart It</a> app. Here are some random thought and impressions I had during this period, and the motivation behind building the Android-ImageManager library:</p>
+  <div class="entry-content"><p>I&rsquo;ve started with Android development a few months ago with the upcoming <a href="http://weheartit.com">We Heart It</a> app. Here are some random thought and impressions I had during this period, and the motivation behind building the Android-ImageManager library:</p>
 
 <ul>
 <li><p><strong>API Complexity</strong>: Compared to the iOS SDK, at first, the Android SDK seemed to me overly complicated and over-engineered. There are specific patterns you need to follow for most common scenarios and avoiding them just end up making it harder, so you basically have no choice. For example, the <a href="http://developer.android.com/training/id-auth/identify.html">AccountManager API</a>, which you need to use if you want to create an Android built in user account. There are several interfaces you have to implement, services to create, methods to override, etc. It is very painful overall.</p></li>
-<li><p><strong>Version Compatibility</strong>: If you want to support a decent range of devices and <a href="http://developer.android.com/about/dashboards/index.html">Android versions</a>, you&#8217;ll spend countless hours of testing and have to buy 10 different phones and tablets, since the Emulator is simply unusable (terribly slow). Stick with already proven open source libraries for a less painful development experience, like <a href="http://actionbarsherlock.com/">ActionbarSherlock</a>, <a href="https://github.com/JakeWharton/Android-ViewPagerIndicator">ViewPagerIndicator</a>, <a href="https://github.com/prototik/HoloEverywhere">HoloEverywhere</a>, <a href="https://github.com/JakeWharton/DiskLruCache">DiskLruCache</a>, etc. You can thank <a href="http://twitter.com/jakewharton">Jake Wharton</a> for most of that awesome work.</p></li>
-<li><p><strong>Automated Testing</strong>: Painful as well. We decided to go with <a href="http://robolectric.blogspot.com/">Robolectric</a> which basically stubs all the Android APIs for you. That has pros and cons, but definitely good that your tests run super fast (like seconds) and you dont have to keep stubbing everything in order to make your tests work. All you need is a simple jUnit project. Haven&#8217;t looked much into Integrated UI tests yet, but we definitely want to check that out soon. Android provides <a href="http://developer.android.com/reference/android/test/InstrumentationTestCase.html">some classes</a> for this job.</p></li>
-<li><p><strong>Memory Management</strong>: This would deserve an entire article just for it. If you start working with images, galleries etc. or just do something that is not plain trivial, you&#8217;ll sooner or later start seeing <code>OutOfMemoryError</code>. It is hard to get it right, and there are many things you need to be aware of when building an application, specially for We Heart It, which is totally image-heavy. Some of the techniques definitely include</p>
+<li><p><strong>Version Compatibility</strong>: If you want to support a decent range of devices and <a href="http://developer.android.com/about/dashboards/index.html">Android versions</a>, you&rsquo;ll spend countless hours of testing and have to buy 10 different phones and tablets, since the Emulator is simply unusable (terribly slow). Stick with already proven open source libraries for a less painful development experience, like <a href="http://actionbarsherlock.com/">ActionbarSherlock</a>, <a href="https://github.com/JakeWharton/Android-ViewPagerIndicator">ViewPagerIndicator</a>, <a href="https://github.com/prototik/HoloEverywhere">HoloEverywhere</a>, <a href="https://github.com/JakeWharton/DiskLruCache">DiskLruCache</a>, etc. You can thank <a href="http://twitter.com/jakewharton">Jake Wharton</a> for most of that awesome work.</p></li>
+<li><p><strong>Automated Testing</strong>: Painful as well. We decided to go with <a href="http://robolectric.blogspot.com/">Robolectric</a> which basically stubs all the Android APIs for you. That has pros and cons, but definitely good that your tests run super fast (like seconds) and you dont have to keep stubbing everything in order to make your tests work. All you need is a simple jUnit project. Haven&rsquo;t looked much into Integrated UI tests yet, but we definitely want to check that out soon. Android provides <a href="http://developer.android.com/reference/android/test/InstrumentationTestCase.html">some classes</a> for this job.</p></li>
+<li><p><strong>Memory Management</strong>: This would deserve an entire article just for it. If you start working with images, galleries etc. or just do something that is not plain trivial, you&rsquo;ll sooner or later start seeing <code>OutOfMemoryError</code>. It is hard to get it right, and there are many things you need to be aware of when building an application, specially for We Heart It, which is totally image-heavy. Some of the techniques definitely include</p>
 
 <ol>
-<li><a href="http://developer.android.com/training/displaying-bitmaps/cache-bitmap.html">Cache your images</a> so you don&#8217;t keep requesting the same images over and over again and wasting all the user&#8217;s data bandwidth;</li>
+<li><a href="http://developer.android.com/training/displaying-bitmaps/cache-bitmap.html">Cache your images</a> so you don&rsquo;t keep requesting the same images over and over again and wasting all the user&rsquo;s data bandwidth;</li>
 <li><a href="http://developer.android.com/training/displaying-bitmaps/load-bitmap.html">Request a sampled version of the images</a> that is adequate for the screen size/display dimensions where it is gonna be used;</li>
 <li><a href="http://developer.android.com/training/displaying-bitmaps/manage-memory.html">Recycle</a> your bitmap when it is not being used anymore, so you can reclaim unused memory faster.</li>
 <li>Avoid creating too many instances: When working with a REST API, it is easy to instantiate new objects all the time and keep them around, send to the Activities, etc. Try to keep your footprint to a minimum. Think about all object instantiation and whether it is needed or not. Sometimes all you need is a simpler version of your domain object to be shown in the UI, so keep a simpler version of your model that contains only the needed information to be displayed.</li>
@@ -111,7 +111,7 @@
 </ul>
 
 
-<p>Some of these reasons above motivated me to create the library <a href="https://github.com/felipecsl/Android-ImageManager">Android-ImageManager</a>, which takes care of caching and storing the displaying efficiently. It uses a two level cache, first in-memory using an `LruCache&#8220;, then in disk, using DiskLruCache to save the files to the device&#8217;s SD Card. If an image is found in the memory cache, it is fetched from there, otherwise, it tries to retrieve it from disk cache. If it can&#8217;t be found either, then it finally downloads the image and stores it in both caches. Everything is done assynchonously, obviously. The library is still in early stage, as I plan to add more samples and polish it a bit more. So check out the Github <a href="https://github.com/felipecsl/Android-ImageManager">repository</a>.</p>
+<p>Some of these reasons above motivated me to create the library <a href="https://github.com/felipecsl/Android-ImageManager">Android-ImageManager</a>, which takes care of caching and storing the displaying efficiently. It uses a two level cache, first in-memory using an `LruCache&#8220;, then in disk, using DiskLruCache to save the files to the device&rsquo;s SD Card. If an image is found in the memory cache, it is fetched from there, otherwise, it tries to retrieve it from disk cache. If it can&rsquo;t be found either, then it finally downloads the image and stores it in both caches. Everything is done assynchonously, obviously. The library is still in early stage, as I plan to add more samples and polish it a bit more. So check out the Github <a href="https://github.com/felipecsl/Android-ImageManager">repository</a>.</p>
 </div>
   
   
@@ -231,7 +231,7 @@
   </header>
 
 
-  <div class="entry-content"><p>If you never heard of it, <a href="http://www.opscode.com/chef/">Chef</a> is a server automation tool for server management tasks. It is often related to the terms <a href="http://en.wikipedia.org/wiki/DevOps">DevOps</a> and <a href="http://blog.carlossanchez.eu/2012/03/13/infrastructure-as-code/">Infrastructure as Code</a> which have started to gain quite a bit of attention lately. If you&#8217;ve ever seen yourself doing the exact same steps, like installing MySql on a server several times in a row, always doing the exact same steps, and wondered if there was a more intelligent way of doing that, then Chef is for you.</p>
+  <div class="entry-content"><p>If you never heard of it, <a href="http://www.opscode.com/chef/">Chef</a> is a server automation tool for server management tasks. It is often related to the terms <a href="http://en.wikipedia.org/wiki/DevOps">DevOps</a> and <a href="http://blog.carlossanchez.eu/2012/03/13/infrastructure-as-code/">Infrastructure as Code</a> which have started to gain quite a bit of attention lately. If you&rsquo;ve ever seen yourself doing the exact same steps, like installing MySql on a server several times in a row, always doing the exact same steps, and wondered if there was a more intelligent way of doing that, then Chef is for you.</p>
 
 <p><img src="http://www.rit.edu/news/lib/filelib/200708/new_chef.jpg" alt="" /></p>
 
@@ -239,7 +239,7 @@
 
 <p>This is not the only option available. Other well known tools include <a href="http://puppetlabs.com/">Puppet</a> and <a href="http://vagrantup.com/">Vagrant</a>. The latter, though, being targeted at virtualized development environments, while the former, are targeted at real (production) machines.</p>
 
-<p>So, &#8216;nuff said, here are some notes I took from my first time playing with Chef. It was far from being a straightforward process, that is why a good old blog post comes handy. Turns out it was pretty painful just to get it started, and I didn&#8217;t even get to the part where you prepare the recipes and cookbooks (hmmm :)).</p>
+<p>So, &lsquo;nuff said, here are some notes I took from my first time playing with Chef. It was far from being a straightforward process, that is why a good old blog post comes handy. Turns out it was pretty painful just to get it started, and I didn&rsquo;t even get to the part where you prepare the recipes and cookbooks (hmmm :)).</p>
 
 <p>So to get started, I fired up a brand new clean Ubuntu 12 instance in <a href="https://console.aws.amazon.com/ec2/home">Amazon EC2</a>. If you need help doing that, there are plenty of documentation online for how to get started on AWS. Go there and search, I will wait here.</p>
 
@@ -256,11 +256,11 @@
 It will be removed on or after 2011-10-01.
 </code></pre>
 
-<p>This is basically saying that you are using the wrong version of ruby and/or rubygems. The plain ubuntu install only comes with ruby 1.8 installed which is probably not what we want. So we&#8217;ll install <a href="https://rvm.io//">rvm</a> and ruby 1.9.</p>
+<p>This is basically saying that you are using the wrong version of ruby and/or rubygems. The plain ubuntu install only comes with ruby 1.8 installed which is probably not what we want. So we&rsquo;ll install <a href="https://rvm.io//">rvm</a> and ruby 1.9.</p>
 
-<p>But, before that, let&#8217;s install some dependencies:</p>
+<p>But, before that, let&rsquo;s install some dependencies:</p>
 
-<p>Run this to install some required packages that you gonna need&#8230; some of them are probably not needed for this, but it wont hurt to install them anyways.</p>
+<p>Run this to install some required packages that you gonna need&hellip; some of them are probably not needed for this, but it wont hurt to install them anyways.</p>
 
 <pre><code>sudo apt-get install build-essential bison openssl libreadline6 libreadline6-dev curl 
 git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev 
@@ -275,11 +275,11 @@ gem install chef
 gem install chef-server
 </code></pre>
 
-<p>At this point, you should be able to just run <strong>chef-server</strong> see it running. If all goes well, you might want to do <strong>chef-server -e production -d</strong> to run it in production environment and daemonize, so it runs in background. You will also need to start the webui via <strong>chef-server-webui</strong> <strong>-e production -d.</strong> If all goes smoothly, you should be able to access the webui at <strong>http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4040/</strong>. As you probably noticed, the webui runs in the port 4040, while the chef-server runs in 4000. Don&#8217;t forget to open these ports in the AWS Security Group and allow your machine IP to access them!  But wait, this was only the start hahah! Now comes the server configuration&#8230;</p>
+<p>At this point, you should be able to just run <strong>chef-server</strong> see it running. If all goes well, you might want to do <strong>chef-server -e production -d</strong> to run it in production environment and daemonize, so it runs in background. You will also need to start the webui via <strong>chef-server-webui</strong> <strong>-e production -d.</strong> If all goes smoothly, you should be able to access the webui at **<a href="http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4040/**.">http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4040/**.</a> As you probably noticed, the webui runs in the port 4040, while the chef-server runs in 4000. Don&rsquo;t forget to open these ports in the AWS Security Group and allow your machine IP to access them!  But wait, this was only the start hahah! Now comes the server configuration&hellip;</p>
 
 <p><a href="/images/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png"><img src="/images/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png" alt="" /></a></p>
 
-<p>If you are still following the wiki steps (you should), by now you should be running <strong>knife configure -i</strong>. Knife is chef&#8217;s command line configuration tool, it can do a lot of stuff. This is gonna try to create an API user. If you are unlucky, like me, you will see this error:</p>
+<p>If you are still following the wiki steps (you should), by now you should be running <strong>knife configure -i</strong>. Knife is chef&rsquo;s command line configuration tool, it can do a lot of stuff. This is gonna try to create an API user. If you are unlucky, like me, you will see this error:</p>
 
 <pre><code>Creating initial API user...
 ERROR: Server returned error for &lt;a href="http://ec2-50-18-239-212.us-west-1.compute.amazonaws.com:4000/clients/ubuntu"&gt;http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4000/clients/client_name&lt;/a&gt;, retrying 1/5 in 3s
@@ -291,7 +291,7 @@ ERROR: Server returned error for &lt;a href="http://ec2-50-18-239-212.us-west-1.
 <pre><code>sudo rabbitmqctl list_permissions -p /chef
 </code></pre>
 
-<p>&#8230; and you should see this error:</p>
+<p>&hellip; and you should see this error:</p>
 
 <pre><code>Listing permissions in vhost "/chef" ...
 Error: {no_such_vhost,&lt;&lt;"/chef"&gt;&gt;}
@@ -304,7 +304,7 @@ sudo rabbitmqctl add_user chef &lt;password&gt;
 sudo rabbitmqctl set_permissions -p /chef chef ".*" ".*" ".*"
 </code></pre>
 
-<p>Gotcha: The rabbitmq password has to be the same one found in /etc/chef/server.rb config file (mine was &#8216;root&#8217;)</p>
+<p>Gotcha: The rabbitmq password has to be the same one found in /etc/chef/server.rb config file (mine was &lsquo;root&rsquo;)</p>
 
 <p>Ok, this should get you all set. Last step, verify the knife configuration running <strong>knife client list</strong>. And guess what?! More errors!</p>
 
@@ -323,7 +323,7 @@ Check your configuration file and ensure that your private key is readable
  local
 </code></pre>
 
-<p>Ok here is another gotcha. If you ever turn off your instance and bring it back later, it will most likely change its public dns (<strong><strong>*.compute.amazonaws.com&#8230;). Make sure you update it in your </strong>knife.rb</strong> file or it wont work. Mine was located at ~/.chef/knife.rb</p>
+<p>Ok here is another gotcha. If you ever turn off your instance and bring it back later, it will most likely change its public dns (<strong><strong>*.compute.amazonaws.com&hellip;). Make sure you update it in your </strong>knife.rb</strong> file or it wont work. Mine was located at ~/.chef/knife.rb</p>
 
 <pre><code>log_level :info
 log_location STDOUT
@@ -336,7 +336,7 @@ cache_type 'BasicFile'
 cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
 </code></pre>
 
-<p>Ok that&#8217;s it for today. Next time I will talk about recipes and cookbooks!</p>
+<p>Ok that&rsquo;s it for today. Next time I will talk about recipes and cookbooks!</p>
 </div>
   
   
@@ -372,7 +372,7 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
   </header>
 
 
-  <div class="entry-content"><p>I don&#8217;t usually post short tips, but this one is really killer. To delete one word at a time when pressing ⌘+Delete in the iTerm2, use this configuration as shown in the first line of the screenshot below (click to expand).</p>
+  <div class="entry-content"><p>I don&rsquo;t usually post short tips, but this one is really killer. To delete one word at a time when pressing ⌘+Delete in the iTerm2, use this configuration as shown in the first line of the screenshot below (click to expand).</p>
 
 <p><a href="/images/2012/06/Screen-Shot-2012-06-05-at-12.00.02-PM.png"><img src="/images/2012/06/Screen-Shot-2012-06-05-at-12.00.02-PM.png" alt="" /></a></p>
 </div>
@@ -410,13 +410,13 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
   </header>
 
 
-  <div class="entry-content"><p>It has been a while since I&#8217;ve been working on this Ruby <a href="https://rubygems.org/gems/wombat">gem</a> called <a href="https://github.com/felipecsl/wombat">wombat</a> and thought it would be worth talking about it here. I just released today the version 0.4.0 with some bug fixes and the addition of another helper method, as you can see in the GitHub <a href="https://github.com/felipecsl/wombat">readme</a>.</p>
+  <div class="entry-content"><p>It has been a while since I&rsquo;ve been working on this Ruby <a href="https://rubygems.org/gems/wombat">gem</a> called <a href="https://github.com/felipecsl/wombat">wombat</a> and thought it would be worth talking about it here. I just released today the version 0.4.0 with some bug fixes and the addition of another helper method, as you can see in the GitHub <a href="https://github.com/felipecsl/wombat">readme</a>.</p>
 
-<p>Wombat is a gem for making extracting information from web pages, or just crawling, a little less painful. If you were to do that today, you&#8217;d probably have to fall back to Nokogiri or another lower level gem and process the data yourself. With Wombat, you can define a structure of how your data should look like in a DSL like format, and Wombat does the work for you. It is pretty handy actually.</p>
+<p>Wombat is a gem for making extracting information from web pages, or just crawling, a little less painful. If you were to do that today, you&rsquo;d probably have to fall back to Nokogiri or another lower level gem and process the data yourself. With Wombat, you can define a structure of how your data should look like in a DSL like format, and Wombat does the work for you. It is pretty handy actually.</p>
 
 <p>It all started with the project <a href="http://noitehoje.com.br">Noite Hoje</a> where we used to grab shows and parties informations from 3rd party sites and display there, like an indexer. When working on that, I noticed how painful and repetitive it can be to crawl web pages sometimes.</p>
 
-<p>Anyway, if Wombat is/was useful for you, please don&#8217;t hesitate to drop me a line in the comments, I would be very happy to know.</p>
+<p>Anyway, if Wombat is/was useful for you, please don&rsquo;t hesitate to drop me a line in the comments, I would be very happy to know.</p>
 
 <p>After meeting great people like <a href="https://twitter.com/#!/paul_irish">Paul Irish</a> and <a href="https://twitter.com/#!/wycats">Yehuda Katz</a>, you kinda feel almost obligated to share some knowledge with your peers and give back to the open source community.</p>
 
@@ -458,13 +458,13 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
   </header>
 
 
-  <div class="entry-content"><p>A lot of people I meet seem very curious and I am usually asked some details about how the hell I left my job at <a href="http://thoughtworks.com">ThoughtWorks</a> Brazil and moved to San Francisco to work for <a href="http://gogobot.com/">Gogobot</a>. Overall, the transition was pretty simple. Getting the H1B visa was a lot simpler and faster than I expected. It took me around 2 months from the date Gogobot entered the petition to the US Gov. to the day I got my passport back with the visa stamped on it. However I was a bit lucky, since there is an early quota of 60 thousand H1B visas that US will distribute, starting every year in April. I applied around October, so the quota was almost over, but I was lucky enough to make it. Another friend that applied a few weeks later wasn&#8217;t so lucky and will have to wait till April till the window opens again.</p>
+  <div class="entry-content"><p>A lot of people I meet seem very curious and I am usually asked some details about how the hell I left my job at <a href="http://thoughtworks.com">ThoughtWorks</a> Brazil and moved to San Francisco to work for <a href="http://gogobot.com/">Gogobot</a>. Overall, the transition was pretty simple. Getting the H1B visa was a lot simpler and faster than I expected. It took me around 2 months from the date Gogobot entered the petition to the US Gov. to the day I got my passport back with the visa stamped on it. However I was a bit lucky, since there is an early quota of 60 thousand H1B visas that US will distribute, starting every year in April. I applied around October, so the quota was almost over, but I was lucky enough to make it. Another friend that applied a few weeks later wasn&rsquo;t so lucky and will have to wait till April till the window opens again.</p>
 
 <p>Another thing that people usually ask me is how I got to know the company and how did I get the job. From my personal experience and from what I heard from other fellow developers, companies are not very receptive to the idea of sponsoring an H1B visa to a foreign developer, probably due to the high cost and risk involved with it. The usual flow is: you get in touch with the company you are interested in, probably send an email with a nice cover letter and your resume attached, and get no response at all. The only advice I will say is: If you really want that, be persistant and keep trying. Write a nice cover letter, with a brief introduction of who you are and why you want to work for that company. Try to be creative, original, otherwise you will be treated just like yet another average foreign candidate. Also extremely important is showing your achievements, having one or more pet projects is a big plus, actively contributing to open source, etc.</p>
 
 <p>It is definitely not an easy task, nor an easy decision to leave everything behind and move to another country. Anyways, I still believe it is something extremely valuable in terms of career growth and life experience. If you can, I would advice you to do it! The sooner the better. As you get older, buy a house, have kids, marry, etc., it will be harder and harder to do something like this. For the same reasons, I support <a href="/2011/03/o-que-eu-aprendi-empreendendo-e-porque-voce-tambem-deveria-tentar/">entrepreneurism</a>.</p>
 
-<p>I&#8217;ve been here for almost one month so far, and right now, I can say I am very happy to have taken this decision, despite having to leave friends, family and my beloved fiancee behind. We will try to soften the hurt by visiting each other periodically.</p>
+<p>I&rsquo;ve been here for almost one month so far, and right now, I can say I am very happy to have taken this decision, despite having to leave friends, family and my beloved fiancee behind. We will try to soften the hurt by visiting each other periodically.</p>
 
 <p><a href="http://www.gogobot.com/?utm_source=web&amp;utm_medium=link&amp;utm_campaign=goodies&amp;utm_content=medium_alt_btn_grey"><img src="http://cdn1.gbot.me/img/buttons/gbLargeAltGrey_01.png" alt="Gogobot" /></a></p>
 
@@ -504,15 +504,15 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
   </header>
 
 
-  <div class="entry-content"><p>Desde Janeiro estou trabalhando como consultor na ThoughtWorks, no &#8220;prédio novo&#8221; do TecnoPUC. Posso afirmar com plena convicção que estou muito feliz de ter tomado essa decisão e, por isso, resolvi que seria legal compartilhar um pouco de como é o nosso dia-a-dia lá dentro.</p>
+  <div class="entry-content"><p>Desde Janeiro estou trabalhando como consultor na ThoughtWorks, no &ldquo;prédio novo&rdquo; do TecnoPUC. Posso afirmar com plena convicção que estou muito feliz de ter tomado essa decisão e, por isso, resolvi que seria legal compartilhar um pouco de como é o nosso dia-a-dia lá dentro.</p>
 
 <p>A primeira impressão ao entrar no escritório é de que algo ali é diferente das empresas de TI tradicionais. Não há baias, apenas grandes mesas sem divisórias. Pessoas trabalhando em pares, ou seja, dois para cada computador, <em><a href="http://en.wikipedia.org/wiki/Nerf_Blasters">NERF darts</a></em> pelo chão, video-games no <em>lounge</em> e pessoas falando alto.</p>
 
 <p><img src="http://a.yfrog.com/img736/1552/xebt.jpg" alt="" /></p>
 
-<p>A ThoughtWorks é conhecida mundialmente por ser uma das pioneiras na prática de metodologias ágeis. Isto faz com que ela tenha uma cultura à parte, que incentiva a colaboração e entrega de alto valor agregado. A empresa tem uma missão um tanto quanto ousada: &#8220;Revolucionar a TI&#8221;. Para tal, possui um modelo de <a href="http://martinfowler.com/bliki/ThreePillars.html">três pilares</a> que descrevem os seus principais propósitos: <strong><em>Sustainable Business</em></strong> (negócio sustentável), <strong><em>Software Excellence </em></strong>(excelência em software)  e <strong><em>Social Justice </em></strong>(justiça social). Os dois primeiros são totalmente esperados para uma empresa de TI, entretanto, justiça social é um valor que poucas empresas valorizam tanto quanto a ThoughtWorks. Isto faz com que procuremos antender apenas clientes que se alinhem com o nosso perfil, evitando fazer negócios com aquelas que vão de encontro com estes valores.</p>
+<p>A ThoughtWorks é conhecida mundialmente por ser uma das pioneiras na prática de metodologias ágeis. Isto faz com que ela tenha uma cultura à parte, que incentiva a colaboração e entrega de alto valor agregado. A empresa tem uma missão um tanto quanto ousada: &ldquo;Revolucionar a TI&rdquo;. Para tal, possui um modelo de <a href="http://martinfowler.com/bliki/ThreePillars.html">três pilares</a> que descrevem os seus principais propósitos: <strong><em>Sustainable Business</em></strong> (negócio sustentável), <strong><em>Software Excellence </em></strong>(excelência em software)  e <strong><em>Social Justice </em></strong>(justiça social). Os dois primeiros são totalmente esperados para uma empresa de TI, entretanto, justiça social é um valor que poucas empresas valorizam tanto quanto a ThoughtWorks. Isto faz com que procuremos antender apenas clientes que se alinhem com o nosso perfil, evitando fazer negócios com aquelas que vão de encontro com estes valores.</p>
 
-<p>Entretanto, o que mais me chamou a atenção lá foi a autonomia que é dada a cada funcionário. Em primeiro lugar, não há uma hierarquia definida e nem um conceito de &#8220;chefe&#8221;. Cada um exerce seu papel e é exigido de acordo com o que é esperado dele. Caso você não esteja satisfeito com alguma coisa, você tem toda a liberdade para propor uma sugestão ou conversar com seus colegas para tentar identificar problemas e propor soluções. Essa é uma característica bastante única na minha opinião e foi a que levei mais tempo para assimilar completamente. Por estes motivos, não é raro ouvir pessoas falando que é necessário &#8220;desconstruir&#8221; para então &#8220;reconstruir&#8221; vários conceitos quando se entra na empresa, quase como uma lavagem cerebral. :)</p>
+<p>Entretanto, o que mais me chamou a atenção lá foi a autonomia que é dada a cada funcionário. Em primeiro lugar, não há uma hierarquia definida e nem um conceito de &ldquo;chefe&rdquo;. Cada um exerce seu papel e é exigido de acordo com o que é esperado dele. Caso você não esteja satisfeito com alguma coisa, você tem toda a liberdade para propor uma sugestão ou conversar com seus colegas para tentar identificar problemas e propor soluções. Essa é uma característica bastante única na minha opinião e foi a que levei mais tempo para assimilar completamente. Por estes motivos, não é raro ouvir pessoas falando que é necessário &ldquo;desconstruir&rdquo; para então &ldquo;reconstruir&rdquo; vários conceitos quando se entra na empresa, quase como uma lavagem cerebral. :)</p>
 
 <p>O processo seletivo da ThoughtWorks é bastante completo, exigente e extensivo. A empresa se propõe a ser um lugar para as mentes mais brilhantes naquilo que fazem. Por isso, costuma-se <a href="http://www.thoughtworks.com/our-process">dizer</a> que ser um <em>Thoughtworker</em> não é para qualquer um. São testadas várias características do candidato, desde valores e perfil até capacidade de raciocínio lógico e habilidades como programador. São várias etapas classificatórias e eliminatórias. O processo todo não costuma levar menos de um mês por candidato, conversando com cerca de 10 pessoas no total. Apesar de difícil, não é impossível, afinal, eu consegui. :)</p>
 
@@ -598,9 +598,9 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
 
   <div class="entry-content"><p>Me motivei a escrever um pouco sobre empreendedorismo pois tenho visto muitas pessoas que no fundo têm vontade de inovar, empreender, mudar, mas geralmente sentem medo de dar uma virada brusca em suas vidas, sair da zona de conforto e arriscar. Pois eu vou relatar um pouco sobre o que eu aprendi com isso tudo durante o último ano, em que eu me envolvi bastante com este tópico.</p>
 
-<p>Em primeiro lugar, vejo o perfil de empreendedor como sendo, antes de tudo, um <em>mindset.</em> Você não precisa desistir do seu emprego, abrir uma empresa, arriscar tudo o que tem tentando um negócio feito louco só pra ver como é empreender. Vejo este perfil em algumas pessoas que não necessariamente arriscaram tudo, assim como eu fiz, mas mesmo assim possuem este <em>mindset.</em> Eu me refiro a pensar &#8220;fora da caixa&#8221;, inovar, arriscar, tentar coisas diferentes. Essa semana um aluno de Ciência da Computação da UFRGS criou um site chamado <a href="http://poabus.com.br">poabus.com.br</a> para mapear as linhas de ônibus de Porto Alegre, já que o sistema que a EPTC oferece é praticamente inusável. Eu certamente diria que este cidadão chamado Bruno Jurkovski tem um perfil empreendedor, pois teve atitude para pensar diferente e experimentar uma nova solução para um problema existente. Eu diria que este tipo de perfil já caracteriza um empreendedor. Ou seja, você não precisa largar seu emprego de full-time para ser um empreendedor. Você pode começar hoje mesmo pensando em como você pode fazer alguma coisa para mudar o mundo à sua volta, utilizar as suas <em>skills</em> para contribuir para um mundo melhor. Um bom começo é contribuir para um projeto open source, por exemplo. Caso você não seja da área de TI, procure outras formas de inovar, solucionar problemas e deixe sua contribuição para a humanidade fazendo algo diferente, que tenha impacto sobre o mundo ao seu redor.</p>
+<p>Em primeiro lugar, vejo o perfil de empreendedor como sendo, antes de tudo, um <em>mindset.</em> Você não precisa desistir do seu emprego, abrir uma empresa, arriscar tudo o que tem tentando um negócio feito louco só pra ver como é empreender. Vejo este perfil em algumas pessoas que não necessariamente arriscaram tudo, assim como eu fiz, mas mesmo assim possuem este <em>mindset.</em> Eu me refiro a pensar &ldquo;fora da caixa&rdquo;, inovar, arriscar, tentar coisas diferentes. Essa semana um aluno de Ciência da Computação da UFRGS criou um site chamado <a href="http://poabus.com.br">poabus.com.br</a> para mapear as linhas de ônibus de Porto Alegre, já que o sistema que a EPTC oferece é praticamente inusável. Eu certamente diria que este cidadão chamado Bruno Jurkovski tem um perfil empreendedor, pois teve atitude para pensar diferente e experimentar uma nova solução para um problema existente. Eu diria que este tipo de perfil já caracteriza um empreendedor. Ou seja, você não precisa largar seu emprego de full-time para ser um empreendedor. Você pode começar hoje mesmo pensando em como você pode fazer alguma coisa para mudar o mundo à sua volta, utilizar as suas <em>skills</em> para contribuir para um mundo melhor. Um bom começo é contribuir para um projeto open source, por exemplo. Caso você não seja da área de TI, procure outras formas de inovar, solucionar problemas e deixe sua contribuição para a humanidade fazendo algo diferente, que tenha impacto sobre o mundo ao seu redor.</p>
 
-<p>Alguns podem se perguntar &#8220;por que&#8221;? Por que isso é legal? O que eu ganho com isso? Eu posso afirmar que você ganha muito, tanto como pessoa, quanto como profissional. No meu caso, como um dos fundadores da <a href="http://quavio.com.br">Quavio</a>, aprendi tanto em um ano como se tivesse se passado 5 anos. Você aprende aquilo que nenhum colégio te ensina: como se virar sozinho, como contratar um funcionário, como cuidar das finanças da empresa, como atender bem o cliente, como vender o seu produto, como se posicionar no mercado, entre muitas outras coisas que você acaba nem notando! No final das contas, o resultado disso tudo é que você acaba se tornando uma pessoa melhor. E isto é extraordinário! Fundar uma empresa pra mim foi uma tempestade de novas experiências a cada dia. Não vou dizer que tudo são mil maravilhas, pois não são. Você acaba tendo que engolir muito sapo, aceitar críticas, aceitar perder, errar, cair e tentar novamente. Errar faz parte do processo diário. É apenas errando que realmente aprendemos como não fazer :)</p>
+<p>Alguns podem se perguntar &ldquo;por que&rdquo;? Por que isso é legal? O que eu ganho com isso? Eu posso afirmar que você ganha muito, tanto como pessoa, quanto como profissional. No meu caso, como um dos fundadores da <a href="http://quavio.com.br">Quavio</a>, aprendi tanto em um ano como se tivesse se passado 5 anos. Você aprende aquilo que nenhum colégio te ensina: como se virar sozinho, como contratar um funcionário, como cuidar das finanças da empresa, como atender bem o cliente, como vender o seu produto, como se posicionar no mercado, entre muitas outras coisas que você acaba nem notando! No final das contas, o resultado disso tudo é que você acaba se tornando uma pessoa melhor. E isto é extraordinário! Fundar uma empresa pra mim foi uma tempestade de novas experiências a cada dia. Não vou dizer que tudo são mil maravilhas, pois não são. Você acaba tendo que engolir muito sapo, aceitar críticas, aceitar perder, errar, cair e tentar novamente. Errar faz parte do processo diário. É apenas errando que realmente aprendemos como não fazer :)</p>
 
 <p>Certa vez eu li em algum lugar que, geralmente, aquilo que te faz sentir um nervoso, um frio na barriga e apreensão é aquilo que te trará um aprendizado que não irá esquecer. E isto acontece todo dia na vida de um empreendedor :)</p>
 
@@ -650,7 +650,7 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
 
 <p>Isso significa que é possível levantar um site com Ruby on Rails ou Sinatra e MongoDB rapidinho e sem desembolsar um centavo com o Heroku.. Damn good.</p>
 
-<p>Como nem tudo é perfeito, a <a href="http://docs.heroku.com/mongohq#gem-options-and-setup">documentação</a> do add-on MongoHQ ainda é um tanto quanto &#8220;magra&#8221; e praticamente nem fala no Mongoid. Perdi uns vários minutos googleando e nada. Até que então encontrei o método from_uri na classe Connection do driver de mongo para Ruby.</p>
+<p>Como nem tudo é perfeito, a <a href="http://docs.heroku.com/mongohq#gem-options-and-setup">documentação</a> do add-on MongoHQ ainda é um tanto quanto &ldquo;magra&rdquo; e praticamente nem fala no Mongoid. Perdi uns vários minutos googleando e nada. Até que então encontrei o método from_uri na classe Connection do driver de mongo para Ruby.</p>
 
 <p>Ao habilitarmos este add-on, o Heroku seta uma variável de ambiente chamada MONGOHQ_URL, que utilizamos para estabelecer a conexão com o Mongo server. Não encontrei em lugar nenhum como fazer esta conexão, então deixo aqui caso alguém precise:</p>
 </div>
@@ -729,7 +729,10 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
 
 
 
-
+<a href="mailto:felipe.lima@gmail.com" title="Pair program with me!">
+  <img  src="http://pairprogramwith.me/badge.png"
+        alt="Pair program with me!" style="width: 150px" />
+</a>
   
 </aside>
 

@@ -9,7 +9,7 @@
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="During the last days I had to implement a custom model binding for a dynamic view model in a project I&#8217;m working on. This had me diving deep in &hellip;">
+  <meta name="description" content="During the last days I had to implement a custom model binding for a dynamic view model in a project I&rsquo;m working on. This had me diving deep in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,7 +90,7 @@
   </header>
 
 
-<div class="entry-content"><p>During the last days I had to implement a custom model binding for a dynamic view model in a project I&#8217;m working on. This had me diving deep in the DefaultModelBinder implementation and how binding works in ASP.NET MVC.</p>
+<div class="entry-content"><p>During the last days I had to implement a custom model binding for a dynamic view model in a project I&rsquo;m working on. This had me diving deep in the DefaultModelBinder implementation and how binding works in ASP.NET MVC.</p>
 
 <p>Basically the request carries the data you controller action needs to perform its work. It may come from several different locations, like form variables, the query string and route data, in the form of key/value pairs, string-encoded.</p>
 
@@ -105,7 +105,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Here, we&#8217;re saying that all DateTime values should be bound using the DateTimeModelBinder class. DefaultModelBinder will figure that out and call this class when it sees a property of DateTime type. We could say that it works recursivly by looking for the appropriate binder for each property. If no custom binder is found, DefaultModelBinder will take care of it anyway.</p>
+<p>Here, we&rsquo;re saying that all DateTime values should be bound using the DateTimeModelBinder class. DefaultModelBinder will figure that out and call this class when it sees a property of DateTime type. We could say that it works recursivly by looking for the appropriate binder for each property. If no custom binder is found, DefaultModelBinder will take care of it anyway.</p>
 
 <p><img src="http://i.pbase.com/o4/60/687660/1/64594355.dte2s9SV.ropeknot.JPG" alt="" /></p>
 
@@ -118,7 +118,7 @@
 
 <p>The <strong>bindingContext</strong> argument contains information about the mode (type, metadata, name, etc). All you have to do is to use the <strong>bindingContext.ValueProvider</strong> collection to retrieve the correct data for the given model and return it.</p>
 
-<p>Apart from everything, I strongly recommend building the asp.net mvc source code instead of using the installer, so you can debug/step into the mvc classes. You can download the latest MVC 2 RC 2 source code from <a href="http://aspnet.codeplex.com/releases/view/39978#DownloadId=104717">codeplex</a>. Just do not forget to uninstall MVC from the GAC before building or you&#8217;ll get ambiguous references.</p>
+<p>Apart from everything, I strongly recommend building the asp.net mvc source code instead of using the installer, so you can debug/step into the mvc classes. You can download the latest MVC 2 RC 2 source code from <a href="http://aspnet.codeplex.com/releases/view/39978#DownloadId=104717">codeplex</a>. Just do not forget to uninstall MVC from the GAC before building or you&rsquo;ll get ambiguous references.</p>
 </div>
 
 
@@ -230,7 +230,10 @@
 
 
 
-
+<a href="mailto:felipe.lima@gmail.com" title="Pair program with me!">
+  <img  src="http://pairprogramwith.me/badge.png"
+        alt="Pair program with me!" style="width: 150px" />
+</a>
   
 </aside>
 

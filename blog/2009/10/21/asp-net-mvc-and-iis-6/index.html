@@ -9,7 +9,7 @@
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="I&#8217;ve been playing lately with ASP.NET MVC 2 Preview 2. I had no previous experience with this and it has been kind of a change in paradigms &hellip;">
+  <meta name="description" content="I&rsquo;ve been playing lately with ASP.NET MVC 2 Preview 2. I had no previous experience with this and it has been kind of a change in paradigms &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,19 +90,19 @@
   </header>
 
 
-<div class="entry-content"><p>I&#8217;ve been playing lately with ASP.NET MVC 2 Preview 2. I had no previous experience with this and it has been kind of a change in paradigms changing from web forms to mvc. At the same time, I feel very excited about this and believe that It is a big step forward when compared to web forms, mainly due to the separation of concerns and responsibilities.</p>
+<div class="entry-content"><p>I&rsquo;ve been playing lately with ASP.NET MVC 2 Preview 2. I had no previous experience with this and it has been kind of a change in paradigms changing from web forms to mvc. At the same time, I feel very excited about this and believe that It is a big step forward when compared to web forms, mainly due to the separation of concerns and responsibilities.</p>
 
-<p>As a drawback, It is very weird not to be able to drop ASP.NET server controls in the page. Initially, you&#8217;ll feel a bit &#8216;lost&#8217;. MVC uses a different method to render the page. You don&#8217;t have the runat=&#8217;server&#8217; stuff anymore so, instead, you&#8217;ll have to render the page mostly based on what you have in your ViewData. It&#8217;s not my objective to explain its functionality here, but you can find further information at the <a href="http://www.asp.net/mvc/">official MVC website</a>. The latest release can be downloaded from <a href="http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=33836">CodePlex</a>.</p>
+<p>As a drawback, It is very weird not to be able to drop ASP.NET server controls in the page. Initially, you&rsquo;ll feel a bit &lsquo;lost&rsquo;. MVC uses a different method to render the page. You don&rsquo;t have the runat=&lsquo;server&rsquo; stuff anymore so, instead, you&rsquo;ll have to render the page mostly based on what you have in your ViewData. It&rsquo;s not my objective to explain its functionality here, but you can find further information at the <a href="http://www.asp.net/mvc/">official MVC website</a>. The latest release can be downloaded from <a href="http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=33836">CodePlex</a>.</p>
 
 <p>While testing my application in my hosting provider, I had a big headache since they have Windows 2003 Server installed, which comes with IIS 6. ASP.NET MVC requires a bit of work in order to work with IIS6, especially if your hosting provider does not have MVC installed in the GAC.</p>
 
-<p>I would definitely suggest <a href="http://haacked.com/">Phil Haack&#8217;s blog</a> as the first point for reference on this subject. There are two key posts regarding this issue that I followed in order to make it work.</p>
+<p>I would definitely suggest <a href="http://haacked.com/">Phil Haack&rsquo;s blog</a> as the first point for reference on this subject. There are two key posts regarding this issue that I followed in order to make it work.</p>
 
 <p>First of all, MVC assembly needs to be deployed in the application Bin directory if it is not installed in the server. Detailed info <a href="http://haacked.com/archive/2008/11/03/bin-deploy-aspnetmvc.aspx">here</a>.</p>
 
-<p>Second, you&#8217;ll need to change the application routes for IIS 6 to correctly receive the requests and forward them to the controllers. Haacked.com walkthrough <a href="http://haacked.com/archive/2008/11/26/asp.net-mvc-on-iis-6-walkthrough.aspx">here</a>.</p>
+<p>Second, you&rsquo;ll need to change the application routes for IIS 6 to correctly receive the requests and forward them to the controllers. Haacked.com walkthrough <a href="http://haacked.com/archive/2008/11/26/asp.net-mvc-on-iis-6-walkthrough.aspx">here</a>.</p>
 
-<p>As a last tip, I also found out that my MVC application wouldn&#8217;t work if I used VS Publish tool to send it to the production server after following the two steps above. No clue why, but just copying the whole website files to the server worked fine. Weird!</p>
+<p>As a last tip, I also found out that my MVC application wouldn&rsquo;t work if I used VS Publish tool to send it to the production server after following the two steps above. No clue why, but just copying the whole website files to the server worked fine. Weird!</p>
 </div>
 
 
@@ -214,7 +214,10 @@
 
 
 
-
+<a href="mailto:felipe.lima@gmail.com" title="Pair program with me!">
+  <img  src="http://pairprogramwith.me/badge.png"
+        alt="Pair program with me!" style="width: 150px" />
+</a>
   
 </aside>
 

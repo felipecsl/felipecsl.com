@@ -101,7 +101,7 @@
 &lt;span class="lnum"&gt;   4:  &lt;/span&gt;&lt;span class="kwrd"&gt;where&lt;/span&gt; T : DataRow
 </code></pre>
 
-<p>However, there is a problem: <strong>T has to be a DataRow</strong>. When returning query results from the database, especially with EF, your query results are not DataRows (and I wonder if the same is true for Linq to Sql too). So, in this case, you&#8217;ll have to fill the DataTable by hand. Thanks to this <a href="http://unboxedsolutions.com/sean/archive/2009/06/06/15961.aspx">good blog post</a>, I was able to fill it:</p>
+<p>However, there is a problem: <strong>T has to be a DataRow</strong>. When returning query results from the database, especially with EF, your query results are not DataRows (and I wonder if the same is true for Linq to Sql too). So, in this case, you&rsquo;ll have to fill the DataTable by hand. Thanks to this <a href="http://unboxedsolutions.com/sean/archive/2009/06/06/15961.aspx">good blog post</a>, I was able to fill it:</p>
 
 <pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;DataTable dataTable = &lt;span class="kwrd"&gt;new&lt;/span&gt; DataTable();
 
@@ -141,9 +141,9 @@
 
 <p>Absolutely a good piece of unreadable code :)</p>
 
-<p><em>query </em>variable are your Linq query results, which may be an IEnumerable of some of your data entities or even a anonymous type. It doesn&#8217;t matter! For each element of this enumeration, we&#8217;re creating a DataRow and assigning some values to its columns. Then, we call <em>Invoke </em>to indeed invoke our anonymous delegate Func, passing in our anonymous type properties, that are used later to fill the DataTable.</p>
+<p><em>query </em>variable are your Linq query results, which may be an IEnumerable of some of your data entities or even a anonymous type. It doesn&rsquo;t matter! For each element of this enumeration, we&rsquo;re creating a DataRow and assigning some values to its columns. Then, we call <em>Invoke </em>to indeed invoke our anonymous delegate Func, passing in our anonymous type properties, that are used later to fill the DataTable.</p>
 
-<p>You&#8217;ll probably gonna need to read it a couple times to digest it a bit and still it will look &#8220;WTF did I really wrote this code?!?&#8221; after a couple days :)</p>
+<p>You&rsquo;ll probably gonna need to read it a couple times to digest it a bit and still it will look &ldquo;WTF did I really wrote this code?!?&rdquo; after a couple days :)</p>
 </div>
 
 
@@ -255,7 +255,10 @@
 
 
 
-
+<a href="mailto:felipe.lima@gmail.com" title="Pair program with me!">
+  <img  src="http://pairprogramwith.me/badge.png"
+        alt="Pair program with me!" style="width: 150px" />
+</a>
   
 </aside>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Felipe Lima]]></title>
   <link href="http://felipecsl.github.com/atom.xml" rel="self"/>
   <link href="http://felipecsl.github.com/"/>
-  <updated>2013-04-06T14:49:10-07:00</updated>
+  <updated>2013-08-08T17:44:47-07:00</updated>
   <id>http://felipecsl.github.com/</id>
   <author>
     <name><![CDATA[Felipe Lima]]></name>
@@ -18,16 +18,16 @@
     <link href="http://felipecsl.github.com/blog/2013/03/31/starting-with-android-managing-images/"/>
     <updated>2013-03-31T13:03:00-07:00</updated>
     <id>http://felipecsl.github.com/blog/2013/03/31/starting-with-android-managing-images</id>
-    <content type="html"><![CDATA[<p>I&#8217;ve started with Android development a few months ago with the upcoming <a href="http://weheartit.com">We Heart It</a> app. Here are some random thought and impressions I had during this period, and the motivation behind building the Android-ImageManager library:</p>
+    <content type="html"><![CDATA[<p>I&rsquo;ve started with Android development a few months ago with the upcoming <a href="http://weheartit.com">We Heart It</a> app. Here are some random thought and impressions I had during this period, and the motivation behind building the Android-ImageManager library:</p>
 
 <ul>
 <li><p><strong>API Complexity</strong>: Compared to the iOS SDK, at first, the Android SDK seemed to me overly complicated and over-engineered. There are specific patterns you need to follow for most common scenarios and avoiding them just end up making it harder, so you basically have no choice. For example, the <a href="http://developer.android.com/training/id-auth/identify.html">AccountManager API</a>, which you need to use if you want to create an Android built in user account. There are several interfaces you have to implement, services to create, methods to override, etc. It is very painful overall.</p></li>
-<li><p><strong>Version Compatibility</strong>: If you want to support a decent range of devices and <a href="http://developer.android.com/about/dashboards/index.html">Android versions</a>, you&#8217;ll spend countless hours of testing and have to buy 10 different phones and tablets, since the Emulator is simply unusable (terribly slow). Stick with already proven open source libraries for a less painful development experience, like <a href="http://actionbarsherlock.com/">ActionbarSherlock</a>, <a href="https://github.com/JakeWharton/Android-ViewPagerIndicator">ViewPagerIndicator</a>, <a href="https://github.com/prototik/HoloEverywhere">HoloEverywhere</a>, <a href="https://github.com/JakeWharton/DiskLruCache">DiskLruCache</a>, etc. You can thank <a href="http://twitter.com/jakewharton">Jake Wharton</a> for most of that awesome work.</p></li>
-<li><p><strong>Automated Testing</strong>: Painful as well. We decided to go with <a href="http://robolectric.blogspot.com/">Robolectric</a> which basically stubs all the Android APIs for you. That has pros and cons, but definitely good that your tests run super fast (like seconds) and you dont have to keep stubbing everything in order to make your tests work. All you need is a simple jUnit project. Haven&#8217;t looked much into Integrated UI tests yet, but we definitely want to check that out soon. Android provides <a href="http://developer.android.com/reference/android/test/InstrumentationTestCase.html">some classes</a> for this job.</p></li>
-<li><p><strong>Memory Management</strong>: This would deserve an entire article just for it. If you start working with images, galleries etc. or just do something that is not plain trivial, you&#8217;ll sooner or later start seeing <code>OutOfMemoryError</code>. It is hard to get it right, and there are many things you need to be aware of when building an application, specially for We Heart It, which is totally image-heavy. Some of the techniques definitely include</p>
+<li><p><strong>Version Compatibility</strong>: If you want to support a decent range of devices and <a href="http://developer.android.com/about/dashboards/index.html">Android versions</a>, you&rsquo;ll spend countless hours of testing and have to buy 10 different phones and tablets, since the Emulator is simply unusable (terribly slow). Stick with already proven open source libraries for a less painful development experience, like <a href="http://actionbarsherlock.com/">ActionbarSherlock</a>, <a href="https://github.com/JakeWharton/Android-ViewPagerIndicator">ViewPagerIndicator</a>, <a href="https://github.com/prototik/HoloEverywhere">HoloEverywhere</a>, <a href="https://github.com/JakeWharton/DiskLruCache">DiskLruCache</a>, etc. You can thank <a href="http://twitter.com/jakewharton">Jake Wharton</a> for most of that awesome work.</p></li>
+<li><p><strong>Automated Testing</strong>: Painful as well. We decided to go with <a href="http://robolectric.blogspot.com/">Robolectric</a> which basically stubs all the Android APIs for you. That has pros and cons, but definitely good that your tests run super fast (like seconds) and you dont have to keep stubbing everything in order to make your tests work. All you need is a simple jUnit project. Haven&rsquo;t looked much into Integrated UI tests yet, but we definitely want to check that out soon. Android provides <a href="http://developer.android.com/reference/android/test/InstrumentationTestCase.html">some classes</a> for this job.</p></li>
+<li><p><strong>Memory Management</strong>: This would deserve an entire article just for it. If you start working with images, galleries etc. or just do something that is not plain trivial, you&rsquo;ll sooner or later start seeing <code>OutOfMemoryError</code>. It is hard to get it right, and there are many things you need to be aware of when building an application, specially for We Heart It, which is totally image-heavy. Some of the techniques definitely include</p>
 
 <ol>
-<li><a href="http://developer.android.com/training/displaying-bitmaps/cache-bitmap.html">Cache your images</a> so you don&#8217;t keep requesting the same images over and over again and wasting all the user&#8217;s data bandwidth;</li>
+<li><a href="http://developer.android.com/training/displaying-bitmaps/cache-bitmap.html">Cache your images</a> so you don&rsquo;t keep requesting the same images over and over again and wasting all the user&rsquo;s data bandwidth;</li>
 <li><a href="http://developer.android.com/training/displaying-bitmaps/load-bitmap.html">Request a sampled version of the images</a> that is adequate for the screen size/display dimensions where it is gonna be used;</li>
 <li><a href="http://developer.android.com/training/displaying-bitmaps/manage-memory.html">Recycle</a> your bitmap when it is not being used anymore, so you can reclaim unused memory faster.</li>
 <li>Avoid creating too many instances: When working with a REST API, it is easy to instantiate new objects all the time and keep them around, send to the Activities, etc. Try to keep your footprint to a minimum. Think about all object instantiation and whether it is needed or not. Sometimes all you need is a simpler version of your domain object to be shown in the UI, so keep a simpler version of your model that contains only the needed information to be displayed.</li>
@@ -36,7 +36,7 @@
 </ul>
 
 
-<p>Some of these reasons above motivated me to create the library <a href="https://github.com/felipecsl/Android-ImageManager">Android-ImageManager</a>, which takes care of caching and storing the displaying efficiently. It uses a two level cache, first in-memory using an `LruCache&#8220;, then in disk, using DiskLruCache to save the files to the device&#8217;s SD Card. If an image is found in the memory cache, it is fetched from there, otherwise, it tries to retrieve it from disk cache. If it can&#8217;t be found either, then it finally downloads the image and stores it in both caches. Everything is done assynchonously, obviously. The library is still in early stage, as I plan to add more samples and polish it a bit more. So check out the Github <a href="https://github.com/felipecsl/Android-ImageManager">repository</a>.</p>
+<p>Some of these reasons above motivated me to create the library <a href="https://github.com/felipecsl/Android-ImageManager">Android-ImageManager</a>, which takes care of caching and storing the displaying efficiently. It uses a two level cache, first in-memory using an `LruCache&#8220;, then in disk, using DiskLruCache to save the files to the device&rsquo;s SD Card. If an image is found in the memory cache, it is fetched from there, otherwise, it tries to retrieve it from disk cache. If it can&rsquo;t be found either, then it finally downloads the image and stores it in both caches. Everything is done assynchonously, obviously. The library is still in early stage, as I plan to add more samples and polish it a bit more. So check out the Github <a href="https://github.com/felipecsl/Android-ImageManager">repository</a>.</p>
 ]]></content>
   </entry>
   
@@ -102,7 +102,7 @@
     <link href="http://felipecsl.github.com/blog/2012/06/14/getting-started-with-chef/"/>
     <updated>2012-06-14T20:46:00-07:00</updated>
     <id>http://felipecsl.github.com/blog/2012/06/14/getting-started-with-chef</id>
-    <content type="html"><![CDATA[<p>If you never heard of it, <a href="http://www.opscode.com/chef/">Chef</a> is a server automation tool for server management tasks. It is often related to the terms <a href="http://en.wikipedia.org/wiki/DevOps">DevOps</a> and <a href="http://blog.carlossanchez.eu/2012/03/13/infrastructure-as-code/">Infrastructure as Code</a> which have started to gain quite a bit of attention lately. If you&#8217;ve ever seen yourself doing the exact same steps, like installing MySql on a server several times in a row, always doing the exact same steps, and wondered if there was a more intelligent way of doing that, then Chef is for you.</p>
+    <content type="html"><![CDATA[<p>If you never heard of it, <a href="http://www.opscode.com/chef/">Chef</a> is a server automation tool for server management tasks. It is often related to the terms <a href="http://en.wikipedia.org/wiki/DevOps">DevOps</a> and <a href="http://blog.carlossanchez.eu/2012/03/13/infrastructure-as-code/">Infrastructure as Code</a> which have started to gain quite a bit of attention lately. If you&rsquo;ve ever seen yourself doing the exact same steps, like installing MySql on a server several times in a row, always doing the exact same steps, and wondered if there was a more intelligent way of doing that, then Chef is for you.</p>
 
 <p><img src="http://www.rit.edu/news/lib/filelib/200708/new_chef.jpg" alt="" /></p>
 
@@ -110,7 +110,7 @@
 
 <p>This is not the only option available. Other well known tools include <a href="http://puppetlabs.com/">Puppet</a> and <a href="http://vagrantup.com/">Vagrant</a>. The latter, though, being targeted at virtualized development environments, while the former, are targeted at real (production) machines.</p>
 
-<p>So, &#8216;nuff said, here are some notes I took from my first time playing with Chef. It was far from being a straightforward process, that is why a good old blog post comes handy. Turns out it was pretty painful just to get it started, and I didn&#8217;t even get to the part where you prepare the recipes and cookbooks (hmmm :)).</p>
+<p>So, &lsquo;nuff said, here are some notes I took from my first time playing with Chef. It was far from being a straightforward process, that is why a good old blog post comes handy. Turns out it was pretty painful just to get it started, and I didn&rsquo;t even get to the part where you prepare the recipes and cookbooks (hmmm :)).</p>
 
 <p>So to get started, I fired up a brand new clean Ubuntu 12 instance in <a href="https://console.aws.amazon.com/ec2/home">Amazon EC2</a>. If you need help doing that, there are plenty of documentation online for how to get started on AWS. Go there and search, I will wait here.</p>
 
@@ -127,11 +127,11 @@
 It will be removed on or after 2011-10-01.
 </code></pre>
 
-<p>This is basically saying that you are using the wrong version of ruby and/or rubygems. The plain ubuntu install only comes with ruby 1.8 installed which is probably not what we want. So we&#8217;ll install <a href="https://rvm.io//">rvm</a> and ruby 1.9.</p>
+<p>This is basically saying that you are using the wrong version of ruby and/or rubygems. The plain ubuntu install only comes with ruby 1.8 installed which is probably not what we want. So we&rsquo;ll install <a href="https://rvm.io//">rvm</a> and ruby 1.9.</p>
 
-<p>But, before that, let&#8217;s install some dependencies:</p>
+<p>But, before that, let&rsquo;s install some dependencies:</p>
 
-<p>Run this to install some required packages that you gonna need&#8230; some of them are probably not needed for this, but it wont hurt to install them anyways.</p>
+<p>Run this to install some required packages that you gonna need&hellip; some of them are probably not needed for this, but it wont hurt to install them anyways.</p>
 
 <pre><code>sudo apt-get install build-essential bison openssl libreadline6 libreadline6-dev curl 
 git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev 
@@ -146,11 +146,11 @@ gem install chef
 gem install chef-server
 </code></pre>
 
-<p>At this point, you should be able to just run <strong>chef-server</strong> see it running. If all goes well, you might want to do <strong>chef-server -e production -d</strong> to run it in production environment and daemonize, so it runs in background. You will also need to start the webui via <strong>chef-server-webui</strong> <strong>-e production -d.</strong> If all goes smoothly, you should be able to access the webui at <strong>http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4040/</strong>. As you probably noticed, the webui runs in the port 4040, while the chef-server runs in 4000. Don&#8217;t forget to open these ports in the AWS Security Group and allow your machine IP to access them!  But wait, this was only the start hahah! Now comes the server configuration&#8230;</p>
+<p>At this point, you should be able to just run <strong>chef-server</strong> see it running. If all goes well, you might want to do <strong>chef-server -e production -d</strong> to run it in production environment and daemonize, so it runs in background. You will also need to start the webui via <strong>chef-server-webui</strong> <strong>-e production -d.</strong> If all goes smoothly, you should be able to access the webui at **<a href="http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4040/**.">http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4040/**.</a> As you probably noticed, the webui runs in the port 4040, while the chef-server runs in 4000. Don&rsquo;t forget to open these ports in the AWS Security Group and allow your machine IP to access them!  But wait, this was only the start hahah! Now comes the server configuration&hellip;</p>
 
 <p><a href="http://felipecsl.github.com/images/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png"><img src="http://felipecsl.github.com/images/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png" alt="" /></a></p>
 
-<p>If you are still following the wiki steps (you should), by now you should be running <strong>knife configure -i</strong>. Knife is chef&#8217;s command line configuration tool, it can do a lot of stuff. This is gonna try to create an API user. If you are unlucky, like me, you will see this error:</p>
+<p>If you are still following the wiki steps (you should), by now you should be running <strong>knife configure -i</strong>. Knife is chef&rsquo;s command line configuration tool, it can do a lot of stuff. This is gonna try to create an API user. If you are unlucky, like me, you will see this error:</p>
 
 <pre><code>Creating initial API user...
 ERROR: Server returned error for &lt;a href="http://ec2-50-18-239-212.us-west-1.compute.amazonaws.com:4000/clients/ubuntu"&gt;http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4000/clients/client_name&lt;/a&gt;, retrying 1/5 in 3s
@@ -162,7 +162,7 @@ ERROR: Server returned error for &lt;a href="http://ec2-50-18-239-212.us-west-1.
 <pre><code>sudo rabbitmqctl list_permissions -p /chef
 </code></pre>
 
-<p>&#8230; and you should see this error:</p>
+<p>&hellip; and you should see this error:</p>
 
 <pre><code>Listing permissions in vhost "/chef" ...
 Error: {no_such_vhost,&lt;&lt;"/chef"&gt;&gt;}
@@ -175,7 +175,7 @@ sudo rabbitmqctl add_user chef &lt;password&gt;
 sudo rabbitmqctl set_permissions -p /chef chef ".*" ".*" ".*"
 </code></pre>
 
-<p>Gotcha: The rabbitmq password has to be the same one found in /etc/chef/server.rb config file (mine was &#8216;root&#8217;)</p>
+<p>Gotcha: The rabbitmq password has to be the same one found in /etc/chef/server.rb config file (mine was &lsquo;root&rsquo;)</p>
 
 <p>Ok, this should get you all set. Last step, verify the knife configuration running <strong>knife client list</strong>. And guess what?! More errors!</p>
 
@@ -194,7 +194,7 @@ Check your configuration file and ensure that your private key is readable
  local
 </code></pre>
 
-<p>Ok here is another gotcha. If you ever turn off your instance and bring it back later, it will most likely change its public dns (<strong><strong>*.compute.amazonaws.com&#8230;). Make sure you update it in your </strong>knife.rb</strong> file or it wont work. Mine was located at ~/.chef/knife.rb</p>
+<p>Ok here is another gotcha. If you ever turn off your instance and bring it back later, it will most likely change its public dns (<strong><strong>*.compute.amazonaws.com&hellip;). Make sure you update it in your </strong>knife.rb</strong> file or it wont work. Mine was located at ~/.chef/knife.rb</p>
 
 <pre><code>log_level :info
 log_location STDOUT
@@ -207,7 +207,7 @@ cache_type 'BasicFile'
 cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
 </code></pre>
 
-<p>Ok that&#8217;s it for today. Next time I will talk about recipes and cookbooks!</p>
+<p>Ok that&rsquo;s it for today. Next time I will talk about recipes and cookbooks!</p>
 ]]></content>
   </entry>
   
@@ -216,7 +216,7 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
     <link href="http://felipecsl.github.com/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx/"/>
     <updated>2012-06-05T09:18:19-07:00</updated>
     <id>http://felipecsl.github.com/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx</id>
-    <content type="html"><![CDATA[<p>I don&#8217;t usually post short tips, but this one is really killer. To delete one word at a time when pressing ⌘+Delete in the iTerm2, use this configuration as shown in the first line of the screenshot below (click to expand).</p>
+    <content type="html"><![CDATA[<p>I don&rsquo;t usually post short tips, but this one is really killer. To delete one word at a time when pressing ⌘+Delete in the iTerm2, use this configuration as shown in the first line of the screenshot below (click to expand).</p>
 
 <p><a href="http://felipecsl.github.com/images/2012/06/Screen-Shot-2012-06-05-at-12.00.02-PM.png"><img src="http://felipecsl.github.com/images/2012/06/Screen-Shot-2012-06-05-at-12.00.02-PM.png" alt="" /></a></p>
 ]]></content>
@@ -227,13 +227,13 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
     <link href="http://felipecsl.github.com/blog/2012/05/24/wombat-0-4-0-released/"/>
     <updated>2012-05-24T21:46:22-07:00</updated>
     <id>http://felipecsl.github.com/blog/2012/05/24/wombat-0-4-0-released</id>
-    <content type="html"><![CDATA[<p>It has been a while since I&#8217;ve been working on this Ruby <a href="https://rubygems.org/gems/wombat">gem</a> called <a href="https://github.com/felipecsl/wombat">wombat</a> and thought it would be worth talking about it here. I just released today the version 0.4.0 with some bug fixes and the addition of another helper method, as you can see in the GitHub <a href="https://github.com/felipecsl/wombat">readme</a>.</p>
+    <content type="html"><![CDATA[<p>It has been a while since I&rsquo;ve been working on this Ruby <a href="https://rubygems.org/gems/wombat">gem</a> called <a href="https://github.com/felipecsl/wombat">wombat</a> and thought it would be worth talking about it here. I just released today the version 0.4.0 with some bug fixes and the addition of another helper method, as you can see in the GitHub <a href="https://github.com/felipecsl/wombat">readme</a>.</p>
 
-<p>Wombat is a gem for making extracting information from web pages, or just crawling, a little less painful. If you were to do that today, you&#8217;d probably have to fall back to Nokogiri or another lower level gem and process the data yourself. With Wombat, you can define a structure of how your data should look like in a DSL like format, and Wombat does the work for you. It is pretty handy actually.</p>
+<p>Wombat is a gem for making extracting information from web pages, or just crawling, a little less painful. If you were to do that today, you&rsquo;d probably have to fall back to Nokogiri or another lower level gem and process the data yourself. With Wombat, you can define a structure of how your data should look like in a DSL like format, and Wombat does the work for you. It is pretty handy actually.</p>
 
 <p>It all started with the project <a href="http://noitehoje.com.br">Noite Hoje</a> where we used to grab shows and parties informations from 3rd party sites and display there, like an indexer. When working on that, I noticed how painful and repetitive it can be to crawl web pages sometimes.</p>
 
-<p>Anyway, if Wombat is/was useful for you, please don&#8217;t hesitate to drop me a line in the comments, I would be very happy to know.</p>
+<p>Anyway, if Wombat is/was useful for you, please don&rsquo;t hesitate to drop me a line in the comments, I would be very happy to know.</p>
 
 <p>After meeting great people like <a href="https://twitter.com/#!/paul_irish">Paul Irish</a> and <a href="https://twitter.com/#!/wycats">Yehuda Katz</a>, you kinda feel almost obligated to share some knowledge with your peers and give back to the open source community.</p>
 
@@ -248,13 +248,13 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
     <link href="http://felipecsl.github.com/blog/2012/02/12/my-story-about-moving-to-the-silicon-valley/"/>
     <updated>2012-02-12T20:27:49-08:00</updated>
     <id>http://felipecsl.github.com/blog/2012/02/12/my-story-about-moving-to-the-silicon-valley</id>
-    <content type="html"><![CDATA[<p>A lot of people I meet seem very curious and I am usually asked some details about how the hell I left my job at <a href="http://thoughtworks.com">ThoughtWorks</a> Brazil and moved to San Francisco to work for <a href="http://gogobot.com/">Gogobot</a>. Overall, the transition was pretty simple. Getting the H1B visa was a lot simpler and faster than I expected. It took me around 2 months from the date Gogobot entered the petition to the US Gov. to the day I got my passport back with the visa stamped on it. However I was a bit lucky, since there is an early quota of 60 thousand H1B visas that US will distribute, starting every year in April. I applied around October, so the quota was almost over, but I was lucky enough to make it. Another friend that applied a few weeks later wasn&#8217;t so lucky and will have to wait till April till the window opens again.</p>
+    <content type="html"><![CDATA[<p>A lot of people I meet seem very curious and I am usually asked some details about how the hell I left my job at <a href="http://thoughtworks.com">ThoughtWorks</a> Brazil and moved to San Francisco to work for <a href="http://gogobot.com/">Gogobot</a>. Overall, the transition was pretty simple. Getting the H1B visa was a lot simpler and faster than I expected. It took me around 2 months from the date Gogobot entered the petition to the US Gov. to the day I got my passport back with the visa stamped on it. However I was a bit lucky, since there is an early quota of 60 thousand H1B visas that US will distribute, starting every year in April. I applied around October, so the quota was almost over, but I was lucky enough to make it. Another friend that applied a few weeks later wasn&rsquo;t so lucky and will have to wait till April till the window opens again.</p>
 
 <p>Another thing that people usually ask me is how I got to know the company and how did I get the job. From my personal experience and from what I heard from other fellow developers, companies are not very receptive to the idea of sponsoring an H1B visa to a foreign developer, probably due to the high cost and risk involved with it. The usual flow is: you get in touch with the company you are interested in, probably send an email with a nice cover letter and your resume attached, and get no response at all. The only advice I will say is: If you really want that, be persistant and keep trying. Write a nice cover letter, with a brief introduction of who you are and why you want to work for that company. Try to be creative, original, otherwise you will be treated just like yet another average foreign candidate. Also extremely important is showing your achievements, having one or more pet projects is a big plus, actively contributing to open source, etc.</p>
 
 <p>It is definitely not an easy task, nor an easy decision to leave everything behind and move to another country. Anyways, I still believe it is something extremely valuable in terms of career growth and life experience. If you can, I would advice you to do it! The sooner the better. As you get older, buy a house, have kids, marry, etc., it will be harder and harder to do something like this. For the same reasons, I support <a href="http://felipecsl.github.com/2011/03/o-que-eu-aprendi-empreendendo-e-porque-voce-tambem-deveria-tentar/">entrepreneurism</a>.</p>
 
-<p>I&#8217;ve been here for almost one month so far, and right now, I can say I am very happy to have taken this decision, despite having to leave friends, family and my beloved fiancee behind. We will try to soften the hurt by visiting each other periodically.</p>
+<p>I&rsquo;ve been here for almost one month so far, and right now, I can say I am very happy to have taken this decision, despite having to leave friends, family and my beloved fiancee behind. We will try to soften the hurt by visiting each other periodically.</p>
 
 <p><a href="http://www.gogobot.com/?utm_source=web&amp;utm_medium=link&amp;utm_campaign=goodies&amp;utm_content=medium_alt_btn_grey"><img src="http://cdn1.gbot.me/img/buttons/gbLargeAltGrey_01.png" alt="Gogobot" /></a></p>
 
@@ -267,15 +267,15 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
     <link href="http://felipecsl.github.com/blog/2011/07/06/thoughtworks-6-meses-depois/"/>
     <updated>2011-07-06T18:14:08-07:00</updated>
     <id>http://felipecsl.github.com/blog/2011/07/06/thoughtworks-6-meses-depois</id>
-    <content type="html"><![CDATA[<p>Desde Janeiro estou trabalhando como consultor na ThoughtWorks, no &#8220;prédio novo&#8221; do TecnoPUC. Posso afirmar com plena convicção que estou muito feliz de ter tomado essa decisão e, por isso, resolvi que seria legal compartilhar um pouco de como é o nosso dia-a-dia lá dentro.</p>
+    <content type="html"><![CDATA[<p>Desde Janeiro estou trabalhando como consultor na ThoughtWorks, no &ldquo;prédio novo&rdquo; do TecnoPUC. Posso afirmar com plena convicção que estou muito feliz de ter tomado essa decisão e, por isso, resolvi que seria legal compartilhar um pouco de como é o nosso dia-a-dia lá dentro.</p>
 
 <p>A primeira impressão ao entrar no escritório é de que algo ali é diferente das empresas de TI tradicionais. Não há baias, apenas grandes mesas sem divisórias. Pessoas trabalhando em pares, ou seja, dois para cada computador, <em><a href="http://en.wikipedia.org/wiki/Nerf_Blasters">NERF darts</a></em> pelo chão, video-games no <em>lounge</em> e pessoas falando alto.</p>
 
 <p><img src="http://a.yfrog.com/img736/1552/xebt.jpg" alt="" /></p>
 
-<p>A ThoughtWorks é conhecida mundialmente por ser uma das pioneiras na prática de metodologias ágeis. Isto faz com que ela tenha uma cultura à parte, que incentiva a colaboração e entrega de alto valor agregado. A empresa tem uma missão um tanto quanto ousada: &#8220;Revolucionar a TI&#8221;. Para tal, possui um modelo de <a href="http://martinfowler.com/bliki/ThreePillars.html">três pilares</a> que descrevem os seus principais propósitos: <strong><em>Sustainable Business</em></strong> (negócio sustentável), <strong><em>Software Excellence </em></strong>(excelência em software)  e <strong><em>Social Justice </em></strong>(justiça social). Os dois primeiros são totalmente esperados para uma empresa de TI, entretanto, justiça social é um valor que poucas empresas valorizam tanto quanto a ThoughtWorks. Isto faz com que procuremos antender apenas clientes que se alinhem com o nosso perfil, evitando fazer negócios com aquelas que vão de encontro com estes valores.</p>
+<p>A ThoughtWorks é conhecida mundialmente por ser uma das pioneiras na prática de metodologias ágeis. Isto faz com que ela tenha uma cultura à parte, que incentiva a colaboração e entrega de alto valor agregado. A empresa tem uma missão um tanto quanto ousada: &ldquo;Revolucionar a TI&rdquo;. Para tal, possui um modelo de <a href="http://martinfowler.com/bliki/ThreePillars.html">três pilares</a> que descrevem os seus principais propósitos: <strong><em>Sustainable Business</em></strong> (negócio sustentável), <strong><em>Software Excellence </em></strong>(excelência em software)  e <strong><em>Social Justice </em></strong>(justiça social). Os dois primeiros são totalmente esperados para uma empresa de TI, entretanto, justiça social é um valor que poucas empresas valorizam tanto quanto a ThoughtWorks. Isto faz com que procuremos antender apenas clientes que se alinhem com o nosso perfil, evitando fazer negócios com aquelas que vão de encontro com estes valores.</p>
 
-<p>Entretanto, o que mais me chamou a atenção lá foi a autonomia que é dada a cada funcionário. Em primeiro lugar, não há uma hierarquia definida e nem um conceito de &#8220;chefe&#8221;. Cada um exerce seu papel e é exigido de acordo com o que é esperado dele. Caso você não esteja satisfeito com alguma coisa, você tem toda a liberdade para propor uma sugestão ou conversar com seus colegas para tentar identificar problemas e propor soluções. Essa é uma característica bastante única na minha opinião e foi a que levei mais tempo para assimilar completamente. Por estes motivos, não é raro ouvir pessoas falando que é necessário &#8220;desconstruir&#8221; para então &#8220;reconstruir&#8221; vários conceitos quando se entra na empresa, quase como uma lavagem cerebral. :)</p>
+<p>Entretanto, o que mais me chamou a atenção lá foi a autonomia que é dada a cada funcionário. Em primeiro lugar, não há uma hierarquia definida e nem um conceito de &ldquo;chefe&rdquo;. Cada um exerce seu papel e é exigido de acordo com o que é esperado dele. Caso você não esteja satisfeito com alguma coisa, você tem toda a liberdade para propor uma sugestão ou conversar com seus colegas para tentar identificar problemas e propor soluções. Essa é uma característica bastante única na minha opinião e foi a que levei mais tempo para assimilar completamente. Por estes motivos, não é raro ouvir pessoas falando que é necessário &ldquo;desconstruir&rdquo; para então &ldquo;reconstruir&rdquo; vários conceitos quando se entra na empresa, quase como uma lavagem cerebral. :)</p>
 
 <p>O processo seletivo da ThoughtWorks é bastante completo, exigente e extensivo. A empresa se propõe a ser um lugar para as mentes mais brilhantes naquilo que fazem. Por isso, costuma-se <a href="http://www.thoughtworks.com/our-process">dizer</a> que ser um <em>Thoughtworker</em> não é para qualquer um. São testadas várias características do candidato, desde valores e perfil até capacidade de raciocínio lógico e habilidades como programador. São várias etapas classificatórias e eliminatórias. O processo todo não costuma levar menos de um mês por candidato, conversando com cerca de 10 pessoas no total. Apesar de difícil, não é impossível, afinal, eu consegui. :)</p>
 
@@ -307,9 +307,9 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
     <id>http://felipecsl.github.com/blog/2011/03/29/o-que-eu-aprendi-empreendendo-e-porque-voce-tambem-deveria-tentar</id>
     <content type="html"><![CDATA[<p>Me motivei a escrever um pouco sobre empreendedorismo pois tenho visto muitas pessoas que no fundo têm vontade de inovar, empreender, mudar, mas geralmente sentem medo de dar uma virada brusca em suas vidas, sair da zona de conforto e arriscar. Pois eu vou relatar um pouco sobre o que eu aprendi com isso tudo durante o último ano, em que eu me envolvi bastante com este tópico.</p>
 
-<p>Em primeiro lugar, vejo o perfil de empreendedor como sendo, antes de tudo, um <em>mindset.</em> Você não precisa desistir do seu emprego, abrir uma empresa, arriscar tudo o que tem tentando um negócio feito louco só pra ver como é empreender. Vejo este perfil em algumas pessoas que não necessariamente arriscaram tudo, assim como eu fiz, mas mesmo assim possuem este <em>mindset.</em> Eu me refiro a pensar &#8220;fora da caixa&#8221;, inovar, arriscar, tentar coisas diferentes. Essa semana um aluno de Ciência da Computação da UFRGS criou um site chamado <a href="http://poabus.com.br">poabus.com.br</a> para mapear as linhas de ônibus de Porto Alegre, já que o sistema que a EPTC oferece é praticamente inusável. Eu certamente diria que este cidadão chamado Bruno Jurkovski tem um perfil empreendedor, pois teve atitude para pensar diferente e experimentar uma nova solução para um problema existente. Eu diria que este tipo de perfil já caracteriza um empreendedor. Ou seja, você não precisa largar seu emprego de full-time para ser um empreendedor. Você pode começar hoje mesmo pensando em como você pode fazer alguma coisa para mudar o mundo à sua volta, utilizar as suas <em>skills</em> para contribuir para um mundo melhor. Um bom começo é contribuir para um projeto open source, por exemplo. Caso você não seja da área de TI, procure outras formas de inovar, solucionar problemas e deixe sua contribuição para a humanidade fazendo algo diferente, que tenha impacto sobre o mundo ao seu redor.</p>
+<p>Em primeiro lugar, vejo o perfil de empreendedor como sendo, antes de tudo, um <em>mindset.</em> Você não precisa desistir do seu emprego, abrir uma empresa, arriscar tudo o que tem tentando um negócio feito louco só pra ver como é empreender. Vejo este perfil em algumas pessoas que não necessariamente arriscaram tudo, assim como eu fiz, mas mesmo assim possuem este <em>mindset.</em> Eu me refiro a pensar &ldquo;fora da caixa&rdquo;, inovar, arriscar, tentar coisas diferentes. Essa semana um aluno de Ciência da Computação da UFRGS criou um site chamado <a href="http://poabus.com.br">poabus.com.br</a> para mapear as linhas de ônibus de Porto Alegre, já que o sistema que a EPTC oferece é praticamente inusável. Eu certamente diria que este cidadão chamado Bruno Jurkovski tem um perfil empreendedor, pois teve atitude para pensar diferente e experimentar uma nova solução para um problema existente. Eu diria que este tipo de perfil já caracteriza um empreendedor. Ou seja, você não precisa largar seu emprego de full-time para ser um empreendedor. Você pode começar hoje mesmo pensando em como você pode fazer alguma coisa para mudar o mundo à sua volta, utilizar as suas <em>skills</em> para contribuir para um mundo melhor. Um bom começo é contribuir para um projeto open source, por exemplo. Caso você não seja da área de TI, procure outras formas de inovar, solucionar problemas e deixe sua contribuição para a humanidade fazendo algo diferente, que tenha impacto sobre o mundo ao seu redor.</p>
 
-<p>Alguns podem se perguntar &#8220;por que&#8221;? Por que isso é legal? O que eu ganho com isso? Eu posso afirmar que você ganha muito, tanto como pessoa, quanto como profissional. No meu caso, como um dos fundadores da <a href="http://quavio.com.br">Quavio</a>, aprendi tanto em um ano como se tivesse se passado 5 anos. Você aprende aquilo que nenhum colégio te ensina: como se virar sozinho, como contratar um funcionário, como cuidar das finanças da empresa, como atender bem o cliente, como vender o seu produto, como se posicionar no mercado, entre muitas outras coisas que você acaba nem notando! No final das contas, o resultado disso tudo é que você acaba se tornando uma pessoa melhor. E isto é extraordinário! Fundar uma empresa pra mim foi uma tempestade de novas experiências a cada dia. Não vou dizer que tudo são mil maravilhas, pois não são. Você acaba tendo que engolir muito sapo, aceitar críticas, aceitar perder, errar, cair e tentar novamente. Errar faz parte do processo diário. É apenas errando que realmente aprendemos como não fazer :)</p>
+<p>Alguns podem se perguntar &ldquo;por que&rdquo;? Por que isso é legal? O que eu ganho com isso? Eu posso afirmar que você ganha muito, tanto como pessoa, quanto como profissional. No meu caso, como um dos fundadores da <a href="http://quavio.com.br">Quavio</a>, aprendi tanto em um ano como se tivesse se passado 5 anos. Você aprende aquilo que nenhum colégio te ensina: como se virar sozinho, como contratar um funcionário, como cuidar das finanças da empresa, como atender bem o cliente, como vender o seu produto, como se posicionar no mercado, entre muitas outras coisas que você acaba nem notando! No final das contas, o resultado disso tudo é que você acaba se tornando uma pessoa melhor. E isto é extraordinário! Fundar uma empresa pra mim foi uma tempestade de novas experiências a cada dia. Não vou dizer que tudo são mil maravilhas, pois não são. Você acaba tendo que engolir muito sapo, aceitar críticas, aceitar perder, errar, cair e tentar novamente. Errar faz parte do processo diário. É apenas errando que realmente aprendemos como não fazer :)</p>
 
 <p>Certa vez eu li em algum lugar que, geralmente, aquilo que te faz sentir um nervoso, um frio na barriga e apreensão é aquilo que te trará um aprendizado que não irá esquecer. E isto acontece todo dia na vida de um empreendedor :)</p>
 
@@ -332,7 +332,7 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
 
 <p>Isso significa que é possível levantar um site com Ruby on Rails ou Sinatra e MongoDB rapidinho e sem desembolsar um centavo com o Heroku.. Damn good.</p>
 
-<p>Como nem tudo é perfeito, a <a href="http://docs.heroku.com/mongohq#gem-options-and-setup">documentação</a> do add-on MongoHQ ainda é um tanto quanto &#8220;magra&#8221; e praticamente nem fala no Mongoid. Perdi uns vários minutos googleando e nada. Até que então encontrei o método from_uri na classe Connection do driver de mongo para Ruby.</p>
+<p>Como nem tudo é perfeito, a <a href="http://docs.heroku.com/mongohq#gem-options-and-setup">documentação</a> do add-on MongoHQ ainda é um tanto quanto &ldquo;magra&rdquo; e praticamente nem fala no Mongoid. Perdi uns vários minutos googleando e nada. Até que então encontrei o método from_uri na classe Connection do driver de mongo para Ruby.</p>
 
 <p>Ao habilitarmos este add-on, o Heroku seta uma variável de ambiente chamada MONGOHQ_URL, que utilizamos para estabelecer a conexão com o Mongo server. Não encontrei em lugar nenhum como fazer esta conexão, então deixo aqui caso alguém precise:</p>
 ]]></content>
@@ -358,7 +358,7 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
 
 <p><a href="http://felipecsl.github.com/images/2011/01/p3p.png"><img src="http://felipecsl.github.com/images/2011/01/p3p-300x211.png" alt="" /></a></p>
 
-<p>No caso do PagSeguro, o que acabava acontecendo é um erro dizendo &#8220;Sua sessão expirou.&#8221;.</p>
+<p>No caso do PagSeguro, o que acabava acontecendo é um erro dizendo &ldquo;Sua sessão expirou.&rdquo;.</p>
 
 <p>Na minha opinião, é responsabilidade do PagSeguro implementar P3P em suas páginas para possibilitar que os desenvolvedores possam utilizar este recurso, já que, como não temos controle sobre o PagSeguro, não temos como implementar o cabeçalho customizado do P3P nas responses.</p>
 
@@ -563,7 +563,7 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
 
 <h1>Configure your favorite diff program here.</h1>
 
-<p>DIFF=&#8221;/usr/local/bin/my-diff-tool&#8221;</p>
+<p>DIFF=&ldquo;/usr/local/bin/my-diff-tool&rdquo;</p>
 
 <h1>Subversion provides the paths we need as the sixth and seventh</h1>
 
@@ -583,8 +583,8 @@ RIGHT=${7}</p>
 <h1>Any other errorcode will be treated as fatal.</h1></li>
 <li><p><code>chmod a+x diffwrap.sh</code></p></li>
 <li><p><code>gedit ~/.subversion/config</code></p></li>
-<li><p>Procure a linha onde diz &#8220;diff-cmd&#8221; (linha 57, no meu arquivo)</p></li>
-<li><p>Remove o &#8220;#&#8221; do início da linha para descomentá-la</p></li>
+<li><p>Procure a linha onde diz &ldquo;diff-cmd&rdquo; (linha 57, no meu arquivo)</p></li>
+<li><p>Remove o &ldquo;#&rdquo; do início da linha para descomentá-la</p></li>
 <li><p>Digite /home/<nome do seu usuário>/diffwrap.sh no final da linha. O resultado deve ser algo assim: <code>diff-cmd = /home/&lt;nome do usuario&gt;/diffwrap.sh
 </code>. Não esqueça de trocar <strong><nome do usuário></strong> pelo nome real do seu usuário no sistema</p></li>
 <li><p>Pronto. Ao digitar <code>svn diff arquivo.rb</code>, o meld será executado com dois arquivos abertos: o seu, com suas modificações locais, e a cópia origina que está no repositório.</p></li>
@@ -610,7 +610,7 @@ RIGHT=${7}</p>
 
 <p>Esta decisão, por sua vez, implica em uma maior dificuldade na escolha do nosso fornecedor de hospedagem, visto que a maioria deles simplesmente não possui suporte a estas tecnologias ou, se possui, é bastante precária ou ineficiente.</p>
 
-<p>Vínhamos utilizando até então, preferencialmente, a <a href="http://www.kinghost.com.br">Kinghost</a> para este fim. Entretanto, chegamos à conclusão de que o suporte a Ruby on Rails é bastante precário e limitado. Isso pra não falar de Sinatra. Ao ligar para o Call Center, o atendente, que se dizia técnico, me pediu que soletrasse a palavra &#8220;Sinatra&#8221; para ele. Desisti na hora.</p>
+<p>Vínhamos utilizando até então, preferencialmente, a <a href="http://www.kinghost.com.br">Kinghost</a> para este fim. Entretanto, chegamos à conclusão de que o suporte a Ruby on Rails é bastante precário e limitado. Isso pra não falar de Sinatra. Ao ligar para o Call Center, o atendente, que se dizia técnico, me pediu que soletrasse a palavra &ldquo;Sinatra&rdquo; para ele. Desisti na hora.</p>
 
 <p>Outra opção era a <a href="http://www.kinghost.com.br">Locaweb</a>, que também vinhamos utilizamos em alguns casos específicos e que se mostrou relativamente satisfatória em se tratando de suporte a Ruby. Entretanto, considero o custo/benefício da Locaweb baixo (o preço da hospedagem compartilhada parte de R$ 29/mês) quando comparada a outras hospedagens gringas. Além disso, tivemos uns problemas sérios lá com SSH recentemente, o que nos deixou bastante insatisfeitos com o serviço da Locaweb também.</p>
 
@@ -631,19 +631,19 @@ RIGHT=${7}</p>
     <link href="http://felipecsl.github.com/blog/2010/08/20/how-to-map-subdomains-in-windows-7/"/>
     <updated>2010-08-20T06:10:00-07:00</updated>
     <id>http://felipecsl.github.com/blog/2010/08/20/how-to-map-subdomains-in-windows-7</id>
-    <content type="html"><![CDATA[<p>Over the last days, I&#8217;ve been working on implementing multiple subdomains with authentication in asp.net for the webapp I&#8217;m currently working on.</p>
+    <content type="html"><![CDATA[<p>Over the last days, I&rsquo;ve been working on implementing multiple subdomains with authentication in asp.net for the webapp I&rsquo;m currently working on.</p>
 
 <p>There are a few steps needed in order to configure IIS, DNS and authentication.</p>
 
 <ol>
-<li>Select the website you&#8217;re working on, in the IIS Manager screen, in the left side tree. Then, click the &#8220;Bindings&#8221; option in the right pane</li>
+<li>Select the website you&rsquo;re working on, in the IIS Manager screen, in the left side tree. Then, click the &ldquo;Bindings&rdquo; option in the right pane</li>
 </ol>
 
 
 <p><img src="http://felipecsl.github.com/images/2010/8/bindings.png" alt="" /></p>
 
 <ol>
-<li><p>In the Site Bindings window, add each subdomain that you want to map to your site. Unfortunately, wildcard mapping is not supported, so you&#8217;ll have to manually type all the subdomains before using it.</p></li>
+<li><p>In the Site Bindings window, add each subdomain that you want to map to your site. Unfortunately, wildcard mapping is not supported, so you&rsquo;ll have to manually type all the subdomains before using it.</p></li>
 <li><p>In the windows hosts file (C:\Windows\system32\drivers\etc\hosts), add up each subdomain again, pointing to 127.0.0.1 (see below):</p></li>
 </ol>
 
@@ -651,7 +651,7 @@ RIGHT=${7}</p>
 <p><img src="http://felipecsl.github.com/images/2010/8/hosts.png" alt="" /></p>
 
 <ol>
-<li>Lastly, you&#8217;ll need to update your web.config cookies configuration, so that it is set to work with any subdomain. By default, your login cookies will only be valid for the default subdomain (example.com and www.example.com)</li>
+<li>Lastly, you&rsquo;ll need to update your web.config cookies configuration, so that it is set to work with any subdomain. By default, your login cookies will only be valid for the default subdomain (example.com and www.example.com)</li>
 </ol>
 
 
@@ -670,11 +670,11 @@ RIGHT=${7}</p>
     <link href="http://felipecsl.github.com/blog/2010/07/27/singleton-entity-framework-connection-maybe-not-a-good-idea/"/>
     <updated>2010-07-27T12:57:00-07:00</updated>
     <id>http://felipecsl.github.com/blog/2010/07/27/singleton-entity-framework-connection-maybe-not-a-good-idea</id>
-    <content type="html"><![CDATA[<p>I&#8217;ve been working on an ASP.NET MVC web service that uses EF for persistence. Been using a good old repository class for handling the connection and returning the entities. At some point I decided to change my repository connection to a singleton.</p>
+    <content type="html"><![CDATA[<p>I&rsquo;ve been working on an ASP.NET MVC web service that uses EF for persistence. Been using a good old repository class for handling the connection and returning the entities. At some point I decided to change my repository connection to a singleton.</p>
 
 <p>At first, I thought it would make sense to always reuse the same connection all over the place. However, as days passed, the system started raising creepy EF exceptions at times and eventually entered on an inconsistent state where I had to restart IIS in order to return the system back up. This was really weird and scared the hell out of me.</p>
 
-<p>So, as a note to self, please remember that using a singleton pattern for managing large application&#8217;s DAL may not be a good idea. Please do not ask me why, because I don&#8217;t have a clue for the reason why these problems happened. Instead, I decided just to revert changes back and just instantiate a new repository instance whenever I needed to access the data entities.</p>
+<p>So, as a note to self, please remember that using a singleton pattern for managing large application&rsquo;s DAL may not be a good idea. Please do not ask me why, because I don&rsquo;t have a clue for the reason why these problems happened. Instead, I decided just to revert changes back and just instantiate a new repository instance whenever I needed to access the data entities.</p>
 
 <p>If anyone out there had a different experience or can explain why this can happen, please do not hesitate to leave me a comment as I would appreciate a lot!</p>
 
@@ -689,7 +689,7 @@ RIGHT=${7}</p>
     <id>http://felipecsl.github.com/blog/2010/06/08/jquery-progress-bar-slider-plugin</id>
     <content type="html"><![CDATA[<p>Hello,</p>
 
-<p>I&#8217;ve written a simple JQuery plugin for a progress bar slider. It was inspired on <a href="http://blog.benogle.com/2009/06/16/simple-css-shiny-progress-bar-technique/">Ben&#8217;s CSS progress bar</a>, but I needed a more complete one that should be interactive, so I built this one that also leverages <a href="http://jqueryui.com/demos/slider/#slider-vertical">JQuery UI&#8217;s vertical slider</a>.</p>
+<p>I&rsquo;ve written a simple JQuery plugin for a progress bar slider. It was inspired on <a href="http://blog.benogle.com/2009/06/16/simple-css-shiny-progress-bar-technique/">Ben&rsquo;s CSS progress bar</a>, but I needed a more complete one that should be interactive, so I built this one that also leverages <a href="http://jqueryui.com/demos/slider/#slider-vertical">JQuery UI&rsquo;s vertical slider</a>.</p>
 
 <p>You can see the plugin demo <a href="https://github.com/felipecsl/jquery-progressbar-slider/demo.htm">here</a>. TIP: Inspect the source code to see how it works.</p>
 
@@ -715,19 +715,19 @@ RIGHT=${7}</p>
     <link href="http://felipecsl.github.com/blog/2010/05/22/thoughts-on-web-platforms-and-tendencies/"/>
     <updated>2010-05-22T04:36:00-07:00</updated>
     <id>http://felipecsl.github.com/blog/2010/05/22/thoughts-on-web-platforms-and-tendencies</id>
-    <content type="html"><![CDATA[<p>During the last few weeks, I found myself more and more inside a stream that takes me to Ruby on Rails, when it comes to the best platform option for agile web development. My current language and platform or proficiency are C# and ASP.NET MVC, however, while getting introduced to the Rails world, I started seeing things from a different perspective, as well as finding out such great tools and practices that I really would like to have when working with ASP.NET MVC. I&#8217;m gonna list some the topics and differences I have been analyzing:</p>
+    <content type="html"><![CDATA[<p>During the last few weeks, I found myself more and more inside a stream that takes me to Ruby on Rails, when it comes to the best platform option for agile web development. My current language and platform or proficiency are C# and ASP.NET MVC, however, while getting introduced to the Rails world, I started seeing things from a different perspective, as well as finding out such great tools and practices that I really would like to have when working with ASP.NET MVC. I&rsquo;m gonna list some the topics and differences I have been analyzing:</p>
 
 <ol>
-<li><p><strong>Community support:</strong> I found the RoR and the Open Source community to be far more unite and open to teaching and sharing knowledge than the .NET community. Starting with the assumption that there are probably more people working with ASP.NET right now than with RoR, it is surprising to see that it is easier to find RoR help online and learning communities than ASP.NET ones. Also, as far as I know, the ASP.NET MVC code is not open to community contributions right now, so people created the <a href="http://mvccontrib.codeplex.com/">MvcContrib</a> project to acoomodate this code, which is a shame. This is said, despite the fact that it&#8217;s under the <a href="http://www.opensource.org/licenses/ms-pl.html">MS-PL license</a>, I found it hard to provide suggestions and feedback to the project, since there is not an official place for it.</p></li>
-<li><p><strong>Productivity:</strong> Frequently I have hard times fighting the framework just to be able to get the job done. Rails has proven to me to be more productive and succint in terms of framework design. For example: named routes and database migrations are VERY helpful and I miss this kind of tool in ASP.NET MVC.</p></li>
-<li><p><strong>Tight Model integration: </strong>I see many people argue that ASP.NET MVC is just VC, since the Model is not tightly coupled to the project. It&#8217;s the developer&#8217;s task to choose the right tool for the job, be it LINQ to SQL, Entity Framework or even MongoDB, for example. This flexibility is useful, however, a more integrated scenario could improve productivity a lot, perhaps we could use Entity Framework and SQL Server by default and change the provider later, if needed.</p></li>
-<li><p><strong>Dynamic typing: </strong>This is a more subjective item, since it is wrong to say that static typing is worse that dynamic typing, or vice versa. It is just a matter of choosing the right tool. However, It seems to me that, in general, static typing and compilation doesn&#8217;t free you from actual real world errors. It is a cost/benefit tradeoff, so, IMHO, the productivity benefit you get with dynamic typing is worth the trade for the static typing checks that you lost.</p></li>
+<li><p> <strong>Community support:</strong> I found the RoR and the Open Source community to be far more unite and open to teaching and sharing knowledge than the .NET community. Starting with the assumption that there are probably more people working with ASP.NET right now than with RoR, it is surprising to see that it is easier to find RoR help online and learning communities than ASP.NET ones. Also, as far as I know, the ASP.NET MVC code is not open to community contributions right now, so people created the <a href="http://mvccontrib.codeplex.com/">MvcContrib</a> project to acoomodate this code, which is a shame. This is said, despite the fact that it&rsquo;s under the <a href="http://www.opensource.org/licenses/ms-pl.html">MS-PL license</a>, I found it hard to provide suggestions and feedback to the project, since there is not an official place for it.</p></li>
+<li><p> <strong>Productivity:</strong> Frequently I have hard times fighting the framework just to be able to get the job done. Rails has proven to me to be more productive and succint in terms of framework design. For example: named routes and database migrations are VERY helpful and I miss this kind of tool in ASP.NET MVC.</p></li>
+<li><p> <strong>Tight Model integration: </strong>I see many people argue that ASP.NET MVC is just VC, since the Model is not tightly coupled to the project. It&rsquo;s the developer&rsquo;s task to choose the right tool for the job, be it LINQ to SQL, Entity Framework or even MongoDB, for example. This flexibility is useful, however, a more integrated scenario could improve productivity a lot, perhaps we could use Entity Framework and SQL Server by default and change the provider later, if needed.</p></li>
+<li><p> <strong>Dynamic typing: </strong>This is a more subjective item, since it is wrong to say that static typing is worse that dynamic typing, or vice versa. It is just a matter of choosing the right tool. However, It seems to me that, in general, static typing and compilation doesn&rsquo;t free you from actual real world errors. It is a cost/benefit tradeoff, so, IMHO, the productivity benefit you get with dynamic typing is worth the trade for the static typing checks that you lost.</p></li>
 </ol>
 
 
-<p>Wrapping up, I think that RoR is still an emerging technology that has a great future ahead and an incredible supporting community. I&#8217;m seeing daily more and more events, talks and conferences around this technology. This, summed up to all the points argumented above, makes me believe that at least it is worth learning. And this is what I&#8217;m working on right now.</p>
+<p>Wrapping up, I think that RoR is still an emerging technology that has a great future ahead and an incredible supporting community. I&rsquo;m seeing daily more and more events, talks and conferences around this technology. This, summed up to all the points argumented above, makes me believe that at least it is worth learning. And this is what I&rsquo;m working on right now.</p>
 
-<p>(I think I&#8217;ll have to buy a MacBook soon :)</p>
+<p>(I think I&rsquo;ll have to buy a MacBook soon :)</p>
 
 <p>Till next time!</p>
 ]]></content>
@@ -738,14 +738,14 @@ RIGHT=${7}</p>
     <link href="http://felipecsl.github.com/blog/2010/04/24/wcf-data-services-and-the-odata-protocol/"/>
     <updated>2010-04-24T04:11:00-07:00</updated>
     <id>http://felipecsl.github.com/blog/2010/04/24/wcf-data-services-and-the-odata-protocol</id>
-    <content type="html"><![CDATA[<p>During the last days, I&#8217;ve been watching some cool MIX&#8217;10 videos with Scott Hanselman. One of them took my attention specially, which is this one: <a href="http://bit.ly/9KjsYr">Beyond File | New Company: From Cheesy Sample to
+    <content type="html"><![CDATA[<p>During the last days, I&rsquo;ve been watching some cool MIX&#8217;10 videos with Scott Hanselman. One of them took my attention specially, which is this one: <a href="http://bit.ly/9KjsYr">Beyond File | New Company: From Cheesy Sample to
 Social Platform.</a></p>
 
 <p>Scott takes a simple website like <a href="http://felipecsl.github.com/admin/Pages/nerddinner.com">nerddinner.com</a> and shows how they tuned it up to enable several different social collaboration, integration and emergent features in it. It is really worth the time watching.</p>
 
-<p>One of the points that really made me curious, was the new <a href="http://www.odata.org/">OData</a> protocol. It was introduced in.NET 4 with <a href="http://msdn.microsoft.com/en-us/data/bb931106.aspx">WCF Data Services</a> (formerly ADO.NET Data Services) and aims to unlock data from its silos that exist in major applications today. What&#8217;s really impressive about it, is that you are able to query it as a web service and perform complex Linq queries against it (even inserting, updating and deleting are supported!). All this, over a common RESTful Http interface. OData is built upon the <a href="http://en.wikipedia.org/wiki/Atom_%28standard%29">AtomPub</a> format, so there is nothing being invented here. <a href="http://microsoftpdc.com/Sessions/FT12">This presentation</a> at PDC&#8217;09 with Pablo Castro provides further techincal details and I definitely recommend watching if you plan to make use of this technology.</p>
+<p>One of the points that really made me curious, was the new <a href="http://www.odata.org/">OData</a> protocol. It was introduced in.NET 4 with <a href="http://msdn.microsoft.com/en-us/data/bb931106.aspx">WCF Data Services</a> (formerly ADO.NET Data Services) and aims to unlock data from its silos that exist in major applications today. What&rsquo;s really impressive about it, is that you are able to query it as a web service and perform complex Linq queries against it (even inserting, updating and deleting are supported!). All this, over a common RESTful Http interface. OData is built upon the <a href="http://en.wikipedia.org/wiki/Atom_%28standard%29">AtomPub</a> format, so there is nothing being invented here. <a href="http://microsoftpdc.com/Sessions/FT12">This presentation</a> at PDC&#8217;09 with Pablo Castro provides further techincal details and I definitely recommend watching if you plan to make use of this technology.</p>
 
-<p>I&#8217;m planning on implementing this on a Website CMS I&#8217;m working on and will write about my findings, barriers found and solutions here in the near future. Stay tuned.</p>
+<p>I&rsquo;m planning on implementing this on a Website CMS I&rsquo;m working on and will write about my findings, barriers found and solutions here in the near future. Stay tuned.</p>
 ]]></content>
   </entry>
   

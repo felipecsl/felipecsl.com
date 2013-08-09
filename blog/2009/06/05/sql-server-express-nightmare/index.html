@@ -94,7 +94,7 @@
 
 <p>Express is a free version of this well known Microsoft database engine which is targeted for smaller business. It has some <a href="http://www.microsoft.com/sqlserver/2005/en/us/compare-features.aspx">limitations</a> when compared to the other enterprise-targeted versions.</p>
 
-<p>One of its key differences is that, unlike the other versions, you don&#8217;t need a database instance to start working. The only thing you need is an empty MDF file to start off. It can be created from Visual Studio (Add New Item > SQL Server Database) and you&#8217;re ready to go. However, here is where the problems start&#8230;</p>
+<p>One of its key differences is that, unlike the other versions, you don&rsquo;t need a database instance to start working. The only thing you need is an empty MDF file to start off. It can be created from Visual Studio (Add New Item > SQL Server Database) and you&rsquo;re ready to go. However, here is where the problems start&hellip;</p>
 
 <p>The big issue is that the MDF is a regular windows file, like any other. This means that <strong>only one process is able to modify it at a time</strong>.</p>
 
@@ -110,9 +110,9 @@
 
 <p>If the NETWORK SERVICE is already on the list, make sure it has read/write permission.</p>
 
-<p>Else, click Add&#8230; and type NETWORK SERVICE in the edit field. Add the proper permissions and click Ok in all the open Windows. Reload the webpage.</p>
+<p>Else, click Add&hellip; and type NETWORK SERVICE in the edit field. Add the proper permissions and click Ok in all the open Windows. Reload the webpage.</p>
 
-<p>In some machines, I&#8217;ve seen the user IIS_IUSRS instead of NETWORK SERVICE, so you can try this one as well. (if it exists)</p>
+<p>In some machines, I&rsquo;ve seen the user IIS_IUSRS instead of NETWORK SERVICE, so you can try this one as well. (if it exists)</p>
 
 <p><strong>Cause 2.</strong> Visual Studio is locking the database file. In some cases, when you edit the database inside VS using the Server Explorer window, the handle remais open even after you close the connection with the database.</p>
 
@@ -120,11 +120,11 @@
 
 <p><img src="/images/2009/6/Sem+t%c3%adtulo.png" alt="" /></p>
 
-<p>If you are using SQL Server Management Studio Express, you have to Detach the database (do not forget to check the checkbox &#8220;Drop Connections&#8221; in the subsequent screen):</p>
+<p>If you are using SQL Server Management Studio Express, you have to Detach the database (do not forget to check the checkbox &ldquo;Drop Connections&rdquo; in the subsequent screen):</p>
 
 <p><img src="/images/2009/6/Sem+t%c3%adtulo2.png" alt="" /></p>
 
-<p>Go to your webpage and try reloading it.  It should work now. In case it doesn&#8217;t work, try closing your Solution inside VS or close the whole VS window. I&#8217;ve seen cases where VS keeps the database locked even after you closed the connection in the Server Explorer. Unfortunately, the error above isn&#8217;t related to an open connection and this is why it sometimes it gets really hard to diagnose the issue.</p>
+<p>Go to your webpage and try reloading it.  It should work now. In case it doesn&rsquo;t work, try closing your Solution inside VS or close the whole VS window. I&rsquo;ve seen cases where VS keeps the database locked even after you closed the connection in the Server Explorer. Unfortunately, the error above isn&rsquo;t related to an open connection and this is why it sometimes it gets really hard to diagnose the issue.</p>
 
 <p>As I said before, only one connection may be open with the SQL Express database file at a time, so always make sure there is no other program with it open. This does not mean that it does not allow concurrent users using the database, but Visual Studio and Management Studio manage to open it in such a way that locks the file entirely. The reason is unknown to me.</p>
 </div>
@@ -238,7 +238,10 @@
 
 
 
-
+<a href="mailto:felipe.lima@gmail.com" title="Pair program with me!">
+  <img  src="http://pairprogramwith.me/badge.png"
+        alt="Pair program with me!" style="width: 150px" />
+</a>
   
 </aside>
 
