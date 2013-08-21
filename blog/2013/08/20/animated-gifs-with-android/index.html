@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Problemas de Timezone com Ruby? - Felipe Lima</title>
+  <title>animated_gifs_with_android - Felipe Lima</title>
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="Timezones podem ser uma dor de cabeça quando trabalhamos muito com datas. Em ruby, existem pelo menos três classes diferentes para manipulação de &hellip;">
+  <meta name="description" content="Working with animated GIFs on Android can be a painful task. In the We Heart It app we deal with a lot of images, but also animated GIFs. Since we &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://felipecsl.github.com/blog/2010/12/12/problemas-de-timezone-com-ruby/">
+  <link rel="canonical" href="http://felipecsl.github.com/blog/2013/08/20/animated-gifs-with-android/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,7 +79,7 @@
   
   <header>
     
-      <h1 class="entry-title">Problemas De Timezone Com Ruby?</h1>
+      <h1 class="entry-title">Animated_gifs_with_android</h1>
     
     
       <p class="meta">
@@ -95,20 +95,22 @@
   
 
 
-<time datetime="2010-12-12T14:45:15-08:00" pubdate data-updated="true">Dec 12<span>th</span>, 2010</time>
+<time datetime="2013-08-20T21:05:00-07:00" pubdate data-updated="true">Aug 20<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Timezones podem ser uma dor de cabeça quando trabalhamos muito com datas. Em ruby, existem pelo menos três classes diferentes para manipulação de data/hora: Date, Time e DateTime.</p>
+<div class="entry-content"><p>Working with animated GIFs on Android can be a painful task. In the <a href="https://play.google.com/store/apps/details?id=com.weheartit">We Heart It app</a> we deal with a lot of images, but also animated GIFs. Since we support Android back to API Level 8 (2.2), <code>WebView</code> is by far the simplest solution, however is not an option for us, since it <a href="https://code.google.com/p/android/issues/detail?id=3422">doesn&rsquo;t work</a> on most of older Android versions.</p>
 
-<p>O nosso grande problema foi que, ao salvar uma data/hora no banco mySQL via ActiveRecord, o timezone estava sendo normalizado para UTC +00:00, enquanto o timezone do sistema é GMT -02:00, pois estamos em horário brasileiro de verão. Normalmente seria GMT -03:00).</p>
+<p>By looking at this excellent tutorial by <a href="http://droid-blog.net/2011/10/15/tutorial-how-to-play-animated-gifs-in-android-%E2%80%93-part-2/">Johannes Borchardt</a>, I decided to take <code>GifDecoder</code> approach, which seems to be the most reliable solution. However, the <a href="https://code.google.com/p/android-gifview/source/browse/trunk/GifPlayer/src/jp/tomorrowkey/android/gifplayer/GifDecoder.java">GifDecoder</a> class suggested by Johannes is not very memory efficient since it keeps in memory the bitmap data for every frame in the GIF.</p>
 
-<p>Isto se torna um problema quando precisamos comparar datas, que vêm do banco de dados, com a data atual. Utilizando Time.now, estávamos observando um offset de 2h dado pela diferença entre o timezone do banco e o do sistema.</p>
+<p>By doing some more research, I found this great <a href="https://gist.github.com/devunwired/4479231">gist</a> with an optimized implementation of <code>GifDecoder</code> that, as described there, &ldquo;decodes images on-the-fly, and only the minimum data to create the next frame in the sequence is kept&rdquo;.</p>
 
-<p>Para solucionar o problema, precisamos normalizar os dois objetos para o mesmo timezone. Resolvemos isto utilizando o método Time.utc, que monta um novo objeto Time baseado no UTC:</p>
+<p>The class interface is however not exactly the same as the one exposed by the original <code>GifDecoder</code> class provided, thus the <code>GifDecoderView</code> class had to be adjusted. I made the adjustments required to interact with this version and also start/stop the animation. By default it will loop the GIF animation, even if the view is not on the screen, so you have to be careful to call <code>startAnimation()</code> and <code>stopAnimation()</code> correctly to avoid GIFs playing in the background, which can eat up all your memory very quickly.</p>
+
+<p>My interaction looks basically like this:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -116,16 +118,34 @@
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">ApplicationHelper</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">get_utc_time</span>
-</span><span class='line'>    <span class="n">now</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
-</span><span class='line'>    <span class="no">Time</span><span class="o">.</span><span class="n">utc</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">now</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">now</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">now</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">now</span><span class="o">.</span><span class="n">min</span><span class="p">,</span> <span class="n">now</span><span class="o">.</span><span class="n">sec</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'>  <span class="c1">// In my fragment class...</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">gifView</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GifDecoder</span><span class="o">();</span>
+</span><span class='line'>    <span class="n">gifView</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">bytes</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">gifView</span><span class="o">.</span><span class="na">startAnimation</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUserVisibleHint</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">isVisibleToUser</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">super</span><span class="o">.</span><span class="na">setUserVisibleHint</span><span class="o">(</span><span class="n">isVisibleToUser</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="o">(!</span><span class="n">isVisibleToUser</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">gifView</span><span class="o">.</span><span class="na">stopAnimation</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Caso alguém tenha uma solução mais elegante para o problema, aceito sugestões :)</p>
+<p>You can get all the code here in this <a href="https://gist.github.com/felipecsl/6289457">Gist</a>.</p>
 </div>
 
 
@@ -148,7 +168,7 @@
   
 
 
-<time datetime="2010-12-12T14:45:15-08:00" pubdate data-updated="true">Dec 12<span>th</span>, 2010</time>
+<time datetime="2013-08-20T21:05:00-07:00" pubdate data-updated="true">Aug 20<span>th</span>, 2013</time>
       
 
 
@@ -156,7 +176,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://felipecsl.github.com/blog/2010/12/12/problemas-de-timezone-com-ruby/" data-via="felipecsl" data-counturl="http://felipecsl.github.com/blog/2010/12/12/problemas-de-timezone-com-ruby/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://felipecsl.github.com/blog/2013/08/20/animated-gifs-with-android/" data-via="felipecsl" data-counturl="http://felipecsl.github.com/blog/2013/08/20/animated-gifs-with-android/" >Tweet</a>
   
   
   
@@ -165,10 +185,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2010/11/23/traduzindo-html-utilizando-a-api-do-google-translate/" title="Previous Post: Traduzindo HTML utilizando a API do Google Translate">&laquo; Traduzindo HTML utilizando a API do Google Translate</a>
+        <a class="basic-alignment left" href="/blog/2013/03/31/starting-with-android-managing-images/" title="Previous Post: Starting with Android - managing images">&laquo; Starting with Android - managing images</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2011/01/11/problemas-com-iframe-no-ie/" title="Next Post: Problemas com IFrame no IE?">Problemas com IFrame no IE? &raquo;</a>
       
     </p>
   </footer>

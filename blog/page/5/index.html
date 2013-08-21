@@ -9,7 +9,7 @@
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="Lately I found a very simple and yet consistent way to track the last update made to a Sql Server database table. You can easily store the &hellip;">
+  <meta name="description" content="I just found out that there is an effort at Microsoft together with the jQuery team in order to add intellisense support for this framework in Visual &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/07/14/about-jquery-intellisense-support-in-visual-studio/">About jQuery Intellisense Support in Visual Studio</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-14T15:46:00-07:00" pubdate data-updated="true">Jul 14<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I just found out that there is an effort at Microsoft together with the jQuery team in order to add intellisense support for this framework in Visual Studio 2008. We all know that the javascript intellisense support in VS has always been almost none, but now it seems that the guys at Microsoft are changing the way and starting to support it progressively, starting by including it in its ASP.NET MVC package and adding intellisense support for interaction with the AJAX framework.</p>
+
+<p>I&rsquo;ve been trying to enable this functionality today and found out that it just isn&rsquo;t worth the effort, at least for the latest jQuery version (1.3.2). Basically, you need to first off <a href="http://weblogs.asp.net/scottgu/archive/2008/11/21/jquery-intellisense-in-vs-2008.aspx">install a patch</a> to enable the functionality. Then, you&rsquo;ll need a -vsdocs.js file, which is just an API descriptor containing all the documentation for the framework. It is not actually a js file. You can find more detailed information <a href="http://blogs.ipona.com/james/archive/2009/01/14/jquery-1.3-and-visual-studio-2008-intellisense.aspx">here</a>. Then, JScript IntelliSense will parse all the included js files and check for errors. If it thinks that one of your included script files isn&rsquo;t good, intellisense just won&rsquo;t work. The problem is that it complains about the actual jQuery file not being well formed:</p>
+
+<p><strong>&ldquo;Warning</strong><strong>  </strong><strong>15</strong><strong>  </strong><strong>Error updating JScript IntelliSense: C:.&hellip;\javascript\jquery-1.3.js: Object doesn&rsquo;t support this property or method @ 2069:1&rdquo;</strong></p>
+
+<p>Just to shorten the story, you&rsquo;ll get to spend some time trying to make it to work, probably without success and then will give up miserably (my case). The fact is that it just isn&rsquo;t worth all the work, while you still have a <a href="http://docs.jquery.com/Main_Page">decent online documentation</a> to help.</p>
+
+<p>In the end, you&rsquo;ll have to calm down and wait a little bit while Visual Studio 2010 is still beta since jQuery will be shipped with VS2010 and it will include built-in robust intellisense and documentation (not from a downloaded patch). This is good news for us all! In the meantime, let&rsquo;s wait for the final release :)</p>
+
+<p>[Update 07/17/2009]</p>
+
+<p>Just ran into a great post about this exactly same subject at <a href="http://www.learningjquery.com/2009/07/setting-up-visual-studio-intellisense-for-jquery#more-822">learninjquery.com</a> which was an eye-opener to me. It is actually very simple to make it work if you know exactly what has to be done. And what has to be done is just to add the /// reference comment to the start of your javascript file and everything works seamlessly. No need to include the -vsdocs in the actual html file at all! Of course that if you have different scenarios like custom controls, dynamically generated javascript, etc., this may become painful again, but for the regular usage, this post at learningjquery.com will set you will all that is needed to be ready to go in minutes.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -958,52 +1006,6 @@ expressions with simpler constructs that Entity Framework can understand.&rdquo;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/05/20/net-framework-4-and-ado-net-futures/">.Net Framework 4 and ADO.Net Futures</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-05-20T15:13:00-07:00" pubdate data-updated="true">May 20<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Microsoft has been working on the next version of its .Net Framework 4.0 and the respective IDE: Visual Studio 2010. There is a <a href="http://channel9.msdn.com/shows/10-4/10-4-Episode-20-Downloading-and-Installing-Visual-Studio-2010-Beta-1/">video screencast</a> at Channel9 for downloading and installing the Beta 1.</p>
-
-<p>Some of the new features in this version 4 are: parallel programming support, functional programming with <a href="http://research.microsoft.com/en-us/um/cambridge/projects/fsharp/default.aspx">F#</a>, <a href="http://msdn.microsoft.com/en-us/devlabs/dd491992.aspx">code contracts</a>, <a href="http://channel9.msdn.com/shows/10-4/10-4-Episode-16-Windows-Workflow-4/">new WF engine</a>, etc.</p>
-
-<p>One of the biggest improvements I found very useful was the <a href="http://www.asp.net/dynamicdata/">ASP.NET Dynamic Data</a> framework, which was introduced in .Net 3.5 SP1. With this tool, you are able to create an entire data driven website in minutes. It uses Linq to SQL to generate the object/relational data mapping and then builds up pages based on columns data types. There are several built-in Field Templates and Page Templates that are used to build the pages dynamically based on the table schema. Fantastic!</p>
-
-<p>The Dynamic Data Preview 4 can be downloaded from <a href="http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=27026">CodePlex.</a></p>
-
-<p>However, Microsoft also introduced the ADO.Net Entity Framework (or Linq to Entities) in .Net 3.5 SP1 as well, that seems to do the same job that L2S proposes to do. There are some discussions in the web around this. <a href="http://blogs.msdn.com/swiss_dpe_team/archive/2008/11/06/entity-framework-vs-linq-to-sql.aspx">This blog post</a> outlines the main differences between the two technologies. which basically tells us that L2S is more limited that the Entity Framework.</p>
-
-<p>Finally, &ldquo;&hellip; as of .NET 4.0, LINQ to Entities will be the recommended data access solution for LINQ to relational scenarios.&rdquo; (<a href="http://stackoverflow.com/questions/8676/entity-framework-vs-linq-to-sql">source</a>)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/6/">&larr; Older</a>
@@ -1021,6 +1023,10 @@ expressions with simpler constructs that Entity Framework can understand.&rdquo;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/08/20/animated-gifs-with-android/">animated_gifs_with_android</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/03/31/starting-with-android-managing-images/">Starting with Android - managing images</a>
       </li>
     
@@ -1034,10 +1040,6 @@ expressions with simpler constructs that Entity Framework can understand.&rdquo;
     
       <li class="post">
         <a href="/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx/">Protip: Delete words on iTerm2 (Mac OSX)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/05/24/wombat-0-4-0-released/">Wombat 0.4.0 released!</a>
       </li>
     
   </ul>
