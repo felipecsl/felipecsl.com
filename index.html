@@ -133,8 +133,8 @@
 </pre></td><td class='code'><pre><code class='java'><span class='line'>  <span class="c1">// In my fragment class...</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>    <span class="n">gifView</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GifDecoder</span><span class="o">();</span>
-</span><span class='line'>    <span class="n">gifView</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">bytes</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">gifView</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GifDecoderView</span><span class="o">(</span><span class="n">getActivity</span><span class="o">());</span>
+</span><span class='line'>    <span class="n">gifView</span><span class="o">.</span><span class="na">setBytes</span><span class="o">(</span><span class="n">bitmapData</span><span class="o">);</span>
 </span><span class='line'>    <span class="n">gifView</span><span class="o">.</span><span class="na">startAnimation</span><span class="o">();</span>
 </span><span class='line'>  <span class="o">}</span>
 </span><span class='line'>
