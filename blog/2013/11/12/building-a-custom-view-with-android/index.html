@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Automatically tracking last modification date/time in table column - Felipe Lima</title>
+  <title>Building a Custom View with Android - Felipe Lima</title>
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="Lately I found a very simple and yet consistent way to track the last update made to a Sql Server database table. You can easily store the &hellip;">
+  <meta name="description" content="This week I&rsquo;m attending AnDevCon in San Francisco and in the first tutorial in the first day of the event, I watched a really nice workshot by &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://felipecsl.github.com/blog/2009/07/08/automatically-tracking-last-modification-datetime-in-table-column/">
+  <link rel="canonical" href="http://felipecsl.github.com/blog/2013/11/12/building-a-custom-view-with-android/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,7 +79,7 @@
   
   <header>
     
-      <h1 class="entry-title">Automatically Tracking Last Modification Date/time in Table Column</h1>
+      <h1 class="entry-title">Building a Custom View With Android</h1>
     
     
       <p class="meta">
@@ -95,36 +95,22 @@
   
 
 
-<time datetime="2009-07-08T02:55:00-07:00" pubdate data-updated="true">Jul 8<span>th</span>, 2009</time>
+<time datetime="2013-11-12T11:40:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Lately I found a very simple and yet consistent way to track the last update made to a Sql Server database table. You can easily store the modification date and time through a table trigger that can set a specific column of the updated row(s) with the GETDATE() function.</p>
+<div class="entry-content"><p>This week I&rsquo;m attending <a href="http://andevcon.com/">AnDevCon</a> in San Francisco and in the first tutorial in the first day of the event, I watched a really nice workshot by <a href="https://twitter.com/chiuki">Chiu-Ki Chan&rsquo;s</a> titled <code>Hands-on Android Custom View Workshop</code>. The code is here on <a href="https://github.com/chiuki/android-fraction-view">Github</a>.</p>
 
-<p>In order to do that, create a new trigger for your table and use the <strong>Inserted</strong> virtual table to obtain the ID of the entry, in order to update it. We&rsquo;ll use here a <strong>LastModified </strong>column, which will store a datetime:</p>
+<p>We built a simple custom view using circles, arcs and <code>onDraw</code> to draw some kind of pie chart that reacts to click, sends change events, etc.</p>
 
-<p>CREATE TRIGGER last_modification_timestamp</p>
+<p>I implemented the FractionView with some small changes, animating it into some kind of clock/stopwatch thing that animates by itself. Below is a GIF with the sample app running.</p>
 
-<p>ON target_table</p>
+<p>Please feel free to play with it and check out my fork on <a href="https://github.com/felipecsl/android-fraction-view">Github</a>.</p>
 
-<p>AFTER INSERT, UPDATE</p>
-
-<p>AS</p>
-
-<p>DECLARE @colID INT</p>
-
-<p>SELECT @colID = (SELECT ID FROM Inserted)</p>
-
-<p>UPDATE target_table SET LastModified = GETDATE() WHERE ID = @colID</p>
-
-<p>So, we&rsquo;re basically retrieving the column ID (primary key) from the affected row and using it to update the LastModified column with the current date and time.</p>
-
-<p>This way, you can enforce this policy and guarantee that you&rsquo;ll always get the correct date/time in that column, since the trigger will be automatically executed just after each INSERT and DELETE.</p>
-
-<p>Hope this helps!</p>
+<p><img src="/images/fractionView.gif" alt="" /></p>
 </div>
 
 
@@ -147,7 +133,7 @@
   
 
 
-<time datetime="2009-07-08T02:55:00-07:00" pubdate data-updated="true">Jul 8<span>th</span>, 2009</time>
+<time datetime="2013-11-12T11:40:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2013</time>
       
 
 
@@ -155,7 +141,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://felipecsl.github.com/blog/2009/07/08/automatically-tracking-last-modification-datetime-in-table-column/" data-via="felipecsl" data-counturl="http://felipecsl.github.com/blog/2009/07/08/automatically-tracking-last-modification-datetime-in-table-column/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://felipecsl.github.com/blog/2013/11/12/building-a-custom-view-with-android/" data-via="felipecsl" data-counturl="http://felipecsl.github.com/blog/2013/11/12/building-a-custom-view-with-android/" >Tweet</a>
   
   
   
@@ -164,10 +150,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2009/07/02/ef-objectcontext-attach-and-objectstatemanager/" title="Previous Post: EF ObjectContext.Attach and ObjectStateManager">&laquo; EF ObjectContext.Attach and ObjectStateManager</a>
+        <a class="basic-alignment left" href="/blog/2013/08/20/animated-gifs-with-android/" title="Previous Post: Handling Animated GIFs with Android the right way">&laquo; Handling Animated GIFs with Android the right way</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2009/07/14/about-jquery-intellisense-support-in-visual-studio/" title="Next Post: About jQuery intellisense support in Visual Studio">About jQuery intellisense support in Visual Studio &raquo;</a>
       
     </p>
   </footer>

@@ -9,7 +9,7 @@
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="During the last days, I&rsquo;ve been watching some cool MIX&#8217;10 videos with Scott Hanselman. One of them took my attention specially, which is &hellip;">
+  <meta name="description" content="During the last few weeks, I found myself more and more inside a stream that takes me to Ruby on Rails, when it comes to the best platform option for &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,56 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/05/22/thoughts-on-web-platforms-and-tendencies/">Thoughts on Web Platforms and Tendencies</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-22T04:36:00-07:00" pubdate data-updated="true">May 22<span>nd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>During the last few weeks, I found myself more and more inside a stream that takes me to Ruby on Rails, when it comes to the best platform option for agile web development. My current language and platform or proficiency are C# and ASP.NET MVC, however, while getting introduced to the Rails world, I started seeing things from a different perspective, as well as finding out such great tools and practices that I really would like to have when working with ASP.NET MVC. I&rsquo;m gonna list some the topics and differences I have been analyzing:</p>
+
+<ol>
+<li><p> <strong>Community support:</strong> I found the RoR and the Open Source community to be far more unite and open to teaching and sharing knowledge than the .NET community. Starting with the assumption that there are probably more people working with ASP.NET right now than with RoR, it is surprising to see that it is easier to find RoR help online and learning communities than ASP.NET ones. Also, as far as I know, the ASP.NET MVC code is not open to community contributions right now, so people created the <a href="http://mvccontrib.codeplex.com/">MvcContrib</a> project to acoomodate this code, which is a shame. This is said, despite the fact that it&rsquo;s under the <a href="http://www.opensource.org/licenses/ms-pl.html">MS-PL license</a>, I found it hard to provide suggestions and feedback to the project, since there is not an official place for it.</p></li>
+<li><p> <strong>Productivity:</strong> Frequently I have hard times fighting the framework just to be able to get the job done. Rails has proven to me to be more productive and succint in terms of framework design. For example: named routes and database migrations are VERY helpful and I miss this kind of tool in ASP.NET MVC.</p></li>
+<li><p> <strong>Tight Model integration: </strong>I see many people argue that ASP.NET MVC is just VC, since the Model is not tightly coupled to the project. It&rsquo;s the developer&rsquo;s task to choose the right tool for the job, be it LINQ to SQL, Entity Framework or even MongoDB, for example. This flexibility is useful, however, a more integrated scenario could improve productivity a lot, perhaps we could use Entity Framework and SQL Server by default and change the provider later, if needed.</p></li>
+<li><p> <strong>Dynamic typing: </strong>This is a more subjective item, since it is wrong to say that static typing is worse that dynamic typing, or vice versa. It is just a matter of choosing the right tool. However, It seems to me that, in general, static typing and compilation doesn&rsquo;t free you from actual real world errors. It is a cost/benefit tradeoff, so, IMHO, the productivity benefit you get with dynamic typing is worth the trade for the static typing checks that you lost.</p></li>
+</ol>
+
+
+<p>Wrapping up, I think that RoR is still an emerging technology that has a great future ahead and an incredible supporting community. I&rsquo;m seeing daily more and more events, talks and conferences around this technology. This, summed up to all the points argumented above, makes me believe that at least it is worth learning. And this is what I&rsquo;m working on right now.</p>
+
+<p>(I think I&rsquo;ll have to buy a MacBook soon :)</p>
+
+<p>Till next time!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -855,54 +905,6 @@ You can even bind complex objects like lists</a>, for example, but, in this case
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/10/21/asp-net-mvc-and-iis-6/">ASP.NET MVC and IIS 6</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-10-21T00:01:00-07:00" pubdate data-updated="true">Oct 21<span>st</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&rsquo;ve been playing lately with ASP.NET MVC 2 Preview 2. I had no previous experience with this and it has been kind of a change in paradigms changing from web forms to mvc. At the same time, I feel very excited about this and believe that It is a big step forward when compared to web forms, mainly due to the separation of concerns and responsibilities.</p>
-
-<p>As a drawback, It is very weird not to be able to drop ASP.NET server controls in the page. Initially, you&rsquo;ll feel a bit &lsquo;lost&rsquo;. MVC uses a different method to render the page. You don&rsquo;t have the runat=&lsquo;server&rsquo; stuff anymore so, instead, you&rsquo;ll have to render the page mostly based on what you have in your ViewData. It&rsquo;s not my objective to explain its functionality here, but you can find further information at the <a href="http://www.asp.net/mvc/">official MVC website</a>. The latest release can be downloaded from <a href="http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=33836">CodePlex</a>.</p>
-
-<p>While testing my application in my hosting provider, I had a big headache since they have Windows 2003 Server installed, which comes with IIS 6. ASP.NET MVC requires a bit of work in order to work with IIS6, especially if your hosting provider does not have MVC installed in the GAC.</p>
-
-<p>I would definitely suggest <a href="http://haacked.com/">Phil Haack&rsquo;s blog</a> as the first point for reference on this subject. There are two key posts regarding this issue that I followed in order to make it work.</p>
-
-<p>First of all, MVC assembly needs to be deployed in the application Bin directory if it is not installed in the server. Detailed info <a href="http://haacked.com/archive/2008/11/03/bin-deploy-aspnetmvc.aspx">here</a>.</p>
-
-<p>Second, you&rsquo;ll need to change the application routes for IIS 6 to correctly receive the requests and forward them to the controllers. Haacked.com walkthrough <a href="http://haacked.com/archive/2008/11/26/asp.net-mvc-on-iis-6-walkthrough.aspx">here</a>.</p>
-
-<p>As a last tip, I also found out that my MVC application wouldn&rsquo;t work if I used VS Publish tool to send it to the production server after following the two steps above. No clue why, but just copying the whole website files to the server worked fine. Weird!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -920,6 +922,10 @@ You can even bind complex objects like lists</a>, for example, but, in this case
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/11/12/building-a-custom-view-with-android/">Building a Custom View with Android</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/08/20/animated-gifs-with-android/">Handling Animated GIFs with Android the right way</a>
       </li>
     
@@ -933,10 +939,6 @@ You can even bind complex objects like lists</a>, for example, but, in this case
     
       <li class="post">
         <a href="/blog/2012/06/14/getting-started-with-chef/">Getting started with Chef</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx/">Protip: Delete words on iTerm2 (Mac OSX)</a>
       </li>
     
   </ul>

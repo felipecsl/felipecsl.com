@@ -9,7 +9,7 @@
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="CKEditor is a great open source wysiwyg editor for the web. It was formerly called FCKEditor and, one of its previous versions contained a nice &hellip;">
+  <meta name="description" content="I&rsquo;ve been playing lately with ASP.NET MVC 2 Preview 2. I had no previous experience with this and it has been kind of a change in paradigms &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/10/21/asp-net-mvc-and-iis-6/">ASP.NET MVC and IIS 6</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-21T00:01:00-07:00" pubdate data-updated="true">Oct 21<span>st</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;ve been playing lately with ASP.NET MVC 2 Preview 2. I had no previous experience with this and it has been kind of a change in paradigms changing from web forms to mvc. At the same time, I feel very excited about this and believe that It is a big step forward when compared to web forms, mainly due to the separation of concerns and responsibilities.</p>
+
+<p>As a drawback, It is very weird not to be able to drop ASP.NET server controls in the page. Initially, you&rsquo;ll feel a bit &lsquo;lost&rsquo;. MVC uses a different method to render the page. You don&rsquo;t have the runat=&lsquo;server&rsquo; stuff anymore so, instead, you&rsquo;ll have to render the page mostly based on what you have in your ViewData. It&rsquo;s not my objective to explain its functionality here, but you can find further information at the <a href="http://www.asp.net/mvc/">official MVC website</a>. The latest release can be downloaded from <a href="http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=33836">CodePlex</a>.</p>
+
+<p>While testing my application in my hosting provider, I had a big headache since they have Windows 2003 Server installed, which comes with IIS 6. ASP.NET MVC requires a bit of work in order to work with IIS6, especially if your hosting provider does not have MVC installed in the GAC.</p>
+
+<p>I would definitely suggest <a href="http://haacked.com/">Phil Haack&rsquo;s blog</a> as the first point for reference on this subject. There are two key posts regarding this issue that I followed in order to make it work.</p>
+
+<p>First of all, MVC assembly needs to be deployed in the application Bin directory if it is not installed in the server. Detailed info <a href="http://haacked.com/archive/2008/11/03/bin-deploy-aspnetmvc.aspx">here</a>.</p>
+
+<p>Second, you&rsquo;ll need to change the application routes for IIS 6 to correctly receive the requests and forward them to the controllers. Haacked.com walkthrough <a href="http://haacked.com/archive/2008/11/26/asp.net-mvc-on-iis-6-walkthrough.aspx">here</a>.</p>
+
+<p>As a last tip, I also found out that my MVC application wouldn&rsquo;t work if I used VS Publish tool to send it to the production server after following the two steps above. No clue why, but just copying the whole website files to the server worked fine. Weird!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -630,377 +678,6 @@ the expanded query to T-SQL."
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/07/27/dynamically-adding-user-controls-to-web-page-with-asp-net/">Dynamically Adding User Controls to Web Page With ASP.NET</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-07-27T04:09:00-07:00" pubdate data-updated="true">Jul 27<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&rsquo;ve been very busy lately and unfortunately didn&rsquo;t have enough time to stop here to write about things I have been working on. There are other subjects that I&rsquo;d like to talk about but, for now, I&rsquo;ll share my findings with asp.net user controls dynamically added to the page, difficulties, limitations and solutions.</p>
-
-<p>I&rsquo;m working on a Ajax based web site that basically contains a content area in the right, where I need to put the dynamic content, based on the user selection on the left menu. The ongoing work can be seen <a href="/admin/Pages/www.felipel.com/visiocore/ContentPage.aspx">here</a>.</p>
-
-<p>The easier way to do this is to create an asp.net UserControl for the content of each page and to dynamically add each control to the page based on the user selection. I also added an UpdateProgress panel for better user experience. However, here is where the problems start. First off, you cannot simply instantiate an asp.net UserControl through its constructor and add it to the page. That won&rsquo;t work. Instead, you&rsquo;ll need to use the factory method Page.LoadControl(), providing it the virtual path to your control so that it returns the instance for you. Eg.:</p>
-
-<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;Control c = &lt;span class="kwrd"&gt;this&lt;/span&gt;.LoadControl(&lt;span class="str"&gt;"~/MyUserControl.ascx"&lt;/span&gt;);   &lt;span class="rem"&gt;// Instantiate the user control&lt;/span&gt;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   2:  &lt;/span&gt;&lt;span class="kwrd"&gt;this&lt;/span&gt;.ContentArea.Controls.Add(c);    // Add it to the placeholder
-</code></pre>
-
-<p>Here, we&rsquo;re instantiating the control and adding it to the page. So far, so good. But, what happens if your user control needs to execute some javascript function upon loading? Even if you explicitly put <script> tags in your user control markup, it won&rsquo;t be executed at this time, so the solution is to use RegisterStartupScript to execute the client code:</p>
-
-<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;ClientScript.RegisterStartupScript(&lt;span class="kwrd"&gt;typeof&lt;/span&gt;(&lt;span class="kwrd"&gt;this&lt;/span&gt;), &lt;span class="str"&gt;"some script key"&lt;/span&gt;, &lt;span class="str"&gt;"&lt;script type="&lt;/span&gt;text/javascript&lt;span class="str"&gt;"&gt;alert('hello world!');&lt;/script&gt;"&lt;/span&gt;);
-</code></pre>
-
-<p>or, if you&rsquo;re using Ajax, use the ScriptManager static method:</p>
-
-<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;ScriptManager.RegisterStartupScript(&lt;span class="kwrd"&gt;this&lt;/span&gt;, &lt;span class="kwrd"&gt;typeof&lt;/span&gt;(&lt;span class="kwrd"&gt;this&lt;/span&gt;), &lt;span class="str"&gt;"some script key"&lt;/span&gt;, &lt;span class="str"&gt;"&lt;script type="&lt;/span&gt;text/javascript&lt;span class="str"&gt;"&gt;alert('hello world!');&lt;/script&gt;"&lt;/span&gt;, &lt;span class="kwrd"&gt;false&lt;/span&gt;);
-</code></pre>
-
-<p>Put this and your user control will show up smoothly. If you don&rsquo;t like the fact that the screen may remain unresponsive for some time with Ajax, you can use UpdateProgress to show a &ldquo;Loading&rdquo; text, for example, while the content is being loaded. This is fairly easy. Check out this <a href="http://www.asp.net/learn/ajax-videos/video-123.aspx">video</a>  for further information.</p>
-
-<p>Okay, so now, what happens if we need to fire an event inside the UserControl in response to a user click on an image, for example? Right, the click event will fire a page postback and then the event handling code will be fired in the code behind as expected. Right? Definitely no! Since our user controls are being added dynamically to the page, they will not be there anymore after the postback. This means that ASP.Net will not find the control and, therefore, no event will be fired.</p>
-
-<p>Let me refresh some facts about ASP.Net postback functionality before continuing&hellip; Whenever you click a server control in the page, javascript <strong>doPostBack function is called (except for Button and ImageButton, that use a different method &ndash; form post). The </strong>doPostBack function takes two arguments, eventTarget and eventArgument. The eventTarget contains the ID of the control that causes the postback and the eventArgument contains any additional data associated with the control. Upon page reload, ASP.Net checks both Request.Params[&ldquo;<strong>EVENTTARGET&rdquo;] and Request.Params[&ldquo;</strong>EVENTARGUMENT&rdquo;] parameters for any postback data. If it finds it, it looks for the control ID and method specified in the <strong>EVENTTARGET var and calls the specified method, passing the </strong>EVENTARGUMENT value as a parameter.</p>
-
-<p>Said that and knowing that our dynamic user control won&rsquo;t be present in the page during the postback, it is easy to conclude that ASP.Net won&rsquo;t find the control for the ID in the __EVENTTARGET parameter and, consequently, nothing will happen.</p>
-
-<p>Okay, so we need to re-add our user control to the page during the postback, so that ASP.Net will be able to find it and fire its event handler. In order to accomplish that, we can use the page ViewState to store the name of the control currently in the page, so that we can re-add it in the page OnLoad event.</p>
-
-<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;&lt;span class="kwrd"&gt;protected&lt;/span&gt; &lt;span class="kwrd"&gt;override&lt;/span&gt; &lt;span class="kwrd"&gt;void&lt;/span&gt; OnLoad(EventArgs e)
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   2:  &lt;/span&gt;{
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   3:  &lt;/span&gt;    &lt;span class="kwrd"&gt;base&lt;/span&gt;.OnLoad(e);
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   4:  &lt;/span&gt;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   5:  &lt;/span&gt; 
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   6:  &lt;/span&gt;    &lt;span class="kwrd"&gt;if&lt;/span&gt; (!&lt;span class="kwrd"&gt;this&lt;/span&gt;.IsPostBack)
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   7:  &lt;/span&gt;    {
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   8:  &lt;/span&gt;        &lt;span class="rem"&gt;// If this is not a postback, set our the initial content page&lt;/span&gt;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   9:  &lt;/span&gt;        ChangeSection(&lt;span class="str"&gt;"~/InitialControl.ascx"&lt;/span&gt;);
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  10:  &lt;/span&gt;    }
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  11:  &lt;/span&gt;    &lt;span class="kwrd"&gt;else&lt;/span&gt;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  12:  &lt;/span&gt;    {
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  13:  &lt;/span&gt;        &lt;span class="rem"&gt;// Else, retrieve the CurrentControl value from the ViewState&lt;/span&gt;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  14:  &lt;/span&gt;        &lt;span class="kwrd"&gt;string&lt;/span&gt; currentSection = ViewState[&lt;span class="str"&gt;"CurrentControl"&lt;/span&gt;] &lt;span class="kwrd"&gt;as&lt;/span&gt; &lt;span class="kwrd"&gt;string&lt;/span&gt;;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  15:  &lt;/span&gt;        Control c = ChangeSection(currentSection);    &lt;span class="rem"&gt;// Use the control name to add it to the page&lt;/span&gt;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  16:  &lt;/span&gt; 
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  17:  &lt;/span&gt;        &lt;span class="kwrd"&gt;if&lt;/span&gt; (c &lt;span class="kwrd"&gt;is&lt;/span&gt; Eventos_EventosRealizados)
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  18:  &lt;/span&gt;        {
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  19:  &lt;/span&gt;            ((Eventos_EventosRealizados)c).UpdateCallback = delCallback;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  20:  &lt;/span&gt;        }
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  21:  &lt;/span&gt;    }
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  22:  &lt;/span&gt;}
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  23:  &lt;/span&gt; 
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  24:  &lt;/span&gt;&lt;span class="kwrd"&gt;public&lt;/span&gt; Control ChangeSection(&lt;span class="kwrd"&gt;string&lt;/span&gt; _sControl)
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  25:  &lt;/span&gt;{
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  26:  &lt;/span&gt;    Control c = &lt;span class="kwrd"&gt;this&lt;/span&gt;.LoadControl(_sControl);
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  27:  &lt;/span&gt;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  28:  &lt;/span&gt;    &lt;span class="rem"&gt;// Put a 3 seconds delay so that we can see the magic happen -- remove in the final version&lt;/span&gt;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  29:  &lt;/span&gt;    System.Threading.Thread.Sleep(3000);
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  30:  &lt;/span&gt; 
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  31:  &lt;/span&gt;    &lt;span class="kwrd"&gt;this&lt;/span&gt;.ContentArea.Controls.Add(c);    &lt;span class="rem"&gt;// Add the control to the page&lt;/span&gt;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  32:  &lt;/span&gt; 
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  33:  &lt;/span&gt;    &lt;span class="rem"&gt;// Important: Set its ID or the event might not be fired,&lt;/span&gt;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  34:  &lt;/span&gt;    &lt;span class="rem"&gt;// since ASP.Net uses the control ID to find it&lt;/span&gt;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  35:  &lt;/span&gt;    c.ID = &lt;span class="str"&gt;"ContentUserControl"&lt;/span&gt;;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  36:  &lt;/span&gt; 
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  37:  &lt;/span&gt;    ViewState[&lt;span class="str"&gt;"CurrentControl"&lt;/span&gt;] = _sControl;  &lt;span class="rem"&gt;// store the control name in the ViewState&lt;/span&gt;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  38:  &lt;/span&gt;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  39:  &lt;/span&gt;    &lt;span class="rem"&gt;// Execute some javascript routine to refresh the screen (if needed)&lt;/span&gt;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  40:  &lt;/span&gt;    ScriptManager.RegisterStartupScript(&lt;span class="kwrd"&gt;this&lt;/span&gt;, &lt;span class="kwrd"&gt;typeof&lt;/span&gt;(&lt;span class="kwrd"&gt;this&lt;/span&gt;), &lt;span class="str"&gt;"some script key"&lt;/span&gt;, &lt;span class="str"&gt;"&lt;script type="&lt;/span&gt;text/javascript&lt;span class="str"&gt;"&gt;refreshPage();&lt;/script&gt;"&lt;/span&gt;, &lt;span class="kwrd"&gt;false&lt;/span&gt;);
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  41:  &lt;/span&gt; 
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  42:  &lt;/span&gt;    &lt;span class="kwrd"&gt;return&lt;/span&gt; c;
-
-
-
-
-
-
-&lt;span class="lnum"&gt;  43:  &lt;/span&gt;}
-</code></pre>
-
-<p>So these are just some basic guidelines for handling user controls dynamically. If you need further info, <a href="http://asp.net">asp.net</a> official website is always a great place to start off and watch with some videos.</p>
-
-<p>Till next time!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -1018,6 +695,10 @@ the expanded query to T-SQL."
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/11/12/building-a-custom-view-with-android/">Building a Custom View with Android</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/08/20/animated-gifs-with-android/">Handling Animated GIFs with Android the right way</a>
       </li>
     
@@ -1031,10 +712,6 @@ the expanded query to T-SQL."
     
       <li class="post">
         <a href="/blog/2012/06/14/getting-started-with-chef/">Getting started with Chef</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx/">Protip: Delete words on iTerm2 (Mac OSX)</a>
       </li>
     
   </ul>

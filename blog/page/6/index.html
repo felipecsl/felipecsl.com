@@ -9,7 +9,7 @@
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="Microsoft has been working on the next version of its .Net Framework 4.0 and the respective IDE: Visual Studio 2010. There is a video screencast at &hellip;">
+  <meta name="description" content="In my last blog post I wrote a quick introduction on the Entity Framework. I&rsquo;ve been playing with it for the last couple days. I must say I had &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,98 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/05/29/more-on-the-entity-framework/">More on the Entity Framework</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-29T04:56:00-07:00" pubdate data-updated="true">May 29<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In my last blog post I wrote a quick introduction on the Entity Framework. I&rsquo;ve been playing with it for the last couple days. I must say I had a bit of a hard time trying to make it work. The good part is that I discovered some nice stuff when searching for solutions.</p>
+
+<p>With Linq, you are able to build a query predicate dinamically with the extension method IQueryable<TSource> Where<TSource>:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var queryResults = from p in db.Products;
+</span><span class='line'>                   select p;
+</span><span class='line'>queryResults = queryResults.Where(p =&gt; p.Price &lt; 1000);</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But what happens if later your business logic finds out that you need to include in your results products which also cost more than $3000?</p>
+
+<p>No problem! Just call &ldquo;Where&rdquo; again:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(...)
+</span><span class='line'>queryResults = queryResults.Where(p =&gt; p.Price &gt; 3000);</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Right? <strong>NO! </strong>This would result in a query that filters the products for Price &lt; 1000 <strong>AND</strong> Price > 3000. That means, you won&rsquo;t get any results at all! :) What you need, is an <strong>OR</strong> operator between your two Where predicates.</p>
+
+<p>The solution for this is the <a href="http://www.albahari.com/nutshell/linqkit.aspx">LinqKit</a>! It comes with a neat pack of tools for Linq, including a <a href="http://www.albahari.com/nutshell/predicatebuilder.aspx">PredicateBuilder</a> with some extension method that allow you to do something like:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(...)
+</span><span class='line'>var queryResults = from p in db.Products;
+</span><span class='line'>                   select p;
+</span><span class='line'>
+</span><span class='line'>var predicate = PredicateBuilder.False&lt;Product&gt;();
+</span><span class='line'>predicate = predicate.Or(p =&gt; p.Price &lt; 1000);
+</span><span class='line'>predicate = predicate.Or(p =&gt; p.Price &gt; 3000);
+</span><span class='line'>queryResults = queryResults.AsExpandable().Where(predicate);  // p.Price &lt; 1000 OR p.Price &gt; 3000</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You must have noticed the AsExpandable() call above. As per LinqKit documentation:</p>
+
+<p>&ldquo;Entity Framework&rsquo;s query processing pipeline cannot
+handle <em>invocation</em> <em>expressions</em>, which is why you need to call <strong>
+AsExpandable</strong> on the first object in the query. By calling AsExpandable, you
+activate LINQKit&rsquo;s expression visitor class which substitutes invocation
+expressions with simpler constructs that Entity Framework can understand.&rdquo;</p>
+
+<p>The Entity Framework has some limitations when compared with Linq to SQL so that some method are not supported. You can check out that is supported and what is not <a href="http://msdn.microsoft.com/en-us/library/bb738550.aspx">here</a>.</p>
+
+<p>If one attempts to use any of these unsupported methods, a runtime exception will be thrown.</p>
+
+<p>PS: Thanks to <a href="http://www.coderesearchcenter.com/post/How-to-format-code-with-blogenginenet.aspx">this blog post</a>, I was able to write nice formatted C# source code in this post.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -184,6 +276,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/11/12/building-a-custom-view-with-android/">Building a Custom View with Android</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/08/20/animated-gifs-with-android/">Handling Animated GIFs with Android the right way</a>
       </li>
     
@@ -197,10 +293,6 @@
     
       <li class="post">
         <a href="/blog/2012/06/14/getting-started-with-chef/">Getting started with Chef</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx/">Protip: Delete words on iTerm2 (Mac OSX)</a>
       </li>
     
   </ul>
