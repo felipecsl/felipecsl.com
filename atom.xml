@@ -4,7 +4,7 @@
   <title><![CDATA[Felipe Lima]]></title>
   <link href="http://felipecsl.github.com/atom.xml" rel="self"/>
   <link href="http://felipecsl.github.com/"/>
-  <updated>2013-11-12T12:06:27-08:00</updated>
+  <updated>2013-12-06T16:22:19-08:00</updated>
   <id>http://felipecsl.github.com/</id>
   <author>
     <name><![CDATA[Felipe Lima]]></name>
@@ -12,6 +12,74 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Publishing an Android Library to Maven Central with Gradle]]></title>
+    <link href="http://felipecsl.github.com/blog/2013/12/06/publishing-an-android-library-to-maven-central/"/>
+    <updated>2013-12-06T14:19:00-08:00</updated>
+    <id>http://felipecsl.github.com/blog/2013/12/06/publishing-an-android-library-to-maven-central</id>
+    <content type="html"><![CDATA[<p>I recently migrated the <a href="https://play.google.com/store/apps/details?id=com.weheartit">We Heart It Android app</a> project to Android Studio and I thought I&rsquo;d migrate the <a href="https://github.com/felipecsl/Android-ImageManager">Android-ImageManager</a> library into the new format as well. That was the easy part. Another thing I wanted to do was to upload it to Maven Central, so it would make people&rsquo;s lives easier when using it.</p>
+
+<p>Ok this was painful. Here are the steps I took in order to achieve it, so hopefully people won&rsquo;t struggle that much doing it in the future:</p>
+
+<ol>
+<li>Follow Chris&#8217; Banes <a href="http://chris.banes.me/blog/2013/08/27/pushing-aars-to-maven-central/">steps</a>;</li>
+<li>Follow the steps <a href="https://github.com/chrisbanes/gradle-mvn-push">here</a> to configure the upload username and password;</li>
+<li>Make sure you edit <code>gradle.properties</code> and <code>build.gradle</code> with your library&rsquo;s information (version, description, links, etc);</li>
+<li>Follow <a href="https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide">this</a> guide. To summarize, you&rsquo;ll need to create a Sonatype <a href="https://issues.sonatype.org/secure/Dashboard.jspa">JIRA</a> account and then you&rsquo;ll have to create an issue there in order to create your project. That is basically apply for open source project hosting (that&rsquo;s basically the steps 2 and 3 on the user guide mentioned above);</li>
+<li>Wait for your issue to be &ldquo;Resolved&rdquo;, that may take up to 2 business days (!!!). Someone from Sonatype will do it and you&rsquo;ll get an email;</li>
+<li>Run <code>./gradlew clean build uploadArchives</code> to build and upload your project into Sonatype. IMPORTANT: You have to upload a Debug build first, otherwise it is not gonna work. You do that by adding <code>-SNAPSHOT</code> at the end of your <code>VERSION_NAME</code> on <code>gradle.properties`, like this, eg.:</code>VERSION_NAME=1.0.0-SNAPSHOT&#8220;</li>
+<li>After that, if all went well, you should see your project <a href="http://oss.sonatype.org/content/repositories/snapshots/">here</a>. You can navigate through the folders. My project&rsquo;s group id was <code>com.felipecsl.android</code>, so I could find it at <a href="http://oss.sonatype.org/content/repositories/snapshots/com/felipecsl/android/">http://oss.sonatype.org/content/repositories/snapshots/com/felipecsl/android/</a></li>
+</ol>
+
+
+<p>I still havent figured out how to promote a Staging Repository. Right now it is failing to close the repository since the package is not signed. I will update this post once I have a solution.
+In the meantime, you can already use your snapshot with Maven/Gradle.
+Here is how your <code>build.gradle</code> would look like:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">buildscript</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">repositories</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">mavenCentral</span><span class="o">()</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="n">dependencies</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">classpath</span> <span class="s1">&#39;com.android.tools.build:gradle:0.6.+&#39;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">&#39;android&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">repositories</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="s2">&quot;https://oss.sonatype.org/content/repositories/snapshots/&quot;</span> <span class="o">}</span>
+</span><span class='line'>    <span class="n">mavenCentral</span><span class="o">()</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">dependencies</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">compile</span> <span class="s1">&#39;com.felipecsl.android:library:1.0.0-SNAPSHOT&#39;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Well that is pretty much it for now. It took me almost an entire afternoon to figure this all out, hope it is useful for other people.
+If you&rsquo;re interested in a simpler and a lot more elegant solution for Open Source library project hosting, check <a href="http://rubygems.org">rubygems.org</a> which is used to, guess what, host Ruby gems. That is really piece of cake compared to all this Java mess :sigh:</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Building a Custom View with Android]]></title>
@@ -748,34 +816,6 @@ RIGHT=${7}</p>
 <p>If anyone out there had a different experience or can explain why this can happen, please do not hesitate to leave me a comment as I would appreciate a lot!</p>
 
 <p>Thanks!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JQuery progress bar slider plugin]]></title>
-    <link href="http://felipecsl.github.com/blog/2010/06/08/jquery-progress-bar-slider-plugin/"/>
-    <updated>2010-06-08T08:36:00-07:00</updated>
-    <id>http://felipecsl.github.com/blog/2010/06/08/jquery-progress-bar-slider-plugin</id>
-    <content type="html"><![CDATA[<p>Hello,</p>
-
-<p>I&rsquo;ve written a simple JQuery plugin for a progress bar slider. It was inspired on <a href="http://blog.benogle.com/2009/06/16/simple-css-shiny-progress-bar-technique/">Ben&rsquo;s CSS progress bar</a>, but I needed a more complete one that should be interactive, so I built this one that also leverages <a href="http://jqueryui.com/demos/slider/#slider-vertical">JQuery UI&rsquo;s vertical slider</a>.</p>
-
-<p>You can see the plugin demo <a href="https://github.com/felipecsl/jquery-progressbar-slider/demo.htm">here</a>. TIP: Inspect the source code to see how it works.</p>
-
-<p>You can download the plugin code <a href="https://github.com/felipecsl/jquery-progressbar-slider">here</a>.</p>
-
-<p>Usage:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;your element selector&quot;</span><span class="p">).</span><span class="nx">progressbarslider</span><span class="p">();</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Please feel free to leave me a feedback, suggestions and/or use it at your own will on your projects :)</p>
 ]]></content>
   </entry>
   

@@ -9,7 +9,7 @@
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="I&rsquo;ve been playing lately with ASP.NET MVC 2 Preview 2. I had no previous experience with this and it has been kind of a change in paradigms &hellip;">
+  <meta name="description" content="Handling exceptions in ASP.NET MVC is quite easy once you get to know the details surrounding the HandleError attribute. You can specify that a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,113 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/10/22/asp-net-mvc-custom-errors-with-the-handleerror-attribute/">ASP.NET MVC Custom Errors With the HandleError Attribute</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-22T01:57:00-07:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Handling exceptions in ASP.NET MVC is quite easy once you get to know the details surrounding the HandleError attribute. You can specify that a controller or a specific Action will handle errors and you can even choose which View to show based on the exception being thrown. Scott Guthrie <a href="http://weblogs.asp.net/scottgu/archive/2008/07/14/asp-net-mvc-preview-4-release-part-1.aspx">wrote</a> about this.</p>
+
+<p>What he didn&rsquo;t tell us, is that there are some prerequisites for it to work as expected. First of all, you need to enable custom errors in the application web.config file:</p>
+
+<p><customErrors mode="On" /></p>
+
+<p>Second, the order that you put the HandleError attributes will affect which View will actualy gonna be rendered at the end. I was trying to render a custom view based on an InvalidOperationException being throw on my action. The code looked like this:</p>
+
+<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;[HandleError]
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   2:  &lt;/span&gt;&lt;span class="kwrd"&gt;public&lt;/span&gt; &lt;span class="kwrd"&gt;class&lt;/span&gt; HomeController : QuavioController
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   3:  &lt;/span&gt;{
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   4:  &lt;/span&gt;        [HandleError(ExceptionType = &lt;span class="kwrd"&gt;typeof&lt;/span&gt;(InvalidOperationException), View = &lt;span class="str"&gt;"InvalidOpJoinRoom"&lt;/span&gt;)]
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   5:  &lt;/span&gt;        &lt;span class="kwrd"&gt;public&lt;/span&gt; ActionResult JoinRoom()
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   6:  &lt;/span&gt;        {
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   7:  &lt;/span&gt;             &lt;span class="kwrd"&gt;throw&lt;/span&gt; &lt;span class="kwrd"&gt;new&lt;/span&gt; InvalidOperationException();
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   8:  &lt;/span&gt;        }
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   9:  &lt;/span&gt;}
+</code></pre>
+
+<p>What happened is that the JoinRoom was returning the shared Error View, instead of the InvalidOpJoinRoom View. This happens because the HomeController contains a HandleError attribute (line 1), which overrides the JoinRoom&rsquo;s HandleError behavior (line 4), which should return the InvalidOpJoinRoom View.</p>
+
+<p>The fix is very simple: Remove the HandleError atribute from the controller and let the actual actions define the proper error handling behavior.</p>
+
+<p>Conclusion: Be aware that multiple HandleError attributes in a controller may alter the order which View evaluation is executed and then causing the final View not to be the view you were actually expecting.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -638,46 +745,6 @@ the expanded query to T-SQL."
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/08/03/gmailgoogle-reader-unexplainably-slowunresponsive-in-firefox/">Gmail/Google Reader Unexplainably Slow/unresponsive in Firefox</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-08-03T04:16:00-07:00" pubdate data-updated="true">Aug 3<span>rd</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Today my Firefox started behaving very strangely and extremely slow especially when using Gmail and Google Reader. I tried cleaning the cache, restarting but nothing solved. Then, I realized I had installed Skype these days and it installed a Firefox add-on without even asking me for permission. I removed the add-on and Firefox went back to normal operation, fast and reliable, as always.</p>
-
-<p>I have to say that Skype dissappointed me this time installing a defective add-on on my browser, since I don&rsquo;t even remember to have allowed it to do so.</p>
-
-<p>Seems like I wasn&rsquo;t the only one who had this <a href="http://forum.skype.com/index.php?showtopic=86888">problem</a>. :(</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -695,6 +762,10 @@ the expanded query to T-SQL."
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/06/publishing-an-android-library-to-maven-central/">Publishing an Android Library to Maven Central with Gradle</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/11/12/building-a-custom-view-with-android/">Building a Custom View with Android</a>
       </li>
     
@@ -708,10 +779,6 @@ the expanded query to T-SQL."
     
       <li class="post">
         <a href="/blog/2012/07/31/when-two-identical-strings-are-different/">When two identical strings are different?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/06/14/getting-started-with-chef/">Getting started with Chef</a>
       </li>
     
   </ul>

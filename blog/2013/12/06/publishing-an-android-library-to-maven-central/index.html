@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Handling Animated GIFs with Android the right way - Felipe Lima</title>
+  <title>Publishing an Android Library to Maven Central with Gradle - Felipe Lima</title>
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="Working with animated GIFs on Android can be a painful task. In the We Heart It app we deal with a lot of images, but also animated GIFs. Since we &hellip;">
+  <meta name="description" content="I recently migrated the We Heart It Android app project to Android Studio and I thought I&rsquo;d migrate the Android-ImageManager library into the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://felipecsl.github.com/blog/2013/08/20/animated-gifs-with-android/">
+  <link rel="canonical" href="http://felipecsl.github.com/blog/2013/12/06/publishing-an-android-library-to-maven-central/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,7 +79,7 @@
   
   <header>
     
-      <h1 class="entry-title">Handling Animated GIFs With Android the Right Way</h1>
+      <h1 class="entry-title">Publishing an Android Library to Maven Central With Gradle</h1>
     
     
       <p class="meta">
@@ -95,22 +95,31 @@
   
 
 
-<time datetime="2013-08-20T21:05:00-07:00" pubdate data-updated="true">Aug 20<span>th</span>, 2013</time>
+<time datetime="2013-12-06T14:19:00-08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Working with animated GIFs on Android can be a painful task. In the <a href="https://play.google.com/store/apps/details?id=com.weheartit">We Heart It app</a> we deal with a lot of images, but also animated GIFs. Since we support Android back to API Level 8 (2.2), <code>WebView</code> is by far the simplest solution, however is not an option for us, since it <a href="https://code.google.com/p/android/issues/detail?id=3422">doesn&rsquo;t work</a> on most of older Android versions.</p>
+<div class="entry-content"><p>I recently migrated the <a href="https://play.google.com/store/apps/details?id=com.weheartit">We Heart It Android app</a> project to Android Studio and I thought I&rsquo;d migrate the <a href="https://github.com/felipecsl/Android-ImageManager">Android-ImageManager</a> library into the new format as well. That was the easy part. Another thing I wanted to do was to upload it to Maven Central, so it would make people&rsquo;s lives easier when using it.</p>
 
-<p>By looking at this excellent tutorial by <a href="http://droid-blog.net/2011/10/15/tutorial-how-to-play-animated-gifs-in-android-%E2%80%93-part-2/">Johannes Borchardt</a>, I decided to take <code>GifDecoder</code> approach, which seems to be the most reliable solution. However, the <a href="https://code.google.com/p/android-gifview/source/browse/trunk/GifPlayer/src/jp/tomorrowkey/android/gifplayer/GifDecoder.java">GifDecoder</a> class suggested by Johannes is not very memory efficient since it keeps in memory the bitmap data for every frame in the GIF.</p>
+<p>Ok this was painful. Here are the steps I took in order to achieve it, so hopefully people won&rsquo;t struggle that much doing it in the future:</p>
 
-<p>By doing some more research, I found this great <a href="https://gist.github.com/devunwired/4479231">gist</a> with an optimized implementation of <code>GifDecoder</code> that, as described there, &ldquo;decodes images on-the-fly, and only the minimum data to create the next frame in the sequence is kept&rdquo;.</p>
+<ol>
+<li>Follow Chris&#8217; Banes <a href="http://chris.banes.me/blog/2013/08/27/pushing-aars-to-maven-central/">steps</a>;</li>
+<li>Follow the steps <a href="https://github.com/chrisbanes/gradle-mvn-push">here</a> to configure the upload username and password;</li>
+<li>Make sure you edit <code>gradle.properties</code> and <code>build.gradle</code> with your library&rsquo;s information (version, description, links, etc);</li>
+<li>Follow <a href="https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide">this</a> guide. To summarize, you&rsquo;ll need to create a Sonatype <a href="https://issues.sonatype.org/secure/Dashboard.jspa">JIRA</a> account and then you&rsquo;ll have to create an issue there in order to create your project. That is basically apply for open source project hosting (that&rsquo;s basically the steps 2 and 3 on the user guide mentioned above);</li>
+<li>Wait for your issue to be &ldquo;Resolved&rdquo;, that may take up to 2 business days (!!!). Someone from Sonatype will do it and you&rsquo;ll get an email;</li>
+<li>Run <code>./gradlew clean build uploadArchives</code> to build and upload your project into Sonatype. IMPORTANT: You have to upload a Debug build first, otherwise it is not gonna work. You do that by adding <code>-SNAPSHOT</code> at the end of your <code>VERSION_NAME</code> on <code>gradle.properties`, like this, eg.:</code>VERSION_NAME=1.0.0-SNAPSHOT&#8220;</li>
+<li>After that, if all went well, you should see your project <a href="http://oss.sonatype.org/content/repositories/snapshots/">here</a>. You can navigate through the folders. My project&rsquo;s group id was <code>com.felipecsl.android</code>, so I could find it at <a href="http://oss.sonatype.org/content/repositories/snapshots/com/felipecsl/android/">http://oss.sonatype.org/content/repositories/snapshots/com/felipecsl/android/</a></li>
+</ol>
 
-<p>The class interface is however not exactly the same as the one exposed by the original <code>GifDecoder</code> class provided, thus the <code>GifDecoderView</code> class had to be adjusted. I made the adjustments required to interact with this version and also start/stop the animation. By default it will loop the GIF animation, even if the view is not on the screen, so you have to be careful to call <code>startAnimation()</code> and <code>stopAnimation()</code> correctly to avoid GIFs playing in the background, which can eat up all your memory very quickly.</p>
 
-<p>My interaction looks basically like this:</p>
+<p>I still havent figured out how to promote a Staging Repository. Right now it is failing to close the repository since the package is not signed. I will update this post once I have a solution.
+In the meantime, you can already use your snapshot with Maven/Gradle.
+Here is how your <code>build.gradle</code> would look like:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -127,25 +136,32 @@
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'>  <span class="c1">// In my fragment class...</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>    <span class="n">gifView</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GifDecoderView</span><span class="o">(</span><span class="n">getActivity</span><span class="o">());</span>
-</span><span class='line'>    <span class="n">gifView</span><span class="o">.</span><span class="na">setBytes</span><span class="o">(</span><span class="n">bitmapData</span><span class="o">);</span>
-</span><span class='line'>    <span class="n">gifView</span><span class="o">.</span><span class="na">startAnimation</span><span class="o">();</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUserVisibleHint</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">isVisibleToUser</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>    <span class="kd">super</span><span class="o">.</span><span class="na">setUserVisibleHint</span><span class="o">(</span><span class="n">isVisibleToUser</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">if</span> <span class="o">(!</span><span class="n">isVisibleToUser</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>      <span class="n">gifView</span><span class="o">.</span><span class="na">stopAnimation</span><span class="o">();</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">buildscript</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">repositories</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">mavenCentral</span><span class="o">()</span>
 </span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>    <span class="n">dependencies</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">classpath</span> <span class="s1">&#39;com.android.tools.build:gradle:0.6.+&#39;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">&#39;android&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">repositories</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="s2">&quot;https://oss.sonatype.org/content/repositories/snapshots/&quot;</span> <span class="o">}</span>
+</span><span class='line'>    <span class="n">mavenCentral</span><span class="o">()</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">dependencies</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">compile</span> <span class="s1">&#39;com.felipecsl.android:library:1.0.0-SNAPSHOT&#39;</span>
+</span><span class='line'><span class="o">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>You can get all the code here in this <a href="https://gist.github.com/felipecsl/6289457">Gist</a>.</p>
+<p>Well that is pretty much it for now. It took me almost an entire afternoon to figure this all out, hope it is useful for other people.
+If you&rsquo;re interested in a simpler and a lot more elegant solution for Open Source library project hosting, check <a href="http://rubygems.org">rubygems.org</a> which is used to, guess what, host Ruby gems. That is really piece of cake compared to all this Java mess :sigh:</p>
 </div>
 
 
@@ -168,7 +184,7 @@
   
 
 
-<time datetime="2013-08-20T21:05:00-07:00" pubdate data-updated="true">Aug 20<span>th</span>, 2013</time>
+<time datetime="2013-12-06T14:19:00-08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
       
 
 
@@ -176,7 +192,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://felipecsl.github.com/blog/2013/08/20/animated-gifs-with-android/" data-via="felipecsl" data-counturl="http://felipecsl.github.com/blog/2013/08/20/animated-gifs-with-android/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://felipecsl.github.com/blog/2013/12/06/publishing-an-android-library-to-maven-central/" data-via="felipecsl" data-counturl="http://felipecsl.github.com/blog/2013/12/06/publishing-an-android-library-to-maven-central/" >Tweet</a>
   
   
   
@@ -185,10 +201,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/03/31/starting-with-android-managing-images/" title="Previous Post: Starting with Android - managing images">&laquo; Starting with Android - managing images</a>
+        <a class="basic-alignment left" href="/blog/2013/11/12/building-a-custom-view-with-android/" title="Previous Post: Building a Custom View with Android">&laquo; Building a Custom View with Android</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/11/12/building-a-custom-view-with-android/" title="Next Post: Building a Custom View with Android">Building a Custom View with Android &raquo;</a>
       
     </p>
   </footer>

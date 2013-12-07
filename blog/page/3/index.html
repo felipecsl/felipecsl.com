@@ -9,7 +9,7 @@
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="During the last few weeks, I found myself more and more inside a stream that takes me to Ruby on Rails, when it comes to the best platform option for &hellip;">
+  <meta name="description" content="Hello, I&rsquo;ve written a simple JQuery plugin for a progress bar slider. It was inspired on Ben&rsquo;s CSS progress bar, but I needed a more &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,61 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/06/08/jquery-progress-bar-slider-plugin/">JQuery Progress Bar Slider Plugin</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-08T08:36:00-07:00" pubdate data-updated="true">Jun 8<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hello,</p>
+
+<p>I&rsquo;ve written a simple JQuery plugin for a progress bar slider. It was inspired on <a href="http://blog.benogle.com/2009/06/16/simple-css-shiny-progress-bar-technique/">Ben&rsquo;s CSS progress bar</a>, but I needed a more complete one that should be interactive, so I built this one that also leverages <a href="http://jqueryui.com/demos/slider/#slider-vertical">JQuery UI&rsquo;s vertical slider</a>.</p>
+
+<p>You can see the plugin demo <a href="https://github.com/felipecsl/jquery-progressbar-slider/demo.htm">here</a>. TIP: Inspect the source code to see how it works.</p>
+
+<p>You can download the plugin code <a href="https://github.com/felipecsl/jquery-progressbar-slider">here</a>.</p>
+
+<p>Usage:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;your element selector&quot;</span><span class="p">).</span><span class="nx">progressbarslider</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Please feel free to leave me a feedback, suggestions and/or use it at your own will on your projects :)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -798,113 +853,6 @@ You can even bind complex objects like lists</a>, for example, but, in this case
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/10/22/asp-net-mvc-custom-errors-with-the-handleerror-attribute/">ASP.NET MVC Custom Errors With the HandleError Attribute</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-10-22T01:57:00-07:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Handling exceptions in ASP.NET MVC is quite easy once you get to know the details surrounding the HandleError attribute. You can specify that a controller or a specific Action will handle errors and you can even choose which View to show based on the exception being thrown. Scott Guthrie <a href="http://weblogs.asp.net/scottgu/archive/2008/07/14/asp-net-mvc-preview-4-release-part-1.aspx">wrote</a> about this.</p>
-
-<p>What he didn&rsquo;t tell us, is that there are some prerequisites for it to work as expected. First of all, you need to enable custom errors in the application web.config file:</p>
-
-<p><customErrors mode="On" /></p>
-
-<p>Second, the order that you put the HandleError attributes will affect which View will actualy gonna be rendered at the end. I was trying to render a custom view based on an InvalidOperationException being throw on my action. The code looked like this:</p>
-
-<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;[HandleError]
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   2:  &lt;/span&gt;&lt;span class="kwrd"&gt;public&lt;/span&gt; &lt;span class="kwrd"&gt;class&lt;/span&gt; HomeController : QuavioController
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   3:  &lt;/span&gt;{
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   4:  &lt;/span&gt;        [HandleError(ExceptionType = &lt;span class="kwrd"&gt;typeof&lt;/span&gt;(InvalidOperationException), View = &lt;span class="str"&gt;"InvalidOpJoinRoom"&lt;/span&gt;)]
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   5:  &lt;/span&gt;        &lt;span class="kwrd"&gt;public&lt;/span&gt; ActionResult JoinRoom()
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   6:  &lt;/span&gt;        {
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   7:  &lt;/span&gt;             &lt;span class="kwrd"&gt;throw&lt;/span&gt; &lt;span class="kwrd"&gt;new&lt;/span&gt; InvalidOperationException();
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   8:  &lt;/span&gt;        }
-
-
-
-
-
-
-&lt;span class="lnum"&gt;   9:  &lt;/span&gt;}
-</code></pre>
-
-<p>What happened is that the JoinRoom was returning the shared Error View, instead of the InvalidOpJoinRoom View. This happens because the HomeController contains a HandleError attribute (line 1), which overrides the JoinRoom&rsquo;s HandleError behavior (line 4), which should return the InvalidOpJoinRoom View.</p>
-
-<p>The fix is very simple: Remove the HandleError atribute from the controller and let the actual actions define the proper error handling behavior.</p>
-
-<p>Conclusion: Be aware that multiple HandleError attributes in a controller may alter the order which View evaluation is executed and then causing the final View not to be the view you were actually expecting.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -922,6 +870,10 @@ You can even bind complex objects like lists</a>, for example, but, in this case
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/06/publishing-an-android-library-to-maven-central/">Publishing an Android Library to Maven Central with Gradle</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/11/12/building-a-custom-view-with-android/">Building a Custom View with Android</a>
       </li>
     
@@ -935,10 +887,6 @@ You can even bind complex objects like lists</a>, for example, but, in this case
     
       <li class="post">
         <a href="/blog/2012/07/31/when-two-identical-strings-are-different/">When two identical strings are different?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/06/14/getting-started-with-chef/">Getting started with Chef</a>
       </li>
     
   </ul>

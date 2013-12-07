@@ -9,7 +9,7 @@
   <meta name="author" content="Felipe Lima">
 
   
-  <meta name="description" content="I&rsquo;ve been very busy lately and unfortunately didn&rsquo;t have enough time to stop here to write about things I have been working on. There are &hellip;">
+  <meta name="description" content="Today my Firefox started behaving very strangely and extremely slow especially when using Gmail and Google Reader. I tried cleaning the cache, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,46 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/08/03/gmailgoogle-reader-unexplainably-slowunresponsive-in-firefox/">Gmail/Google Reader Unexplainably Slow/unresponsive in Firefox</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-03T04:16:00-07:00" pubdate data-updated="true">Aug 3<span>rd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Today my Firefox started behaving very strangely and extremely slow especially when using Gmail and Google Reader. I tried cleaning the cache, restarting but nothing solved. Then, I realized I had installed Skype these days and it installed a Firefox add-on without even asking me for permission. I removed the add-on and Firefox went back to normal operation, fast and reliable, as always.</p>
+
+<p>I have to say that Skype dissappointed me this time installing a defective add-on on my browser, since I don&rsquo;t even remember to have allowed it to do so.</p>
+
+<p>Seems like I wasn&rsquo;t the only one who had this <a href="http://forum.skype.com/index.php?showtopic=86888">problem</a>. :(</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1213,78 +1253,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/06/05/sql-server-express-nightmare/">SQL Server Express Nightmare</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-05T10:19:00-07:00" pubdate data-updated="true">Jun 5<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Whoever tried to use SQL Server Express for any medium sized project, has probably experienced some really painful problems accessing the database file.</p>
-
-<p>Express is a free version of this well known Microsoft database engine which is targeted for smaller business. It has some <a href="http://www.microsoft.com/sqlserver/2005/en/us/compare-features.aspx">limitations</a> when compared to the other enterprise-targeted versions.</p>
-
-<p>One of its key differences is that, unlike the other versions, you don&rsquo;t need a database instance to start working. The only thing you need is an empty MDF file to start off. It can be created from Visual Studio (Add New Item > SQL Server Database) and you&rsquo;re ready to go. However, here is where the problems start&hellip;</p>
-
-<p>The big issue is that the MDF is a regular windows file, like any other. This means that <strong>only one process is able to modify it at a time</strong>.</p>
-
-<p>If you use Visual Studio and/or SQL Server Management Studio regularly, you have probably run into this error when working with SQL Server Express:</p>
-
-<p><img src="/images/2009/6/image.axd.png" alt="" /></p>
-
-<p>There are several reason reasons that could cause this. Here are two that I found most recurring:</p>
-
-<p><strong>Cause 1.</strong> The NETWORK SERVICE user is not able to open the database file because it does not have rights to do so.</p>
-
-<p><strong>Solution 1.</strong> Edit the file permissions and grant Read/Write rights to it: Right mouse click on file or containing folder > Security > Advanced > Edit</p>
-
-<p>If the NETWORK SERVICE is already on the list, make sure it has read/write permission.</p>
-
-<p>Else, click Add&hellip; and type NETWORK SERVICE in the edit field. Add the proper permissions and click Ok in all the open Windows. Reload the webpage.</p>
-
-<p>In some machines, I&rsquo;ve seen the user IIS_IUSRS instead of NETWORK SERVICE, so you can try this one as well. (if it exists)</p>
-
-<p><strong>Cause 2.</strong> Visual Studio is locking the database file. In some cases, when you edit the database inside VS using the Server Explorer window, the handle remais open even after you close the connection with the database.</p>
-
-<p><strong>Solution 2.</strong> If your Visual Studio is open, go to the Server Explorer window and make sure the database connection closed.</p>
-
-<p><img src="/images/2009/6/Sem+t%c3%adtulo.png" alt="" /></p>
-
-<p>If you are using SQL Server Management Studio Express, you have to Detach the database (do not forget to check the checkbox &ldquo;Drop Connections&rdquo; in the subsequent screen):</p>
-
-<p><img src="/images/2009/6/Sem+t%c3%adtulo2.png" alt="" /></p>
-
-<p>Go to your webpage and try reloading it.  It should work now. In case it doesn&rsquo;t work, try closing your Solution inside VS or close the whole VS window. I&rsquo;ve seen cases where VS keeps the database locked even after you closed the connection in the Server Explorer. Unfortunately, the error above isn&rsquo;t related to an open connection and this is why it sometimes it gets really hard to diagnose the issue.</p>
-
-<p>As I said before, only one connection may be open with the SQL Express database file at a time, so always make sure there is no other program with it open. This does not mean that it does not allow concurrent users using the database, but Visual Studio and Management Studio manage to open it in such a way that locks the file entirely. The reason is unknown to me.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/6/">&larr; Older</a>
@@ -1302,6 +1270,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/06/publishing-an-android-library-to-maven-central/">Publishing an Android Library to Maven Central with Gradle</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/11/12/building-a-custom-view-with-android/">Building a Custom View with Android</a>
       </li>
     
@@ -1315,10 +1287,6 @@
     
       <li class="post">
         <a href="/blog/2012/07/31/when-two-identical-strings-are-different/">When two identical strings are different?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/06/14/getting-started-with-chef/">Getting started with Chef</a>
       </li>
     
   </ul>
