@@ -107,12 +107,12 @@
 <p>Ok this was painful. Here are the steps I took in order to achieve it, so hopefully people won&rsquo;t struggle that much doing it in the future:</p>
 
 <ol>
-<li>Follow Chris&#8217; Banes <a href="http://chris.banes.me/blog/2013/08/27/pushing-aars-to-maven-central/">steps</a>;</li>
+<li>Follow Chris Banes&#8217; <a href="http://chris.banes.me/blog/2013/08/27/pushing-aars-to-maven-central/">steps</a>;</li>
 <li>Follow the steps <a href="https://github.com/chrisbanes/gradle-mvn-push">here</a> to configure the upload username and password;</li>
 <li>Make sure you edit <code>gradle.properties</code> and <code>build.gradle</code> with your library&rsquo;s information (version, description, links, etc);</li>
 <li>Follow <a href="https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide">this</a> guide. To summarize, you&rsquo;ll need to create a Sonatype <a href="https://issues.sonatype.org/secure/Dashboard.jspa">JIRA</a> account and then you&rsquo;ll have to create an issue there in order to create your project. That is basically apply for open source project hosting (that&rsquo;s basically the steps 2 and 3 on the user guide mentioned above);</li>
 <li>Wait for your issue to be &ldquo;Resolved&rdquo;, that may take up to 2 business days (!!!). Someone from Sonatype will do it and you&rsquo;ll get an email;</li>
-<li>Run <code>./gradlew clean build uploadArchives</code> to build and upload your project into Sonatype. IMPORTANT: You have to upload a Debug build first, otherwise it is not gonna work. You do that by adding <code>-SNAPSHOT</code> at the end of your <code>VERSION_NAME</code> on <code>gradle.properties`, like this, eg.:</code>VERSION_NAME=1.0.0-SNAPSHOT&#8220;</li>
+<li>Run <code>./gradlew clean build uploadArchives</code> to build and upload your project into Sonatype. IMPORTANT: You have to upload a Debug build first, otherwise it is not gonna work. You do that by adding <code>-SNAPSHOT</code> at the end of your <code>VERSION_NAME</code> on <code>gradle.properties</code>, like this, eg.: <code>VERSION_NAME=1.0.0-SNAPSHOT</code></li>
 <li>After that, if all went well, you should see your project <a href="http://oss.sonatype.org/content/repositories/snapshots/">here</a>. You can navigate through the folders. My project&rsquo;s group id was <code>com.felipecsl.android</code>, so I could find it at <a href="http://oss.sonatype.org/content/repositories/snapshots/com/felipecsl/android/">http://oss.sonatype.org/content/repositories/snapshots/com/felipecsl/android/</a></li>
 </ol>
 
