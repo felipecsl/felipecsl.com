@@ -4,7 +4,7 @@
 
 url: http://felipecsl.github.com
 title: Felipe Lima
-subtitle: weblog
+subtitle: "@felipecsl"
 author: Felipe Lima
 simple_search: http://google.com/search
 description:
@@ -102,3 +102,6 @@ google_analytics_tracking_id: UA-26310657-1
 
 # Facebook Like
 facebook_like: false
+
+# Gravatar
+gravatar_email: felipe.lima@gmail.com
