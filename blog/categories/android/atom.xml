@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Android | Felipe Lima]]></title>
-  <link href="http://felipecsl.github.com/blog/categories/android/atom.xml" rel="self"/>
-  <link href="http://felipecsl.github.com/"/>
-  <updated>2013-12-06T16:23:41-08:00</updated>
-  <id>http://felipecsl.github.com/</id>
+  <link href="http://felipecsl.com/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://felipecsl.com/"/>
+  <updated>2014-01-12T18:40:27-02:00</updated>
+  <id>http://felipecsl.com/</id>
   <author>
     <name><![CDATA[Felipe Lima]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Starting with Android - managing images]]></title>
-    <link href="http://felipecsl.github.com/blog/2013/03/31/starting-with-android-managing-images/"/>
-    <updated>2013-03-31T13:03:00-07:00</updated>
-    <id>http://felipecsl.github.com/blog/2013/03/31/starting-with-android-managing-images</id>
+    <link href="http://felipecsl.com/blog/2013/03/31/starting-with-android-managing-images/"/>
+    <updated>2013-03-31T13:03:00-03:00</updated>
+    <id>http://felipecsl.com/blog/2013/03/31/starting-with-android-managing-images</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve started with Android development a few months ago with the upcoming <a href="http://weheartit.com">We Heart It</a> app. Here are some random thought and impressions I had during this period, and the motivation behind building the Android-ImageManager library:</p>
 
 <ul>

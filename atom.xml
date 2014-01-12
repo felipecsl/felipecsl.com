@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Felipe Lima]]></title>
-  <link href="http://felipecsl.github.com/atom.xml" rel="self"/>
-  <link href="http://felipecsl.github.com/"/>
-  <updated>2013-12-06T16:23:41-08:00</updated>
-  <id>http://felipecsl.github.com/</id>
+  <link href="http://felipecsl.com/atom.xml" rel="self"/>
+  <link href="http://felipecsl.com/"/>
+  <updated>2014-01-12T18:40:27-02:00</updated>
+  <id>http://felipecsl.com/</id>
   <author>
     <name><![CDATA[Felipe Lima]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Publishing an Android Library to Maven Central with Gradle]]></title>
-    <link href="http://felipecsl.github.com/blog/2013/12/06/publishing-an-android-library-to-maven-central/"/>
-    <updated>2013-12-06T14:19:00-08:00</updated>
-    <id>http://felipecsl.github.com/blog/2013/12/06/publishing-an-android-library-to-maven-central</id>
+    <link href="http://felipecsl.com/blog/2013/12/06/publishing-an-android-library-to-maven-central/"/>
+    <updated>2013-12-06T14:19:00-02:00</updated>
+    <id>http://felipecsl.com/blog/2013/12/06/publishing-an-android-library-to-maven-central</id>
     <content type="html"><![CDATA[<p>I recently migrated the <a href="https://play.google.com/store/apps/details?id=com.weheartit">We Heart It Android app</a> project to Android Studio and I thought I&rsquo;d migrate the <a href="https://github.com/felipecsl/Android-ImageManager">Android-ImageManager</a> library into the new format as well. That was the easy part. Another thing I wanted to do was to upload it to Maven Central, so it would make people&rsquo;s lives easier when using it.</p>
 
 <p>Ok this was painful. Here are the steps I took in order to achieve it, so hopefully people won&rsquo;t struggle that much doing it in the future:</p>
@@ -83,9 +83,9 @@ If you&rsquo;re interested in a simpler and a lot more elegant solution for Open
   
   <entry>
     <title type="html"><![CDATA[Building a Custom View with Android]]></title>
-    <link href="http://felipecsl.github.com/blog/2013/11/12/building-a-custom-view-with-android/"/>
-    <updated>2013-11-12T11:40:00-08:00</updated>
-    <id>http://felipecsl.github.com/blog/2013/11/12/building-a-custom-view-with-android</id>
+    <link href="http://felipecsl.com/blog/2013/11/12/building-a-custom-view-with-android/"/>
+    <updated>2013-11-12T11:40:00-02:00</updated>
+    <id>http://felipecsl.com/blog/2013/11/12/building-a-custom-view-with-android</id>
     <content type="html"><![CDATA[<p>This week I&rsquo;m attending <a href="http://andevcon.com/">AnDevCon</a> in San Francisco and in the first tutorial in the first day of the event, I watched a really nice workshot by <a href="https://twitter.com/chiuki">Chiu-Ki Chan&rsquo;s</a> titled <code>Hands-on Android Custom View Workshop</code>. The code is here on <a href="https://github.com/chiuki/android-fraction-view">Github</a>.</p>
 
 <p>We built a simple custom view using circles, arcs and <code>onDraw</code> to draw some kind of pie chart that reacts to click, sends change events, etc.</p>
@@ -94,15 +94,15 @@ If you&rsquo;re interested in a simpler and a lot more elegant solution for Open
 
 <p>Please feel free to play with it and check out my fork on <a href="https://github.com/felipecsl/android-fraction-view">Github</a>.</p>
 
-<p><img src="http://felipecsl.github.com/images/fractionView.gif" alt="" /></p>
+<p><img src="http://felipecsl.com/images/fractionView.gif" alt="" /></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Handling Animated GIFs with Android the right way]]></title>
-    <link href="http://felipecsl.github.com/blog/2013/08/20/animated-gifs-with-android/"/>
-    <updated>2013-08-20T21:05:00-07:00</updated>
-    <id>http://felipecsl.github.com/blog/2013/08/20/animated-gifs-with-android</id>
+    <link href="http://felipecsl.com/blog/2013/08/20/animated-gifs-with-android/"/>
+    <updated>2013-08-20T21:05:00-03:00</updated>
+    <id>http://felipecsl.com/blog/2013/08/20/animated-gifs-with-android</id>
     <content type="html"><![CDATA[<p>Working with animated GIFs on Android can be a painful task. In the <a href="https://play.google.com/store/apps/details?id=com.weheartit">We Heart It app</a> we deal with a lot of images, but also animated GIFs. Since we support Android back to API Level 8 (2.2), <code>WebView</code> is by far the simplest solution, however is not an option for us, since it <a href="https://code.google.com/p/android/issues/detail?id=3422">doesn&rsquo;t work</a> on most of older Android versions.</p>
 
 <p>By looking at this excellent tutorial by <a href="http://droid-blog.net/2011/10/15/tutorial-how-to-play-animated-gifs-in-android-%E2%80%93-part-2/">Johannes Borchardt</a>, I decided to take <code>GifDecoder</code> approach, which seems to be the most reliable solution. However, the <a href="https://code.google.com/p/android-gifview/source/browse/trunk/GifPlayer/src/jp/tomorrowkey/android/gifplayer/GifDecoder.java">GifDecoder</a> class suggested by Johannes is not very memory efficient since it keeps in memory the bitmap data for every frame in the GIF.</p>
@@ -152,9 +152,9 @@ If you&rsquo;re interested in a simpler and a lot more elegant solution for Open
   
   <entry>
     <title type="html"><![CDATA[Starting with Android - managing images]]></title>
-    <link href="http://felipecsl.github.com/blog/2013/03/31/starting-with-android-managing-images/"/>
-    <updated>2013-03-31T13:03:00-07:00</updated>
-    <id>http://felipecsl.github.com/blog/2013/03/31/starting-with-android-managing-images</id>
+    <link href="http://felipecsl.com/blog/2013/03/31/starting-with-android-managing-images/"/>
+    <updated>2013-03-31T13:03:00-03:00</updated>
+    <id>http://felipecsl.com/blog/2013/03/31/starting-with-android-managing-images</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve started with Android development a few months ago with the upcoming <a href="http://weheartit.com">We Heart It</a> app. Here are some random thought and impressions I had during this period, and the motivation behind building the Android-ImageManager library:</p>
 
 <ul>
@@ -179,9 +179,9 @@ If you&rsquo;re interested in a simpler and a lot more elegant solution for Open
   
   <entry>
     <title type="html"><![CDATA[When two identical strings are different?]]></title>
-    <link href="http://felipecsl.github.com/blog/2012/07/31/when-two-identical-strings-are-different/"/>
-    <updated>2012-07-31T20:46:00-07:00</updated>
-    <id>http://felipecsl.github.com/blog/2012/07/31/when-two-identical-strings-are-different</id>
+    <link href="http://felipecsl.com/blog/2012/08/01/when-two-identical-strings-are-different/"/>
+    <updated>2012-08-01T00:46:00-03:00</updated>
+    <id>http://felipecsl.com/blog/2012/08/01/when-two-identical-strings-are-different</id>
     <content type="html"><![CDATA[<p>Think these two strings are the same?</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -236,9 +236,9 @@ If you&rsquo;re interested in a simpler and a lot more elegant solution for Open
   
   <entry>
     <title type="html"><![CDATA[Getting started with Chef]]></title>
-    <link href="http://felipecsl.github.com/blog/2012/06/14/getting-started-with-chef/"/>
-    <updated>2012-06-14T20:46:00-07:00</updated>
-    <id>http://felipecsl.github.com/blog/2012/06/14/getting-started-with-chef</id>
+    <link href="http://felipecsl.com/blog/2012/06/15/getting-started-with-chef/"/>
+    <updated>2012-06-15T00:46:00-03:00</updated>
+    <id>http://felipecsl.com/blog/2012/06/15/getting-started-with-chef</id>
     <content type="html"><![CDATA[<p>If you never heard of it, <a href="http://www.opscode.com/chef/">Chef</a> is a server automation tool for server management tasks. It is often related to the terms <a href="http://en.wikipedia.org/wiki/DevOps">DevOps</a> and <a href="http://blog.carlossanchez.eu/2012/03/13/infrastructure-as-code/">Infrastructure as Code</a> which have started to gain quite a bit of attention lately. If you&rsquo;ve ever seen yourself doing the exact same steps, like installing MySql on a server several times in a row, always doing the exact same steps, and wondered if there was a more intelligent way of doing that, then Chef is for you.</p>
 
 <p><img src="http://www.rit.edu/news/lib/filelib/200708/new_chef.jpg" alt="" /></p>
@@ -285,7 +285,7 @@ gem install chef-server
 
 <p>At this point, you should be able to just run <strong>chef-server</strong> see it running. If all goes well, you might want to do <strong>chef-server -e production -d</strong> to run it in production environment and daemonize, so it runs in background. You will also need to start the webui via <strong>chef-server-webui</strong> <strong>-e production -d.</strong> If all goes smoothly, you should be able to access the webui at **<a href="http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4040/**.">http://ec2-xx-xx-xxx-xxx.us-west-1.compute.amazonaws.com:4040/**.</a> As you probably noticed, the webui runs in the port 4040, while the chef-server runs in 4000. Don&rsquo;t forget to open these ports in the AWS Security Group and allow your machine IP to access them!  But wait, this was only the start hahah! Now comes the server configuration&hellip;</p>
 
-<p><a href="http://felipecsl.github.com/images/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png"><img src="http://felipecsl.github.com/images/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png" alt="" /></a></p>
+<p><a href="http://felipecsl.com/images/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png"><img src="http://felipecsl.com/images/2012/06/Screen-Shot-2012-06-14-at-11.43.09-PM.png" alt="" /></a></p>
 
 <p>If you are still following the wiki steps (you should), by now you should be running <strong>knife configure -i</strong>. Knife is chef&rsquo;s command line configuration tool, it can do a lot of stuff. This is gonna try to create an API user. If you are unlucky, like me, you will see this error:</p>
 
@@ -350,20 +350,20 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
   
   <entry>
     <title type="html"><![CDATA[Protip: Delete words on iTerm2 (Mac OSX)]]></title>
-    <link href="http://felipecsl.github.com/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx/"/>
-    <updated>2012-06-05T09:18:19-07:00</updated>
-    <id>http://felipecsl.github.com/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx</id>
+    <link href="http://felipecsl.com/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx/"/>
+    <updated>2012-06-05T13:18:19-03:00</updated>
+    <id>http://felipecsl.com/blog/2012/06/05/protip-delete-words-on-iterm2-mac-osx</id>
     <content type="html"><![CDATA[<p>I don&rsquo;t usually post short tips, but this one is really killer. To delete one word at a time when pressing ⌘+Delete in the iTerm2, use this configuration as shown in the first line of the screenshot below (click to expand).</p>
 
-<p><a href="http://felipecsl.github.com/images/2012/06/Screen-Shot-2012-06-05-at-12.00.02-PM.png"><img src="http://felipecsl.github.com/images/2012/06/Screen-Shot-2012-06-05-at-12.00.02-PM.png" alt="" /></a></p>
+<p><a href="http://felipecsl.com/images/2012/06/Screen-Shot-2012-06-05-at-12.00.02-PM.png"><img src="http://felipecsl.com/images/2012/06/Screen-Shot-2012-06-05-at-12.00.02-PM.png" alt="" /></a></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Wombat 0.4.0 released!]]></title>
-    <link href="http://felipecsl.github.com/blog/2012/05/24/wombat-0-4-0-released/"/>
-    <updated>2012-05-24T21:46:22-07:00</updated>
-    <id>http://felipecsl.github.com/blog/2012/05/24/wombat-0-4-0-released</id>
+    <link href="http://felipecsl.com/blog/2012/05/25/wombat-0-4-0-released/"/>
+    <updated>2012-05-25T01:46:22-03:00</updated>
+    <id>http://felipecsl.com/blog/2012/05/25/wombat-0-4-0-released</id>
     <content type="html"><![CDATA[<p>It has been a while since I&rsquo;ve been working on this Ruby <a href="https://rubygems.org/gems/wombat">gem</a> called <a href="https://github.com/felipecsl/wombat">wombat</a> and thought it would be worth talking about it here. I just released today the version 0.4.0 with some bug fixes and the addition of another helper method, as you can see in the GitHub <a href="https://github.com/felipecsl/wombat">readme</a>.</p>
 
 <p>Wombat is a gem for making extracting information from web pages, or just crawling, a little less painful. If you were to do that today, you&rsquo;d probably have to fall back to Nokogiri or another lower level gem and process the data yourself. With Wombat, you can define a structure of how your data should look like in a DSL like format, and Wombat does the work for you. It is pretty handy actually.</p>
@@ -382,14 +382,14 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
   
   <entry>
     <title type="html"><![CDATA[My story about moving to the Silicon Valley]]></title>
-    <link href="http://felipecsl.github.com/blog/2012/02/12/my-story-about-moving-to-the-silicon-valley/"/>
-    <updated>2012-02-12T20:27:49-08:00</updated>
-    <id>http://felipecsl.github.com/blog/2012/02/12/my-story-about-moving-to-the-silicon-valley</id>
+    <link href="http://felipecsl.com/blog/2012/02/13/my-story-about-moving-to-the-silicon-valley/"/>
+    <updated>2012-02-13T02:27:49-02:00</updated>
+    <id>http://felipecsl.com/blog/2012/02/13/my-story-about-moving-to-the-silicon-valley</id>
     <content type="html"><![CDATA[<p>A lot of people I meet seem very curious and I am usually asked some details about how the hell I left my job at <a href="http://thoughtworks.com">ThoughtWorks</a> Brazil and moved to San Francisco to work for <a href="http://gogobot.com/">Gogobot</a>. Overall, the transition was pretty simple. Getting the H1B visa was a lot simpler and faster than I expected. It took me around 2 months from the date Gogobot entered the petition to the US Gov. to the day I got my passport back with the visa stamped on it. However I was a bit lucky, since there is an early quota of 60 thousand H1B visas that US will distribute, starting every year in April. I applied around October, so the quota was almost over, but I was lucky enough to make it. Another friend that applied a few weeks later wasn&rsquo;t so lucky and will have to wait till April till the window opens again.</p>
 
 <p>Another thing that people usually ask me is how I got to know the company and how did I get the job. From my personal experience and from what I heard from other fellow developers, companies are not very receptive to the idea of sponsoring an H1B visa to a foreign developer, probably due to the high cost and risk involved with it. The usual flow is: you get in touch with the company you are interested in, probably send an email with a nice cover letter and your resume attached, and get no response at all. The only advice I will say is: If you really want that, be persistant and keep trying. Write a nice cover letter, with a brief introduction of who you are and why you want to work for that company. Try to be creative, original, otherwise you will be treated just like yet another average foreign candidate. Also extremely important is showing your achievements, having one or more pet projects is a big plus, actively contributing to open source, etc.</p>
 
-<p>It is definitely not an easy task, nor an easy decision to leave everything behind and move to another country. Anyways, I still believe it is something extremely valuable in terms of career growth and life experience. If you can, I would advice you to do it! The sooner the better. As you get older, buy a house, have kids, marry, etc., it will be harder and harder to do something like this. For the same reasons, I support <a href="http://felipecsl.github.com/2011/03/o-que-eu-aprendi-empreendendo-e-porque-voce-tambem-deveria-tentar/">entrepreneurism</a>.</p>
+<p>It is definitely not an easy task, nor an easy decision to leave everything behind and move to another country. Anyways, I still believe it is something extremely valuable in terms of career growth and life experience. If you can, I would advice you to do it! The sooner the better. As you get older, buy a house, have kids, marry, etc., it will be harder and harder to do something like this. For the same reasons, I support <a href="http://felipecsl.com/2011/03/o-que-eu-aprendi-empreendendo-e-porque-voce-tambem-deveria-tentar/">entrepreneurism</a>.</p>
 
 <p>I&rsquo;ve been here for almost one month so far, and right now, I can say I am very happy to have taken this decision, despite having to leave friends, family and my beloved fiancee behind. We will try to soften the hurt by visiting each other periodically.</p>
 
@@ -401,9 +401,9 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
   
   <entry>
     <title type="html"><![CDATA[ThoughtWorks 6 meses depois]]></title>
-    <link href="http://felipecsl.github.com/blog/2011/07/06/thoughtworks-6-meses-depois/"/>
-    <updated>2011-07-06T18:14:08-07:00</updated>
-    <id>http://felipecsl.github.com/blog/2011/07/06/thoughtworks-6-meses-depois</id>
+    <link href="http://felipecsl.com/blog/2011/07/06/thoughtworks-6-meses-depois/"/>
+    <updated>2011-07-06T22:14:08-03:00</updated>
+    <id>http://felipecsl.com/blog/2011/07/06/thoughtworks-6-meses-depois</id>
     <content type="html"><![CDATA[<p>Desde Janeiro estou trabalhando como consultor na ThoughtWorks, no &ldquo;prédio novo&rdquo; do TecnoPUC. Posso afirmar com plena convicção que estou muito feliz de ter tomado essa decisão e, por isso, resolvi que seria legal compartilhar um pouco de como é o nosso dia-a-dia lá dentro.</p>
 
 <p>A primeira impressão ao entrar no escritório é de que algo ali é diferente das empresas de TI tradicionais. Não há baias, apenas grandes mesas sem divisórias. Pessoas trabalhando em pares, ou seja, dois para cada computador, <em><a href="http://en.wikipedia.org/wiki/Nerf_Blasters">NERF darts</a></em> pelo chão, video-games no <em>lounge</em> e pessoas falando alto.</p>
@@ -428,9 +428,9 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
   
   <entry>
     <title type="html"><![CDATA[Dica de ferramenta para Mac: TotalFinder]]></title>
-    <link href="http://felipecsl.github.com/blog/2011/04/17/dica-de-ferramenta-para-mac-totalfinder/"/>
-    <updated>2011-04-17T12:05:11-07:00</updated>
-    <id>http://felipecsl.github.com/blog/2011/04/17/dica-de-ferramenta-para-mac-totalfinder</id>
+    <link href="http://felipecsl.com/blog/2011/04/17/dica-de-ferramenta-para-mac-totalfinder/"/>
+    <updated>2011-04-17T16:05:11-03:00</updated>
+    <id>http://felipecsl.com/blog/2011/04/17/dica-de-ferramenta-para-mac-totalfinder</id>
     <content type="html"><![CDATA[<p>Assistindo <a href="http://net.tutsplus.com/tutorials/html-css-techniques/automated-optimization-with-html5-boilerplate-build/">esse</a> screencast muito interessante do Paul Irish sobre o build script do ótimo projeto HTML5 boilerplate, também criado por ele mesmo, prestei atenção nas ferramentas que ele utiliza no Mac. Entre elas, pude notar o <a href="http://www.iterm2.com/#/section/home">iTerm 2</a>, que é um ótimo substituto para o Terminal padrão do Mac, e o excelente <a href="http://totalfinder.binaryage.com/">TotalFinder</a>, que adiciona várias funcionalidades muito úteis ao Finder padrão, como Tabs e Cut &amp; Paste por exemplo, ambas extremamente úteis, na minha opinião. Fica aqui então a recomendação destas duas ótimas ferramentas pra Mac, especialmente o TotalFinder :)</p>
 
 <p>Até mais!</p>
@@ -439,9 +439,9 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
   
   <entry>
     <title type="html"><![CDATA[O que eu aprendi empreendendo e porque você também deveria tentar]]></title>
-    <link href="http://felipecsl.github.com/blog/2011/03/29/o-que-eu-aprendi-empreendendo-e-porque-voce-tambem-deveria-tentar/"/>
-    <updated>2011-03-29T17:54:44-07:00</updated>
-    <id>http://felipecsl.github.com/blog/2011/03/29/o-que-eu-aprendi-empreendendo-e-porque-voce-tambem-deveria-tentar</id>
+    <link href="http://felipecsl.com/blog/2011/03/29/o-que-eu-aprendi-empreendendo-e-porque-voce-tambem-deveria-tentar/"/>
+    <updated>2011-03-29T21:54:44-03:00</updated>
+    <id>http://felipecsl.com/blog/2011/03/29/o-que-eu-aprendi-empreendendo-e-porque-voce-tambem-deveria-tentar</id>
     <content type="html"><![CDATA[<p>Me motivei a escrever um pouco sobre empreendedorismo pois tenho visto muitas pessoas que no fundo têm vontade de inovar, empreender, mudar, mas geralmente sentem medo de dar uma virada brusca em suas vidas, sair da zona de conforto e arriscar. Pois eu vou relatar um pouco sobre o que eu aprendi com isso tudo durante o último ano, em que eu me envolvi bastante com este tópico.</p>
 
 <p>Em primeiro lugar, vejo o perfil de empreendedor como sendo, antes de tudo, um <em>mindset.</em> Você não precisa desistir do seu emprego, abrir uma empresa, arriscar tudo o que tem tentando um negócio feito louco só pra ver como é empreender. Vejo este perfil em algumas pessoas que não necessariamente arriscaram tudo, assim como eu fiz, mas mesmo assim possuem este <em>mindset.</em> Eu me refiro a pensar &ldquo;fora da caixa&rdquo;, inovar, arriscar, tentar coisas diferentes. Essa semana um aluno de Ciência da Computação da UFRGS criou um site chamado <a href="http://poabus.com.br">poabus.com.br</a> para mapear as linhas de ônibus de Porto Alegre, já que o sistema que a EPTC oferece é praticamente inusável. Eu certamente diria que este cidadão chamado Bruno Jurkovski tem um perfil empreendedor, pois teve atitude para pensar diferente e experimentar uma nova solução para um problema existente. Eu diria que este tipo de perfil já caracteriza um empreendedor. Ou seja, você não precisa largar seu emprego de full-time para ser um empreendedor. Você pode começar hoje mesmo pensando em como você pode fazer alguma coisa para mudar o mundo à sua volta, utilizar as suas <em>skills</em> para contribuir para um mundo melhor. Um bom começo é contribuir para um projeto open source, por exemplo. Caso você não seja da área de TI, procure outras formas de inovar, solucionar problemas e deixe sua contribuição para a humanidade fazendo algo diferente, que tenha impacto sobre o mundo ao seu redor.</p>
@@ -462,9 +462,9 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
   
   <entry>
     <title type="html"><![CDATA[Heroku + MongoHQ + Mongoid]]></title>
-    <link href="http://felipecsl.github.com/blog/2011/01/31/heroku-mongohq-mongoid/"/>
-    <updated>2011-01-31T15:00:08-08:00</updated>
-    <id>http://felipecsl.github.com/blog/2011/01/31/heroku-mongohq-mongoid</id>
+    <link href="http://felipecsl.com/blog/2011/01/31/heroku-mongohq-mongoid/"/>
+    <updated>2011-01-31T21:00:08-02:00</updated>
+    <id>http://felipecsl.com/blog/2011/01/31/heroku-mongohq-mongoid</id>
     <content type="html"><![CDATA[<p>O <a href="http://heroku.com">Heroku</a> possui um Add-on muito interessante para trabalhar com <a href="http://www.mongodb.org/">MongoDB</a> chamado <a href="https://mongohq.com/home">MongoHQ</a>. Como de costume, existe tanto um plano grátis, quanto planos pagos.</p>
 
 <p>Isso significa que é possível levantar um site com Ruby on Rails ou Sinatra e MongoDB rapidinho e sem desembolsar um centavo com o Heroku.. Damn good.</p>
@@ -477,9 +477,9 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
   
   <entry>
     <title type="html"><![CDATA[Problemas com IFrame no IE?]]></title>
-    <link href="http://felipecsl.github.com/blog/2011/01/11/problemas-com-iframe-no-ie/"/>
-    <updated>2011-01-11T07:03:33-08:00</updated>
-    <id>http://felipecsl.github.com/blog/2011/01/11/problemas-com-iframe-no-ie</id>
+    <link href="http://felipecsl.com/blog/2011/01/11/problemas-com-iframe-no-ie/"/>
+    <updated>2011-01-11T13:03:33-02:00</updated>
+    <id>http://felipecsl.com/blog/2011/01/11/problemas-com-iframe-no-ie</id>
     <content type="html"><![CDATA[<p>Pois é. Você não é o único. Apesar de funcionar às mil maravilhas em outros navegadores, o IE parece considerar o IFrame uma ameaça de segurança e se recusa a aceitar cookies de sites de terceiros dentro de um IFrame. Legal né? Isto dificulta qualquer tentativa de colocar um formulário de login dentro de um IFrame, por exemplo ou, ainda mais comum, colocar a janela de pagamento de um gateway (no meu caso, <a href="https://pagseguro.uol.com.br/">PagSeguro</a>) dentro de um IFrame funcionando como uma sobretela. Isto funciona perfeitamente, mas não no IE.</p>
 
 <p>A questão toda é que o IE não irá aceitar nenhum cookie do PagSeguro, pois ele está fora do domínio principal do site que está sendo acessado no momento (o site onde você está tentando comprar algum produto, por exemplo). A maneira para contornarmos esse problema, seria implementando um mecanismo chamado <a href="http://www.w3.org/P3P/">P3P</a>.O que este negócio aí faz, é criar um mecanismo de expor para o browser qual é a política de privacidade do site de maneira programática (através de um cabeçalho no response).</p>
@@ -493,7 +493,7 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
 
 <p>Isto é o que acontece quando os seus cookies forem bloqueados :)</p>
 
-<p><a href="http://felipecsl.github.com/images/2011/01/p3p.png"><img src="http://felipecsl.github.com/images/2011/01/p3p-300x211.png" alt="" /></a></p>
+<p><a href="http://felipecsl.com/images/2011/01/p3p.png"><img src="http://felipecsl.com/images/2011/01/p3p-300x211.png" alt="" /></a></p>
 
 <p>No caso do PagSeguro, o que acabava acontecendo é um erro dizendo &ldquo;Sua sessão expirou.&rdquo;.</p>
 
@@ -507,9 +507,9 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
   
   <entry>
     <title type="html"><![CDATA[Problemas de Timezone com Ruby?]]></title>
-    <link href="http://felipecsl.github.com/blog/2010/12/12/problemas-de-timezone-com-ruby/"/>
-    <updated>2010-12-12T14:45:15-08:00</updated>
-    <id>http://felipecsl.github.com/blog/2010/12/12/problemas-de-timezone-com-ruby</id>
+    <link href="http://felipecsl.com/blog/2010/12/12/problemas-de-timezone-com-ruby/"/>
+    <updated>2010-12-12T20:45:15-02:00</updated>
+    <id>http://felipecsl.com/blog/2010/12/12/problemas-de-timezone-com-ruby</id>
     <content type="html"><![CDATA[<p>Timezones podem ser uma dor de cabeça quando trabalhamos muito com datas. Em ruby, existem pelo menos três classes diferentes para manipulação de data/hora: Date, Time e DateTime.</p>
 
 <p>O nosso grande problema foi que, ao salvar uma data/hora no banco mySQL via ActiveRecord, o timezone estava sendo normalizado para UTC +00:00, enquanto o timezone do sistema é GMT -02:00, pois estamos em horário brasileiro de verão. Normalmente seria GMT -03:00).</p>
@@ -539,9 +539,9 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
   
   <entry>
     <title type="html"><![CDATA[Traduzindo HTML utilizando a API do Google Translate]]></title>
-    <link href="http://felipecsl.github.com/blog/2010/11/23/traduzindo-html-utilizando-a-api-do-google-translate/"/>
-    <updated>2010-11-23T05:44:42-08:00</updated>
-    <id>http://felipecsl.github.com/blog/2010/11/23/traduzindo-html-utilizando-a-api-do-google-translate</id>
+    <link href="http://felipecsl.com/blog/2010/11/23/traduzindo-html-utilizando-a-api-do-google-translate/"/>
+    <updated>2010-11-23T11:44:42-02:00</updated>
+    <id>http://felipecsl.com/blog/2010/11/23/traduzindo-html-utilizando-a-api-do-google-translate</id>
     <content type="html"><![CDATA[<p>Pessoal,</p>
 
 <p>Para quem quiser utilizar a API do Google Translate para traduzir partes de um documento HTML, segue uma implementação que tive que fazer recentemente utilizando jQuery e ASP.NET MVC:</p>
@@ -684,9 +684,9 @@ cache_options( :path =&gt; '/home/ubuntu/.chef/checksums' )
   
   <entry>
     <title type="html"><![CDATA[Configurando uma ferramenta de diff visual para SVN no Linux]]></title>
-    <link href="http://felipecsl.github.com/blog/2010/11/08/configurando-uma-ferramenta-de-diff-visual-para-svn-no-linux/"/>
-    <updated>2010-11-08T15:37:56-08:00</updated>
-    <id>http://felipecsl.github.com/blog/2010/11/08/configurando-uma-ferramenta-de-diff-visual-para-svn-no-linux</id>
+    <link href="http://felipecsl.com/blog/2010/11/08/configurando-uma-ferramenta-de-diff-visual-para-svn-no-linux/"/>
+    <updated>2010-11-08T21:37:56-02:00</updated>
+    <id>http://felipecsl.com/blog/2010/11/08/configurando-uma-ferramenta-de-diff-visual-para-svn-no-linux</id>
     <content type="html"><![CDATA[<p>Cá estou eu aqui postando após vários dias parado. Tenho trabalhado diariamente com Ubuntu durante os últimos dias devido a um projeto em Rails 3 que estamos tocando aqui na <a href="http://www.quavio.com.br">Quavio</a>. Por isso, tenho penado bastante com configuração de ambiente, familiarização com o framework (ainda estou aprendendo muito) e, consequentemente, tenho tido ainda menos tempo do que o usual.</p>
 
 <p>Vou aproveitar só para deixar um rápido passo-a-passo que utilizei para configurar uma ferramenta de diff visual para SVN no Ubuntu. No Windows eu vinha usando o ótimo <a href="http://winmerge.org/">WinMerge</a>. No Linux, fui recomendado ao <a href="http://meld.sourceforge.net/">meld</a> nesta <a href="http://stackoverflow.com/questions/1141686/visual-svn-diff-and-compare-tools-for-linux">pergunta</a> no stackoverflow. Bom, vamos aos passos:</p>
@@ -736,9 +736,9 @@ RIGHT=${7}</p>
   
   <entry>
     <title type="html"><![CDATA[Opções de hospedagem para Ruby]]></title>
-    <link href="http://felipecsl.github.com/blog/2010/10/14/opcoes-de-hospedagem-para-ruby/"/>
-    <updated>2010-10-14T16:34:37-07:00</updated>
-    <id>http://felipecsl.github.com/blog/2010/10/14/opcoes-de-hospedagem-para-ruby</id>
+    <link href="http://felipecsl.com/blog/2010/10/14/opcoes-de-hospedagem-para-ruby/"/>
+    <updated>2010-10-14T20:34:37-03:00</updated>
+    <id>http://felipecsl.com/blog/2010/10/14/opcoes-de-hospedagem-para-ruby</id>
     <content type="html"><![CDATA[<p>Na Quavio, empresa onde trabalho e sou um dos sócios, uma boa parcela dos projetos executados são basicamente sites e hotsites de clientes. Isto implica em necessidades específicas de hospedagem, como por exemplo, uma boa infraestrutura para envio/recebimento de emails (com webmail), painel de controle, suporte técnico para eventuais problemas de instabilidade, baixo custo mensal, pouca utilização de espaço em disco, backup automático, etc. Basicamente, não queremos nos responsabilizar pelo gerenciamento da infra-estrutura que abriga cada um destes projetos, que acabam se tornando muitos com o passar do tempo.</p>
 
 <p>Resumindo, precisamos de um fornecedor de hospedagem que atenda a estas necessidades e que, ao mesmo tempo, ofereça um bom suporte às tecnologias que utilizamos.</p>
@@ -765,9 +765,9 @@ RIGHT=${7}</p>
   
   <entry>
     <title type="html"><![CDATA[How to map subdomains in Windows 7]]></title>
-    <link href="http://felipecsl.github.com/blog/2010/08/20/how-to-map-subdomains-in-windows-7/"/>
-    <updated>2010-08-20T06:10:00-07:00</updated>
-    <id>http://felipecsl.github.com/blog/2010/08/20/how-to-map-subdomains-in-windows-7</id>
+    <link href="http://felipecsl.com/blog/2010/08/20/how-to-map-subdomains-in-windows-7/"/>
+    <updated>2010-08-20T10:10:00-03:00</updated>
+    <id>http://felipecsl.com/blog/2010/08/20/how-to-map-subdomains-in-windows-7</id>
     <content type="html"><![CDATA[<p>Over the last days, I&rsquo;ve been working on implementing multiple subdomains with authentication in asp.net for the webapp I&rsquo;m currently working on.</p>
 
 <p>There are a few steps needed in order to configure IIS, DNS and authentication.</p>
@@ -777,7 +777,7 @@ RIGHT=${7}</p>
 </ol>
 
 
-<p><img src="http://felipecsl.github.com/images/2010/8/bindings.png" alt="" /></p>
+<p><img src="http://felipecsl.com/images/2010/8/bindings.png" alt="" /></p>
 
 <ol>
 <li><p>In the Site Bindings window, add each subdomain that you want to map to your site. Unfortunately, wildcard mapping is not supported, so you&rsquo;ll have to manually type all the subdomains before using it.</p></li>
@@ -785,7 +785,7 @@ RIGHT=${7}</p>
 </ol>
 
 
-<p><img src="http://felipecsl.github.com/images/2010/8/hosts.png" alt="" /></p>
+<p><img src="http://felipecsl.com/images/2010/8/hosts.png" alt="" /></p>
 
 <ol>
 <li>Lastly, you&rsquo;ll need to update your web.config cookies configuration, so that it is set to work with any subdomain. By default, your login cookies will only be valid for the default subdomain (example.com and www.example.com)</li>
@@ -804,9 +804,9 @@ RIGHT=${7}</p>
   
   <entry>
     <title type="html"><![CDATA[Singleton Entity Framework connection: maybe not a good idea]]></title>
-    <link href="http://felipecsl.github.com/blog/2010/07/27/singleton-entity-framework-connection-maybe-not-a-good-idea/"/>
-    <updated>2010-07-27T12:57:00-07:00</updated>
-    <id>http://felipecsl.github.com/blog/2010/07/27/singleton-entity-framework-connection-maybe-not-a-good-idea</id>
+    <link href="http://felipecsl.com/blog/2010/07/27/singleton-entity-framework-connection-maybe-not-a-good-idea/"/>
+    <updated>2010-07-27T16:57:00-03:00</updated>
+    <id>http://felipecsl.com/blog/2010/07/27/singleton-entity-framework-connection-maybe-not-a-good-idea</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve been working on an ASP.NET MVC web service that uses EF for persistence. Been using a good old repository class for handling the connection and returning the entities. At some point I decided to change my repository connection to a singleton.</p>
 
 <p>At first, I thought it would make sense to always reuse the same connection all over the place. However, as days passed, the system started raising creepy EF exceptions at times and eventually entered on an inconsistent state where I had to restart IIS in order to return the system back up. This was really weird and scared the hell out of me.</p>
