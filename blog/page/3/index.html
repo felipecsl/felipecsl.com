@@ -1,44 +1,44 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Felipe Lima</title>
-  <meta name="author" content="Felipe Lima">
+<!DOCTYPE HTML>
 
-  
-  <meta name="description" content="JQuery Progress Bar Slider Plugin Jun 8th, 2010 Thoughts on Web Platforms and Tendencies May 22nd, 2010 WCF Data Services and the OData Protocol Apr &hellip;">
-  
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Felipe Lima</title>
+	<meta name="author" content="Felipe Lima">
+
+	
+	<meta name="description" content="Jun 8th, 2010 JQuery Progress Bar Slider Plugin Hello, I&rsquo;ve written a simple JQuery plugin for a progress bar slider. It was inspired on Ben& &hellip;">
+	
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://felipecsl.com/blog/page/3/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
   
-  <link rel="canonical" href="http://felipecsl.com/blog/page/3">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-26310657-1']);
+		_gaq.push(['_trackPageview']);
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-26310657-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 
 
 </head>
@@ -46,454 +46,820 @@
 
 <body>
 	<div class="container">
-		<aside class="left">
-			<div class="inner-left">
-				<header>
-					<img src="http://www.gravatar.com/avatar/7fd4ba468da56bb5330a6352c1b54f52?s=200" alt="Gravatar of Felipe Lima " title="Gravatar of Felipe Lima" class="profilepic" />
-<hgroup>
-  <h1><a href="/">Felipe Lima</a></h1>
-  
-    <h2 class="subtitle">@felipecsl</h2>
-   
-</hgroup>
-
-
-				</header>
-				<footer>
-					<p>
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
 	
-		<a href="http://github.com/felipecsl" class="btn btn-dark">GitHub</a>
+	<img src="http://www.gravatar.com/avatar/7fd4ba468da56bb5330a6352c1b54f52?s=160" alt="Profile Picture" style="width: 160px;" />
 	
-	
-		<a href="http://twitter.com/felipecsl" class="btn btn-dark">Twitter</a>
-	
-</p>
-				</footer>
-			</div>
-		</aside>
-    	<section class="right">
-    		<div class="inner-right">
-    			<div id="posts">
-    			  	<div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/06/08/jquery-progress-bar-slider-plugin/">JQuery Progress Bar Slider Plugin</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-08T12:36:00-03:00" pubdate data-updated="true">Jun 8<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/05/22/thoughts-on-web-platforms-and-tendencies/">Thoughts on Web Platforms and Tendencies</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-22T08:36:00-03:00" pubdate data-updated="true">May 22<span>nd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/04/24/wcf-data-services-and-the-odata-protocol/">WCF Data Services and the OData Protocol</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-24T08:11:00-03:00" pubdate data-updated="true">Apr 24<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/03/29/pure-as3-lightbox-clone/">Pure As3 Lightbox Clone</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-29T16:04:00-03:00" pubdate data-updated="true">Mar 29<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/03/19/how-to-disable-annoying-request-validation/">How to Disable Annoying Request Validation</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-19T12:10:00-03:00" pubdate data-updated="true">Mar 19<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/03/02/hands-on-mongodb-with-c/">Hands on MongoDB With C#</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-02T03:36:00-03:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/02/22/the-magic-of-defaultmodelbinder/">The Magic of DefaultModelBinder</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-02-22T03:52:00-03:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/01/26/model-binding-in-asp-net-mvc/">Model Binding in ASP.NET MVC</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-26T17:30:00-02:00" pubdate data-updated="true">Jan 26<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/12/02/an-alternative-for-viewing-grid-row-details-in-asp-net-dynamic-data/">An Alternative for Viewing Grid Row Details in ASP.NET Dynamic Data</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-02T16:25:00-02:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/11/15/customizing-asp-net-membership-information-with-profiles/">Customizing ASP.NET Membership Information With Profiles</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-15T20:51:00-02:00" pubdate data-updated="true">Nov 15<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="previous btn btn-light" href="/blog/page/4/">&larr; Older</a>
-    
-    <a class="archives btn btn-light" href="/blog/archives">Blog Archives</a>
-    
-    <a class="next btn btn-light" href="/blog/page/2/">Newer &rarr;</a>
-    
-  </div>
 </div>
 
+<nav id="main-nav"><ul class="main">
+    <li><a href="/">Blog</a></li>
+    <li><a href="http://about.me/felipecsl">About</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+</ul>
 
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2013/12/06/publishing-an-android-library-to-maven-central/">Publishing an Android Library to Maven Central With Gradle</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/12/building-a-custom-view-with-android/">Building a Custom View With Android</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/20/animated-gifs-with-android/">Handling Animated GIFs With Android the Right Way</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/31/starting-with-android-managing-images/">Starting With Android - Managing Images</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/08/01/when-two-identical-strings-are-different/">When Two Identical Strings Are Different?</a>
-      </li>
-    
-  </ul>
-</section>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+			<a class="google" href="https://plus.google.com/FelipeLimaf" rel="author" title="Google+">Google+</a>
+		
+		
+			<a class="twitter" href="http://twitter.com/felipecsl" title="Twitter">Twitter</a>
+		
+		
+			<a class="github" href="https://github.com/felipecsl" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/felipecsl">felipecsl</a> @ <a href="http://twitter.com">Twitter</a></small>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('felipecsl', 4, false);
+	})(jQuery);
+</script>
 
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
+
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner">
+<div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
   
-  <a href="https://github.com/felipecsl">@felipecsl</a> on GitHub
+
+
+<time datetime="2010-06-08T12:36:00-03:00" data-updated="true" itemprop="datePublished">Jun 8<span>th</span>, 2010</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2010/06/08/jquery-progress-bar-slider-plugin/" itemprop="url">JQuery Progress Bar Slider Plugin</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Hello,</p>
+
+<p>I&rsquo;ve written a simple JQuery plugin for a progress bar slider. It was inspired on <a href="http://blog.benogle.com/2009/06/16/simple-css-shiny-progress-bar-technique/">Ben&rsquo;s CSS progress bar</a>, but I needed a more complete one that should be interactive, so I built this one that also leverages <a href="http://jqueryui.com/demos/slider/#slider-vertical">JQuery UI&rsquo;s vertical slider</a>.</p>
+
+<p>You can see the plugin demo <a href="https://github.com/felipecsl/jquery-progressbar-slider/demo.htm">here</a>. TIP: Inspect the source code to see how it works.</p>
+
+<p>You can download the plugin code <a href="https://github.com/felipecsl/jquery-progressbar-slider">here</a>.</p>
+
+<p>Usage:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;your element selector&quot;</span><span class="p">).</span><span class="nx">progressbarslider</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Please feel free to leave me a feedback, suggestions and/or use it at your own will on your projects :)</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
   
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'felipecsl',
-            count: 4,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
 
 
+<time datetime="2010-05-22T08:36:00-03:00" data-updated="true" itemprop="datePublished">May 22<span>nd</span>, 2010</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2010/05/22/thoughts-on-web-platforms-and-tendencies/" itemprop="url">Thoughts on Web Platforms and Tendencies</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>During the last few weeks, I found myself more and more inside a stream that takes me to Ruby on Rails, when it comes to the best platform option for agile web development. My current language and platform or proficiency are C# and ASP.NET MVC, however, while getting introduced to the Rails world, I started seeing things from a different perspective, as well as finding out such great tools and practices that I really would like to have when working with ASP.NET MVC. I&rsquo;m gonna list some the topics and differences I have been analyzing:</p>
+
+<ol>
+<li><p> <strong>Community support:</strong> I found the RoR and the Open Source community to be far more unite and open to teaching and sharing knowledge than the .NET community. Starting with the assumption that there are probably more people working with ASP.NET right now than with RoR, it is surprising to see that it is easier to find RoR help online and learning communities than ASP.NET ones. Also, as far as I know, the ASP.NET MVC code is not open to community contributions right now, so people created the <a href="http://mvccontrib.codeplex.com/">MvcContrib</a> project to acoomodate this code, which is a shame. This is said, despite the fact that it&rsquo;s under the <a href="http://www.opensource.org/licenses/ms-pl.html">MS-PL license</a>, I found it hard to provide suggestions and feedback to the project, since there is not an official place for it.</p></li>
+<li><p> <strong>Productivity:</strong> Frequently I have hard times fighting the framework just to be able to get the job done. Rails has proven to me to be more productive and succint in terms of framework design. For example: named routes and database migrations are VERY helpful and I miss this kind of tool in ASP.NET MVC.</p></li>
+<li><p> <strong>Tight Model integration: </strong>I see many people argue that ASP.NET MVC is just VC, since the Model is not tightly coupled to the project. It&rsquo;s the developer&rsquo;s task to choose the right tool for the job, be it LINQ to SQL, Entity Framework or even MongoDB, for example. This flexibility is useful, however, a more integrated scenario could improve productivity a lot, perhaps we could use Entity Framework and SQL Server by default and change the provider later, if needed.</p></li>
+<li><p> <strong>Dynamic typing: </strong>This is a more subjective item, since it is wrong to say that static typing is worse that dynamic typing, or vice versa. It is just a matter of choosing the right tool. However, It seems to me that, in general, static typing and compilation doesn&rsquo;t free you from actual real world errors. It is a cost/benefit tradeoff, so, IMHO, the productivity benefit you get with dynamic typing is worth the trade for the static typing checks that you lost.</p></li>
+</ol>
 
 
-<a href="mailto:felipe.lima@gmail.com" title="Pair program with me!">
-  <img  src="http://pairprogramwith.me/badge.png"
-        alt="Pair program with me!" style="width: 150px" />
-</a>
-</aside>
+<p>Wrapping up, I think that RoR is still an emerging technology that has a great future ahead and an incredible supporting community. I&rsquo;m seeing daily more and more events, talks and conferences around this technology. This, summed up to all the points argumented above, makes me believe that at least it is worth learning. And this is what I&rsquo;m working on right now.</p>
+
+<p>(I think I&rsquo;ll have to buy a MacBook soon :)</p>
+
+<p>Till next time!</p>
+
+		
+		
+	</div>
+
+</article>
 
 
-    			</div>
-    			<footer id="footer">
-    				<p class="credit">
-  Copyright &copy; 2014 - Felipe Lima. Powered by <a href="http://octopress.org">Octopress</a>
-</p>
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
 
 
-    			</footer>
-    			
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-24T08:11:00-03:00" data-updated="true" itemprop="datePublished">Apr 24<span>th</span>, 2010</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2010/04/24/wcf-data-services-and-the-odata-protocol/" itemprop="url">WCF Data Services and the OData Protocol</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>During the last days, I&rsquo;ve been watching some cool MIX&#8217;10 videos with Scott Hanselman. One of them took my attention specially, which is this one: <a href="http://bit.ly/9KjsYr">Beyond File | New Company: From Cheesy Sample to
+Social Platform.</a></p>
+
+<p>Scott takes a simple website like <a href="/admin/Pages/nerddinner.com">nerddinner.com</a> and shows how they tuned it up to enable several different social collaboration, integration and emergent features in it. It is really worth the time watching.</p>
+
+<p>One of the points that really made me curious, was the new <a href="http://www.odata.org/">OData</a> protocol. It was introduced in.NET 4 with <a href="http://msdn.microsoft.com/en-us/data/bb931106.aspx">WCF Data Services</a> (formerly ADO.NET Data Services) and aims to unlock data from its silos that exist in major applications today. What&rsquo;s really impressive about it, is that you are able to query it as a web service and perform complex Linq queries against it (even inserting, updating and deleting are supported!). All this, over a common RESTful Http interface. OData is built upon the <a href="http://en.wikipedia.org/wiki/Atom_%28standard%29">AtomPub</a> format, so there is nothing being invented here. <a href="http://microsoftpdc.com/Sessions/FT12">This presentation</a> at PDC&#8217;09 with Pablo Castro provides further techincal details and I definitely recommend watching if you plan to make use of this technology.</p>
+
+<p>I&rsquo;m planning on implementing this on a Website CMS I&rsquo;m working on and will write about my findings, barriers found and solutions here in the near future. Stay tuned.</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-29T16:04:00-03:00" data-updated="true" itemprop="datePublished">Mar 29<span>th</span>, 2010</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2010/03/29/pure-as3-lightbox-clone/" itemprop="url">Pure As3 Lightbox Clone</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>There are a plenty of <a href="http://leandrovieira.com/projects/jquery/lightbox/">lightbox</a> <a href="http://www.huddletogether.com/projects/lightbox2/">implementations</a> around the web. Whenever you need one, you won&rsquo;t need to make up your own for sure. Just pick one of the available options. However, if you&rsquo;re restricted to flash only, the options get reduced drastically. This is why I came up with <a href="https://github.com/felipecsl/actionscript3-lightbox">my own lightbox</a> implementation with ActionScript. You can see it in action in my company&rsquo;s <a href="http://www.quavio.com.br">website</a>.</p>
+
+<p><img src="/images/2010/3/lightbox.png" alt="Flash Lightbox screenshot" /></p>
+
+<p>It works just like the regular lightbox versions:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span><span class="o">:</span><span class="nx">Lightbox</span> <span class="nx">myLb</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Lightbox</span><span class="p">(</span>
+</span><span class='line'>  <span class="nx">_sTitle</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">// lightbox title</span>
+</span><span class='line'>  <span class="nx">_sLinkToVisit</span><span class="o">:</span> <span class="nb">String</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>  <span class="c1">// link to the page that will be visited upon click</span>
+</span><span class='line'>  <span class="nx">_sImageText</span><span class="o">:</span> <span class="nb">String</span> <span class="o">=</span> <span class="s2">&quot;Imagem&quot;</span><span class="p">,</span> <span class="c1">// &#39;Image&#39; text</span>
+</span><span class='line'>  <span class="nx">_sOfText</span><span class="o">:</span> <span class="nb">String</span> <span class="o">=</span> <span class="s2">&quot;de&quot;</span><span class="p">);</span> <span class="c1">// &#39;Of&#39; text</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// shows the lighbox with the provided array of images</span>
+</span><span class='line'><span class="nx">myLb</span><span class="p">.</span><span class="nx">show</span><span class="p">([</span><span class="s1">&#39;image1.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;image2.jpg&#39;</span><span class="p">,</span> <span class="p">...]);</span>
+</span><span class='line'><span class="nx">myLb</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span> <span class="c1">// closes the lightbox</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Please be aware that, in order to use it, you&rsquo;ll have to create a Lightbox movieclip in the Flash IDE with the following elements inside it:</p>
+
+<p><strong>_txtClientName</strong>,<strong> _txtCurrPos</strong>, <strong>_btnNext</strong>, <strong><em>btnPrev </em>btnClose</strong>, <strong>_bg</strong> and <strong>_btnAcesse</strong>.</p>
+
+<p>These elements are referenced inside the Lightbox class, so you&rsquo;ll need to create elements that match these names in the IDE so that the class will find them.</p>
+
+<p>Additionally, you&rsquo;ll need two static variables containing the stage original width and height. This is needed in order to automatically reposition the lightbox in the middle of the screen on stage resize.</p>
+
+<p>Also, you&rsquo;ll need to download <a href="http://www.greensock.com/tweenlite/">TweenLite</a> for the all the effects to work!</p>
+
+<p>Please let me know if you have any suggestions of bug fixes and/or improvements and I will be happy to answer your requests.</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-19T12:10:00-03:00" data-updated="true" itemprop="datePublished">Mar 19<span>th</span>, 2010</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2010/03/19/how-to-disable-annoying-request-validation/" itemprop="url">How to Disable Annoying Request Validation</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>If I summed it all up, I must have spent more than a day struggling to disable request validation with asp.net mvc. It is just ridiculously hard to disable it.</p>
+
+<p>It turns out that the only way to disable it once and for all is a combination of a setting in the web.config and the ValidateRequestAttribute.</p>
+
+<ol>
+<li><p> Add the following line to your web.config file right after &lt;system.web>: <strong><httpRuntime requestValidationMode="2.0" /></strong></p></li>
+<li><p> Add the <strong>[ValidateInput(false)]</strong> attribute to the controller <strong>and</strong> the action method you want to expose</p></li>
+<li><p> Rebuild the project and go drink a beer.</p></li>
+</ol>
+
+
+<p>Remember it may be unsafe to disable request validation due to potential vulnerability <a href="http://en.wikipedia.org/wiki/Cross-site_scripting">XSS</a> and <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">XSRF</a> attacks.</p>
+
+<p>Note: This is targeted to ASP.NET 4, when the <a href="http://www.asp.net/(S(ywiyuluxr3qb2dfva1z5lgeg">requestValidationMode</a>)/learn/whitepapers/aspnet4/breaking-changes/#_TOC7) attribute was introduced. In .NET 3.5, you can skip the first step and only do 2 and 3, but I&rsquo;m not 100% positive about that.</p>
+
+<p>Happy coding :)</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-02T03:36:00-03:00" data-updated="true" itemprop="datePublished">Mar 2<span>nd</span>, 2010</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2010/03/02/hands-on-mongodb-with-c/" itemprop="url">Hands on MongoDB With C#</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>During the last couple days I&rsquo;ve been experimenting with <a href="/admin/Pages/www.mongodb.com">MongoDB</a> and its <a href="http://github.com/samus/mongodb-csharp">C# driver</a>, cleverly written by Sam Corder. I&rsquo;m investigating it as a replacement for a SQL Server database I am using in a web application that is higly community driven. This specific characteristic is the one that makes the <a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a> movement rise atop regular RDBMS systems like SQL Server or MySQL, since it is hard to mantain relational integrity in these scenarios. Other key features of MongoDB are focus on performance and scalability.</p>
+
+<p><a href="http://odetocode.com/Blogs/scott/archive/2009/10/13/experimenting-with-mongodb-from-c.aspx">K. Scott Allen</a> already wrote a quick intro on using the C# driver, so I used it as a tutorial for my first steps. Here are some thoughts I&rsquo;d like to share on this topic:</p>
+
+<ul>
+<li>I don&rsquo;t like being held by the verbosity of instantiating Document objects every time I want to manipulate the database, so I&rsquo;ve written method overloads for the main operations, like Insert, Update, Find and Delete that receive a plain object and only then convert them to Document. This allows us to leverage anonymous objects in C# and makes the code cleaner:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='c#'><span class='line'><span class="n">Mongo</span> <span class="n">mongo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mongo</span><span class="p">();</span>
+</span><span class='line'><span class="n">mongo</span><span class="p">.</span><span class="n">Connect</span><span class="p">();</span>
+</span><span class='line'><span class="n">Database</span> <span class="n">db</span> <span class="p">=</span> <span class="n">mongo</span><span class="p">[</span><span class="err">“</span><span class="n">testdb</span><span class="err">”</span><span class="p">];</span>
+</span><span class='line'><span class="kt">var</span> <span class="n">col</span> <span class="p">=</span> <span class="n">db</span><span class="p">[</span><span class="err">“</span><span class="n">users</span><span class="err">”</span><span class="p">];</span>
+</span><span class='line'><span class="k">foreach</span><span class="p">(</span><span class="n">Document</span> <span class="n">d</span> <span class="k">in</span> <span class="n">col</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="k">new</span> <span class="p">{</span> <span class="n">name</span> <span class="p">=</span> <span class="err">“</span><span class="n">John</span> <span class="n">Doe</span><span class="err">”</span><span class="p">}).</span><span class="n">Documents</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">johnId</span> <span class="p">=</span> <span class="n">d</span><span class="p">[</span><span class="err">”</span><span class="n">_id</span><span class="err">”</span><span class="p">];</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">johnName</span> <span class="p">=</span> <span class="n">d</span><span class="p">[</span><span class="err">“</span><span class="n">name</span><span class="err">”</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The code with this implementation is available on my fork of the driver at <a href="http://github.com/felipecsl/mongodb-csharp">github</a> an will hopefully be merged with the master soon.</p>
+
+<p>MongoDB allows storage of files in the database, as well, through the <a href="http://www.mongodb.org/display/DOCS/GridFS">GridFS specification</a>. The C# api is already implemented and functional. Follow an example for writing a file to the database:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='c#'><span class='line'><span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">Mongo</span> <span class="n">mongo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mongo</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">mongo</span><span class="p">.</span><span class="n">Connect</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">Database</span> <span class="n">db</span> <span class="p">=</span> <span class="n">mongo</span><span class="p">[</span><span class="err">“</span><span class="n">test</span><span class="err">”</span><span class="p">];</span>
+</span><span class='line'>    <span class="kt">var</span> <span class="n">collection</span> <span class="p">=</span> <span class="n">db</span><span class="p">[</span><span class="err">“</span><span class="n">testcollection</span><span class="err">”</span><span class="p">];</span>
+</span><span class='line'>    <span class="n">GridFile</span> <span class="n">file</span> <span class="p">=</span> <span class="k">new</span> <span class="n">GridFile</span><span class="p">(</span><span class="n">db</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">using</span><span class="p">(</span><span class="n">GridFileStream</span> <span class="n">fs</span> <span class="p">=</span> <span class="n">file</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="err">“</span><span class="n">mycv</span><span class="err">”</span><span class="p">))</span> <span class="c1">// define the file name</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">ReadWriteStream</span><span class="p">(</span><span class="n">File</span><span class="p">.</span><span class="n">OpenRead</span><span class="p">(</span><span class="err">@”</span><span class="n">C</span><span class="p">:</span><span class="err">\</span><span class="n">Data</span><span class="err">\</span><span class="n">felipelima_en</span><span class="p">.</span><span class="n">doc</span><span class="err">”</span><span class="p">),</span> <span class="n">fs</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">ReadWriteStream</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Stream</span> <span class="n">readStream</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">Stream</span> <span class="n">writeStream</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">Byte</span><span class="p">[]</span> <span class="n">buffer</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Byte</span><span class="p">[</span><span class="n">Int16</span><span class="p">.</span><span class="n">MaxValue</span><span class="p">];</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">bytesRead</span> <span class="p">=</span> <span class="n">readStream</span><span class="p">.</span><span class="n">Read</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">Int16</span><span class="p">.</span><span class="n">MaxValue</span><span class="p">);</span>
+</span><span class='line'>    <span class="c1">// write the required bytes</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">while</span> <span class="p">(</span><span class="n">bytesRead</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">writeStream</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">bytesRead</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">bytesRead</span> <span class="p">=</span> <span class="n">readStream</span><span class="p">.</span><span class="n">Read</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">Int16</span><span class="p">.</span><span class="n">MaxValue</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="n">readStream</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">writeStream</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Database files work just like plain Documents and will be assigned an Id upon creation. Therefore, they can be later queried just like a regular document.</p>
+
+<p>This was just a quick glance over MongoDB and C# integration. I&rsquo;m planning on using it on a large project and will post here my findings. More to come.</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-22T03:52:00-03:00" data-updated="true" itemprop="datePublished">Feb 22<span>nd</span>, 2010</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2010/02/22/the-magic-of-defaultmodelbinder/" itemprop="url">The Magic of DefaultModelBinder</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>During the last days I had to implement a custom model binding for a dynamic view model in a project I&rsquo;m working on. This had me diving deep in the DefaultModelBinder implementation and how binding works in ASP.NET MVC.</p>
+
+<p>Basically the request carries the data you controller action needs to perform its work. It may come from several different locations, like form variables, the query string and route data, in the form of key/value pairs, string-encoded.</p>
+
+<p>Usually, the DefaultModelBinder implementation will be just fine for you and no additional work will be needed. However, there are situations where we need to tweak settings a bit. Model binding works in a associative manner, where you can assign a binder to a specific type, like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='c#'><span class='line'><span class="n">ModelBinders</span><span class="p">.</span><span class="n">Binders</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span>
+</span><span class='line'>  <span class="k">typeof</span><span class="p">(</span><span class="n">DateTime</span><span class="p">),</span>
+</span><span class='line'>  <span class="n">newDateTimeModelBinder</span><span class="p">());</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here, we&rsquo;re saying that all DateTime values should be bound using the DateTimeModelBinder class. DefaultModelBinder will figure that out and call this class when it sees a property of DateTime type. We could say that it works recursivly by looking for the appropriate binder for each property. If no custom binder is found, DefaultModelBinder will take care of it anyway.</p>
+
+<p><img src="http://i.pbase.com/o4/60/687660/1/64594355.dte2s9SV.ropeknot.JPG" alt="" /></p>
+
+<p>The IModelBinder interface defines a single method:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c#'><span class='line'><span class="kt">object</span> <span class="nf">BindModel</span><span class="p">(</span><span class="n">ControllerContext</span> <span class="n">controllerContext</span><span class="p">,</span> <span class="n">ModelBindingContext</span> <span class="n">bindingContext</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The <strong>bindingContext</strong> argument contains information about the mode (type, metadata, name, etc). All you have to do is to use the <strong>bindingContext.ValueProvider</strong> collection to retrieve the correct data for the given model and return it.</p>
+
+<p>Apart from everything, I strongly recommend building the asp.net mvc source code instead of using the installer, so you can debug/step into the mvc classes. You can download the latest MVC 2 RC 2 source code from <a href="http://aspnet.codeplex.com/releases/view/39978#DownloadId=104717">codeplex</a>. Just do not forget to uninstall MVC from the GAC before building or you&rsquo;ll get ambiguous references.</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-26T17:30:00-02:00" data-updated="true" itemprop="datePublished">Jan 26<span>th</span>, 2010</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2010/01/26/model-binding-in-asp-net-mvc/" itemprop="url">Model Binding in ASP.NET MVC</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><img src="http://i.zdnet.com/blogs/agile-is-cool.jpg" alt="" /></p>
+
+<p>Ever since I started discovering the MVC world I decided to completely forget Web Forms and actually adopt asp.net MVC as my web programming framework of choice. What&rsquo;s great about it is that you have complete control over the generated html output and absolute separation of business logic, presentation layer and model. It&rsquo;s all about <a href="http://en.wikipedia.org/wiki/Convention_over_configuration">convention over configuration</a>! This is one of the reasons why I decided to learn Ruby on Rails some time ago. It is clear that the <strike>ASP.NET MVC</strike> .NET Framework 3.5 SP1 release was somewhat influenced by Rails.</p>
+
+<p>One of the great things about ASP.NET MVC is model binding. K. Scott Allen wrote a <a href="http://odetocode.com/Blogs/scott/archive/2009/04/27/6-tips-for-asp-net-mvc-model-binding.aspx">great blog post</a> with tips on binding. Basically, it collects your request data and fills up your view model with the incoming data.</p>
+
+<p>There is a search pattern that the DefaultModelBinder uses to look for the data in the request. Basically you need to name your form elements with the same name of your model properties. For example:</p>
+
+<ol>
+<li>The view model:</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='c#'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">NewsModuleViewModel</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="na">    [ScaffoldColumn(false)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">int</span> <span class="n">ID</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [DisplayName(“News Date”)]</span>
+</span><span class='line'><span class="na">    [DisplayFormat(DataFormatString = “d”, ApplyFormatInEditMode = true)]</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = “Por favor selecione uma data”)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="n">DateTime</span><span class="p">?</span> <span class="n">Date</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [DisplayName(“Title”)]</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = “Por favor digite um titulo”)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Title</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [DisplayName(“Resume”)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Resume</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [DisplayName(“My Text”)]</span>
+</span><span class='line'><span class="na">    [UIHint(“HtmlText”)]</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = “Por favor digite um texto para a noticia”)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Text</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [DisplayName(“Image”)]</span>
+</span><span class='line'><span class="na">    [UIHint(“DbImage”, null, “AspectRatio”, 1.0)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">ImagePath</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The form:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">”/uac/NewsModule/Edit/12”</span> <span class="na">enctype=</span><span class="s">”multipart/form-data”</span> <span class="na">method=</span><span class="s">”post”</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">”datalist-form”</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">”Date”</span><span class="nt">&gt;</span>Date<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">”text”</span> <span class="na">id=</span><span class="s">”Date”</span> <span class="na">name=</span><span class="s">”Date”</span> <span class="na">value=</span><span class="s">”22/1/2010”</span> <span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">”datalist-form”</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">”Title”</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">”text-box</span> <span class="na">single-line</span><span class="err">”</span> <span class="na">id=</span><span class="s">”Title”</span> <span class="na">name=</span><span class="s">”Title”</span> <span class="na">type=</span><span class="s">”text”</span> <span class="nt">/&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">”datalist-form”</span><span class="nt">&gt;</span>
+</span><span class='line'>         <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">”Resume”</span><span class="nt">&gt;</span>Resume<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>         <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">”text-box</span> <span class="na">single-line</span><span class="err">”</span> <span class="na">id=</span><span class="s">”Resume”</span> <span class="na">name=</span><span class="s">”Resume”</span> <span class="na">type=</span><span class="s">”text”</span> <span class="nt">/&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;/form&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>(I&rsquo;ve reduced the HTML markup snippet for the sake of simplicity).</p>
+
+<p>Please note that the input field name properties match the view model property names. The DefaultModelBinder will look for these names when doing the data binding!</p>
+
+<p><a href="http://haacked.com/archive/2008/10/23/model-binding-to-a-list.aspx">
+You can even bind complex objects like lists</a>, for example, but, in this case, you&rsquo;ll have to name your input fields according to the element index on the list! Eg.:</p>
+
+<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;&lt;span class="kwrd"&gt;&lt;&lt;/span&gt;&lt;span class="html"&gt;input&lt;/span&gt; &lt;span class="attr"&gt;type&lt;/span&gt;&lt;span class="kwrd"&gt;="text"&lt;/span&gt; &lt;span class="attr"&gt;name&lt;/span&gt;&lt;span class="kwrd"&gt;="&lt;strong&gt;ImageList[0].FileName&lt;/strong&gt;" size="&lt;/span&gt;&lt;span class="attr"&gt;44&lt;/span&gt;" &lt;span class="kwrd"&gt;/&gt;&lt;/span&gt;
+</code></pre>
+
+<p>It is really straightforward once you get used to it. Just always make sure to create a ViewModel class for you, instead of using the data classes directly (eg.: with LINQ to SQL).</p>
+
+<p>If you need to bind uploaded files as well, it gets a bit more complicated. The best solution I&rsquo;ve found so far was <strong>not </strong>to bind file input control and later retrieve the uploaded file in the controller action from the Request.Files collection.</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-02T16:25:00-02:00" data-updated="true" itemprop="datePublished">Dec 2<span>nd</span>, 2009</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/12/02/an-alternative-for-viewing-grid-row-details-in-asp-net-dynamic-data/" itemprop="url">An Alternative for Viewing Grid Row Details in ASP.NET Dynamic Data</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>With ASP.NET Dynamic Data you get an entire dynamic data-driven website for free with almost no effort. Of course this has drawbacks, which is that in fact you lose some flexibility and need to do things in the way they <strong>can</strong> be done.</p>
+
+<p>Recently I needed to improve the default List.aspx template GridView with some different colors and per-line selection for entry details, instead of clicking through an DynamicHyperlink. The first step was to attach an OnRowDataBound event in the grid, in order to set up on onmouseover event in the data rows:</p>
+
+<p>DynamicData\PageTemplates\List.aspx:</p>
+
+<p>[code:c#]</p>
+
+<p>&lt;asp:GridView ID=&ldquo;GridView1&rdquo; runat=&ldquo;server&rdquo; DataSourceID=&ldquo;GridDataSource&rdquo; EnablePersistedSelection=&ldquo;true&rdquo; <strong>OnRowDataBound=&ldquo;GridView_RowDataBound&rdquo;</strong>></p>
+
+<p>[/code]</p>
+
+<p>Next, attach the event and set up the event (DynamicData\PageTemplates\List.aspx.cs):</p>
+
+<p>[code:c#]</p>
+
+<p>protected void GridView_RowDataBound(object sender, GridViewRowEventArgs e)</p>
+
+<p>{</p>
+
+<p>if (e.Row.RowType == DataControlRowType.DataRow)</p>
+
+<p>{</p>
+
+<p>e.Row.Attributes[&ldquo;onclick&rdquo;] = &ldquo;location.href = &lsquo;&rdquo; + table.GetActionPath(&ldquo;Details&rdquo;, e.Row.DataItem) + &ldquo;&rsquo;&rdquo;;</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>[/code]</p>
+
+<p>And I&#8217;ts all done. You get an entire row click selection for the entry details :)</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-15T20:51:00-02:00" data-updated="true" itemprop="datePublished">Nov 15<span>th</span>, 2009</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/11/15/customizing-asp-net-membership-information-with-profiles/" itemprop="url">Customizing ASP.NET Membership Information With Profiles</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>ASP.NET offers a powerful built-in provider-based support for membership, roles and profile management. That means you get a fully functional set of features for free on your project just out of the box.</p>
+
+<p>I&rsquo;ve been working in order to integrate membership and profile management into a MVC application I am developing, so I had to refresh my mind on these topics. There are some gotchas around these topics that are worth sharing.</p>
+
+<p>First of all, the default ASP.NET providers implementation for membership, roles and profiles are based on SQL Server database storage, so you&rsquo;ll have to configure one to start playing. A gotcha here is to run the aspnet_regsql tool to generate the required tables, schemas, stored procedures, etc. in order for the providers to work. Do not forget also to configure them correctly in the web.config file, including the connectionStringName and applicationName properties (very important!).</p>
+
+<p>There are several resources and tutorials around the net explaining how to set up these providers to start working. For profile management, I recommend <a href="http://odetocode.com/Articles/440.aspx">this one</a>. Profiles are the way to go if you need to include additional information pertaining your application users, so, instead of creating a custom membership provider, get along with the default one and set up profile properties in the web.config file. These settings are then stored in the database and associated with the user that is currently logged on. It is possible to add profile data to anonymous users, also, which is great!</p>
+
+<p>So, in order to integrate it with your MVC application, you can easily store and retrieve your profile properties inside your Controller with <strong>this.HttpContext.Profile[&ldquo;ProfilePropertyName&rdquo;].</strong></p>
+
+<p>Also, do not forget to declare your property in the web.config file this way:</p>
+
+<p>[code:xml]</p>
+
+<p><profile defaultProvider="AspNetSqlProfileProvider"></p>
+
+<p><providers></p>
+
+<p><clear/></p>
+
+<p>&lt;add name=&ldquo;AspNetSqlProfileProvider&rdquo;</p>
+
+<p>type=&ldquo;System.Web.Profile.SqlProfileProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&rdquo;</p>
+
+<p>connectionStringName=&ldquo;tagsdConnectionString&rdquo;</p>
+
+<p>applicationName=&ldquo;/&rdquo;</p>
+
+<p>/></p>
+
+<p></providers></p>
+
+<p><properties></p>
+
+<p><add name="ProfilePropertyName" type="System.String"/></p>
+
+<p></properties></p>
+
+<p></profile></p>
+
+<p>[/code]</p>
+
+		
+		
+	</div>
+
+</article>
+
+</div>
+<nav id="pagenavi">
+    
+        <a href="/blog/page/2/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/4/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Felipe Lima
+
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+		</div>
+	</div>
+	
 
 
 
@@ -514,26 +880,5 @@
 
 
 
-<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
-
-
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-26310657-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
-
-
-    		</div>
-    	</section>
-  	</div>
 </body>
 </html>

@@ -1,44 +1,44 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Automatically tracking last modification date/time in table column - Felipe Lima</title>
-  <meta name="author" content="Felipe Lima">
+<!DOCTYPE HTML>
 
-  
-  <meta name="description" content="Lately I found a very simple and yet consistent way to track the last update made to a Sql Server database table. You can easily store the &hellip;">
-  
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Automatically tracking last modification date/time in table column - Felipe Lima</title>
+	<meta name="author" content="Felipe Lima">
+
+	
+	<meta name="description" content="Automatically Tracking Last Modification Date/time in Table Column Lately I found a very simple and yet consistent way to track the last update made &hellip;">
+	
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://felipecsl.com/blog/2009/07/08/automatically-tracking-last-modification-datetime-in-table-column/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
   
-  <link rel="canonical" href="http://felipecsl.com/blog/2009/07/08/automatically-tracking-last-modification-datetime-in-table-column">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-26310657-1']);
+		_gaq.push(['_trackPageview']);
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-26310657-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 
 
 </head>
@@ -46,62 +46,74 @@
 
 <body>
 	<div class="container">
-		<aside class="left">
-			<div class="inner-left">
-				<header>
-					<img src="http://www.gravatar.com/avatar/7fd4ba468da56bb5330a6352c1b54f52?s=200" alt="Gravatar of Felipe Lima " title="Gravatar of Felipe Lima" class="profilepic" />
-<hgroup>
-  <h1><a href="/">Felipe Lima</a></h1>
-  
-    <h2 class="subtitle">@felipecsl</h2>
-   
-</hgroup>
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/7fd4ba468da56bb5330a6352c1b54f52?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
 
+<nav id="main-nav"><ul class="main">
+    <li><a href="/">Blog</a></li>
+    <li><a href="http://about.me/felipecsl">About</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+</ul>
 
-				</header>
-				<footer>
-					<p>
-	
-		<a href="http://github.com/felipecsl" class="btn btn-dark">GitHub</a>
-	
-	
-		<a href="http://twitter.com/felipecsl" class="btn btn-dark">Twitter</a>
-	
-</p>
-				</footer>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+			<a class="google" href="https://plus.google.com/FelipeLimaf" rel="author" title="Google+">Google+</a>
+		
+		
+			<a class="twitter" href="http://twitter.com/felipecsl" title="Twitter">Twitter</a>
+		
+		
+			<a class="github" href="https://github.com/felipecsl" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
 			</div>
-		</aside>
-    	<section class="right">
-    		<div class="inner-right">
-    			<div id="posts">
-    			  	<article class="post">
-    
-  <header>
-    
-      <h1 class="entry-title">Automatically Tracking Last Modification Date/time in Table Column</h1>
-    
-    
-      <p class="meta">
-        
+		</div>	
+		<div class="mid-col">
+			
+				
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/felipecsl">felipecsl</a> @ <a href="http://twitter.com">Twitter</a></small>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('felipecsl', 4, false);
+	})(jQuery);
+</script>
 
 
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-07-08T06:55:00-03:00" pubdate data-updated="true">Jul 8<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>Lately I found a very simple and yet consistent way to track the last update made to a Sql Server database table. You can easily store the modification date and time through a table trigger that can set a specific column of the updated row(s) with the GETDATE() function.</p>
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Automatically Tracking Last Modification Date/time in Table Column</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Lately I found a very simple and yet consistent way to track the last update made to a Sql Server database table. You can easily store the modification date and time through a table trigger that can set a specific column of the updated row(s) with the GETDATE() function.</p>
 
 <p>In order to do that, create a new trigger for your table and use the <strong>Inserted</strong> virtual table to obtain the ID of the entry, in order to update it. We&rsquo;ll use here a <strong>LastModified </strong>column, which will store a datetime:</p>
 
@@ -126,31 +138,32 @@
 <p>Hope this helps!</p>
 </div>
 
-
 </article>
 
-
-        <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://felipecsl.com/blog/2009/07/08/automatically-tracking-last-modification-datetime-in-table-column/" data-via="felipecsl" data-counturl="http://felipecsl.com/blog/2009/07/08/automatically-tracking-last-modification-datetime-in-table-column/" >Tweet</a>
-  
-  
-  
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
 </div>
 
 
+</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Felipe Lima
 
 
-
-    			</div>
-    			<footer id="footer">
-    				<p class="credit">
-  Copyright &copy; 2014 - Felipe Lima. Powered by <a href="http://octopress.org">Octopress</a>
-</p>
-
-
-    			</footer>
-    			
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+		</div>
+	</div>
+	
 
 
 
@@ -171,26 +184,5 @@
 
 
 
-<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
-
-
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-26310657-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
-
-
-    		</div>
-    	</section>
-  	</div>
 </body>
 </html>

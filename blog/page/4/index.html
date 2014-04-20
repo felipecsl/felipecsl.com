@@ -1,44 +1,44 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Felipe Lima</title>
-  <meta name="author" content="Felipe Lima">
+<!DOCTYPE HTML>
 
-  
-  <meta name="description" content="ASP.NET MVC Custom Errors With the HandleError Attribute Oct 22nd, 2009 ASP.NET MVC and IIS 6 Oct 21st, 2009 How to Fix Image Upload With FCKEditor &hellip;">
-  
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Felipe Lima</title>
+	<meta name="author" content="Felipe Lima">
+
+	
+	<meta name="description" content="Oct 22nd, 2009 ASP.NET MVC Custom Errors With the HandleError Attribute Handling exceptions in ASP.NET MVC is quite easy once you get to know the &hellip;">
+	
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://felipecsl.com/blog/page/4/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
   
-  <link rel="canonical" href="http://felipecsl.com/blog/page/4">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-26310657-1']);
+		_gaq.push(['_trackPageview']);
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-26310657-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 
 
 </head>
@@ -46,454 +46,712 @@
 
 <body>
 	<div class="container">
-		<aside class="left">
-			<div class="inner-left">
-				<header>
-					<img src="http://www.gravatar.com/avatar/7fd4ba468da56bb5330a6352c1b54f52?s=200" alt="Gravatar of Felipe Lima " title="Gravatar of Felipe Lima" class="profilepic" />
-<hgroup>
-  <h1><a href="/">Felipe Lima</a></h1>
-  
-    <h2 class="subtitle">@felipecsl</h2>
-   
-</hgroup>
-
-
-				</header>
-				<footer>
-					<p>
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
 	
-		<a href="http://github.com/felipecsl" class="btn btn-dark">GitHub</a>
+	<img src="http://www.gravatar.com/avatar/7fd4ba468da56bb5330a6352c1b54f52?s=160" alt="Profile Picture" style="width: 160px;" />
 	
-	
-		<a href="http://twitter.com/felipecsl" class="btn btn-dark">Twitter</a>
-	
-</p>
-				</footer>
-			</div>
-		</aside>
-    	<section class="right">
-    		<div class="inner-right">
-    			<div id="posts">
-    			  	<div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/10/22/asp-net-mvc-custom-errors-with-the-handleerror-attribute/">ASP.NET MVC Custom Errors With the HandleError Attribute</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-10-22T06:57:00-02:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/10/21/asp-net-mvc-and-iis-6/">ASP.NET MVC and IIS 6</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-10-21T05:01:00-02:00" pubdate data-updated="true">Oct 21<span>st</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/10/03/how-to-fix-image-upload-with-fckeditor-and-asp-net/">How to Fix Image Upload With FCKEditor and ASP.NET</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-10-03T08:52:00-03:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/09/15/comments-are-temporarily-turned-off/">Comments Are Temporarily Turned Off</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-09-15T08:04:00-03:00" pubdate data-updated="true">Sep 15<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/09/03/will-html-5-create-a-new-milestone-in-web-development/">Will HTML 5 Create a New Milestone in Web Development?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-09-03T08:21:00-03:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/08/20/how-to-enable-session-state-in-asp-net/">How to Enable Session State in ASP.NET</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-08-20T16:04:00-03:00" pubdate data-updated="true">Aug 20<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/08/20/copying-linq-non-datarow-query-results-to-datatable/">Copying Linq (non-DataRow) Query Results to DataTable</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-08-20T03:43:00-03:00" pubdate data-updated="true">Aug 20<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/08/13/the-linq-expression-node-type-invoke-is-not-supported-in-linq-to-entities/">The LINQ Expression Node Type &#8216;Invoke&#8217; Is Not Supported in LINQ to Entities.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-08-13T08:30:00-03:00" pubdate data-updated="true">Aug 13<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/08/11/upload-and-crop-images-with-asp-net-and-jcrop-revisited/">Upload and Crop Images With ASP.NET and jCrop - Revisited!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-08-11T18:46:00-03:00" pubdate data-updated="true">Aug 11<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/08/10/asp-net-70-562-certification-earned/">ASP.NET 70-562 Certification Earned!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-08-10T09:06:00-03:00" pubdate data-updated="true">Aug 10<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <!-- do nothing but show the title on the listings page -->
-
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="previous btn btn-light" href="/blog/page/5/">&larr; Older</a>
-    
-    <a class="archives btn btn-light" href="/blog/archives">Blog Archives</a>
-    
-    <a class="next btn btn-light" href="/blog/page/3/">Newer &rarr;</a>
-    
-  </div>
 </div>
 
+<nav id="main-nav"><ul class="main">
+    <li><a href="/">Blog</a></li>
+    <li><a href="http://about.me/felipecsl">About</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+</ul>
 
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2013/12/06/publishing-an-android-library-to-maven-central/">Publishing an Android Library to Maven Central With Gradle</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/12/building-a-custom-view-with-android/">Building a Custom View With Android</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/20/animated-gifs-with-android/">Handling Animated GIFs With Android the Right Way</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/31/starting-with-android-managing-images/">Starting With Android - Managing Images</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/08/01/when-two-identical-strings-are-different/">When Two Identical Strings Are Different?</a>
-      </li>
-    
-  </ul>
-</section>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+			<a class="google" href="https://plus.google.com/FelipeLimaf" rel="author" title="Google+">Google+</a>
+		
+		
+			<a class="twitter" href="http://twitter.com/felipecsl" title="Twitter">Twitter</a>
+		
+		
+			<a class="github" href="https://github.com/felipecsl" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/felipecsl">felipecsl</a> @ <a href="http://twitter.com">Twitter</a></small>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('felipecsl', 4, false);
+	})(jQuery);
+</script>
 
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
+
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner">
+<div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
   
-  <a href="https://github.com/felipecsl">@felipecsl</a> on GitHub
+
+
+<time datetime="2009-10-22T06:57:00-02:00" data-updated="true" itemprop="datePublished">Oct 22<span>nd</span>, 2009</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/10/22/asp-net-mvc-custom-errors-with-the-handleerror-attribute/" itemprop="url">ASP.NET MVC Custom Errors With the HandleError Attribute</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Handling exceptions in ASP.NET MVC is quite easy once you get to know the details surrounding the HandleError attribute. You can specify that a controller or a specific Action will handle errors and you can even choose which View to show based on the exception being thrown. Scott Guthrie <a href="http://weblogs.asp.net/scottgu/archive/2008/07/14/asp-net-mvc-preview-4-release-part-1.aspx">wrote</a> about this.</p>
+
+<p>What he didn&rsquo;t tell us, is that there are some prerequisites for it to work as expected. First of all, you need to enable custom errors in the application web.config file:</p>
+
+<p><customErrors mode="On" /></p>
+
+<p>Second, the order that you put the HandleError attributes will affect which View will actualy gonna be rendered at the end. I was trying to render a custom view based on an InvalidOperationException being throw on my action. The code looked like this:</p>
+
+<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;[HandleError]
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   2:  &lt;/span&gt;&lt;span class="kwrd"&gt;public&lt;/span&gt; &lt;span class="kwrd"&gt;class&lt;/span&gt; HomeController : QuavioController
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   3:  &lt;/span&gt;{
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   4:  &lt;/span&gt;        [HandleError(ExceptionType = &lt;span class="kwrd"&gt;typeof&lt;/span&gt;(InvalidOperationException), View = &lt;span class="str"&gt;"InvalidOpJoinRoom"&lt;/span&gt;)]
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   5:  &lt;/span&gt;        &lt;span class="kwrd"&gt;public&lt;/span&gt; ActionResult JoinRoom()
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   6:  &lt;/span&gt;        {
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   7:  &lt;/span&gt;             &lt;span class="kwrd"&gt;throw&lt;/span&gt; &lt;span class="kwrd"&gt;new&lt;/span&gt; InvalidOperationException();
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   8:  &lt;/span&gt;        }
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   9:  &lt;/span&gt;}
+</code></pre>
+
+<p>What happened is that the JoinRoom was returning the shared Error View, instead of the InvalidOpJoinRoom View. This happens because the HomeController contains a HandleError attribute (line 1), which overrides the JoinRoom&rsquo;s HandleError behavior (line 4), which should return the InvalidOpJoinRoom View.</p>
+
+<p>The fix is very simple: Remove the HandleError atribute from the controller and let the actual actions define the proper error handling behavior.</p>
+
+<p>Conclusion: Be aware that multiple HandleError attributes in a controller may alter the order which View evaluation is executed and then causing the final View not to be the view you were actually expecting.</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
   
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'felipecsl',
-            count: 4,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
 
 
+<time datetime="2009-10-21T05:01:00-02:00" data-updated="true" itemprop="datePublished">Oct 21<span>st</span>, 2009</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/10/21/asp-net-mvc-and-iis-6/" itemprop="url">ASP.NET MVC and IIS 6</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>I&rsquo;ve been playing lately with ASP.NET MVC 2 Preview 2. I had no previous experience with this and it has been kind of a change in paradigms changing from web forms to mvc. At the same time, I feel very excited about this and believe that It is a big step forward when compared to web forms, mainly due to the separation of concerns and responsibilities.</p>
+
+<p>As a drawback, It is very weird not to be able to drop ASP.NET server controls in the page. Initially, you&rsquo;ll feel a bit &lsquo;lost&rsquo;. MVC uses a different method to render the page. You don&rsquo;t have the runat=&lsquo;server&rsquo; stuff anymore so, instead, you&rsquo;ll have to render the page mostly based on what you have in your ViewData. It&rsquo;s not my objective to explain its functionality here, but you can find further information at the <a href="http://www.asp.net/mvc/">official MVC website</a>. The latest release can be downloaded from <a href="http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=33836">CodePlex</a>.</p>
+
+<p>While testing my application in my hosting provider, I had a big headache since they have Windows 2003 Server installed, which comes with IIS 6. ASP.NET MVC requires a bit of work in order to work with IIS6, especially if your hosting provider does not have MVC installed in the GAC.</p>
+
+<p>I would definitely suggest <a href="http://haacked.com/">Phil Haack&rsquo;s blog</a> as the first point for reference on this subject. There are two key posts regarding this issue that I followed in order to make it work.</p>
+
+<p>First of all, MVC assembly needs to be deployed in the application Bin directory if it is not installed in the server. Detailed info <a href="http://haacked.com/archive/2008/11/03/bin-deploy-aspnetmvc.aspx">here</a>.</p>
+
+<p>Second, you&rsquo;ll need to change the application routes for IIS 6 to correctly receive the requests and forward them to the controllers. Haacked.com walkthrough <a href="http://haacked.com/archive/2008/11/26/asp.net-mvc-on-iis-6-walkthrough.aspx">here</a>.</p>
+
+<p>As a last tip, I also found out that my MVC application wouldn&rsquo;t work if I used VS Publish tool to send it to the production server after following the two steps above. No clue why, but just copying the whole website files to the server worked fine. Weird!</p>
+
+		
+		
+	</div>
+
+</article>
 
 
-<a href="mailto:felipe.lima@gmail.com" title="Pair program with me!">
-  <img  src="http://pairprogramwith.me/badge.png"
-        alt="Pair program with me!" style="width: 150px" />
-</a>
-</aside>
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
 
 
-    			</div>
-    			<footer id="footer">
-    				<p class="credit">
-  Copyright &copy; 2014 - Felipe Lima. Powered by <a href="http://octopress.org">Octopress</a>
-</p>
 
 
-    			</footer>
-    			
+
+
+
+
+  
+
+
+<time datetime="2009-10-03T08:52:00-03:00" data-updated="true" itemprop="datePublished">Oct 3<span>rd</span>, 2009</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/10/03/how-to-fix-image-upload-with-fckeditor-and-asp-net/" itemprop="url">How to Fix Image Upload With FCKEditor and ASP.NET</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><a href="/admin/Pages/ckeditor.com">CKEditor</a> is a great open source wysiwyg editor for the web. It was formerly called FCKEditor and, one of its previous versions contained a nice implementation for ASP.NET integration. The current version (3.0) has been completely rebuilt from scratch and does not support quick upload yet (I read in the forums it will be available in version 3.1).</p>
+
+<p>I&rsquo;ve been using the FCKEditor  2.6.3 for .NET, which includes an ASP.NET control for seamless integration. However, I could never make one of its great features to work: the ability to upload images on the fly and embed them in the text. There are some things that need to be set up before.</p>
+
+<pre><code>1. FCKEditor config file (fckconfig.js), when you download it, comes with its connectors default language to php. You need to change it to aspx:
+
+
+
+var _FileBrowserLanguage    = 'aspx' ;  // asp | aspx | cfm | lasso | perl | php | py 
+
+
+var _QuickUploadLanguage    = 'aspx' ;  // asp | aspx | cfm | lasso | perl | php | py  
+
+
+
+
+2. Configure the folder that contains the fckeditor scripts in FCKEditor.cs (You will need to create a virtual directory in IIS with this path):
+
+
+
+
+
+
+[ DefaultValue( "/fckeditor/" ) ]
+
+
+
+
+
+
+public string BasePath 
+
+
+
+
+
+
+3. Enable the upload connector in fckeditor\editor\filemanager\connectors\aspx\config.ascx (SECURITY WARNING: do not forget to implement    authentication verification here!):
+
+
+
+
+
+
+private bool CheckAuthentication()
+
+
+
+
+
+
+{ return true; }
+
+
+
+
+
+
+4. Configure the directory that will receive the uploaded images (same file as above) - This can be overriden in your website web.config appSettings    section, creating a setting called FCKeditor:UserFilesPath
+
+
+
+
+
+
+UserFilesPath = "/userfiles/";
+</code></pre>
+
+<p>This should be  everything that is needed in order to make file upload to work. See ya!</p>
+
+<p>For those of you that saw this working fine in your development machine but  unexplainably not working on the production server, please refer to <a href="http://cksource.com/forums/viewtopic.php?f=6&amp;t=12112">this forum post</a> for the fix.</p>
+
+<p>Another issue that I found regarding the update above is that in a server, it did not fix the problem an I was getting a &lsquo;permission denied&rsquo; JS error on the window.parent.OnUploadCompleted event. If that happens, try <a href="http://dev.fckeditor.net/ticket/2115">this fix</a> (scroll to the bottom of the page for the code)</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-15T08:04:00-03:00" data-updated="true" itemprop="datePublished">Sep 15<span>th</span>, 2009</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/09/15/comments-are-temporarily-turned-off/" itemprop="url">Comments Are Temporarily Turned Off</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>I had to temporarily disable comments on this blog due to the huge amount of automated spam comments I have been receiving lately. I&rsquo;ll enable <a href="http://en.wikipedia.org/wiki/CAPTCHA">captcha</a> challenges on the comments posting and reenable it once this is done!</p>
+
+<p>Sorry for the inconvenience, people. See you!</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-03T08:21:00-03:00" data-updated="true" itemprop="datePublished">Sep 3<span>rd</span>, 2009</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/09/03/will-html-5-create-a-new-milestone-in-web-development/" itemprop="url">Will HTML 5 Create a New Milestone in Web Development?</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>If you&rsquo;ve been on the latest news on the web development standards, you probably know that <a href="http://en.wikipedia.org/wiki/HTML_5">HTML version 5</a> is slowly being adopted by mainstream browsers, despite it has not reached its final release yet (it is still a draft). I&rsquo;ve always been a fan of the impressive results that you can get with Adobe Flash and, since it is today present in <a href="http://www.adobe.com/products/player_census/flashplayer/version_penetration.html">almost 99% of the browsers</a>, it has been almost a no-brainer for anyone that wanted to create a highly dynamic and interactive website for the last couple years. Despite its many drawbacks, Flash has managed to become almost ubiquitous and extremely popular in the web. Just to cite a few of these weaknesses:</p>
+
+<ul>
+<li><p>It is a proprietary technology held by Adobe. This, by definition, is not good for the community, since we&rsquo;re all in Adobe&rsquo;s hands;</p></li>
+<li><p>Even after 10 major releases during the last 13 years, Adobe did not managed to create a decent IDE for it, which today still relies mainly on a timeframe for movie clip creation and has poor debugging support;</p></li>
+<li><p>Its programming language, <a href="http://en.wikipedia.org/wiki/ActionScript">ActionScript</a>, which only recently became more robust with its version 3, is based on ECMAScript (prototype oriented), which implies loose typing and few compile time checks &ndash;> more runtime errors.</p></li>
+</ul>
+
+
+<p>Now that HTML5 is here, we&rsquo;re clearly seeing that Flash is slowly and progressively losing market share, mostly because of the new <a href="http://en.wikipedia.org/wiki/Canvas_%28HTML_element%29"><strong>canvas</strong></a> element introduced with this standard. Canvas allows 2D vector based drawing directly to the browser. This opens an entire new world of possibilities to web development, allowing creators to leverage the HTML 5 open standard to switch from Flash to canvas and, therefore, forcing browsers to implement it and improve rendering performance. Other elements like audio and video embedding are also planned to be available in this standard.</p>
+
+<p><a href="http://www.codinghorror.com/blog/archives/001023.html">Performance</a> is another topic apart that, however, cannot be ignored. Some of the latest <a href="http://www.chromeexperiments.com/">canvas experiments</a> in the web show that we have a severe performance reduction with canvas, when compared to Flash, especially when it comes to animations and 3D. This is something that still blows me today: How do browsers manage to have such a big performance difference? Google Chrome, which is the fastest browser i&rsquo;ve ever seen, cannot be compared to Firefox when it comes to JavaScript performance, not to mention Internet Explorer, which must be some kind of joke of internet browsers. Even its latest version 8 did not manage to have half of the Chrome speed. I cannot understand what is so hard about JavaScript processing which makes it such a processor intensive task even for the modern browsers.</p>
+
+<p>I really wish to see the web in the near future in a very different way than what we have now. With the adpotion of HTML 5 by all mainstream browsers (IE does not implement it yet), I hope we can all abandon Flash for good and focus on improving browsers performance to be able to afford with canvas the same interactivity that we have today with Flash. Besides that, I&rsquo;d like to see more and more improvements to JavaScript frameworks like jQuery and hopefully, we&rsquo;ll enter Web 3.0 with an entire new set of web applications!</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-20T16:04:00-03:00" data-updated="true" itemprop="datePublished">Aug 20<span>th</span>, 2009</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/08/20/how-to-enable-session-state-in-asp-net/" itemprop="url">How to Enable Session State in ASP.NET</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>While trying to use the Session state dictionary in a web application, you may eventually receive the following exception:</p>
+
+<p><strong>Session state can only be used when enableSessionState is set to true, </strong><strong>either in a configuration file or in the Page directive. Please also make sure that System.Web.SessionStateModule or a custom session state module is included in the <configuration>&lt;system.web>&lt;httpModules> </strong><strong>section in the application configuration.</strong></p>
+
+<p>To my surprise, session state has to be enabled before it can be used. I followed some steps that I found while digging for the solution online that might be helpful:</p>
+
+<ol>
+<li><p>Enable the ASP.NET Session State Manager Service (under Control Panel > Administrative Tools > Services)</p></li>
+<li><p>Enable it in the web.config file: <strong><pages enableSessionState="true"></strong></p></li>
+<li><p>Add the proper http module to the web.config: <strong><add name="Session" type="System.Web.SessionState.SessionStateModule" /></strong></p></li>
+<li><p>At last but not least: Make sure you&rsquo;re accessing the Session object after it has been initialized. This is very important, since if you try to manipulate it in the page constructor, for example (which was my case), you&rsquo;ll still get the above exception, even after executing steps 1, 2 and 3. You should be able to access it after the page <strong>OnLoad</strong> event has been fired.</p></li>
+</ol>
+
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-20T03:43:00-03:00" data-updated="true" itemprop="datePublished">Aug 20<span>th</span>, 2009</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/08/20/copying-linq-non-datarow-query-results-to-datatable/" itemprop="url">Copying Linq (non-DataRow) Query Results to DataTable</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>How to use the results of a database query using Linq to fill a DataGrid? It should be no big deal since there is a useful <a href="http://msdn.microsoft.com/en-us/library/bb396189.aspx">CopyToDataTable</a> extension method:</p>
+
+<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;&lt;span class="kwrd"&gt;public&lt;/span&gt; &lt;span class="kwrd"&gt;static&lt;/span&gt; DataTable CopyToDataTable&lt;T&gt;(
+
+&lt;span class="lnum"&gt;   2:  &lt;/span&gt;    &lt;span class="kwrd"&gt;this&lt;/span&gt; IEnumerable&lt;T&gt; source
+
+&lt;span class="lnum"&gt;   3:  &lt;/span&gt;)
+
+&lt;span class="lnum"&gt;   4:  &lt;/span&gt;&lt;span class="kwrd"&gt;where&lt;/span&gt; T : DataRow
+</code></pre>
+
+<p>However, there is a problem: <strong>T has to be a DataRow</strong>. When returning query results from the database, especially with EF, your query results are not DataRows (and I wonder if the same is true for Linq to Sql too). So, in this case, you&rsquo;ll have to fill the DataTable by hand. Thanks to this <a href="http://unboxedsolutions.com/sean/archive/2009/06/06/15961.aspx">good blog post</a>, I was able to fill it:</p>
+
+<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;DataTable dataTable = &lt;span class="kwrd"&gt;new&lt;/span&gt; DataTable();
+
+&lt;span class="lnum"&gt;   2:  &lt;/span&gt;dataTable.TableName = &lt;span class="str"&gt;"ResultsTable"&lt;/span&gt;;
+
+&lt;span class="lnum"&gt;   3:  &lt;/span&gt;dataTable.Columns.Add(&lt;span class="str"&gt;"User"&lt;/span&gt;, &lt;span class="kwrd"&gt;typeof&lt;/span&gt;(&lt;span class="kwrd"&gt;string&lt;/span&gt;));
+
+&lt;span class="lnum"&gt;   4:  &lt;/span&gt;dataTable.Columns.Add(&lt;span class="str"&gt;"TotalJobs"&lt;/span&gt;, &lt;span class="kwrd"&gt;typeof&lt;/span&gt;(&lt;span class="kwrd"&gt;int&lt;/span&gt;));
+
+&lt;span class="lnum"&gt;   5:  &lt;/span&gt; 
+
+&lt;span class="lnum"&gt;   6:  &lt;/span&gt;var query = &lt;span class="rem"&gt;/* your linq query comes here. no restrictions! */&lt;/span&gt;
+</code></pre>
+
+<p>we have the DataTable and the query set up. Now, the tricky part!</p>
+
+<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;var results = query.Select(anonym =&gt; &lt;span class="kwrd"&gt;new&lt;/span&gt; Func&lt;DataRow, &lt;span class="kwrd"&gt;int&lt;/span&gt;, &lt;span class="kwrd"&gt;int&lt;/span&gt;, DataRow&gt;(
+
+&lt;span class="lnum"&gt;   2:  &lt;/span&gt;    (DataRow row, &lt;span class="kwrd"&gt;int&lt;/span&gt; index, &lt;span class="kwrd"&gt;int&lt;/span&gt; count) =&gt;
+
+&lt;span class="lnum"&gt;   3:  &lt;/span&gt;    {
+
+&lt;span class="lnum"&gt;   4:  &lt;/span&gt;        row[&lt;span class="str"&gt;"User"&lt;/span&gt;] = index;
+
+&lt;span class="lnum"&gt;   5:  &lt;/span&gt;        row[&lt;span class="str"&gt;"TotalJobs"&lt;/span&gt;] = count;
+
+&lt;span class="lnum"&gt;   6:  &lt;/span&gt;        &lt;span class="kwrd"&gt;return&lt;/span&gt; row;
+
+&lt;span class="lnum"&gt;   7:  &lt;/span&gt;    })
+
+&lt;span class="lnum"&gt;   8:  &lt;/span&gt;    .Invoke(dataTable.NewRow(), anonym.Index, anonym.TotalJobs));
+
+&lt;span class="lnum"&gt;   9:  &lt;/span&gt; 
+
+&lt;span class="lnum"&gt;  10:  &lt;/span&gt;results.ToList().ForEach(row =&gt; dataTable.Rows.Add(row));
+</code></pre>
+
+<p>Absolutely a good piece of unreadable code :)</p>
+
+<p><em>query </em>variable are your Linq query results, which may be an IEnumerable of some of your data entities or even a anonymous type. It doesn&rsquo;t matter! For each element of this enumeration, we&rsquo;re creating a DataRow and assigning some values to its columns. Then, we call <em>Invoke </em>to indeed invoke our anonymous delegate Func, passing in our anonymous type properties, that are used later to fill the DataTable.</p>
+
+<p>You&rsquo;ll probably gonna need to read it a couple times to digest it a bit and still it will look &ldquo;WTF did I really wrote this code?!?&rdquo; after a couple days :)</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-13T08:30:00-03:00" data-updated="true" itemprop="datePublished">Aug 13<span>th</span>, 2009</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/08/13/the-linq-expression-node-type-invoke-is-not-supported-in-linq-to-entities/" itemprop="url">The LINQ Expression Node Type &#8216;Invoke&#8217; Is Not Supported in LINQ to Entities.</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><a href="/post/More-on-the-Entity-Framework.aspx">Some time ago</a>, I wrote about predicate building with the Entity Framework and how the use of AsExpandable solves the issue. Frequently, people see and ask me about the following error, which is also associated with the same root cause that I blogged about in my previous post. However, it may be a bit confusing as to what is the cause of the following exception:</p>
+
+<p><strong><em>The LINQ expression node type &lsquo;Invoke&rsquo; is not supported in LINQ to Entities.</em></strong></p>
+
+<p>Again, as I stated before, calling LinqKit&rsquo;s <strong>AsExpandable </strong>solves this problem. As per <a href="http://tomasp.net/blog/linq-expand.aspx">Tomas Petricek</a> (the creator of a good part of this great work):</p>
+
+<blockquote><pre><code>"(...) `ToExpandable` creates a thin wrapper around the DLINQ `Table` object.
+Thanks to this wrapper you can use second method called `Invoke` that extends the `Expression`
+class to invoke the lambda expression while making it still possible to translate query to T-SQL. This works
+because when converting to the expression tree, the wrapper replaces all occurrences of `Invoke` method by
+expression trees of the invoked lambda expression and passes these expressions to DLINQ that is able to translate
+the expanded query to T-SQL."
+</code></pre></blockquote>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-11T18:46:00-03:00" data-updated="true" itemprop="datePublished">Aug 11<span>th</span>, 2009</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/08/11/upload-and-crop-images-with-asp-net-and-jcrop-revisited/" itemprop="url">Upload and Crop Images With ASP.NET and jCrop - Revisited!</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>In the last days, while looking for a way to do image cropping in ASP.NET, I found out several high quality tools that do the job very well. The main one is a great jQuery plugin called <a href="http://deepliquid.com/content/Jcrop.html">jCrop</a>. It has many useful features out of the box coupled with a well forged look and feel, which made me choose to use it with no doubt.</p>
+
+<p>What I needed, exactly, was a way to enable users to upload pictures and crop them on the fly before storing them on the website database. I often use ASP.NET <a href="http://asp.net/dynamicdata">dynamic data</a> to build complete and fully functional data driven websites in minutes. ASP.NET Dynamic Data is based on page templates and field templates that are brought together in runtime using user controls, in order to generate custom forms for manipulating the database tables.</p>
+
+<p>One of these field templates, is DbImage, which is available in the Dynamic Data <a href="http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=27026">preview 4 on Codeplex</a>. Basically, it maps a binary table column to a user control that consists of a FileUpload control, which you can use to upload the image. Then, the image bytes are stored in the database. It is obviously not the best way to store images on a database, but it is extremely convenient. In an ideal scenario, the table would only point to the actual path of the image on the disk.</p>
+
+<p>So, my work was to couple together jCrop and ASP.NET Dynamic Data DbImage control, so that the user may choose to crop the image just before it is saved to the database.</p>
+
+<p>I found a very complete and interesting post on this topic at <a href="http://www.mikesdotnetting.com/Article/95/Upload-and-Crop-Images-with-jQuery-JCrop-and-ASP.NET">mikesdotnetting.com</a>, which handles the actual image cropping part of the work with C#.</p>
+
+<p>My work was then based on Mike&rsquo;s post and jCrop, putting it all together inside a DbImage to enable the whole workflow. The general flow is strongly based on Mike&rsquo;s code using panels and hidden fields to store the selected X, Y, Width and Height, but I moved to a more wizard-like flow, which should be more straightforward to the regular user.</p>
+
+<p>I first added a &ldquo;Crop..&rdquo; button to the control that should launch jCrop with the selected image file.</p>
+
+<p><img src="/images/2009/8/img1.jpg" alt="" /></p>
+
+<p>Next step was to open a AJAX <a href="http://www.asp.net/AJAX/AjaxControlToolkit/Samples/ModalPopup/ModalPopup.aspx">ModalPopupExtender</a> and show the selected image ready to be cropped with jCrop:</p>
+
+<p><img src="/images/2009/8/img2new2.jpg" alt="" /></p>
+
+<p>Last step, check the cropped image and finish the Wizard:</p>
+
+<p><img src="/images/2009/8/img3.jpg" alt="" /></p>
+
+<p>The cropped image is then scaled down and added to the form:</p>
+
+<p><img src="/images/2009/8/img4.jpg" alt="" /></p>
+
+<p>In order to scale down the cropped image, I used a code from <a href="http://www.west-wind.com/Weblog/posts/283.aspx">Rick Strahl</a> and added to a page called GetThumb.aspx. This page receives the desired filename in the query string, fetches it from the crop temporary files directory and writes it to the response stream.</p>
+
+<p>I am providing the whole set of files needed to accomplish this in a <a href="http://www.felipel.com/files/dbimage_crop.zip">zip file</a>. Follow these instructions for setup:</p>
+
+<ol>
+<li><p>Put the DbImage_Edit.ascx<em> files in the **<dynamic data website>\DynamicData\FieldTemplates*</em> folder;</p></li>
+<li><p>Put the GetThumb.aspx* files in the website root (&ldquo;~&rdquo; folder);</p></li>
+<li><p>Put the Limaf.Tools.Web.dll file in  <dynamic data website>\bin folder (the Crop and Thumb functions are there).</p></li>
+<li><p>Create an &lsquo;images&rsquo; folder in your project root</p></li>
+</ol>
+
+
+<p>If you prefer, you can copy/paste get Mike&rsquo;s Crop and Rick&rsquo;s Thumbnails functions yourself and build them as part of the website. In this case, step 3 above is not needed.</p>
+
+<p>I may have forgotten a file or a step or two, so please let me know if anything goes wrong.</p>
+
+<p>Till next time!</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-10T09:06:00-03:00" data-updated="true" itemprop="datePublished">Aug 10<span>th</span>, 2009</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/08/10/asp-net-70-562-certification-earned/" itemprop="url">ASP.NET 70-562 Certification Earned!</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Today I just earned my third MCTS certification: <a href="http://www.microsoft.com/learning/en/us/exam.aspx?ID=70-562&amp;locale=en-us"><strong>Microsoft .NET Framework 3.5, ASP.NET Application Development.</strong></a></p>
+
+<p>The exam was good and under my expectations. Not very hard you&rsquo;ve been working with ASP.NET on a daily basis for quite some time. For the ones that are planning on taking this exam in the future, be aware that you&rsquo;ll face some mobile development specific question, of which I am not very familiar with. ASP.NET AJAX and ADO.NET topics appear extensively through the exam. It is composed of a total of 50 questions, spanned in seven topics:</p>
+
+<ul>
+<li><p>Configuring and deploying web applications</p></li>
+<li><p>Consuming and creating server controls</p></li>
+<li><p>Working with data and services</p></li>
+<li><p>Troubleshooting and debugging web applications</p></li>
+<li><p>Working with ASP.NET AJAX and client-side scripting</p></li>
+<li><p>Targeting mobile devices</p></li>
+<li><p>Programming web applications</p></li>
+</ul>
+
+
+<p>The passing score is 700/100 (as always). My score was 810! <img src="/editors/tiny_mce/plugins/emotions/images/smiley-smile.gif" alt="Smile" /></p>
+
+<p><img src="/images/2009/8/alo.jpg" alt="" /></p>
+
+		
+		
+	</div>
+
+</article>
+
+</div>
+<nav id="pagenavi">
+    
+        <a href="/blog/page/3/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/5/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Felipe Lima
+
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+		</div>
+	</div>
+	
 
 
 
@@ -514,26 +772,5 @@
 
 
 
-<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
-
-
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-26310657-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
-
-
-    		</div>
-    	</section>
-  	</div>
 </body>
 </html>

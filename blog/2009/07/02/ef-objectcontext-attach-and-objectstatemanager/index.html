@@ -1,44 +1,44 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>EF ObjectContext.Attach and ObjectStateManager - Felipe Lima</title>
-  <meta name="author" content="Felipe Lima">
+<!DOCTYPE HTML>
 
-  
-  <meta name="description" content="When working with the Entity Framework, you&rsquo;ve got to be extremely careful when exchanging Entities between different ObjectContexts. You &hellip;">
-  
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>EF ObjectContext.Attach and ObjectStateManager - Felipe Lima</title>
+	<meta name="author" content="Felipe Lima">
+
+	
+	<meta name="description" content="EF ObjectContext.Attach and ObjectStateManager When working with the Entity Framework, you&rsquo;ve got to be extremely careful when exchanging &hellip;">
+	
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://felipecsl.com/blog/2009/07/02/ef-objectcontext-attach-and-objectstatemanager/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
   
-  <link rel="canonical" href="http://felipecsl.com/blog/2009/07/02/ef-objectcontext-attach-and-objectstatemanager">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-26310657-1']);
+		_gaq.push(['_trackPageview']);
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-26310657-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 
 
 </head>
@@ -46,62 +46,74 @@
 
 <body>
 	<div class="container">
-		<aside class="left">
-			<div class="inner-left">
-				<header>
-					<img src="http://www.gravatar.com/avatar/7fd4ba468da56bb5330a6352c1b54f52?s=200" alt="Gravatar of Felipe Lima " title="Gravatar of Felipe Lima" class="profilepic" />
-<hgroup>
-  <h1><a href="/">Felipe Lima</a></h1>
-  
-    <h2 class="subtitle">@felipecsl</h2>
-   
-</hgroup>
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/7fd4ba468da56bb5330a6352c1b54f52?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
 
+<nav id="main-nav"><ul class="main">
+    <li><a href="/">Blog</a></li>
+    <li><a href="http://about.me/felipecsl">About</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+</ul>
 
-				</header>
-				<footer>
-					<p>
-	
-		<a href="http://github.com/felipecsl" class="btn btn-dark">GitHub</a>
-	
-	
-		<a href="http://twitter.com/felipecsl" class="btn btn-dark">Twitter</a>
-	
-</p>
-				</footer>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+			<a class="google" href="https://plus.google.com/FelipeLimaf" rel="author" title="Google+">Google+</a>
+		
+		
+			<a class="twitter" href="http://twitter.com/felipecsl" title="Twitter">Twitter</a>
+		
+		
+			<a class="github" href="https://github.com/felipecsl" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
 			</div>
-		</aside>
-    	<section class="right">
-    		<div class="inner-right">
-    			<div id="posts">
-    			  	<article class="post">
-    
-  <header>
-    
-      <h1 class="entry-title">EF ObjectContext.Attach and ObjectStateManager</h1>
-    
-    
-      <p class="meta">
-        
+		</div>	
+		<div class="mid-col">
+			
+				
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/felipecsl">felipecsl</a> @ <a href="http://twitter.com">Twitter</a></small>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('felipecsl', 4, false);
+	})(jQuery);
+</script>
 
 
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-07-02T04:30:00-03:00" pubdate data-updated="true">Jul 2<span>nd</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>When working with the Entity Framework, you&rsquo;ve got to be extremely careful when exchanging Entities between different ObjectContexts. You probably know that if you want to modify an Entity which is already added to the database, you have to first attach it to the context before modifying it, so that EF can keep track of the changes you made to that instance and save them to the database later. There is a good reference page at msdn about <a href="http://msdn.microsoft.com/en-us/library/bb896271.aspx">attaching related objects</a>.</p>
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">EF ObjectContext.Attach and ObjectStateManager</h1>
+	<div class="entry-content" itemprop="articleBody"><p>When working with the Entity Framework, you&rsquo;ve got to be extremely careful when exchanging Entities between different ObjectContexts. You probably know that if you want to modify an Entity which is already added to the database, you have to first attach it to the context before modifying it, so that EF can keep track of the changes you made to that instance and save them to the database later. There is a good reference page at msdn about <a href="http://msdn.microsoft.com/en-us/library/bb896271.aspx">attaching related objects</a>.</p>
 
 <p>Attach assumes your Entity has not been changed while it was not being tracked by the ObjectContext. Otherwise, call <strong>ApplyPropertyChanges</strong> to attach and apply the changes.</p>
 
@@ -289,31 +301,32 @@
 </code></pre>
 </div>
 
-
 </article>
 
-
-        <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://felipecsl.com/blog/2009/07/02/ef-objectcontext-attach-and-objectstatemanager/" data-via="felipecsl" data-counturl="http://felipecsl.com/blog/2009/07/02/ef-objectcontext-attach-and-objectstatemanager/" >Tweet</a>
-  
-  
-  
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
 </div>
 
 
+</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Felipe Lima
 
 
-
-    			</div>
-    			<footer id="footer">
-    				<p class="credit">
-  Copyright &copy; 2014 - Felipe Lima. Powered by <a href="http://octopress.org">Octopress</a>
-</p>
-
-
-    			</footer>
-    			
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+		</div>
+	</div>
+	
 
 
 
@@ -334,26 +347,5 @@
 
 
 
-<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
-
-
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-26310657-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
-
-
-    		</div>
-    	</section>
-  	</div>
 </body>
 </html>
