@@ -4,7 +4,7 @@
   <title><![CDATA[Felipe Lima]]></title>
   <link href="http://felipecsl.com/atom.xml" rel="self"/>
   <link href="http://felipecsl.com/"/>
-  <updated>2014-04-20T19:06:49-03:00</updated>
+  <updated>2014-05-14T17:45:25-03:00</updated>
   <id>http://felipecsl.com/</id>
   <author>
     <name><![CDATA[Felipe Lima]]></name>
@@ -147,6 +147,10 @@ If you&rsquo;re interested in a simpler and a lot more elegant solution for Open
 
 
 <p>You can get all the code here in this <a href="https://gist.github.com/felipecsl/6289457">Gist</a>.</p>
+
+<h2>Update May/2014</h2>
+
+<p>I wrapped this code as a Android library project called <a href="https://github.com/felipecsl/GifImageView">GifImageView</a>.</p>
 ]]></content>
   </entry>
   
