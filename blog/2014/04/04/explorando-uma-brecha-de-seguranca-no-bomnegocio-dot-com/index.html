@@ -1,0 +1,245 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>(pt-br) Explorando uma brecha de segurança no bomnegocio.com - Felipe Lima</title>
+	<meta name="author" content="Felipe Lima">
+
+	
+	<meta name="description" content="(Pt-br) Explorando Uma Brecha De Segurança No bomnegocio.com Meta: This post, written in Portuguese, about a security breach I found and reported in &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://felipecsl.com/blog/2014/04/04/explorando-uma-brecha-de-seguranca-no-bomnegocio-dot-com/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-26310657-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/7fd4ba468da56bb5330a6352c1b54f52?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+
+<nav id="main-nav"><ul class="main">
+    <li><a href="/">Blog</a></li>
+    <li><a href="http://about.me/felipecsl">About</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+			<a class="google" href="https://plus.google.com/FelipeLimaf" rel="author" title="Google+">Google+</a>
+		
+		
+			<a class="twitter" href="http://twitter.com/felipecsl" title="Twitter">Twitter</a>
+		
+		
+			<a class="github" href="https://github.com/felipecsl" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/felipecsl">felipecsl</a> @ <a href="http://twitter.com">Twitter</a></small>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('felipecsl', 4, false);
+	})(jQuery);
+</script>
+
+
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">(Pt-br) Explorando Uma Brecha De Segurança No bomnegocio.com</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Meta: This post, written in Portuguese, about a security breach I found and reported in a famous Brazilian marketplace website. Here I&rsquo;m describing how I found and exploited it. The vulnerability has been already reported and fixed by the website.</p>
+
+<h1>Introdução</h1>
+
+<p>Aqui no Brasil tem vários sites de compra e venda de cacarecos online. Sempre usei o <a href="http://mercadolivre.com.br">Mercado Livre</a> desde a época da faculdade para comprar e vender principalmente coisas usadas. Entretanto, com o tempo ele foi ficando mais caro para anunciar e outros concorrentes apareceram.</p>
+
+<p>Mais recentemente, notei a entrada no mercado (a propósito, com os dois pés na porta) do <a href="http://bomnegocio.com">Bom Negócio</a> e do <a href="http://olx.com.br">OLX</a>. Ambos fazendo muita propaganda na TV, inclusive em horário nobre da Grobo. Me chamou a atenção a propaganda do Bom Negócio, muito engraçada por sinal, com a participação do <a href="https://twitter.com/compadrewash">Compadre Washington</a> falando, entre outras largadinhas clássicas, o &ldquo;sabe de nada, inocente!&rdquo;. Hilário.</p>
+
+<p>Estamos fazendo reforma aqui no apartamento e precisamos nos desfazer de alguns pertences, entre eles, uma mesa redonda, antiga, de madeira de Gramado com quatro cadeiras, muito bonita, por sinal.</p>
+
+<p>Resolvi dar uma chance para o Bom Negócio e anunciar lá. Fiz upload das imagens, coloquei uma descrição, preço camarada e criei o anúncio. Em poucos minutos, depois de ter sido aprovado (a moderação é manual!) já comecei a receber SMS e emails de pessoas interessadas. Como coloquei um bom preço para vender logo, imaginei que fosse vender rápido, mas nunca imaginei que seria assim tão rápido.</p>
+
+<p>Acabei fechando negócio com um magrão gente boa que veio e buscou a mesa e cadeiras cerca de 2h depois de eu ter criado o anúncio. Tudo isso de graça. Performance impressionante! Me surpreendi.</p>
+
+<h1>Investigação</h1>
+
+<p>Por ser programador, desde o momento que entrei no site, comecei a reparar nos detalhes das páginas, como foram implementadas, as URLs, padrões, etc. Notei que havia algo de estranho na maneira que ele tratava as páginas internas do usuário, mas uma em especial me chamou a atenção, o link de Editar Anúncio.</p>
+
+<p><a href="/images/2014/04/bnegocio_editar.png"><img src="/images/2014/04/bnegocio_editar.png" alt="" /></a></p>
+
+<p>Notei que ao clicar no link acontecia um redirect estranho que me levava para uma página com a URL mais ou menos assim: <code>http://www2.bomnegocio.com/ai/form/0?cmd=edit&amp;ticket=2cc84e2e9f0d41387d79794b12ceba07990cf0c2</code>. Entretanto, o link de editar anúncio tinha o href bem diferente. Esse era o formato: <code>https://www3.bomnegocio.com/password_page/load_page/0?list_id=437898346&amp;cmd=edit&amp;type=AD_EDIT&amp;data=1343242</code>. Isso me deixou com uma pulga atrás da orelha.</p>
+
+<p>Ao olhar para essa URL, a primeira coisa que me veio à cabeça foi de alterar o número do parâmetro <code>list_id</code> para o ID de outro produto do site. Não foi difícil obter o ID de outro produto. Olhando para a URL de um anúncio (<code>http://rs.bomnegocio.com/regioes-de-porto-alegre-torres-e-santa-cruz-do-sul/computadores-e-acessorios/monitor-17-proview-preto-tela-plana-31904501</code>), fica claro que o ID se trata do último segmento do path, mais precisamente, neste caso, <code>31904501</code>. Também era possível encontrar este ID na própria descrição do produto, pois ele vem na página mesmo, entitulado <strong>Código do anúncio</strong>:</p>
+
+<p><a href="/images/2014/04/bnegocio_id_anuncio.png"><img src="/images/2014/04/bnegocio_id_anuncio.png" alt="" /></a></p>
+
+<p>Em seguida, o que fiz foi apenas testar este ID novo naquela URL de editar anúncio, alterando o parâmetro <code>list_id</code>. Com a alteração, ficaria mais ou menos assim: <code>https://www3.bomnegocio.com/password_page/load_page/0?list_id=31904501&amp;cmd=edit&amp;type=AD_EDIT&amp;data=1343242</code>.</p>
+
+<p>Ao fazer esta simples alteração, algo mágico aconteceu. O Bom Negócio simplesmente me redirecionou para a página de editar anúncio, com todas as informações preenchidas do anúncio referente ao ID <code>31904501</code> (que pertencia a outro usuário), além dos dados pessoais do usuário que tinha originalmente postado aquele anúncio (Nome completo, e-mail, telefone, etc).</p>
+
+<p><a href="/images/2014/04/bnegocio_anuncio.png"><img src="/images/2014/04/bnegocio_anuncio.png" alt="" /></a></p>
+
+<p>Nesse momento me dei conta que tinha me deparado com uma falha de segurança muito grave. Mas não era só isso. Ao olhar para o cabeçalho do site, vi que na verdade o Bom Negócio tinha também me logado com o usuário que postou o anúncio originalmente!</p>
+
+<p><a href="/images/2014/04/bnegocio_header.png"><img src="/images/2014/04/bnegocio_header.png" alt="" /></a></p>
+
+<p>Esse foi um momento bizarro! Basicamente consegui me autenticar no site como outro usuário, apenas manipulando uma URL de editar anúncio, usando o ID do anúncio dele!</p>
+
+<p><a href="/images/2014/04/bnegocio_anuncios.png"><img src="/images/2014/04/bnegocio_anuncios.png" alt="" /></a></p>
+
+<p>Decidi ir mais adiante. Minha teoria era de que, manipulando a URL através da alteração do parâmetro <code>list_id</code>, eu poderia me logar como qualquer usuário, bastando para isso ter o ID de um dos anúncios dele. Fui tentando com IDs de outros anúncios, mas rapidamente acabei caindo na tela de login. Fui deslogado automaticamente do sistema. Algo não estava certo.</p>
+
+<p>Voltando a analisar a URL de editar anúncio, reparei que ela possuia outro parâmetro um pouco mais obscuro: <code>data</code>. Se tratava de outro número aparentemente sem relação com o <code>list_id</code>, esse dava pouca indicação de onde vinha. Eu estava desconfiado pois em momento algum o ID do usuário entrava na jogada, então depois de alguns minutos comecei a suspeitar que o parâmetro <code>data</code> se tratava na verdade de um ID de usuário. Não estava certo ainda de qual usuário seria, teria que ser ou do dono do anúncio, ou do usuário logado atualmente. Depois de fazer mais alguns testes, ficou claro que <code>data</code> se tratava do ID do usuário que estava logado no momento.</p>
+
+<p>Acontece que, ao tomar posse da conta de outro usuário, automaticamente meu ID de usuário alterava, pois eu estava na verdade me passando por outra pessoa, portanto deveria enviar um parâmetro <code>data</code> diferente.</p>
+
+<p>Não foi difícil obter o ID de usuário. Este estava um pouco mais escondido, mas facilmente encontrado no código fonte da página:</p>
+
+<p><a href="/images/2014/04/bnegocio_data.png"><img src="/images/2014/04/bnegocio_data.png" alt="" /></a></p>
+
+<p>Com esses ingredientes, eu basicamente tinha uma receita para me autenticar no bomnegocio.com como qualquer usuário do site, bastando atender a apenas dois simples pré-requisitos:</p>
+
+<ul>
+<li>Estar logado inicialmente em uma conta qualquer. Para isto, bastava criar um usuário fictício;</li>
+<li>Ter o link para qualquer anúncio do usuário que desejo personificar. Facilmente encontrado nas páginas de listagem de anúncios do site.</li>
+</ul>
+
+
+<h1>Ação</h1>
+
+<p>Com estas informações em mãos, parti para a parte divertida: construir uma prova de conceito :)</p>
+
+<p>Escrevi um exploit em Ruby, utilizando <a href="http://mechanize.rubyforge.org/">Mechanize</a> que se autentica no bomnegocio.com utilizando um usuário de testes e varre as todas as páginas de anúncios do site, personificando cada usuário que criou cada um dos anúncios e salvando suas informações em um arquivo de texto, em formato CSV.</p>
+
+<p>Logo, vi que um simples arquivo de texto não seria suficiente, devido ao grande volume de dados e duplicação de informações, visto que frequentemente o mesmo usuário anuncia vários produtos de uma vez só.</p>
+
+<p>Em um segundo momento, resolvi mover os dados para um simples banco de dados MySQL, salvando as informações em uma tabela de usuários com ID, Email, Nome Completo e Telefone. Desta maneira, seria mais fácil de evitar registros duplicados, pois o ID seria a chave primária.</p>
+
+<p>Segue abaixo o código completo do exploit que varre o bomnegocio.com e extrai informações de todos os usuários que encontrar :)</p>
+
+<p><code>ruby
+</code></p>
+
+<p>Vale lembrar que poderiamos armazenar muitas outras informações dos usuários, por exemplo, CPF/CNPJ, CEP, Endereço, Estado, Municipio, etc. Todas estas informações estão disponíveis no momento em que nos apoderamos da sessão do usuário. Esta é apenas uma prova de conceito para ilustrar a falha de seguranca, entretanto, as dimensões deste problema são muito maiores do que apenas uma lista de nomes, email e telefone.</p>
+
+<h1>Conclusão</h1>
+
+<p>Com este artigo, espero poder alertar as empresas e os desenvolvedores de quão frágil é a segurança dos sites atualmente. Mesmo com todos os recursos disponíveis para tornar os sistemas o mais seguro possível, ainda hoje podemos facilmente encontrar falhas escancaradas como essa em sites de alto tráfego e volume de usuários.</p>
+
+<p>Este é um problema bastante grave que expoe os dados pessoais de milhões de usuários que confiaram suas informações ao site bomnegocio.com, que falhou em armazená-los de forma segura, muito pelo contrário, deixando um verdadeiro rombo de segurança e expondo todas as informações, de absolutamente todos os seus usuários, a qualquer hacker que disponha o tempo e paciência de extraí-los.</p>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2015
+
+    Felipe Lima
+
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+		</div>
+	</div>
+	
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>

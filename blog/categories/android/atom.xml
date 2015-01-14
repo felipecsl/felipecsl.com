@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Android | Felipe Lima]]></title>
+  <title><![CDATA[Category: android | Felipe Lima]]></title>
   <link href="http://felipecsl.com/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://felipecsl.com/"/>
-  <updated>2014-05-14T17:45:25-03:00</updated>
+  <updated>2015-01-13T23:30:39-08:00</updated>
   <id>http://felipecsl.com/</id>
   <author>
     <name><![CDATA[Felipe Lima]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Starting with Android - managing images]]></title>
     <link href="http://felipecsl.com/blog/2013/03/31/starting-with-android-managing-images/"/>
-    <updated>2013-03-31T13:03:00-03:00</updated>
+    <updated>2013-03-31T13:03:00-07:00</updated>
     <id>http://felipecsl.com/blog/2013/03/31/starting-with-android-managing-images</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve started with Android development a few months ago with the upcoming <a href="http://weheartit.com">We Heart It</a> app. Here are some random thought and impressions I had during this period, and the motivation behind building the Android-ImageManager library:</p>
 
@@ -36,7 +36,7 @@
 </ul>
 
 
-<p>Some of these reasons above motivated me to create the library <a href="https://github.com/felipecsl/Android-ImageManager">Android-ImageManager</a>, which takes care of caching and storing the displaying efficiently. It uses a two level cache, first in-memory using an `LruCache``, then in disk, using DiskLruCache to save the files to the device&rsquo;s SD Card. If an image is found in the memory cache, it is fetched from there, otherwise, it tries to retrieve it from disk cache. If it can&rsquo;t be found either, then it finally downloads the image and stores it in both caches. Everything is done assynchonously, obviously. The library is still in early stage, as I plan to add more samples and polish it a bit more. So check out the Github <a href="https://github.com/felipecsl/Android-ImageManager">repository</a>.</p>
+<p>Some of these reasons above motivated me to create the library <a href="https://github.com/felipecsl/Android-ImageManager">Android-ImageManager</a>, which takes care of caching and storing the displaying efficiently. It uses a two level cache, first in-memory using an `LruCache&#8220;, then in disk, using DiskLruCache to save the files to the device&rsquo;s SD Card. If an image is found in the memory cache, it is fetched from there, otherwise, it tries to retrieve it from disk cache. If it can&rsquo;t be found either, then it finally downloads the image and stores it in both caches. Everything is done assynchonously, obviously. The library is still in early stage, as I plan to add more samples and polish it a bit more. So check out the Github <a href="https://github.com/felipecsl/Android-ImageManager">repository</a>.</p>
 ]]></content>
   </entry>
   

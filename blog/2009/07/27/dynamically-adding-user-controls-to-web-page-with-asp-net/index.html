@@ -143,7 +143,7 @@
 
 <p>Okay, so now, what happens if we need to fire an event inside the UserControl in response to a user click on an image, for example? Right, the click event will fire a page postback and then the event handling code will be fired in the code behind as expected. Right? Definitely no! Since our user controls are being added dynamically to the page, they will not be there anymore after the postback. This means that ASP.Net will not find the control and, therefore, no event will be fired.</p>
 
-<p>Let me refresh some facts about ASP.Net postback functionality before continuing&hellip; Whenever you click a server control in the page, javascript <strong>doPostBack function is called (except for Button and ImageButton, that use a different method &ndash; form post). The </strong>doPostBack function takes two arguments, eventTarget and eventArgument. The eventTarget contains the ID of the control that causes the postback and the eventArgument contains any additional data associated with the control. Upon page reload, ASP.Net checks both Request.Params[&ldquo;<strong>EVENTTARGET&rdquo;] and Request.Params[&ldquo;</strong>EVENTARGUMENT&rdquo;] parameters for any postback data. If it finds it, it looks for the control ID and method specified in the <strong>EVENTTARGET var and calls the specified method, passing the </strong>EVENTARGUMENT value as a parameter.</p>
+<p>Let me refresh some facts about ASP.Net postback functionality before continuing&hellip; Whenever you click a server control in the page, javascript <strong>doPostBack function is called (except for Button and ImageButton, that use a different method - form post). The </strong>doPostBack function takes two arguments, eventTarget and eventArgument. The eventTarget contains the ID of the control that causes the postback and the eventArgument contains any additional data associated with the control. Upon page reload, ASP.Net checks both Request.Params[&ldquo;<strong>EVENTTARGET&rdquo;] and Request.Params[&ldquo;</strong>EVENTARGUMENT&rdquo;] parameters for any postback data. If it finds it, it looks for the control ID and method specified in the <strong>EVENTTARGET var and calls the specified method, passing the </strong>EVENTARGUMENT value as a parameter.</p>
 
 <p>Said that and knowing that our dynamic user control won&rsquo;t be present in the page during the postback, it is easy to conclude that ASP.Net won&rsquo;t find the control for the ID in the __EVENTTARGET parameter and, consequently, nothing will happen.</p>
 
@@ -468,7 +468,7 @@
 
 </div>
 			</div>
-			<footer id="footer" class="inner">Copyright &copy; 2014
+			<footer id="footer" class="inner">Copyright &copy; 2015
 
     Felipe Lima
 
