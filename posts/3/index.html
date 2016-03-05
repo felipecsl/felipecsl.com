@@ -9,7 +9,7 @@
 	<meta name="author" content="Felipe Lima">
 
 	
-	<meta name="description" content="How to Map Subdomains in Windows 7 Over the last days, I&rsquo;ve been working on implementing multiple subdomains with authentication in asp.net &hellip;">
+	<meta name="description" content="Singleton Entity Framework Connection: Maybe Not a Good Idea I&rsquo;ve been working on an ASP.NET MVC web service that uses EF for persistence. &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -129,68 +129,7 @@
   
 
 
-<time datetime="2010-08-20T06:10:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
-		<div class="tags">
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2010/08/20/how-to-map-subdomains-in-windows-7/" itemprop="url">How to Map Subdomains in Windows 7</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Over the last days, I&rsquo;ve been working on implementing multiple subdomains with authentication in asp.net for the webapp I&rsquo;m currently working on.</p>
-
-<p>There are a few steps needed in order to configure IIS, DNS and authentication.</p>
-
-<ol>
-<li>Select the website you&rsquo;re working on, in the IIS Manager screen, in the left side tree. Then, click the &ldquo;Bindings&rdquo; option in the right pane</li>
-</ol>
-
-
-<p><img src="/images/2010/8/bindings.png" alt="" /></p>
-
-<ol>
-<li><p>In the Site Bindings window, add each subdomain that you want to map to your site. Unfortunately, wildcard mapping is not supported, so you&rsquo;ll have to manually type all the subdomains before using it.</p></li>
-<li><p>In the windows hosts file (C:\Windows\system32\drivers\etc\hosts), add up each subdomain again, pointing to 127.0.0.1 (see below):</p></li>
-</ol>
-
-
-<p><img src="/images/2010/8/hosts.png" alt="" /></p>
-
-<ol>
-<li>Lastly, you&rsquo;ll need to update your web.config cookies configuration, so that it is set to work with any subdomain. By default, your login cookies will only be valid for the default subdomain (example.com and www.example.com)</li>
-</ol>
-
-
-<p><authentication mode="Forms"></p>
-
-<p><forms loginUrl="~/Account/Login" timeout="500000" **domain=".example.com"** /></p>
-
-<p></authentication></p>
-
-<p>Pay attention for the starting dot in the domain attribute. It is needed in order to work with any subdomain ;)</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-27T12:57:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2010-07-27T16:57:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -229,7 +168,7 @@
   
 
 
-<time datetime="2010-06-08T08:36:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2010-06-08T12:36:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -279,7 +218,7 @@
   
 
 
-<time datetime="2010-05-22T04:36:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2010-05-22T08:36:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -290,10 +229,10 @@
 		<p>During the last few weeks, I found myself more and more inside a stream that takes me to Ruby on Rails, when it comes to the best platform option for agile web development. My current language and platform or proficiency are C# and ASP.NET MVC, however, while getting introduced to the Rails world, I started seeing things from a different perspective, as well as finding out such great tools and practices that I really would like to have when working with ASP.NET MVC. I&rsquo;m gonna list some the topics and differences I have been analyzing:</p>
 
 <ol>
-<li><p> <strong>Community support:</strong> I found the RoR and the Open Source community to be far more unite and open to teaching and sharing knowledge than the .NET community. Starting with the assumption that there are probably more people working with ASP.NET right now than with RoR, it is surprising to see that it is easier to find RoR help online and learning communities than ASP.NET ones. Also, as far as I know, the ASP.NET MVC code is not open to community contributions right now, so people created the <a href="http://mvccontrib.codeplex.com/">MvcContrib</a> project to acoomodate this code, which is a shame. This is said, despite the fact that it&rsquo;s under the <a href="http://www.opensource.org/licenses/ms-pl.html">MS-PL license</a>, I found it hard to provide suggestions and feedback to the project, since there is not an official place for it.</p></li>
-<li><p> <strong>Productivity:</strong> Frequently I have hard times fighting the framework just to be able to get the job done. Rails has proven to me to be more productive and succint in terms of framework design. For example: named routes and database migrations are VERY helpful and I miss this kind of tool in ASP.NET MVC.</p></li>
-<li><p> <strong>Tight Model integration: </strong>I see many people argue that ASP.NET MVC is just VC, since the Model is not tightly coupled to the project. It&rsquo;s the developer&rsquo;s task to choose the right tool for the job, be it LINQ to SQL, Entity Framework or even MongoDB, for example. This flexibility is useful, however, a more integrated scenario could improve productivity a lot, perhaps we could use Entity Framework and SQL Server by default and change the provider later, if needed.</p></li>
-<li><p> <strong>Dynamic typing: </strong>This is a more subjective item, since it is wrong to say that static typing is worse that dynamic typing, or vice versa. It is just a matter of choosing the right tool. However, It seems to me that, in general, static typing and compilation doesn&rsquo;t free you from actual real world errors. It is a cost/benefit tradeoff, so, IMHO, the productivity benefit you get with dynamic typing is worth the trade for the static typing checks that you lost.</p></li>
+<li><p><strong>Community support:</strong> I found the RoR and the Open Source community to be far more unite and open to teaching and sharing knowledge than the .NET community. Starting with the assumption that there are probably more people working with ASP.NET right now than with RoR, it is surprising to see that it is easier to find RoR help online and learning communities than ASP.NET ones. Also, as far as I know, the ASP.NET MVC code is not open to community contributions right now, so people created the <a href="http://mvccontrib.codeplex.com/">MvcContrib</a> project to acoomodate this code, which is a shame. This is said, despite the fact that it&rsquo;s under the <a href="http://www.opensource.org/licenses/ms-pl.html">MS-PL license</a>, I found it hard to provide suggestions and feedback to the project, since there is not an official place for it.</p></li>
+<li><p><strong>Productivity:</strong> Frequently I have hard times fighting the framework just to be able to get the job done. Rails has proven to me to be more productive and succint in terms of framework design. For example: named routes and database migrations are VERY helpful and I miss this kind of tool in ASP.NET MVC.</p></li>
+<li><p><strong>Tight Model integration: </strong>I see many people argue that ASP.NET MVC is just VC, since the Model is not tightly coupled to the project. It&rsquo;s the developer&rsquo;s task to choose the right tool for the job, be it LINQ to SQL, Entity Framework or even MongoDB, for example. This flexibility is useful, however, a more integrated scenario could improve productivity a lot, perhaps we could use Entity Framework and SQL Server by default and change the provider later, if needed.</p></li>
+<li><p><strong>Dynamic typing: </strong>This is a more subjective item, since it is wrong to say that static typing is worse that dynamic typing, or vice versa. It is just a matter of choosing the right tool. However, It seems to me that, in general, static typing and compilation doesn&rsquo;t free you from actual real world errors. It is a cost/benefit tradeoff, so, IMHO, the productivity benefit you get with dynamic typing is worth the trade for the static typing checks that you lost.</p></li>
 </ol>
 
 
@@ -324,7 +263,7 @@
   
 
 
-<time datetime="2010-04-24T04:11:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2010-04-24T08:11:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -362,7 +301,7 @@ Social Platform.</a></p>
   
 
 
-<time datetime="2010-03-29T12:04:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2010-03-29T16:04:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -430,7 +369,7 @@ Social Platform.</a></p>
   
 
 
-<time datetime="2010-03-19T08:10:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2010-03-19T12:10:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -443,9 +382,9 @@ Social Platform.</a></p>
 <p>It turns out that the only way to disable it once and for all is a combination of a setting in the web.config and the ValidateRequestAttribute.</p>
 
 <ol>
-<li><p> Add the following line to your web.config file right after &lt;system.web>: <strong><httpRuntime requestValidationMode="2.0" /></strong></p></li>
-<li><p> Add the <strong>[ValidateInput(false)]</strong> attribute to the controller <strong>and</strong> the action method you want to expose</p></li>
-<li><p> Rebuild the project and go drink a beer.</p></li>
+<li><p>Add the following line to your web.config file right after &lt;system.web>: <strong><httpRuntime requestValidationMode="2.0" /></strong></p></li>
+<li><p>Add the <strong>[ValidateInput(false)]</strong> attribute to the controller <strong>and</strong> the action method you want to expose</p></li>
+<li><p>Rebuild the project and go drink a beer.</p></li>
 </ol>
 
 
@@ -476,13 +415,13 @@ Social Platform.</a></p>
   
 
 
-<time datetime="2010-03-01T22:36:00-08:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2010-03-02T03:36:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2010/03/01/hands-on-mongodb-with-c/" itemprop="url">Hands on MongoDB With C#</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2010/03/02/hands-on-mongodb-with-c/" itemprop="url">Hands on MongoDB With C#</a></h1>
 	<div class="entry-content" itemprop="articleBody">
 		<p>During the last couple days I&rsquo;ve been experimenting with <a href="/admin/Pages/www.mongodb.com">MongoDB</a> and its <a href="http://github.com/samus/mongodb-csharp">C# driver</a>, cleverly written by Sam Corder. I&rsquo;m investigating it as a replacement for a SQL Server database I am using in a web application that is higly community driven. This specific characteristic is the one that makes the <a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a> movement rise atop regular RDBMS systems like SQL Server or MySQL, since it is hard to mantain relational integrity in these scenarios. Other key features of MongoDB are focus on performance and scalability.</p>
 
@@ -610,13 +549,13 @@ Social Platform.</a></p>
   
 
 
-<time datetime="2010-02-21T22:52:00-08:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2010-02-22T03:52:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2010/02/21/the-magic-of-defaultmodelbinder/" itemprop="url">The Magic of DefaultModelBinder</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2010/02/22/the-magic-of-defaultmodelbinder/" itemprop="url">The Magic of DefaultModelBinder</a></h1>
 	<div class="entry-content" itemprop="articleBody">
 		<p>During the last days I had to implement a custom model binding for a dynamic view model in a project I&rsquo;m working on. This had me diving deep in the DefaultModelBinder implementation and how binding works in ASP.NET MVC.</p>
 
@@ -669,7 +608,7 @@ Social Platform.</a></p>
   
 
 
-<time datetime="2010-01-26T11:30:00-08:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2010-01-26T17:30:00-02:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -806,6 +745,69 @@ You can even bind complex objects like lists</a>, for example, but, in this case
 
 </article>
 
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-02T16:25:00-02:00" data-updated="true" itemprop="datePublished"></time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/12/02/an-alternative-for-viewing-grid-row-details-in-asp-net-dynamic-data/" itemprop="url">An Alternative for Viewing Grid Row Details in ASP.NET Dynamic Data</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>With ASP.NET Dynamic Data you get an entire dynamic data-driven website for free with almost no effort. Of course this has drawbacks, which is that in fact you lose some flexibility and need to do things in the way they <strong>can</strong> be done.</p>
+
+<p>Recently I needed to improve the default List.aspx template GridView with some different colors and per-line selection for entry details, instead of clicking through an DynamicHyperlink. The first step was to attach an OnRowDataBound event in the grid, in order to set up on onmouseover event in the data rows:</p>
+
+<p>DynamicData\PageTemplates\List.aspx:</p>
+
+<p>[code:c#]</p>
+
+<p>&lt;asp:GridView ID=&ldquo;GridView1&rdquo; runat=&ldquo;server&rdquo; DataSourceID=&ldquo;GridDataSource&rdquo; EnablePersistedSelection=&ldquo;true&rdquo; <strong>OnRowDataBound=&ldquo;GridView_RowDataBound&rdquo;</strong>></p>
+
+<p>[/code]</p>
+
+<p>Next, attach the event and set up the event (DynamicData\PageTemplates\List.aspx.cs):</p>
+
+<p>[code:c#]</p>
+
+<p>protected void GridView_RowDataBound(object sender, GridViewRowEventArgs e)</p>
+
+<p>{</p>
+
+<p>if (e.Row.RowType == DataControlRowType.DataRow)</p>
+
+<p>{</p>
+
+<p>e.Row.Attributes[&ldquo;onclick&rdquo;] = &ldquo;location.href = &lsquo;&rdquo; + table.GetActionPath(&ldquo;Details&rdquo;, e.Row.DataItem) + &ldquo;&rsquo;&rdquo;;</p>
+
+<p>}</p>
+
+<p>}</p>
+
+<p>[/code]</p>
+
+<p>And I&#8217;ts all done. You get an entire row click selection for the entry details :)</p>
+
+		
+		
+	</div>
+
+</article>
+
 </div>
 <nav id="pagenavi">
     
@@ -817,7 +819,7 @@ You can even bind complex objects like lists</a>, for example, but, in this case
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
 			</div>
-			<footer id="footer" class="inner">Copyright &copy; 2015
+			<footer id="footer" class="inner">Copyright &copy; 2016
 
     Felipe Lima
 

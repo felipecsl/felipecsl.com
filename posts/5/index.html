@@ -9,7 +9,7 @@
 	<meta name="author" content="Felipe Lima">
 
 	
-	<meta name="description" content="Upload and Crop Images With ASP.NET and jCrop - Revisited! In the last days, while looking for a way to do image cropping in ASP.NET, I found out &hellip;">
+	<meta name="description" content="ASP.NET 70-562 Certification Earned! Today I just earned my third MCTS certification: Microsoft .NET Framework 3.5, ASP.NET Application Development &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -129,82 +129,7 @@
   
 
 
-<time datetime="2009-08-11T14:46:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
-		<div class="tags">
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2009/08/11/upload-and-crop-images-with-asp-net-and-jcrop-revisited/" itemprop="url">Upload and Crop Images With ASP.NET and jCrop - Revisited!</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>In the last days, while looking for a way to do image cropping in ASP.NET, I found out several high quality tools that do the job very well. The main one is a great jQuery plugin called <a href="http://deepliquid.com/content/Jcrop.html">jCrop</a>. It has many useful features out of the box coupled with a well forged look and feel, which made me choose to use it with no doubt.</p>
-
-<p>What I needed, exactly, was a way to enable users to upload pictures and crop them on the fly before storing them on the website database. I often use ASP.NET <a href="http://asp.net/dynamicdata">dynamic data</a> to build complete and fully functional data driven websites in minutes. ASP.NET Dynamic Data is based on page templates and field templates that are brought together in runtime using user controls, in order to generate custom forms for manipulating the database tables.</p>
-
-<p>One of these field templates, is DbImage, which is available in the Dynamic Data <a href="http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=27026">preview 4 on Codeplex</a>. Basically, it maps a binary table column to a user control that consists of a FileUpload control, which you can use to upload the image. Then, the image bytes are stored in the database. It is obviously not the best way to store images on a database, but it is extremely convenient. In an ideal scenario, the table would only point to the actual path of the image on the disk.</p>
-
-<p>So, my work was to couple together jCrop and ASP.NET Dynamic Data DbImage control, so that the user may choose to crop the image just before it is saved to the database.</p>
-
-<p>I found a very complete and interesting post on this topic at <a href="http://www.mikesdotnetting.com/Article/95/Upload-and-Crop-Images-with-jQuery-JCrop-and-ASP.NET">mikesdotnetting.com</a>, which handles the actual image cropping part of the work with C#.</p>
-
-<p>My work was then based on Mike&rsquo;s post and jCrop, putting it all together inside a DbImage to enable the whole workflow. The general flow is strongly based on Mike&rsquo;s code using panels and hidden fields to store the selected X, Y, Width and Height, but I moved to a more wizard-like flow, which should be more straightforward to the regular user.</p>
-
-<p>I first added a &ldquo;Crop..&rdquo; button to the control that should launch jCrop with the selected image file.</p>
-
-<p><img src="/images/2009/8/img1.jpg" alt="" /></p>
-
-<p>Next step was to open a AJAX <a href="http://www.asp.net/AJAX/AjaxControlToolkit/Samples/ModalPopup/ModalPopup.aspx">ModalPopupExtender</a> and show the selected image ready to be cropped with jCrop:</p>
-
-<p><img src="/images/2009/8/img2new2.jpg" alt="" /></p>
-
-<p>Last step, check the cropped image and finish the Wizard:</p>
-
-<p><img src="/images/2009/8/img3.jpg" alt="" /></p>
-
-<p>The cropped image is then scaled down and added to the form:</p>
-
-<p><img src="/images/2009/8/img4.jpg" alt="" /></p>
-
-<p>In order to scale down the cropped image, I used a code from <a href="http://www.west-wind.com/Weblog/posts/283.aspx">Rick Strahl</a> and added to a page called GetThumb.aspx. This page receives the desired filename in the query string, fetches it from the crop temporary files directory and writes it to the response stream.</p>
-
-<p>I am providing the whole set of files needed to accomplish this in a <a href="http://www.felipel.com/files/dbimage_crop.zip">zip file</a>. Follow these instructions for setup:</p>
-
-<ol>
-<li><p>Put the DbImage_Edit.ascx<em> files in the **<dynamic data website>\DynamicData\FieldTemplates*</em> folder;</p></li>
-<li><p>Put the GetThumb.aspx* files in the website root (&ldquo;~&rdquo; folder);</p></li>
-<li><p>Put the Limaf.Tools.Web.dll file in  <dynamic data website>\bin folder (the Crop and Thumb functions are there).</p></li>
-<li><p>Create an &lsquo;images&rsquo; folder in your project root</p></li>
-</ol>
-
-
-<p>If you prefer, you can copy/paste get Mike&rsquo;s Crop and Rick&rsquo;s Thumbnails functions yourself and build them as part of the website. In this case, step 3 above is not needed.</p>
-
-<p>I may have forgotten a file or a step or two, so please let me know if anything goes wrong.</p>
-
-<p>Till next time!</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-08-10T05:06:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-08-10T09:06:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -252,7 +177,7 @@
   
 
 
-<time datetime="2009-08-03T04:16:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-08-03T08:16:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -287,7 +212,7 @@
   
 
 
-<time datetime="2009-07-27T04:09:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-07-27T08:09:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -653,7 +578,7 @@
   
 
 
-<time datetime="2009-07-14T15:46:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-07-14T19:46:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -696,7 +621,7 @@
   
 
 
-<time datetime="2009-07-08T02:55:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-07-08T06:55:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -749,7 +674,7 @@
   
 
 
-<time datetime="2009-07-02T00:30:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-07-02T04:30:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -965,7 +890,7 @@
   
 
 
-<time datetime="2009-06-24T04:13:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-06-24T08:13:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -1157,7 +1082,7 @@
   
 
 
-<time datetime="2009-06-17T09:23:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-06-17T13:23:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -1237,7 +1162,7 @@
   
 
 
-<time datetime="2009-06-16T05:44:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-06-16T09:44:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -1271,6 +1196,39 @@
 
 </article>
 
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-10T08:03:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/06/10/nunit-framework-assembly-not-found/" itemprop="url">nunit.framework Assembly Not Found</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>I ran into a FileNotFoundException lately when working with the latest NUnit release 2.5. It seems like its assemblies are not being added to the .Net Framework GAC (Global Assembly Cache), so this means that, unless you manually copy them to the same directory as you&rsquo;re working on, you&rsquo;ll have to manually add them to the GAC.</p>
+
+<p>There is a well explained reply in <a href="http://stackoverflow.com/questions/176850/nunit-assembly-not-found">StackOverflow</a> (again) telling how to use the &ldquo;gacutil&rdquo; to solve this. Basically all you have to do is unregister all your old versions of NUnit (if any) and then use gacutil /i to register the assemblies.</p>
+
+		
+		
+	</div>
+
+</article>
+
 </div>
 <nav id="pagenavi">
     
@@ -1282,7 +1240,7 @@
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
 			</div>
-			<footer id="footer" class="inner">Copyright &copy; 2015
+			<footer id="footer" class="inner">Copyright &copy; 2016
 
     Felipe Lima
 

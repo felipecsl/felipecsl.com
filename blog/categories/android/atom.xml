@@ -4,7 +4,7 @@
   <title><![CDATA[Category: android | Felipe Lima]]></title>
   <link href="http://felipecsl.com/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://felipecsl.com/"/>
-  <updated>2015-01-13T23:30:39-08:00</updated>
+  <updated>2016-03-05T01:35:17-03:00</updated>
   <id>http://felipecsl.com/</id>
   <author>
     <name><![CDATA[Felipe Lima]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Starting with Android - managing images]]></title>
     <link href="http://felipecsl.com/blog/2013/03/31/starting-with-android-managing-images/"/>
-    <updated>2013-03-31T13:03:00-07:00</updated>
+    <updated>2013-03-31T13:03:00-03:00</updated>
     <id>http://felipecsl.com/blog/2013/03/31/starting-with-android-managing-images</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve started with Android development a few months ago with the upcoming <a href="http://weheartit.com">We Heart It</a> app. Here are some random thought and impressions I had during this period, and the motivation behind building the Android-ImageManager library:</p>
 

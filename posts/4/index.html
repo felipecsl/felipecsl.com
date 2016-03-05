@@ -9,7 +9,7 @@
 	<meta name="author" content="Felipe Lima">
 
 	
-	<meta name="description" content="An Alternative for Viewing Grid Row Details in ASP.NET Dynamic Data With ASP.NET Dynamic Data you get an entire dynamic data-driven website for free &hellip;">
+	<meta name="description" content="Customizing ASP.NET Membership Information With Profiles ASP.NET offers a powerful built-in provider-based support for membership, roles and profile &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -129,70 +129,7 @@
   
 
 
-<time datetime="2009-12-02T10:25:00-08:00" data-updated="true" itemprop="datePublished"></time></div>
-		<div class="tags">
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2009/12/02/an-alternative-for-viewing-grid-row-details-in-asp-net-dynamic-data/" itemprop="url">An Alternative for Viewing Grid Row Details in ASP.NET Dynamic Data</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>With ASP.NET Dynamic Data you get an entire dynamic data-driven website for free with almost no effort. Of course this has drawbacks, which is that in fact you lose some flexibility and need to do things in the way they <strong>can</strong> be done.</p>
-
-<p>Recently I needed to improve the default List.aspx template GridView with some different colors and per-line selection for entry details, instead of clicking through an DynamicHyperlink. The first step was to attach an OnRowDataBound event in the grid, in order to set up on onmouseover event in the data rows:</p>
-
-<p>DynamicData\PageTemplates\List.aspx:</p>
-
-<p>[code:c#]</p>
-
-<p>&lt;asp:GridView ID=&ldquo;GridView1&rdquo; runat=&ldquo;server&rdquo; DataSourceID=&ldquo;GridDataSource&rdquo; EnablePersistedSelection=&ldquo;true&rdquo; <strong>OnRowDataBound=&ldquo;GridView_RowDataBound&rdquo;</strong>></p>
-
-<p>[/code]</p>
-
-<p>Next, attach the event and set up the event (DynamicData\PageTemplates\List.aspx.cs):</p>
-
-<p>[code:c#]</p>
-
-<p>protected void GridView_RowDataBound(object sender, GridViewRowEventArgs e)</p>
-
-<p>{</p>
-
-<p>if (e.Row.RowType == DataControlRowType.DataRow)</p>
-
-<p>{</p>
-
-<p>e.Row.Attributes[&ldquo;onclick&rdquo;] = &ldquo;location.href = &lsquo;&rdquo; + table.GetActionPath(&ldquo;Details&rdquo;, e.Row.DataItem) + &ldquo;&rsquo;&rdquo;;</p>
-
-<p>}</p>
-
-<p>}</p>
-
-<p>[/code]</p>
-
-<p>And I&#8217;ts all done. You get an entire row click selection for the entry details :)</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-15T14:51:00-08:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-11-15T20:51:00-02:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -263,7 +200,7 @@
   
 
 
-<time datetime="2009-10-22T01:57:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-10-22T06:57:00-02:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -365,7 +302,7 @@
   
 
 
-<time datetime="2009-10-21T00:01:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-10-21T05:01:00-02:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -408,7 +345,7 @@
   
 
 
-<time datetime="2009-10-03T04:52:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-10-03T08:52:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -511,7 +448,7 @@ UserFilesPath = "/userfiles/";
   
 
 
-<time datetime="2009-09-15T04:04:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-09-15T08:04:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -544,7 +481,7 @@ UserFilesPath = "/userfiles/";
   
 
 
-<time datetime="2009-09-03T04:21:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-09-03T08:21:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -588,7 +525,7 @@ UserFilesPath = "/userfiles/";
   
 
 
-<time datetime="2009-08-20T12:04:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-08-20T16:04:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -631,13 +568,13 @@ UserFilesPath = "/userfiles/";
   
 
 
-<time datetime="2009-08-19T23:43:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-08-20T03:43:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2009/08/19/copying-linq-non-datarow-query-results-to-datatable/" itemprop="url">Copying Linq (non-DataRow) Query Results to DataTable</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/08/20/copying-linq-non-datarow-query-results-to-datatable/" itemprop="url">Copying Linq (non-DataRow) Query Results to DataTable</a></h1>
 	<div class="entry-content" itemprop="articleBody">
 		<p>How to use the results of a database query using Linq to fill a DataGrid? It should be no big deal since there is a useful <a href="http://msdn.microsoft.com/en-us/library/bb396189.aspx">CopyToDataTable</a> extension method:</p>
 
@@ -715,7 +652,7 @@ UserFilesPath = "/userfiles/";
   
 
 
-<time datetime="2009-08-13T04:30:00-07:00" data-updated="true" itemprop="datePublished"></time></div>
+<time datetime="2009-08-13T08:30:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
 		<div class="tags">
 
 </div>
@@ -743,6 +680,81 @@ the expanded query to T-SQL."
 
 </article>
 
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-11T18:46:00-03:00" data-updated="true" itemprop="datePublished"></time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2009/08/11/upload-and-crop-images-with-asp-net-and-jcrop-revisited/" itemprop="url">Upload and Crop Images With ASP.NET and jCrop - Revisited!</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>In the last days, while looking for a way to do image cropping in ASP.NET, I found out several high quality tools that do the job very well. The main one is a great jQuery plugin called <a href="http://deepliquid.com/content/Jcrop.html">jCrop</a>. It has many useful features out of the box coupled with a well forged look and feel, which made me choose to use it with no doubt.</p>
+
+<p>What I needed, exactly, was a way to enable users to upload pictures and crop them on the fly before storing them on the website database. I often use ASP.NET <a href="http://asp.net/dynamicdata">dynamic data</a> to build complete and fully functional data driven websites in minutes. ASP.NET Dynamic Data is based on page templates and field templates that are brought together in runtime using user controls, in order to generate custom forms for manipulating the database tables.</p>
+
+<p>One of these field templates, is DbImage, which is available in the Dynamic Data <a href="http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=27026">preview 4 on Codeplex</a>. Basically, it maps a binary table column to a user control that consists of a FileUpload control, which you can use to upload the image. Then, the image bytes are stored in the database. It is obviously not the best way to store images on a database, but it is extremely convenient. In an ideal scenario, the table would only point to the actual path of the image on the disk.</p>
+
+<p>So, my work was to couple together jCrop and ASP.NET Dynamic Data DbImage control, so that the user may choose to crop the image just before it is saved to the database.</p>
+
+<p>I found a very complete and interesting post on this topic at <a href="http://www.mikesdotnetting.com/Article/95/Upload-and-Crop-Images-with-jQuery-JCrop-and-ASP.NET">mikesdotnetting.com</a>, which handles the actual image cropping part of the work with C#.</p>
+
+<p>My work was then based on Mike&rsquo;s post and jCrop, putting it all together inside a DbImage to enable the whole workflow. The general flow is strongly based on Mike&rsquo;s code using panels and hidden fields to store the selected X, Y, Width and Height, but I moved to a more wizard-like flow, which should be more straightforward to the regular user.</p>
+
+<p>I first added a &ldquo;Crop..&rdquo; button to the control that should launch jCrop with the selected image file.</p>
+
+<p><img src="/images/2009/8/img1.jpg" alt="" /></p>
+
+<p>Next step was to open a AJAX <a href="http://www.asp.net/AJAX/AjaxControlToolkit/Samples/ModalPopup/ModalPopup.aspx">ModalPopupExtender</a> and show the selected image ready to be cropped with jCrop:</p>
+
+<p><img src="/images/2009/8/img2new2.jpg" alt="" /></p>
+
+<p>Last step, check the cropped image and finish the Wizard:</p>
+
+<p><img src="/images/2009/8/img3.jpg" alt="" /></p>
+
+<p>The cropped image is then scaled down and added to the form:</p>
+
+<p><img src="/images/2009/8/img4.jpg" alt="" /></p>
+
+<p>In order to scale down the cropped image, I used a code from <a href="http://www.west-wind.com/Weblog/posts/283.aspx">Rick Strahl</a> and added to a page called GetThumb.aspx. This page receives the desired filename in the query string, fetches it from the crop temporary files directory and writes it to the response stream.</p>
+
+<p>I am providing the whole set of files needed to accomplish this in a <a href="http://www.felipel.com/files/dbimage_crop.zip">zip file</a>. Follow these instructions for setup:</p>
+
+<ol>
+<li><p>Put the DbImage_Edit.ascx<em> files in the **<dynamic data website>\DynamicData\FieldTemplates*</em> folder;</p></li>
+<li><p>Put the GetThumb.aspx* files in the website root (&ldquo;~&rdquo; folder);</p></li>
+<li><p>Put the Limaf.Tools.Web.dll file in  <dynamic data website>\bin folder (the Crop and Thumb functions are there).</p></li>
+<li><p>Create an &lsquo;images&rsquo; folder in your project root</p></li>
+</ol>
+
+
+<p>If you prefer, you can copy/paste get Mike&rsquo;s Crop and Rick&rsquo;s Thumbnails functions yourself and build them as part of the website. In this case, step 3 above is not needed.</p>
+
+<p>I may have forgotten a file or a step or two, so please let me know if anything goes wrong.</p>
+
+<p>Till next time!</p>
+
+		
+		
+	</div>
+
+</article>
+
 </div>
 <nav id="pagenavi">
     
@@ -754,7 +766,7 @@ the expanded query to T-SQL."
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
 			</div>
-			<footer id="footer" class="inner">Copyright &copy; 2015
+			<footer id="footer" class="inner">Copyright &copy; 2016
 
     Felipe Lima
 
