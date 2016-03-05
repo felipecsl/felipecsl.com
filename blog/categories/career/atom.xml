@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: career | Felipe Lima]]></title>
+  <link href="http://felipecsl.com/blog/categories/career/atom.xml" rel="self"/>
+  <link href="http://felipecsl.com/"/>
+  <updated>2015-01-13T23:30:39-08:00</updated>
+  <id>http://felipecsl.com/</id>
+  <author>
+    <name><![CDATA[Felipe Lima]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Moving on]]></title>
+    <link href="http://felipecsl.com/blog/2015/01/13/moving-on/"/>
+    <updated>2015-01-13T22:47:52-08:00</updated>
+    <id>http://felipecsl.com/blog/2015/01/13/moving-on</id>
+    <content type="html"><![CDATA[<h2>Context</h2>
+
+<p>2014 Ended on a great note and I couldn&rsquo;t be more happy, both on personal and professional aspects.
+After spending the entire year living in Porto Alegre (in Brazil and my hometown) and working remotely from there, it turns out the experience has been far better than I had previously imagined..
+Of course remote work has both its advantages and disadvantages, which I won&rsquo;t go into detail, since it has been already <a href="http://37signals.com/remote/">widely</a> <a href="http://www.forbes.com/sites/danschawbel/2013/03/29/david-heinemeier-hansson-every-employee-should-work-from-home/">discussed</a> online.</p>
+
+<p>For the past 2 and a half years, I&rsquo;ve been working at <a href="http://weheartit.com">We Heart It</a>, hacking on their <a href="https://play.google.com/store/apps/details?id=com.weheartit">Android App</a>. I&rsquo;ve been doing that remotely for the past year and worked great.
+That app feels almost like a child to me. I&rsquo;ve built it literally from scratch, with zero experience with mobile and/or Android whatsoever, which made it a very challenging task to begin with.
+During that, of course I&rsquo;ve had help from other awesome fellow developers in the team, however, since I&rsquo;ve been doing it since the beginning, I happened to touch virtually every single class of the app, participating actively in the conception of the design, architecture and development of every feature.</p>
+
+<p>Working at We Heart It has been an amazing opportunity, where I met a bunch of awesome people and made some great friends. I learned A LOT of stuff during that period, and diving into Android grew in me a passion for this platform and an important extra skill, which is the ability to write mobile apps with proficiency..
+It a place that is now part of my heart and that I will forever remember.</p>
+
+<h2>Future</h2>
+
+<p>2015 has already started and it is now time to move on. My wife and I are finally back in San Francisco and properly settled.
+After meeting some of the awesome folks at <a href="http://airbnb.com">Airbnb</a> I&rsquo;ve decided to leave We Heart It and join Airbnb. I&rsquo;ll be primarily working on their Android app but may move back and forth between platforms depending on the weather conditions :)</p>
+
+<p>Airbnb is a super awesome company and I feel extremely connected to its core values and value proposition. The sharing economy is real and is here to stay, getting bigger every day. Uber, Lyft, Instacart, Airbnb, etc. are some notable examples of innovative companies which leverage their communities to provide a useful service for everyone.</p>
+
+<p>The people there are super smart. The office is beautiful and the culture is amazing, even for a company with already more than 1 thousand employees and several offices spread around the world.</p>
+
+<p>I&rsquo;m super excited with this new challenge and ready to keep hacking on Android. Expect more posts to come soon!</p>
+]]></content>
+  </entry>
+  
+</feed>

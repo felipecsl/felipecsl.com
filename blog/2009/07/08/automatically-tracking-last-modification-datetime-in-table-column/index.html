@@ -1,0 +1,188 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Automatically tracking last modification date/time in table column - Felipe Lima</title>
+	<meta name="author" content="Felipe Lima">
+
+	
+	<meta name="description" content="Automatically Tracking Last Modification Date/time in Table Column Lately I found a very simple and yet consistent way to track the last update made &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://felipecsl.com/blog/2009/07/08/automatically-tracking-last-modification-datetime-in-table-column/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-26310657-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/7fd4ba468da56bb5330a6352c1b54f52?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+
+<nav id="main-nav"><ul class="main">
+    <li><a href="/">Blog</a></li>
+    <li><a href="http://about.me/felipecsl">About</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+			<a class="google" href="https://plus.google.com/FelipeLimaf" rel="author" title="Google+">Google+</a>
+		
+		
+			<a class="twitter" href="http://twitter.com/felipecsl" title="Twitter">Twitter</a>
+		
+		
+			<a class="github" href="https://github.com/felipecsl" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/felipecsl">felipecsl</a> @ <a href="http://twitter.com">Twitter</a></small>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('felipecsl', 4, false);
+	})(jQuery);
+</script>
+
+
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Automatically Tracking Last Modification Date/time in Table Column</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Lately I found a very simple and yet consistent way to track the last update made to a Sql Server database table. You can easily store the modification date and time through a table trigger that can set a specific column of the updated row(s) with the GETDATE() function.</p>
+
+<p>In order to do that, create a new trigger for your table and use the <strong>Inserted</strong> virtual table to obtain the ID of the entry, in order to update it. We&rsquo;ll use here a <strong>LastModified </strong>column, which will store a datetime:</p>
+
+<p>CREATE TRIGGER last_modification_timestamp</p>
+
+<p>ON target_table</p>
+
+<p>AFTER INSERT, UPDATE</p>
+
+<p>AS</p>
+
+<p>DECLARE @colID INT</p>
+
+<p>SELECT @colID = (SELECT ID FROM Inserted)</p>
+
+<p>UPDATE target_table SET LastModified = GETDATE() WHERE ID = @colID</p>
+
+<p>So, we&rsquo;re basically retrieving the column ID (primary key) from the affected row and using it to update the LastModified column with the current date and time.</p>
+
+<p>This way, you can enforce this policy and guarantee that you&rsquo;ll always get the correct date/time in that column, since the trigger will be automatically executed just after each INSERT and DELETE.</p>
+
+<p>Hope this helps!</p>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2015
+
+    Felipe Lima
+
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+		</div>
+	</div>
+	
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>

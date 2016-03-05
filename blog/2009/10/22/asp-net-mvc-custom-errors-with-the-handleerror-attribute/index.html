@@ -1,0 +1,237 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>ASP.NET MVC custom errors with the HandleError attribute - Felipe Lima</title>
+	<meta name="author" content="Felipe Lima">
+
+	
+	<meta name="description" content="ASP.NET MVC Custom Errors With the HandleError Attribute Handling exceptions in ASP.NET MVC is quite easy once you get to know the details &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://felipecsl.com/blog/2009/10/22/asp-net-mvc-custom-errors-with-the-handleerror-attribute/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-26310657-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/7fd4ba468da56bb5330a6352c1b54f52?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+
+<nav id="main-nav"><ul class="main">
+    <li><a href="/">Blog</a></li>
+    <li><a href="http://about.me/felipecsl">About</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+			<a class="google" href="https://plus.google.com/FelipeLimaf" rel="author" title="Google+">Google+</a>
+		
+		
+			<a class="twitter" href="http://twitter.com/felipecsl" title="Twitter">Twitter</a>
+		
+		
+			<a class="github" href="https://github.com/felipecsl" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/felipecsl">felipecsl</a> @ <a href="http://twitter.com">Twitter</a></small>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('felipecsl', 4, false);
+	})(jQuery);
+</script>
+
+
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">ASP.NET MVC Custom Errors With the HandleError Attribute</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Handling exceptions in ASP.NET MVC is quite easy once you get to know the details surrounding the HandleError attribute. You can specify that a controller or a specific Action will handle errors and you can even choose which View to show based on the exception being thrown. Scott Guthrie <a href="http://weblogs.asp.net/scottgu/archive/2008/07/14/asp-net-mvc-preview-4-release-part-1.aspx">wrote</a> about this.</p>
+
+<p>What he didn&rsquo;t tell us, is that there are some prerequisites for it to work as expected. First of all, you need to enable custom errors in the application web.config file:</p>
+
+<p><customErrors mode="On" /></p>
+
+<p>Second, the order that you put the HandleError attributes will affect which View will actualy gonna be rendered at the end. I was trying to render a custom view based on an InvalidOperationException being throw on my action. The code looked like this:</p>
+
+<pre><code>&lt;span class="lnum"&gt;   1:  &lt;/span&gt;[HandleError]
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   2:  &lt;/span&gt;&lt;span class="kwrd"&gt;public&lt;/span&gt; &lt;span class="kwrd"&gt;class&lt;/span&gt; HomeController : QuavioController
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   3:  &lt;/span&gt;{
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   4:  &lt;/span&gt;        [HandleError(ExceptionType = &lt;span class="kwrd"&gt;typeof&lt;/span&gt;(InvalidOperationException), View = &lt;span class="str"&gt;"InvalidOpJoinRoom"&lt;/span&gt;)]
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   5:  &lt;/span&gt;        &lt;span class="kwrd"&gt;public&lt;/span&gt; ActionResult JoinRoom()
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   6:  &lt;/span&gt;        {
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   7:  &lt;/span&gt;             &lt;span class="kwrd"&gt;throw&lt;/span&gt; &lt;span class="kwrd"&gt;new&lt;/span&gt; InvalidOperationException();
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   8:  &lt;/span&gt;        }
+
+
+
+
+
+
+&lt;span class="lnum"&gt;   9:  &lt;/span&gt;}
+</code></pre>
+
+<p>What happened is that the JoinRoom was returning the shared Error View, instead of the InvalidOpJoinRoom View. This happens because the HomeController contains a HandleError attribute (line 1), which overrides the JoinRoom&rsquo;s HandleError behavior (line 4), which should return the InvalidOpJoinRoom View.</p>
+
+<p>The fix is very simple: Remove the HandleError atribute from the controller and let the actual actions define the proper error handling behavior.</p>
+
+<p>Conclusion: Be aware that multiple HandleError attributes in a controller may alter the order which View evaluation is executed and then causing the final View not to be the view you were actually expecting.</p>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2015
+
+    Felipe Lima
+
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+		</div>
+	</div>
+	
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>

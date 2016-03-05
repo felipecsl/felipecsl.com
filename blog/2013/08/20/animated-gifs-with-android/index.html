@@ -1,0 +1,209 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Handling Animated GIFs with Android the right way - Felipe Lima</title>
+	<meta name="author" content="Felipe Lima">
+
+	
+	<meta name="description" content="Handling Animated GIFs With Android the Right Way Working with animated GIFs on Android can be a painful task. In the We Heart It app we deal with a &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://felipecsl.com/blog/2013/08/20/animated-gifs-with-android/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-26310657-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/7fd4ba468da56bb5330a6352c1b54f52?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+
+<nav id="main-nav"><ul class="main">
+    <li><a href="/">Blog</a></li>
+    <li><a href="http://about.me/felipecsl">About</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+			<a class="google" href="https://plus.google.com/FelipeLimaf" rel="author" title="Google+">Google+</a>
+		
+		
+			<a class="twitter" href="http://twitter.com/felipecsl" title="Twitter">Twitter</a>
+		
+		
+			<a class="github" href="https://github.com/felipecsl" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/felipecsl">felipecsl</a> @ <a href="http://twitter.com">Twitter</a></small>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('felipecsl', 4, false);
+	})(jQuery);
+</script>
+
+
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Handling Animated GIFs With Android the Right Way</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Working with animated GIFs on Android can be a painful task. In the <a href="https://play.google.com/store/apps/details?id=com.weheartit">We Heart It app</a> we deal with a lot of images, but also animated GIFs. Since we support Android back to API Level 8 (2.2), <code>WebView</code> is by far the simplest solution, however is not an option for us, since it <a href="https://code.google.com/p/android/issues/detail?id=3422">doesn&rsquo;t work</a> on most of older Android versions.</p>
+
+<p>By looking at this excellent tutorial by <a href="http://droid-blog.net/2011/10/15/tutorial-how-to-play-animated-gifs-in-android-%E2%80%93-part-2/">Johannes Borchardt</a>, I decided to take <code>GifDecoder</code> approach, which seems to be the most reliable solution. However, the <a href="https://code.google.com/p/android-gifview/source/browse/trunk/GifPlayer/src/jp/tomorrowkey/android/gifplayer/GifDecoder.java">GifDecoder</a> class suggested by Johannes is not very memory efficient since it keeps in memory the bitmap data for every frame in the GIF.</p>
+
+<p>By doing some more research, I found this great <a href="https://gist.github.com/devunwired/4479231">gist</a> with an optimized implementation of <code>GifDecoder</code> that, as described there, &ldquo;decodes images on-the-fly, and only the minimum data to create the next frame in the sequence is kept&rdquo;.</p>
+
+<p>The class interface is however not exactly the same as the one exposed by the original <code>GifDecoder</code> class provided, thus the <code>GifDecoderView</code> class had to be adjusted. I made the adjustments required to interact with this version and also start/stop the animation. By default it will loop the GIF animation, even if the view is not on the screen, so you have to be careful to call <code>startAnimation()</code> and <code>stopAnimation()</code> correctly to avoid GIFs playing in the background, which can eat up all your memory very quickly.</p>
+
+<p>My interaction looks basically like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'>  <span class="c1">// In my fragment class...</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">gifView</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">GifDecoderView</span><span class="o">(</span><span class="n">getActivity</span><span class="o">());</span>
+</span><span class='line'>    <span class="n">gifView</span><span class="o">.</span><span class="na">setBytes</span><span class="o">(</span><span class="n">bitmapData</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">gifView</span><span class="o">.</span><span class="na">startAnimation</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUserVisibleHint</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">isVisibleToUser</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">super</span><span class="o">.</span><span class="na">setUserVisibleHint</span><span class="o">(</span><span class="n">isVisibleToUser</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="o">(!</span><span class="n">isVisibleToUser</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">gifView</span><span class="o">.</span><span class="na">stopAnimation</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can get all the code here in this <a href="https://gist.github.com/felipecsl/6289457">Gist</a>.</p>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2015
+
+    Felipe Lima
+
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+		</div>
+	</div>
+	
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>

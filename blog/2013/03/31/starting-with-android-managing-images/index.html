@@ -1,0 +1,184 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Starting with Android - managing images - Felipe Lima</title>
+	<meta name="author" content="Felipe Lima">
+
+	
+	<meta name="description" content="Starting With Android - Managing Images I&rsquo;ve started with Android development a few months ago with the upcoming We Heart It app. Here are &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Felipe Lima" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://felipecsl.com/blog/2013/03/31/starting-with-android-managing-images/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-26310657-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/7fd4ba468da56bb5330a6352c1b54f52?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+
+<nav id="main-nav"><ul class="main">
+    <li><a href="/">Blog</a></li>
+    <li><a href="http://about.me/felipecsl">About</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+			<a class="google" href="https://plus.google.com/FelipeLimaf" rel="author" title="Google+">Google+</a>
+		
+		
+			<a class="twitter" href="http://twitter.com/felipecsl" title="Twitter">Twitter</a>
+		
+		
+			<a class="github" href="https://github.com/felipecsl" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/felipecsl">felipecsl</a> @ <a href="http://twitter.com">Twitter</a></small>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('felipecsl', 4, false);
+	})(jQuery);
+</script>
+
+
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Starting With Android - Managing Images</h1>
+	<div class="entry-content" itemprop="articleBody"><p>I&rsquo;ve started with Android development a few months ago with the upcoming <a href="http://weheartit.com">We Heart It</a> app. Here are some random thought and impressions I had during this period, and the motivation behind building the Android-ImageManager library:</p>
+
+<ul>
+<li><p><strong>API Complexity</strong>: Compared to the iOS SDK, at first, the Android SDK seemed to me overly complicated and over-engineered. There are specific patterns you need to follow for most common scenarios and avoiding them just end up making it harder, so you basically have no choice. For example, the <a href="http://developer.android.com/training/id-auth/identify.html">AccountManager API</a>, which you need to use if you want to create an Android built in user account. There are several interfaces you have to implement, services to create, methods to override, etc. It is very painful overall.</p></li>
+<li><p><strong>Version Compatibility</strong>: If you want to support a decent range of devices and <a href="http://developer.android.com/about/dashboards/index.html">Android versions</a>, you&rsquo;ll spend countless hours of testing and have to buy 10 different phones and tablets, since the Emulator is simply unusable (terribly slow). Stick with already proven open source libraries for a less painful development experience, like <a href="http://actionbarsherlock.com/">ActionbarSherlock</a>, <a href="https://github.com/JakeWharton/Android-ViewPagerIndicator">ViewPagerIndicator</a>, <a href="https://github.com/prototik/HoloEverywhere">HoloEverywhere</a>, <a href="https://github.com/JakeWharton/DiskLruCache">DiskLruCache</a>, etc. You can thank <a href="http://twitter.com/jakewharton">Jake Wharton</a> for most of that awesome work.</p></li>
+<li><p><strong>Automated Testing</strong>: Painful as well. We decided to go with <a href="http://robolectric.blogspot.com/">Robolectric</a> which basically stubs all the Android APIs for you. That has pros and cons, but definitely good that your tests run super fast (like seconds) and you dont have to keep stubbing everything in order to make your tests work. All you need is a simple jUnit project. Haven&rsquo;t looked much into Integrated UI tests yet, but we definitely want to check that out soon. Android provides <a href="http://developer.android.com/reference/android/test/InstrumentationTestCase.html">some classes</a> for this job.</p></li>
+<li><p><strong>Memory Management</strong>: This would deserve an entire article just for it. If you start working with images, galleries etc. or just do something that is not plain trivial, you&rsquo;ll sooner or later start seeing <code>OutOfMemoryError</code>. It is hard to get it right, and there are many things you need to be aware of when building an application, specially for We Heart It, which is totally image-heavy. Some of the techniques definitely include</p>
+
+<ol>
+<li><a href="http://developer.android.com/training/displaying-bitmaps/cache-bitmap.html">Cache your images</a> so you don&rsquo;t keep requesting the same images over and over again and wasting all the user&rsquo;s data bandwidth;</li>
+<li><a href="http://developer.android.com/training/displaying-bitmaps/load-bitmap.html">Request a sampled version of the images</a> that is adequate for the screen size/display dimensions where it is gonna be used;</li>
+<li><a href="http://developer.android.com/training/displaying-bitmaps/manage-memory.html">Recycle</a> your bitmap when it is not being used anymore, so you can reclaim unused memory faster.</li>
+<li>Avoid creating too many instances: When working with a REST API, it is easy to instantiate new objects all the time and keep them around, send to the Activities, etc. Try to keep your footprint to a minimum. Think about all object instantiation and whether it is needed or not. Sometimes all you need is a simpler version of your domain object to be shown in the UI, so keep a simpler version of your model that contains only the needed information to be displayed.</li>
+</ol>
+</li>
+</ul>
+
+
+<p>Some of these reasons above motivated me to create the library <a href="https://github.com/felipecsl/Android-ImageManager">Android-ImageManager</a>, which takes care of caching and storing the displaying efficiently. It uses a two level cache, first in-memory using an `LruCache&#8220;, then in disk, using DiskLruCache to save the files to the device&rsquo;s SD Card. If an image is found in the memory cache, it is fetched from there, otherwise, it tries to retrieve it from disk cache. If it can&rsquo;t be found either, then it finally downloads the image and stores it in both caches. Everything is done assynchonously, obviously. The library is still in early stage, as I plan to add more samples and polish it a bit more. So check out the Github <a href="https://github.com/felipecsl/Android-ImageManager">repository</a>.</p>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2015
+
+    Felipe Lima
+
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+		</div>
+	</div>
+	
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>
