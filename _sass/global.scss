@@ -414,6 +414,20 @@ body {
     }
 }
 
+@media screen and (max-width: 800px) {
+    .projects {
+        ul {
+            li {
+                width: 87%;
+            }
+
+            li:nth-child(even) {
+                margin-left: 0em;
+            }
+        }
+    }
+}
+
 img.about-avatar {
     width: 200px;
     border-radius: 100px;
