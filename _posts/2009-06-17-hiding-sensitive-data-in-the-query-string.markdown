@@ -19,18 +19,20 @@ I separated the code logically in different files for better reading. It can be 
 
 Below is a simple usage of the Simmetric-key class with the Rijndael ([AES](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard)) provider to encrypt the query string variable in one page, send it, and then decrypt in the other side:
 
-    Symmetric symEncryption = new Symmetric(Symmetric.Provider.Rijndael);
-    symEncryption.Key.Text = "SomeKey";
-    string sSensitiveText = "Some sensitive data";
-    string sEncryptedData = symEncryption.Encrypt(new Data(sSensitiveText)).Base64;
-    // fearlessly send sEncryptedData in your query string
-    Response.Redirect(
-        "http://www.someurl.com/somepage.aspx?data=" + Server.UrlEncode(sEncryptedData));
-    // in the other side, decrypt the text you just received
-    string sDecryptedText = symEncryption.Decrypt(
-        new Data(Request.QueryString["data"].FromBase64())).Text;
-    // outputs "Some sensitive data"
-    Console.WriteLine(sDecryptedText);
+```c#
+Symmetric symEncryption = new Symmetric(Symmetric.Provider.Rijndael);
+symEncryption.Key.Text = "SomeKey";
+string sSensitiveText = "Some sensitive data";
+string sEncryptedData = symEncryption.Encrypt(new Data(sSensitiveText)).Base64;
+// fearlessly send sEncryptedData in your query string
+Response.Redirect(
+    "http://www.someurl.com/somepage.aspx?data=" + Server.UrlEncode(sEncryptedData));
+// in the other side, decrypt the text you just received
+string sDecryptedText = symEncryption.Decrypt(
+    new Data(Request.QueryString["data"].FromBase64())).Text;
+// outputs "Some sensitive data"
+Console.WriteLine(sDecryptedText);
+```
 
 
 Hope this helps someone :)
