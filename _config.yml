@@ -16,7 +16,7 @@
 title: Felipe Lima
 email: felipe.lima@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Felipe Lima's website.
+  Felipe Lima's blog and website.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://felipecsl.com"
 twitter_username: felipecsl
