@@ -23,6 +23,8 @@ twitter_username: felipecsl
 github_username:  felipecsl
 medium_username:  felipecsl
 linkedin_username: felipecsl
+sass:
+  sass_dir: _sass
 
 # Build settings
 markdown: kramdown
