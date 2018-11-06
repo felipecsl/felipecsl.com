@@ -32,7 +32,6 @@ p {
 }
 
 a {
-    color: blue;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -278,7 +277,7 @@ a:focus {
 
 .btn-default {
     border: 1px solid blue;
-    color: blue;
+    // color: blue;
     background-color: transparent;
 }
 
