@@ -19,5 +19,5 @@ Interests:
 * Functional programming
 * Graphics programming
 * Console emulation
-* Programming languages (currently Rust, Haskell and **specially** Kotlin)
+* Programming languages (currently Rust, Haskell and **especially** Kotlin)
 * Cryptocurrencies
