@@ -1,19 +1,28 @@
 ---
 layout: default
+list_title: "Blog Archives"
 ---
 <div class="archive">
   {%- if site.posts.size > 0 -%}
-  <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+  <h2 class="post-list-heading">{{ page.list_title | default: "Blog Archives" }}</h2>
   <ul class="post-list">
     {%- for post in site.posts -%}
     <li>
       {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
       <span class="post-meta">{{ post.date | date: date_format }}</span>
+      {% if post.external_url %}
+      <dd class="{{ post.external_site }}">
+        <a class="post-link" href="{{ post.external_url }}" target="_blank">
+          {{ post.title | escape }}
+        </a>
+      </dd>
+      {% else %}
       <h3>
         <a class="post-link" href="{{ post.url | relative_url }}">
           {{ post.title | escape }}
         </a>
       </h3>
+      {% endif %}
       {%- if site.show_excerpts -%}
       {{ post.excerpt }}
       {%- endif -%}

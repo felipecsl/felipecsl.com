@@ -4,7 +4,7 @@
 
 ```
 docker build -t felipecsl-com .
-docker run -itP felipecsl-com
+docker run -itP --rm --volume="$PWD:/usr/src/app" felipecsl-com
 ```
 
 ## Deploying
