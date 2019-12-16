@@ -4,7 +4,7 @@ title: Talks
 permalink: /talks/
 ---
 
-Here are some talks presented by yours truly:
+Here are some talks and interviews featuring myself 😄:
 
 <div class="archive">
   <ul class="post-list">
@@ -33,10 +33,18 @@ Here are some talks presented by yours truly:
       </dd>
     </li>
     <li>
+      <span class="post-meta">Feb 2017</span>
+      <dd>
+        <a class="post-link" href="https://www.youtube.com/watch?v=0X2JIBPWXBk" target="_blank">
+          Interview for TechTrips at Airbnb (pt-BR)
+        </a>
+      </dd>
+    </li>
+    <li>
       <span class="post-meta">Dec 2016</span>
       <dd>
         <a class="post-link" href="https://github.com/artem-zinnatullin/TheContext-Podcast/blob/master/show_notes/Episode_7.md" target="_blank">
-          The Context Podcast Episode 7: React Native
+          The Context Podcast Interview - Episode 7: React Native
         </a>
       </dd>
     </li>
