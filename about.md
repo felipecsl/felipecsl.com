@@ -12,7 +12,7 @@ However, I was proudly born and raised in [Porto Alegre](https://en.wikipedia.or
 south of Brazil.
 
 I've been working in the tech industry for over 10 years and hold a bachelors degree in Computer Science
-from [PUCRS](http://www.pucrs.br/). You can find my [resume here]({{ "/assets/felipelima_en.pdf" | relative_url }}).
+from [PUCRS](http://www.pucrs.br/). You can find my [resume here]({{ "/assets/resume_felipe_lima.pdf" | relative_url }}).
 
 Over the years, I've worked for several companies, big and small, like HP, ThoughtWorks and Airbnb
 and also co-founded a couple of startups. Currently, I work for [Stripe](stripe.com) as a Software
