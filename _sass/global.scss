@@ -9,7 +9,7 @@
 body {
     width: 100%;
     height: 100%;
-    font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Georgia',Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
     background-color: #fff;
 }
 
@@ -29,12 +29,6 @@ p {
         margin: 0 0 35px;
         line-height: 1.6;
     }
-}
-
-a {
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
 }
 
 a:hover,
@@ -432,4 +426,22 @@ img.about-avatar {
     width: 200px;
     border-radius: 100px;
     float: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.hero {
+    padding: 150px 0;
+
+    h1 {
+        font-size: 2.7em;
+        color: #353535;
+    }
+}
+
+.site-nav .page-link {
+    text-transform: uppercase;
+    font-family: 'Menlo', monospace;
 }

@@ -28,9 +28,10 @@ my infancy and still, to this day, is to me one of the greatest comedians of all
 __Interests:__
 
 * Functional programming
-* Graphics programming
 * Console emulation
+* Data visualization
 * Programming languages
 * Type systems
 * Psychology
 * Cryptocurrencies
+* Security

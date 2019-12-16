@@ -4,6 +4,12 @@
 
 layout: home
 ---
+<div class="hero">
+  <h1 class="text-center">
+  Hello, I'm Felipe!<br>
+  I'm enthusiastic about solving problems using technology.
+  </h1>
+</div>
 <h1>Recent Articles</h1>
 <ul class="post-list">
   <li>
