@@ -445,3 +445,7 @@ img.about-avatar {
     text-transform: uppercase;
     font-family: 'Menlo', monospace;
 }
+
+img + em {
+    font-size: 0.85em;
+}

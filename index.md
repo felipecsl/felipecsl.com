@@ -13,6 +13,14 @@ layout: home
 <h1>Recent Articles</h1>
 <ul class="post-list">
   <li>
+    <span class="post-meta">Oct 27, 2019</span>
+    <h3>
+      <a class="post-link" href="/2019/10/27/my-psychedelic-retreat-experience.html">
+        My life-changing psychedelic retreat experience
+      </a>
+    </h3>
+  </li>
+  <li>
     <span class="post-meta">Sept 9, 2019</span>
     <h3>
       <a class="post-link" href="https://medium.com/@felipecsl/shedding-body-fat-by-eating-fat-f569579b5f48" target="_blank">
@@ -31,14 +39,6 @@ layout: home
     <h3>
       <a class="post-link" href="https://proandroiddev.com/writing-an-android-nes-emulator-performance-optimizations-86c2907e1c6" target="_blank">
         Writing an Android NES Emulator — Performance optimizations
-      </a>
-    </h3>
-  </li>
-  <li>
-    <span class="post-meta">Jun 21, 2017</span>
-    <h3>
-      <a class="post-link" href="https://medium.com/airbnb-engineering/writing-fast-deterministic-and-accurate-android-integration-tests-c56811bd14e2" target="_blank">
-        Writing fast, deterministic and accurate Android Integration tests
       </a>
     </h3>
   </li>
