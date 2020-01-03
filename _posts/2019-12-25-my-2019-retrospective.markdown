@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2019 - Year in review"
+title: "2019 Retrospective"
 date: 2019-12-25 09:59
 comments: true
 categories:
