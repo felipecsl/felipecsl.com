@@ -13,6 +13,14 @@ layout: home
 <h1>Recent Articles</h1>
 <ul class="post-list">
   <li>
+    <span class="post-meta">Jan 2, 2020</span>
+    <h3>
+      <a class="post-link" href="2019/12/25/my-2019-retrospective.html">
+        2019 retrospective
+      </a>
+    </h3>
+  </li>
+  <li>
     <span class="post-meta">Oct 27, 2019</span>
     <h3>
       <a class="post-link" href="/2019/10/27/my-psychedelic-retreat-experience.html">
