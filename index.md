@@ -13,6 +13,14 @@ layout: home
 <h1>Recent Articles</h1>
 <ul class="post-list">
   <li>
+    <span class="post-meta">Apr 12, 2020</span>
+    <h3>
+      <a class="post-link" href="2020/04/12/consistency.html">
+        Consistency
+      </a>
+    </h3>
+  </li>
+  <li>
     <span class="post-meta">Jan 2, 2020</span>
     <h3>
       <a class="post-link" href="2019/12/25/my-2019-retrospective.html">
@@ -41,14 +49,6 @@ layout: home
     <a class="post-link" href="https://medium.com/@felipecsl/working-at-airbnb-4-years-later-2ac15de324d7" target="_blank">
       Working at Airbnb - 4 years later
     </a>
-  </li>
-  <li>
-    <span class="post-meta">Sept 23, 2018</span>
-    <h3>
-      <a class="post-link" href="https://proandroiddev.com/writing-an-android-nes-emulator-performance-optimizations-86c2907e1c6" target="_blank">
-        Writing an Android NES Emulator — Performance optimizations
-      </a>
-    </h3>
   </li>
 </ul>
 [Older articles &rsaquo;]({% link archive.md %})
