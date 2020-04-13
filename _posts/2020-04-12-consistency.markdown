@@ -6,7 +6,7 @@ comments: true
 categories:
 ---
 
-I pretty much always had a side project that I've focused on during my free time. They've fallen in a wide variety of categories, from small pet projects (eg.: playing with libraries, tools and libraries that I wanted to learn more about) to bigger and more ambitious ideas that I wanted to eventually "succeed" and have paying users for it. That ended up never happening, [except once](https://www.crunchbase.com/organization/coinverse), with Coinverse, for a brief period of time.
+I pretty much always had a side project that I've focused on during my free time. They've fallen in a wide variety of categories, from small pet projects (eg.: playing with libraries and tools that I wanted to learn more about) to bigger and more ambitious ideas that I wanted to eventually "succeed" and have paying users for it. That ended up never happening, [except once](https://www.crunchbase.com/organization/coinverse), with Coinverse, for a brief period of time only.
 
 The vast majority of them either ended up being shelved (abandoned), mostly because I ended up losing interest on it. I guess that once things get boring and no longer challenging, that's when I stop working on it and focus on something new.
 
@@ -16,7 +16,7 @@ Recently I've realized how my approach has changed drastically over the years. I
 
 I'm now working on [something new](https://clairvoyancehq.com/) which I'm again thrilled about in a way that I haven't been in a long time, probably years. This time, however, I want to make sure this doesn't end up in an archived Github repo again. I want to make sure I don't lose interest and move over to the next shiny thing as it has happened over and over again. I think the key is **consistency**.
 
-Instead of working nights and weekends nonstop, as I have many times before, which is not sustainable, this time I want to pace myself and make it last in the long run. In the end, this is a marathon, not a sprint. Time to market is key, however what's the point if you get burned out and abandon it weeks later?
+Instead of working nights and weekends nonstop, as I have many times before, which is not sustainable, this time I want to pace myself and make it last in the long run. In the end, this is a marathon, not a sprint. Time to market is key, but what's the point if you get burned out and abandon it weeks later?
 
 <img src="/images/2020/04/annie-spratt-cnEzFsV4Y-k-unsplash.jpg" alt="Brick wall" title="A brick wall" />
 <small>[Photo by Annie Spratt on Unsplash](https://unsplash.com/@anniespratt)</small>
