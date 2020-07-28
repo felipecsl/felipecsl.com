@@ -35,3 +35,5 @@ __Interests:__
 * Psychology
 * Cryptocurrencies
 * Security
+
+You can email me at felipe (dot) lima at gmail (dot) com.
