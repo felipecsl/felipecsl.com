@@ -152,3 +152,14 @@ Current average transaction fees are [around 5 dollars](https://ycharts.com/indi
 fees as a subsidy to cover operation costs and as an incentive to continue mining. I
 don't see bitcoin fees as an barrier to adoption since, it is much cheaper, especially when compared
 to bank wire transfer fees, for example.
+
+### Wrapping up
+
+I hope that this post helps clarify some of my reasoning behind bullish on bitcoin. I know a lot
+of these topics are still very contentious and it's not always black and white. Every person has a
+slightly different view of the world, with some being on completely opposite ends of the belief spectrum. My
+goal is help demystify these topics by providing (hopefully) clear arguments. It's likely that a lot
+of people are lately jumping in with hopes of yet another "get rich quick" scheme but when the next
+bear market cycle comes in, we'll see who's still gonna be around 🤓.
+
+To the moon 🌙
