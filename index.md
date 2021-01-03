@@ -4,6 +4,7 @@
 
 layout: home
 ---
+
 <div class="hero">
   <h1 class="text-center">
   Hello, I'm Felipe!<br>
@@ -12,6 +13,14 @@ layout: home
 </div>
 <h1>Recent Articles</h1>
 <ul class="post-list">
+  <li>
+    <span class="post-meta">Jan 1st, 2021</span>
+    <h3>
+      <a class="post-link" href="2021/01/01/bitcoin.html">
+        Bitcoin 💸
+      </a>
+    </h3>
+  </li>
   <li>
     <span class="post-meta">Apr 12, 2020</span>
     <h3>
@@ -43,12 +52,6 @@ layout: home
         Shedding body fat by eating fat
       </a>
     </h3>
-  </li>
-  <li>
-    <span class="post-meta">Dec 19, 2018</span>
-    <a class="post-link" href="https://medium.com/@felipecsl/working-at-airbnb-4-years-later-2ac15de324d7" target="_blank">
-      Working at Airbnb - 4 years later
-    </a>
   </li>
 </ul>
 [Older articles &rsaquo;]({% link archive.md %})
