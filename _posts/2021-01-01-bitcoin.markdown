@@ -100,7 +100,7 @@ funds from more recent investors"._](https://en.wikipedia.org/wiki/Ponzi_scheme)
 some of the Ponzi scheme's characteristics also include:
 
 - **"High investment returns with little or no risk"**: Bitcoin is known for being a high risk investment,
-  with price volatility often higher than 30% in a single day.
+  with price volatility sometimes higher than 30% in a single day.
 - **"Difficulty receiving payments"**: Exchanges like [Coinbase](https://coinbase.com) allow you to
   withdrawal dollars to your bank account from bitcoin sales with very little friction.
 - **"Secretive or complex strategies"**: Nothing could be simpler than the good ol' "buy and hold" strategy
