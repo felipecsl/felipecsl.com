@@ -1,0 +1,154 @@
+---
+layout: post
+title: "Bitcoin 💸"
+date: 2021-01-01 20:07
+comments: true
+categories:
+---
+
+After the most recent rally, bitcoin went from $7,165 on Jan 1st 2020 to $28,990 on Dec 31st 2020,
+up around 300% in the last 12 months alone! As I currently write this on January 1st, 2021, it has
+already climbed past $29k and is likely to reach $30k in the next few hours. This is an incredibly
+remarkable appreciation, making it one of the [top performing assets in 2020](https://twitter.com/charliebilello/status/1344764784839962629).
+Even though the price increase this time around was likely not fueled by retail investors, but by [institutional
+investors instead](https://www.forbes.com/sites/ronshevlin/2020/07/27/the-coronavirus-cryptocurrency-craze-whos-behind-the-bitcoin-buying-binge/?sh=22870fde2abf), it's natural that it has regained attention.
+
+![bitcoin search trend on Google](/images/2021/01/bitcoin-search-trend.png)
+_Bitcoin search trend on Google. [Source](https://trends.google.com/trends/explore?date=today%205-y&q=bitcoin)_
+
+Companies like [Microstragegy](https://www.microstrategy.com/en/company/company-videos/microstrategy-announces-over-1b-in-total-bitcoin-purchases-in-2020) and
+[Square](https://squareup.com/us/en/press/2020-bitcoin-investment) have publicly announced investing
+part of their balance sheets in bitcoin. [Paypal has launched](https://newsroom.paypal-corp.com/2020-10-21-PayPal-Launches-New-Service-Enabling-Users-to-Buy-Hold-and-Sell-Cryptocurrency) a new
+service enabling users to buy, hold and sell cryptocurrencies. Macro investor Raoul Pal, whom I
+highly respect and recommend [following on Twitter](https://twitter.com/raoulgmi), said
+[bitcoin could rally to $1M by 2025](https://cointelegraph.com/news/boomers-are-fcked-new-macro-report-forecasts-1m-bitcoin-by-2025).
+
+The current momentum is undeniably very bullish from every angle. If adoption continues increasing,
+I could certainly see a scenario where the bitcoin price increases by 10x over the next 5 years. I'm
+gonna go ahead and make that prediction here: bitcoin is likely to cross $300k by 2025, which is still
+a much more conservative prediction than Raoul's.
+
+Still, we should do our due diligence and not just blindly jump on the bandwagon and buy. There are
+important questions that should be asked by any investor who's new to bitcoin or crypto in general,
+so I'll try to enumerate them here.
+
+### What is bitcoin?
+
+According to [Wikipedia](https://en.wikipedia.org/wiki/bitcoin), bitcoin is a _"decentralized digital
+currency without a central bank or single administrator that can be sent from user to user on the
+peer-to-peer bitcoin network without the need for intermediaries."_. That alone makes it a groundbreaking
+technology and the first digital currency of its kind to reach this level of attention and notoriety.
+Whether or not bitcoin will deliver on its promise remains to be seen. Scalability and privacy concerns
+have been recurring topics among its [detractors](https://www.metzdowd.com/pipermail/cryptography/2020-December/036510.html).
+
+### When did you decide to get into bitcoin and why?
+
+Even though I had first heard about it much earlier than that, the first time I decided to really read and
+understand what bitcoin is and how it works was circa 2014. I have a vivid memory of getting into
+this rabbit hole, reading every article I could find, signing up for [Bitcointalk](bitcointalk.org) and browsing
+through pages and pages of forum posts. I became completely obsessed with it and couldn't understand
+how or why this was not widely recognized as a revolutionary technology worldwide. To me it was very
+clear that bitcoin was the most exciting innovation in the finance world that I had ever heard of
+and it had the potential of one day changing it forever.
+
+At the time, I believed that bitcoin could be a de facto new standard for online payments and had
+the potential to one day replace other popular payment methods like Paypal, credit cards, ACH, remittance, etc.
+Its privacy and decentralization features really caught my attention and I was mesmerized by its
+libertarian roots. Another factor that contributed to my obsession was the mystery around Satoshi's
+unknown identity and brilliant execution shipping bitcoin, followed by its unexplainable disappearance
+from the internet.
+
+![bitcoin adoption s-curve](/images/2021/01/bitcoin-adoption-s-curve.png)
+_bitcoin adoption s-curve analysis. [Source](https://cointelegraph.com/news/bitcoin-adoption-could-reach-90-by-2030-investment-firm-founder-claims)_
+
+All those reasons led me to starting a bitcoin related side project. At the time I was living in Brazil
+and noticed it was still hard for websites to accept payments in bitcoin. I called this service Bitgram,
+which was basically [Bitpay](bitpay.com) for the Brazilian market. Shortly after, [Safiri Felix](https://www.linkedin.com/in/safirifelix/)
+and I joined forces and we shifted our focus to [Coinverse](https://www.coindesk.com/coinverse-consumer-solution-bitcoin-brazil).
+Coinverse was a bitcoin banking platform that aimed to bring consumer and merchant bitcoin transactions
+and bitcoin bill payments to the Latin American market. The service picked up steam pretty quickly
+and had growing demand and a booming business. Coinverse was [later acquired by CoinBR](https://www.coindesk.com/latin-america-coinbr-acquires-coinverse)
+and I then moved on from it.
+
+Regardless, ever since, I've been watching closely the latest news and developments around bitcoin
+and have been always very bullish about it, [HODLing](https://www.investopedia.com/terms/h/hodl.asp)
+patiently 🙂
+
+### What makes bitcoin better than the alternatives?
+
+As an investment, bitcoin works great as a [hedge against inflation](https://www.coindesk.com/bitcoin-hedge-inflation-crazy),
+dollar debasement and political instability. That makes it especially good for portfolio diversification.
+I wouldn't put all my eggs in this single basket, as no one ever should, but allocating at least a small portion
+of your portfolio into cryptocurrencies is certainly a great idea in 2021.
+
+### What is this Gold 2.0 thing?
+
+The Winklevoss twins, early investors on bitcoin, recently called it "gold 2.0" during a
+[CNBC interview](https://coinmarketcap.com/headlines/news/bitcoin-is-gold-2-0-will-dethrone-gold-within-decade-geminis-cameron-winklevoss/).
+Other people have recently adopted this "digital gold" narrative and it seems to be becoming more and more popular.
+I agree that it makes sense to treat bitcoin as a store of value that's [equivalent to gold](https://www.investopedia.com/news/should-you-buy-gold-or-bitcoin/)
+but, in my opinion, superior due to its scarcity and usefulness. I can carry a virtually infinite
+amount of bitcoin in a [Trezor](https://trezor.io/) that fits in my pocket and take it with me around
+the world. Doing so with gold bars would be incredibly inconvenient. A bitcoin can be easily divided
+into tiny amounts. A gold bar, not so much.
+
+### Is it a [Ponzi scheme](https://www.investopedia.com/terms/p/ponzischeme.asp)?
+
+[_"A Ponzi scheme is a form of fraud that lures investors and pays profits to earlier investors with
+funds from more recent investors"._](https://en.wikipedia.org/wiki/Ponzi_scheme).
+[According to the SEC](https://www.investor.gov/introduction-investing/investing-basics/glossary/ponzi-schemes#RedFlags),
+some of the Ponzi scheme's characteristics also include:
+
+- **"High investment returns with little or no risk"**: Bitcoin is known for being a high risk investment,
+  with price volatility often higher than 30% in a single day.
+- **"Difficulty receiving payments"**: Exchanges like [Coinbase](https://coinbase.com) allow you to
+  withdrawal dollars to your bank account from bitcoin sales with very little friction.
+- **"Secretive or complex strategies"**: Nothing could be simpler than the good ol' "buy and hold" strategy
+- **"Issues with paperwork"**: To create an account on Coinbase, [_"you must be at least
+  18 years old, and reside in the United States."_](https://www.coinbase.com/legal/user_agreement). Couldn't
+  be simpler than that.
+
+Answer: No, it's not a Ponzi scheme. [Jorge Stolfi](https://www.ic.unicamp.br/~stolfi/bitcoin/2020-12-31-bitcoin-ponzi.html) seems to strongly disagree though, and that's OK 🙂. The fact that smart people currently have such
+completely opposing views of the world means that some of them are due for a tough reality check really soon.
+Something similar happened not too long ago, in 2016 with the US elections. I was sure that Trump would
+not be elected president. I was so wrong! But hey, that's fine. I'm prepared for the possible outcome
+where I'm completely wrong about bitcoin too, since it's a perfectly possible outcome. Only time will tell!
+
+### What about scalability concerns?
+
+Bitcoin can only process around [5 transactions per second](https://towardsdatascience.com/the-blockchain-scalability-problem-the-race-for-visa-like-transaction-speed-5cce48f9d44). Even though
+that's several orders of magnitude worse than credit card processing speed, I've noticed a shift in
+the narrative away from this over the past 12-24 months. Scalability concerns as a barrier to adopting
+bitcoin as a payment method seem to have faded, as people started realizing that bitcoin works a lot
+better as a store of value instead. That was a big shift in the way I thought about bitcoin too and
+it required some time to adapt to this new mental model.
+
+### What are the barriers to mass adoption?
+
+Buying bitcoin is still harder than it should be and it's still a fairly niche technology, restricted
+to smaller groups of enthusiasts and innovators. I predict that once a publicly traded [bitcoin ETF](https://www.bloomberg.com/news/articles/2020-12-31/wall-street-revives-dream-of-a-bitcoin-etf-with-new-sec-filing) is available, that should greatly
+reduce the barrier to adoption and it should cause see a big spike in new wallets. On top of that,
+more regulation could probably also help reduce the anxiety for new investors who are hesitant of the
+high degree of risk and volatility around cryptocurrencies.
+
+### What about privacy?
+
+The way bitcoin currently works is not ideal from a privacy perspective, as [it is possible
+to trace transactions and link them back to individuals by analyzing transactions on the blockchain](https://medium.com/human-rights-foundation-hrf/privacy-and-cryptocurrency-part-i-how-private-is-bitcoin-e3a4071f8fff).
+There are workarounds and ways to mitigate some of these risks, however, most often than not, people
+won't take any additional measures, thus compromising their privacy. In this aspect, it's certainly
+inferior when compared to cash, for example.
+
+### Doesn't bitcoin mining spend too much energy?
+
+It does indeed [spend a lot of energy](https://www.bbc.com/news/technology-48853230#:~:text=Currently%2C%20the%20tool%20estimates%20that,same%20power%20consumption%20as%20Switzerland.), but the way I see it, it's a small price to pay for the benefits
+it provides. Compared to other wasteful and polluting utilities (eg.: gas vehicles), I believe bitcoin's
+energy consumption can be easily justified, especially as we keep adopting clean and renewable energy
+sources.
+
+### How much are the transaction fees?
+
+Current average transaction fees are [around 5 dollars](https://ycharts.com/indicators/bitcoin_average_transaction_fee#:~:text=Bitcoin%20Average%20Transaction%20Fee%20is,K%25%20from%20one%20year%20ago.). Fees tend to go up with spikes in transaction volume. Miners receive
+fees as a subsidy to cover operation costs and as an incentive to continue mining. I
+don't see bitcoin fees as an barrier to adoption since, it is much cheaper, especially when compared
+to bank wire transfer fees, for example.
