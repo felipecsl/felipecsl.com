@@ -7,8 +7,8 @@ layout: home
 
 <div class="hero">
   <h1 class="text-center">
-  Hello, I'm Felipe!<br>
-  I'm enthusiastic about solving problems using technology.
+  👋 I'm Felipe!<br>
+  I'm currently taking a break and recovering from big tech.
   </h1>
 </div>
 <h1>Recent Articles</h1>
