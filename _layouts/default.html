@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html>
-{% include head.html %}
+  {% include head.html %}
 
-<body>
-  {%- include header.html -%}
+  <body>
+    {%- include header.html -%}
 
-  <main class="page-content" aria-label="Content">
-    <div class="wrapper">
-      {{ content }}
-    </div>
-  </main>
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">{{ content }}</div>
+    </main>
 
-  {%- include footer.html -%}
+    {%- include footer.html -%}
 
-  <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
-</body>
-
+    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+  </body>
 </html>
