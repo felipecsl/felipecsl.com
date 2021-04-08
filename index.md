@@ -6,10 +6,16 @@ layout: home
 ---
 
 <div class="hero">
-  <h1 class="text-center">
-  👋 I'm Felipe!<br>
-  I'm currently taking a break and recovering from big tech.
-  </h1>
+  <img class="about-avatar" src="/images/about-2021.jpg"/>
+  <div class="intro-bio">
+    <h1 class="brand-font">Felipe Lima</h1>
+    <p>
+    Hi there! 👋 <br>I'm a software engineer (computer nerd) with a passion for learning, finance and entrepreneurism.
+    You can find me by the handle <code>felipecsl</code> throughout the interwebs. I will be documenting
+    here my journey through bootstrapping my way to financial independence. Subscribe below to receive updates.
+    </p>
+    <script async data-uid="6486d12bcb" src="https://marvelous-builder-9321.ck.page/6486d12bcb/index.js"></script>
+  </div>
 </div>
 <h1>Recent Articles</h1>
 <ul class="post-list">

@@ -4,7 +4,7 @@ title: About me
 permalink: /about/
 ---
 
-<img class="about-avatar" src="/images/about-2021.jpg"/>
+<img alt="me photobombing" title="me photobombing" src="/images/about-photo.png"/>
 
 I currently live in the beautiful and rainy Seattle, which is where I call home, in the heart of the
 [Pacific Northwest](https://en.wikipedia.org/wiki/Pacific_Northwest).
