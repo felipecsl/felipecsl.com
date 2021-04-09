@@ -440,10 +440,25 @@ pre {
   }
 }
 
+@media screen and (max-width: 800px) {
+  .hero {
+    text-align: center;
+  }
+}
+
+@media (min-width: 767px) {
+  img.about-avatar {
+    float: left;
+  }
+
+  .intro-bio {
+    margin-left: 210px;
+  }
+}
+
 img.about-avatar {
   width: 170px;
   border-radius: 100px;
-  float: left;
 }
 
 .text-center {
@@ -451,11 +466,32 @@ img.about-avatar {
 }
 
 .hero {
-  padding: 150px 0;
+  margin: 80px 0;
+  border: 1px solid #585757;
+  padding: 60px;
+  background: #373f45;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #757474;
 
   h1 {
     font-size: 2.7em;
-    color: #353535;
+    color: #dad8d8;
+  }
+
+  .intro-bio {
+    p {
+      color: #bbbbbb;
+      font-size: 20px;
+      text-align: left;
+    }
+
+    .formkit-form {
+      margin: 0;
+    }
+
+    code {
+      color: #5d5b5b;
+    }
   }
 }
 
@@ -482,17 +518,4 @@ img + em {
 
 .formkit-form {
   margin-left: 20px;
-}
-
-.intro-bio {
-  margin-left: 210px;
-}
-
-.intro-bio p {
-  color: #8c8484;
-  font-size: 20px;
-}
-
-.intro-bio .formkit-form {
-  margin: 0;
 }
