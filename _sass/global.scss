@@ -28,7 +28,7 @@ p {
 @media (min-width: 767px) {
   p {
     margin: 0 0 35px;
-    line-height: 1.6;
+    line-height: 1.8;
   }
 }
 
@@ -514,8 +514,22 @@ img + em {
 
 .post-content {
   margin-bottom: 60px;
+  a {
+    color: #53131e;
+    text-decoration: underline;
+  }
 }
 
 .formkit-form {
   margin-left: 20px;
+}
+
+blockquote {
+  color: inherit;
+  border-left: 10px solid #ccc;
+  padding: 1em;
+  background: #f9f9f9;
+  p {
+    font-size: 20px;
+  }
 }

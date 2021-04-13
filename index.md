@@ -12,13 +12,21 @@ layout: home
     <p>
     Hi there! 👋 <br>I'm a software engineer (computer nerd 🤓) with a passion for learning, finance and entrepreneurism.
     You can find me by the handle <code>felipecsl</code> throughout the interwebs. I will be documenting
-    here my journey through bootstrapping my way to financial independence. Subscribe below to receive updates.
+    here my journey to financial independence. Subscribe below to receive updates.
     </p>
     <script async data-uid="6486d12bcb" src="https://marvelous-builder-9321.ck.page/6486d12bcb/index.js"></script>
   </div>
 </div>
 <h1>Recent Articles</h1>
 <ul class="post-list">
+  <li>
+    <span class="post-meta">Apr 13th, 2021</span>
+    <h3>
+      <a class="post-link" href="2021/04/13/are-video-games-drugs.html">
+        Are video games like drugs?
+      </a>
+    </h3>
+  </li>
   <li>
     <span class="post-meta">Jan 1st, 2021</span>
     <h3>
@@ -48,14 +56,6 @@ layout: home
     <h3>
       <a class="post-link" href="/2019/10/27/my-psychedelic-retreat-experience.html">
         My life-changing psychedelic retreat experience
-      </a>
-    </h3>
-  </li>
-  <li>
-    <span class="post-meta">Sept 9, 2019</span>
-    <h3>
-      <a class="post-link" href="https://medium.com/@felipecsl/shedding-body-fat-by-eating-fat-f569579b5f48" target="_blank">
-        Shedding body fat by eating fat
       </a>
     </h3>
   </li>
