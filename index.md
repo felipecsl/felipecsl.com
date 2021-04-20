@@ -20,9 +20,17 @@ layout: home
 <h1>Recent Articles</h1>
 <ul class="post-list">
   <li>
+    <span class="post-meta">Apr 19th, 2021</span>
+    <h3>
+      <a class="post-link" href="/2021/04/19/why-i-quit-my-job-at-stripe.html">
+        Why I quit my job at Stripe
+      </a>
+    </h3>
+  </li>
+  <li>
     <span class="post-meta">Apr 13th, 2021</span>
     <h3>
-      <a class="post-link" href="2021/04/13/are-video-games-drugs.html">
+      <a class="post-link" href="/2021/04/13/are-video-games-drugs.html">
         Are video games like drugs?
       </a>
     </h3>
@@ -30,7 +38,7 @@ layout: home
   <li>
     <span class="post-meta">Jan 1st, 2021</span>
     <h3>
-      <a class="post-link" href="2021/01/01/bitcoin.html">
+      <a class="post-link" href="/2021/01/01/bitcoin.html">
         Bitcoin 💸
       </a>
     </h3>
@@ -38,7 +46,7 @@ layout: home
   <li>
     <span class="post-meta">Apr 12, 2020</span>
     <h3>
-      <a class="post-link" href="2020/04/12/consistency.html">
+      <a class="post-link" href="/2020/04/12/consistency.html">
         Consistency
       </a>
     </h3>
@@ -48,14 +56,6 @@ layout: home
     <h3>
       <a class="post-link" href="2019/12/25/my-2019-retrospective.html">
         2019 retrospective
-      </a>
-    </h3>
-  </li>
-  <li>
-    <span class="post-meta">Oct 27, 2019</span>
-    <h3>
-      <a class="post-link" href="/2019/10/27/my-psychedelic-retreat-experience.html">
-        My life-changing psychedelic retreat experience
       </a>
     </h3>
   </li>
