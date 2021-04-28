@@ -438,7 +438,7 @@ img.about-avatar {
 }
 
 .text-center {
-  text-align: center;
+  text-align: center !important;
 }
 
 .hero {
@@ -455,10 +455,18 @@ img.about-avatar {
   }
 
   .intro-bio {
+    .formkit-powered-by-convertkit-container {
+      display: none !important;
+    }
     p {
       color: #bbbbbb;
       font-size: 20px;
       text-align: left;
+    }
+    a.rss-subscribe {
+      color: #bbbbbb;
+      font-size: 15px;
+      text-decoration: underline;
     }
 
     .formkit-form {

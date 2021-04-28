@@ -15,6 +15,9 @@ layout: home
     here my journey to financial independence. Subscribe below to receive updates.
     </p>
     <script async data-uid="6486d12bcb" src="https://marvelous-builder-9321.ck.page/6486d12bcb/index.js"></script>
+    <div class="text-center">
+      <a href="{{ "/feed.xml" | relative_url }}" class="rss-subscribe">Or get the RSS feed</a>
+    </div>
   </div>
 </div>
 <h1>Recent Articles</h1>

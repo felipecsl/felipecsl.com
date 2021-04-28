@@ -16,12 +16,12 @@
 title: Felipe Lima
 email: felipe.lima@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Felipe Lima's blog and website.
+  The website and blog of Felipe Lima.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://felipecsl.com"
 twitter_username: felipecsl
-github_username:  felipecsl
-medium_username:  felipecsl
+github_username: felipecsl
+medium_username: felipecsl
 linkedin_username: felipecsl
 sass:
   sass_dir: _sass
@@ -37,7 +37,6 @@ defaults:
       path: "images"
     values:
       image: true
-
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
