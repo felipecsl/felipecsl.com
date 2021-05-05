@@ -33,7 +33,7 @@ This is how I got disappointed by not getting promoted when I thought that I had
 
 You don't have to think too hard to see a lot of problems with the calibration approach. On top of that, add a list of highly subjective expectations for staff engineers and you have a process that ends up being highly arbitrary and decided based on unconscious biases, politics and personal preferences.
 
-> Calibration meetings are ineffective at highlighting engineers achievements since they are not able to advocate for their own work. Performance evaluation for higher levels is often arbitrary and decisions are based on unconscious biases, office politics and personal preferences
+> Calibration meetings are ineffective at highlighting engineers achievements since they are not able to advocate for their own work. Performance evaluation for higher levels is often arbitrary and decisions are based on unconscious biases, office politics and personal preferences.
 
 Below are some of the most common traits that are part of performance evaluation for engineers and my observations about each of them.
 
@@ -53,7 +53,7 @@ Ultimately, based on my observations, the higher your level, the harder it becom
 
 <div style="margin-bottom: 40px">
   <blockquote>
-    <p>All these factors combined tend to foster a highly competitive environment where engineers are encouraged to work harder and harder towards a moving promotion target, usually until they eventually burnout and quit</p>
+    <p>All these factors combined tend to foster a highly competitive environment where engineers are encouraged to work harder and harder towards a moving promotion target, usually until they eventually burnout and quit.</p>
   </blockquote>
 </div>
 ---
