@@ -10,7 +10,7 @@ layout: home
   <div class="intro-bio">
     <h1 class="brand-font">Felipe Lima</h1>
     <p>
-    Hi there! 👋 <br>I'm a software engineer (computer nerd 🤓) with a passion for learning, finance and entrepreneurism.
+    Hi there! 👋 <br>I'm a software engineer 🤓 with a passion for learning, finance and entrepreneurism.
     You can find me by the handle <code>felipecsl</code> throughout the interwebs. I will be documenting
     here my journey to financial independence. Subscribe below to receive updates.
     </p>
