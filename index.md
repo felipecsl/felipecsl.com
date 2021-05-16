@@ -23,6 +23,14 @@ layout: home
 <h1>Recent Articles</h1>
 <ul class="post-list">
   <li>
+    <span class="post-meta">May 16, 2021</span>
+    <h3>
+      <a class="post-link" href="/2021/05/16/funemployment-first-30-days.html">
+        Funemployment - The first 30 days
+      </a>
+    </h3>
+  </li>
+  <li>
     <span class="post-meta">Apr 26th, 2021</span>
     <h3>
       <a class="post-link" href="2021/04/26/nobody-cares-about-your-beautiful-code.html">
@@ -51,14 +59,6 @@ layout: home
     <h3>
       <a class="post-link" href="/2021/01/01/bitcoin.html">
         Bitcoin 💸
-      </a>
-    </h3>
-  </li>
-  <li>
-    <span class="post-meta">Apr 12, 2020</span>
-    <h3>
-      <a class="post-link" href="/2020/04/12/consistency.html">
-        Consistency
       </a>
     </h3>
   </li>
