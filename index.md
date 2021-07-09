@@ -23,6 +23,14 @@ layout: home
 <h1>Recent Articles</h1>
 <ul class="post-list">
   <li>
+    <span class="post-meta">Jul 9, 2021</span>
+    <h3>
+      <a class="post-link" href="2021/07/09/funemployment-june-update.html">
+        Funemployment June Update
+      </a>
+    </h3>
+  </li>
+  <li>
     <span class="post-meta">May 16, 2021</span>
     <h3>
       <a class="post-link" href="/2021/05/16/funemployment-first-30-days.html">
