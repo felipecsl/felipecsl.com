@@ -15,7 +15,7 @@ I've been working in the tech industry for over 10 years and hold a bachelors de
 from [PUCRS](http://www.pucrs.br/). You can find my [resume here]({{ "/assets/resume_felipe_lima.pdf" | relative_url }}).
 
 Over these years, I've worked for several companies like ThoughtWorks, Airbnb and,
-most recently, Stripe. In 2014 I've co-founded a crypto startup which was later acquired.
+most recently, Stripe. In 2014 I've co-founded the crypto startup Coinverse which was later acquired by CoinBR.
 
 Currently I'm taking a break from full time work and the "big tech" industry to recharge, focus on learning and
 experimenting with new projects and technologies. I'm a minimalist at heart and believe that the best
