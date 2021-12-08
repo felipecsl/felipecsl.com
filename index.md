@@ -6,7 +6,7 @@ layout: home
 ---
 
 <div class="hero">
-  <img class="about-avatar" src="/images/about-2021.jpg"/>
+  <img class="about-avatar" src="/images/avatar-2022-bw.png"/>
   <div class="intro-bio">
     <h1 class="brand-font">Felipe Lima</h1>
     <p>
@@ -23,9 +23,17 @@ layout: home
 <h1>Recent Articles</h1>
 <ul class="post-list">
   <li>
+    <span class="post-meta">Dec 7, 2021</span>
+    <h3>
+      <a class="post-link" href="/2021/12/05/2021-retrospective.html">
+        2021 Retrospective
+      </a>
+    </h3>
+  </li>
+  <li>
     <span class="post-meta">Jul 22, 2021</span>
     <h3>
-      <a class="post-link" href="2021/07/22/day-trading-for-pain-and-suffering.html">
+      <a class="post-link" href="/2021/07/22/day-trading-for-pain-and-suffering.html">
         Day trading for pain and suffering
       </a>
     </h3>
@@ -33,7 +41,7 @@ layout: home
   <li>
     <span class="post-meta">Jul 9, 2021</span>
     <h3>
-      <a class="post-link" href="2021/07/09/funemployment-june-update.html">
+      <a class="post-link" href="/2021/07/09/funemployment-june-update.html">
         Funemployment June Update
       </a>
     </h3>
@@ -51,14 +59,6 @@ layout: home
     <h3>
       <a class="post-link" href="2021/04/26/nobody-cares-about-your-beautiful-code.html">
         Nobody cares about your beautiful code
-      </a>
-    </h3>
-  </li>
-  <li>
-    <span class="post-meta">Apr 19th, 2021</span>
-    <h3>
-      <a class="post-link" href="/2021/04/19/why-i-quit-my-job-at-stripe.html">
-        Why I quit my job at Stripe
       </a>
     </h3>
   </li>
