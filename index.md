@@ -25,6 +25,14 @@ layout: home
   <li>
     <span class="post-meta">Dec 7, 2021</span>
     <h3>
+      <a class="post-link" href="/2022/08/27/a-new-beginning.html">
+        A New Beginning
+      </a>
+    </h3>
+  </li>
+  <li>
+    <span class="post-meta">Dec 7, 2021</span>
+    <h3>
       <a class="post-link" href="/2021/12/05/2021-retrospective.html">
         2021 Retrospective
       </a>
@@ -51,14 +59,6 @@ layout: home
     <h3>
       <a class="post-link" href="/2021/05/16/funemployment-first-30-days.html">
         Funemployment - The first 30 days
-      </a>
-    </h3>
-  </li>
-  <li>
-    <span class="post-meta">Apr 26th, 2021</span>
-    <h3>
-      <a class="post-link" href="2021/04/26/nobody-cares-about-your-beautiful-code.html">
-        Nobody cares about your beautiful code
       </a>
     </h3>
   </li>
