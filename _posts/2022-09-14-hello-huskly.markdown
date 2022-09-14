@@ -18,7 +18,7 @@ my progress more closely with Huskly, I could clearly see which trades worked we
 didn’t. That allowed me to improve my process and have more rigor, keeping myself accountable. As
 the saying goes, “what gets measured gets managed”.
 
-![pnl.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8bbe1301-a4cd-4860-b526-9bb1e1adbe30/pnl.png)
+![Huskly PnL](/images/2022/09/huskly-pnl.png "Huskly PnL chart")
 
 As this project grew, I started wondering whether other traders could benefit from it and be willing
 to pay for it. I still don’t know the answer to that question, but I’m willing to find out. If it
@@ -40,7 +40,7 @@ percent return, etc. I find it quite useful for my own trading so I decided to s
 
 Finally, Huskly can also do charts, with realtime data!
 
-![trade.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ced91db7-2651-412b-91d3-bdb16b37ebc8/trade.png)
+![Huskly Trade Page](/images/2022/09/huskly-trade-page.png "Huskly trade page")
 
 Feel free to reach out via email or Twitter if you want to give it a shot. I’be happy to provide
 access to anyone willing to provide feedback in return 😃 It will be most useful if you have a TD
