@@ -24,7 +24,7 @@ to over 90 people! That's a ~6x growth, mostly
 in the last 6-8 months! As expected, there were some growth pains associated with that, as is the
 case with pretty much every startup that I've worked at.
 
-A few months after joining, I quickkly shifted focus to work on a completely new product that QuickNode was
+A few months after joining, I quickly shifted focus to work on a completely new product that QuickNode was
 building for Twitter at the time, which ended up becoming the current incarnation of the [NFT API](https://www.quicknode.com/nft-api).
 
 It started as a [JSON RPC](https://www.jsonrpc.org/specification) API for NFT token ownership
