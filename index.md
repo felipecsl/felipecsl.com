@@ -23,6 +23,14 @@ layout: home
 <h1>Recent Articles</h1>
 <ul class="post-list">
   <li>
+    <span class="post-meta">Nov 6, 2022</span>
+    <h3>
+      <a class="post-link" href="/2022/11/06/tolerance.html">
+        Tolerance
+      </a>
+    </h3>
+  </li>
+  <li>
     <span class="post-meta">Sept 14, 2022</span>
     <h3>
       <a class="post-link" href="/2022/09/14/hello-huskly.html">
@@ -51,14 +59,6 @@ layout: home
     <h3>
       <a class="post-link" href="/2021/07/22/day-trading-for-pain-and-suffering.html">
         Day trading for pain and suffering
-      </a>
-    </h3>
-  </li>
-  <li>
-    <span class="post-meta">Jul 9, 2021</span>
-    <h3>
-      <a class="post-link" href="/2021/07/09/funemployment-june-update.html">
-        Funemployment June Update
       </a>
     </h3>
   </li>
