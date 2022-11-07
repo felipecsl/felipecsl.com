@@ -14,12 +14,13 @@ ThoughtWorks, Airbnb and Stripe. Co-founded the Bitcoin startup Coinverse in 201
 by CoinBR. Felipe holds a bachelors degree in Computer Science from [PUCRS](http://www.pucrs.br/).
 You can find his [resume here]({{ "/assets/resume_felipe_lima.pdf" | relative_url }}).
 
-Currently working at [QuickNode](https://quicknode.com), Felipe is an early crypto investor and
-enthusiast. A minimalist at heart and believer that the best code is no code at all.
+Felipe is an early crypto investor and enthusiast. A minimalist at heart and believer that the best 
+code is no code at all.
 
 ### Interests
 
-- Crypto, privacy and decentralization
+- Cryptocurrencies, privacy and decentralization
+- Finance & derivatives trading
 - Data visualization
 - Type systems
 - Psychology
