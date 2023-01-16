@@ -23,6 +23,14 @@ layout: home
 <h1>Recent Articles</h1>
 <ul class="post-list">
   <li>
+    <span class="post-meta">Jan 16, 2023</span>
+    <h3>
+      <a class="post-link" href="/2023/01/13/2022-annual-review.html">
+        2022 Annual Review
+      </a>
+    </h3>
+  </li>
+  <li>
     <span class="post-meta">Nov 6, 2022</span>
     <h3>
       <a class="post-link" href="/2022/11/06/tolerance.html">
@@ -51,14 +59,6 @@ layout: home
     <h3>
       <a class="post-link" href="/2021/12/05/2021-retrospective.html">
         2021 Retrospective
-      </a>
-    </h3>
-  </li>
-  <li>
-    <span class="post-meta">Jul 22, 2021</span>
-    <h3>
-      <a class="post-link" href="/2021/07/22/day-trading-for-pain-and-suffering.html">
-        Day trading for pain and suffering
       </a>
     </h3>
   </li>
